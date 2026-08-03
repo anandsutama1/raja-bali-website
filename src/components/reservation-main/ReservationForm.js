@@ -1,0 +1,136 @@
+"use client";
+
+import { useState } from "react";
+import { useFormSubmit } from "@/lib/useFormSubmit";
+import { isValidEmail, isValidPhoneDigits, EMAIL_ERROR, PHONE_ERROR } from "@/lib/validation";
+import { DEFAULT_COUNTRY_CODE } from "@/lib/countryCodes";
+import { TITLES } from "@/lib/titles";
+import { OPENING_HOUR_SLOTS } from "@/lib/timeSlots";
+import PhoneField from "@/components/PhoneField";
+
+const initialFields = {
+  title: "",
+  firstName: "",
+  lastName: "",
+  date: "",
+  time: "",
+  guests: "",
+  email: "",
+  whatsappCountry: DEFAULT_COUNTRY_CODE,
+  whatsappNumber: "",
+  message: "",
+};
+
+export default function ReservationForm() {
+  const today = new Date().toISOString().split("T")[0];
+  const [fields, setFields] = useState(initialFields);
+  const [fieldErrors, setFieldErrors] = useState({});
+  const { status, errorMessage, submitForm } = useFormSubmit({
+    formType: "reservation-main",
+    branch: "main",
+  });
+
+  const update = (key) => (e) => setFields((f) => ({ ...f, [key]: e.target.value }));
+
+  const validate = () => {
+    const errors = {};
+    if (!isValidEmail(fields.email)) errors.email = EMAIL_ERROR;
+    if (!isValidPhoneDigits(fields.whatsappNumber)) errors.whatsapp = PHONE_ERROR;
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    const { whatsappCountry, whatsappNumber, ...rest } = fields;
+    const payload = { ...rest, whatsapp: `${whatsappCountry} ${whatsappNumber}` };
+
+    const ok = await submitForm(payload);
+    if (ok) {
+      setFields(initialFields);
+      setFieldErrors({});
+    }
+  };
+
+  return (
+    <section className="border-t border-gray-200 py-24 px-6 max-w-2xl mx-auto bg-white">
+      <h2 className="text-3xl font-serif text-center mb-2">Begin Your Experience</h2>
+      <p className="text-center text-gray-600 mb-14">
+        Complete the form below and our team will confirm your reservation as soon as possible. If you have any special requests or dietary requirements, simply let us know&mdash;we&apos;ll be delighted to assist you.
+      </p>
+      <form className="space-y-4" onSubmit={handleSubmit}>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <select value={fields.title} onChange={update("title")} className="border p-3 text-gray-700">
+            <option value="">Title</option>
+            {TITLES.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
+          <input placeholder="First Name" required value={fields.firstName} onChange={update("firstName")} className="border p-3" />
+          <input placeholder="Last Name" required value={fields.lastName} onChange={update("lastName")} className="border p-3" />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <input type="date" min={today} required value={fields.date} onChange={update("date")} className="border p-3" />
+          <select required value={fields.time} onChange={update("time")} className="border p-3 text-gray-700">
+            <option value="" disabled>
+              Select a time
+            </option>
+            {OPENING_HOUR_SLOTS.map((slot) => (
+              <option key={slot} value={slot}>
+                {slot}
+              </option>
+            ))}
+          </select>
+          <input type="number" min="1" placeholder="Number of Guest" required value={fields.guests} onChange={update("guests")} className="border p-3" />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <input
+              type="email"
+              placeholder="Email Address"
+              required
+              value={fields.email}
+              onChange={update("email")}
+              className="border p-3 w-full"
+            />
+            {fieldErrors.email && <p className="mt-1 text-xs text-red-600">{fieldErrors.email}</p>}
+          </div>
+          <PhoneField
+            countryCode={fields.whatsappCountry}
+            onCountryCodeChange={update("whatsappCountry")}
+            number={fields.whatsappNumber}
+            onNumberChange={update("whatsappNumber")}
+            error={fieldErrors.whatsapp}
+            className="border p-3"
+          />
+        </div>
+        <textarea placeholder="Any dietary requirements or special requests?" value={fields.message} onChange={update("message")} className="border p-3 w-full h-24"></textarea>
+        <button
+          type="submit"
+          disabled={status === "submitting"}
+          className="flex items-center justify-center gap-2 bg-raja-black text-white px-6 py-3 w-full hover:bg-raja-red transition disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {status === "submitting" && (
+            <span
+              aria-hidden="true"
+              className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"
+            />
+          )}
+          {status === "submitting" ? "Sending..." : "Submit"}
+        </button>
+        {status === "success" && (
+          <p className="text-center text-sm text-emerald-600">
+            Thank you! Your reservation request has been sent — we&apos;ll be in touch shortly.
+          </p>
+        )}
+        {status === "error" && (
+          <p className="text-center text-sm text-red-600">{errorMessage}</p>
+        )}
+      </form>
+    </section>
+  );
+}
