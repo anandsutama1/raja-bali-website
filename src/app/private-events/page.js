@@ -1,5 +1,3 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import PrivateEventsHero from "@/components/private-events/Hero";
 import Intro from "@/components/private-events/Intro";
 import WhatsIncluded from "@/components/private-events/WhatsIncluded";
@@ -17,14 +15,12 @@ export const metadata = {
 export default function PrivateEventsPage() {
   return (
     <main>
-      <Navbar />
       <PrivateEventsHero />
       <Intro />
       <WhatsIncluded />
       <EventSpaces />
       <GalleryExperience />
       <ReservationForm />
-      <Footer />
     </main>
   );
 }

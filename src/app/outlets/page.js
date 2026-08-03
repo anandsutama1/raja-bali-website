@@ -1,5 +1,3 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import OutletsHero from "@/components/outlets/Hero";
 import Destinations from "@/components/outlets/Destinations";
 import Location from "@/components/outlets/Location";
@@ -15,12 +13,10 @@ export const metadata = {
 export default function OutletsPage() {
   return (
     <main>
-      <Navbar />
       <OutletsHero />
       <Destinations />
       <Location />
       <ContactCTA />
-      <Footer />
     </main>
   );
 }

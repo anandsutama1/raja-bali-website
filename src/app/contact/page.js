@@ -1,5 +1,3 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import ContactHero from "@/components/contact/Hero";
 import GetInTouch from "@/components/contact/GetInTouch";
 import MessageForm from "@/components/contact/MessageForm";
@@ -14,11 +12,9 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <main>
-      <Navbar />
       <ContactHero />
       <GetInTouch />
       <MessageForm />
-      <Footer />
     </main>
   );
 }

@@ -1,5 +1,3 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import AboutHero from "@/components/about/Hero";
 import OurStory from "@/components/about/OurStory";
 import FeatureRows from "@/components/about/FeatureRows";
@@ -16,13 +14,11 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <main>
-      <Navbar />
       <AboutHero />
       <OurStory />
       <FeatureRows />
       <QuoteBlock />
       <ClosingCTA />
-      <Footer />
     </main>
   );
 }

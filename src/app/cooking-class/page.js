@@ -1,5 +1,3 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import CookingClassHero from "@/components/cooking-class/Hero";
 import Intro from "@/components/cooking-class/Intro";
 import FeatureRows from "@/components/cooking-class/FeatureRows";
@@ -20,7 +18,6 @@ export const metadata = {
 export default function CookingClassPage() {
   return (
     <main>
-      <Navbar />
       <CookingClassHero />
       <Intro />
       <FeatureRows />
@@ -30,7 +27,6 @@ export default function CookingClassPage() {
       <GalleryExperience />
       <Pricing />
       <ReservationForm />
-      <Footer />
     </main>
   );
 }

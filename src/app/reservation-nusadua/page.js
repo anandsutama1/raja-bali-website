@@ -1,5 +1,3 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import ReservationNusaDuaHero from "@/components/reservation-nusadua/Hero";
 import ReservationForm from "@/components/reservation-nusadua/ReservationForm";
 import GalleryExperience from "@/components/reservation-nusadua/GalleryExperience";
@@ -14,11 +12,9 @@ export const metadata = {
 export default function ReservationNusaDuaPage() {
   return (
     <main>
-      <Navbar />
       <ReservationNusaDuaHero />
       <ReservationForm />
       <GalleryExperience />
-      <Footer />
     </main>
   );
 }

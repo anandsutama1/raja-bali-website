@@ -1,6 +1,4 @@
 import SmartImage from "@/components/SmartImage";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import CategoryGrid from "@/components/gallery/CategoryGrid";
 
 export const metadata = {
@@ -40,7 +38,6 @@ const groupCelebrationsImages = Array.from({ length: 8 }, (_, i) => `/images/gro
 export default function GalleryPage() {
   return (
     <main>
-      <Navbar />
       <section className="relative h-[40vh] bg-raja-black flex flex-col items-center justify-center text-center text-white px-6">
   <SmartImage src="/images/gallery/Hero.jpg" alt="Raja Bali" priority sizes="100vw" />
   <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black" />
@@ -61,7 +58,6 @@ export default function GalleryPage() {
         <CategoryGrid title="Group Celebrations" images={groupCelebrationsImages} />
       </div>
 
-      <Footer />
     </main>
   );
 }

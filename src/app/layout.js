@@ -2,6 +2,8 @@ import { Ibarra_Real_Nova } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const ibarra = Ibarra_Real_Nova({
@@ -63,7 +65,9 @@ export default function RootLayout({ children }) {
           {`document.documentElement.classList.remove('no-js')`}
         </Script>
         <StructuredData />
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

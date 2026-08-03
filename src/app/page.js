@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Welcome from "@/components/Welcome";
 import Recognition from "@/components/Recognition";
@@ -9,7 +8,6 @@ import HotelTransfer from "@/components/HotelTransfer";
 import VenueRental from "@/components/VenueRental";
 import InstagramGrid from "@/components/InstagramGrid";
 import FAQ from "@/components/FAQ";
-import Footer from "@/components/Footer";
 
 export const metadata = {
   alternates: { canonical: "/" },
@@ -18,7 +16,6 @@ export const metadata = {
 export default function Home() {
   return (
     <main>
-      <Navbar />
       <Hero />
       <Welcome />
       <Recognition />
@@ -29,7 +26,6 @@ export default function Home() {
       <InstagramGrid />
       <Testimonials />
       <FAQ />
-      <Footer />
     </main>
   );
 }

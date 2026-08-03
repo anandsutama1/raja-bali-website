@@ -1,5 +1,3 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import GroupReservationHero from "@/components/group-reservation/Hero";
 import Intro from "@/components/group-reservation/Intro";
 import BuffetPackages from "@/components/group-reservation/BuffetPackages";
@@ -17,14 +15,12 @@ export const metadata = {
 export default function GroupReservationPage() {
   return (
     <main>
-      <Navbar />
       <GroupReservationHero />
       <Intro />
       <BuffetPackages />
       <GalleryExperience />
       <ReservationForm />
       <ContactCTA />
-      <Footer />
     </main>
   );
 }

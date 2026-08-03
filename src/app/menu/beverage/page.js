@@ -1,6 +1,4 @@
 import SmartImage from "@/components/SmartImage";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import MenuSection from "@/components/menu/MenuSection";
 import WineTable from "@/components/menu/WineTable";
 
@@ -213,7 +211,6 @@ const importedSparklingWine = [
 export default function BeverageMenuPage() {
   return (
     <main>
-      <Navbar />
       <section className="relative h-[40vh] bg-raja-black flex flex-col items-center justify-center text-center text-white px-6">
   <SmartImage src="/images/menu/beverage-hero.jpg" alt="Raja Bali" priority sizes="100vw" />
   <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black" />
@@ -259,7 +256,6 @@ export default function BeverageMenuPage() {
         <WineTable title="Sparkling Wine" items={importedSparklingWine} />
       </div>
 
-      <Footer />
     </main>
   );
 }

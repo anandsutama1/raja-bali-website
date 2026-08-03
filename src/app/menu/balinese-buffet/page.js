@@ -1,6 +1,4 @@
 import SmartImage from "@/components/SmartImage";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import BuffetCategory from "@/components/menu/BuffetCategory";
 
 export const metadata = {
@@ -13,7 +11,6 @@ export const metadata = {
 export default function BalineseBuffetPage() {
   return (
     <main>
-      <Navbar />
       <section className="relative h-[40vh] bg-raja-black flex flex-col items-center justify-center text-center text-white px-6">
   <SmartImage src="/images/menu/balinese-buffet-hero.jpg" alt="Raja Bali" priority sizes="100vw" />
   <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black" />
@@ -93,7 +90,6 @@ export default function BalineseBuffetPage() {
         <BuffetCategory title="Drinks" options={["Infused Water", "Ice Tea"]} />
       </div>
 
-      <Footer />
     </main>
   );
 }

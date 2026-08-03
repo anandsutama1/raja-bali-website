@@ -1,5 +1,3 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import DanceHero from "@/components/dance/Hero";
 import Intro from "@/components/dance/Intro";
 import Schedule from "@/components/dance/Schedule";
@@ -17,14 +15,12 @@ export const metadata = {
 export default function DancePage() {
   return (
     <main>
-      <Navbar />
       <DanceHero />
       <Intro />
       <Schedule />
       <DanceRepertoire />
       <DanceGallery />
       <ClosingCTA />
-      <Footer />
     </main>
   );
 }

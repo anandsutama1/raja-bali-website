@@ -1,5 +1,3 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import BarClassHero from "@/components/bar-class/Hero";
 import Intro from "@/components/bar-class/Intro";
 import FeatureRows from "@/components/bar-class/FeatureRows";
@@ -20,7 +18,6 @@ export const metadata = {
 export default function BarClassPage() {
   return (
     <main>
-      <Navbar />
       <BarClassHero />
       <Intro />
       <FeatureRows />
@@ -30,7 +27,6 @@ export default function BarClassPage() {
       <GalleryExperience />
       <Pricing />
       <ReservationForm />
-      <Footer />
     </main>
   );
 }
