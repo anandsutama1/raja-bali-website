@@ -48,7 +48,7 @@ export default function PhoneField({
     <div>
       <div className="flex gap-2">
         {isManual ? (
-          <div className="flex w-28 shrink-0 flex-col gap-1">
+          <div className="flex w-32 shrink-0 flex-col gap-1">
             <input
               type="text"
               inputMode="tel"
@@ -74,7 +74,7 @@ export default function PhoneField({
             value={countryCode}
             onChange={handleSelectChange}
             aria-label="Country code"
-            className={`${className} w-28 shrink-0`}
+            className={`${className} w-32 shrink-0`}
           >
             {COUNTRY_CODES.map((c) => (
               <option key={c.code} value={c.code}>
