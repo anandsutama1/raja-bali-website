@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { Resend } from "resend";
 import { LOCATIONS, SITE_URL } from "@/lib/site";
 
@@ -259,22 +259,29 @@ export async function POST(request) {
 
   const targetEmail = BRANCH_EMAILS[branch] || BRANCH_EMAILS.general;
 
-  const [sheetsResult, emailResult, guestEmailResult] = await Promise.allSettled([
+  const [sheetsResult, emailResult] = await Promise.allSettled([
     submitToGoogleSheets({ formType, branch, ...fields }),
     sendNotificationEmail({ formType, targetEmail, fields }),
-    sendGuestConfirmationEmail({ formType, branch, fields }),
   ]);
 
   const sheetsOk = sheetsResult.status === "fulfilled";
   const emailOk = emailResult.status === "fulfilled";
-  const guestEmailOk = guestEmailResult.status === "fulfilled";
 
   if (!sheetsOk) console.error("Google Sheets submission failed:", sheetsResult.reason);
   if (!emailOk) console.error("Resend email failed:", emailResult.reason);
-  if (!guestEmailOk) console.error("Guest confirmation email failed:", guestEmailResult.reason);
 
-  // Guest confirmation is best-effort only — it never affects whether the
-  // request is considered successful.
+  // Guest confirmation is best-effort only and never affects whether the
+  // request is considered successful, so it doesn't need to hold up the
+  // response — it was previously awaited alongside Sheets/notification and
+  // was often the slowest of the three, adding a couple of seconds of pure
+  // wait with nothing for the guest to show for it. `after()` runs it once
+  // the response is already on its way back to the browser.
+  after(() =>
+    sendGuestConfirmationEmail({ formType, branch, fields }).catch((err) =>
+      console.error("Guest confirmation email failed:", err)
+    )
+  );
+
   if (!sheetsOk && !emailOk) {
     return NextResponse.json(
       {
@@ -285,5 +292,5 @@ export async function POST(request) {
     );
   }
 
-  return NextResponse.json({ ok: true, sheetsOk, emailOk, guestEmailOk });
+  return NextResponse.json({ ok: true, sheetsOk, emailOk });
 }
