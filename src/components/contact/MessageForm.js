@@ -6,6 +6,7 @@ import { isValidEmail, isValidPhoneDigits, EMAIL_ERROR, PHONE_ERROR } from "@/li
 import { DEFAULT_COUNTRY_CODE } from "@/lib/countryCodes";
 import { TITLES } from "@/lib/titles";
 import PhoneField from "@/components/PhoneField";
+import SubmitButton from "@/components/SubmitButton";
 
 const initialFields = {
   title: "",
@@ -20,7 +21,7 @@ const initialFields = {
 export default function MessageForm() {
   const [fields, setFields] = useState(initialFields);
   const [fieldErrors, setFieldErrors] = useState({});
-  const { status, errorMessage, submitForm } = useFormSubmit({
+  const { status, errorMessage, submitForm, submittingMessage } = useFormSubmit({
     formType: "contact",
     branch: "general",
   });
@@ -56,53 +57,43 @@ export default function MessageForm() {
         If you have any questions, special requests, or would like more information, complete the form below.
       </p>
       <form className="space-y-4" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <select value={fields.title} onChange={update("title")} className="border p-3 bg-white text-gray-700">
-            <option value="">Title</option>
-            {TITLES.map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
-          <input placeholder="First Name" required value={fields.firstName} onChange={update("firstName")} className="border p-3 bg-white" />
-          <input placeholder="Last Name" required value={fields.lastName} onChange={update("lastName")} className="border p-3 bg-white" />
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <input
-              type="email"
-              placeholder="Email Address"
-              required
-              value={fields.email}
-              onChange={update("email")}
-              className="border p-3 bg-white w-full"
-            />
-            {fieldErrors.email && <p className="mt-1 text-xs text-red-600">{fieldErrors.email}</p>}
+        <fieldset disabled={status === "submitting"} className="m-0 min-w-0 space-y-4 border-0 p-0">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <select value={fields.title} onChange={update("title")} className="border p-3 bg-white text-gray-700">
+              <option value="">Title</option>
+              {TITLES.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
+            <input placeholder="First Name" required value={fields.firstName} onChange={update("firstName")} className="border p-3 bg-white" />
+            <input placeholder="Last Name" required value={fields.lastName} onChange={update("lastName")} className="border p-3 bg-white" />
           </div>
-          <PhoneField
-            countryCode={fields.whatsappCountry}
-            onCountryCodeChange={update("whatsappCountry")}
-            number={fields.whatsappNumber}
-            onNumberChange={update("whatsappNumber")}
-            error={fieldErrors.whatsapp}
-            className="border p-3 bg-white"
-          />
-        </div>
-        <textarea placeholder="Add your Enquiries" required value={fields.message} onChange={update("message")} className="border p-3 bg-white w-full h-32"></textarea>
-        <button
-          type="submit"
-          disabled={status === "submitting"}
-          className="flex items-center justify-center gap-2 bg-raja-black text-white px-6 py-3 w-full hover:bg-raja-red transition disabled:cursor-not-allowed disabled:opacity-60"
-        >
-          {status === "submitting" && (
-            <span
-              aria-hidden="true"
-              className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <input
+                type="email"
+                placeholder="Email Address"
+                required
+                value={fields.email}
+                onChange={update("email")}
+                className="border p-3 bg-white w-full"
+              />
+              {fieldErrors.email && <p className="mt-1 text-xs text-red-600">{fieldErrors.email}</p>}
+            </div>
+            <PhoneField
+              countryCode={fields.whatsappCountry}
+              onCountryCodeChange={update("whatsappCountry")}
+              number={fields.whatsappNumber}
+              onNumberChange={update("whatsappNumber")}
+              error={fieldErrors.whatsapp}
+              className="border p-3 bg-white"
             />
-          )}
-          {status === "submitting" ? "Sending..." : "Send"}
-        </button>
+          </div>
+          <textarea placeholder="Add your Enquiries" required value={fields.message} onChange={update("message")} className="border p-3 bg-white w-full h-32"></textarea>
+          <SubmitButton status={status} label="Send" submittingMessage={submittingMessage} />
+        </fieldset>
         {status === "success" && (
           <p className="text-center text-sm text-emerald-600">
             Thank you! Your message has been sent — we&apos;ll get back to you shortly.

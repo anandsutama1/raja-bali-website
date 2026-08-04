@@ -6,6 +6,7 @@ import { isValidEmail, isValidPhoneDigits, EMAIL_ERROR, PHONE_ERROR } from "@/li
 import { DEFAULT_COUNTRY_CODE } from "@/lib/countryCodes";
 import { TITLES } from "@/lib/titles";
 import PhoneField from "@/components/PhoneField";
+import SubmitButton from "@/components/SubmitButton";
 
 const timeSlots = ["11:00 AM - 1:00 PM", "2:00 PM - 4:00 PM", "5:00 PM - 7:00 PM"];
 
@@ -26,7 +27,7 @@ export default function ReservationForm() {
   const today = new Date().toISOString().split("T")[0];
   const [fields, setFields] = useState(initialFields);
   const [fieldErrors, setFieldErrors] = useState({});
-  const { status, errorMessage, submitForm } = useFormSubmit({
+  const { status, errorMessage, submitForm, submittingMessage } = useFormSubmit({
     formType: "bar-class",
     branch: "general",
   });
@@ -62,72 +63,62 @@ export default function ReservationForm() {
         Available Thursdays only — choose your preferred session for the Balinese cocktail class.
       </p>
       <form className="space-y-4" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <select value={fields.title} onChange={update("title")} className="border p-3 rounded text-gray-700">
-            <option value="">Title</option>
-            {TITLES.map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
-          <input placeholder="First Name" required value={fields.firstName} onChange={update("firstName")} className="border p-3 rounded" />
-          <input placeholder="Last Name" required value={fields.lastName} onChange={update("lastName")} className="border p-3 rounded" />
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <input type="date" placeholder="DD/MM/YYYY" min={today} required value={fields.date} onChange={update("date")} className="border p-3 rounded" />
-          <select
-            required
-            value={fields.time}
-            onChange={update("time")}
-            className="border p-3 rounded text-gray-700"
-          >
-            <option value="" disabled>
-              Select a time
-            </option>
-            {timeSlots.map((slot) => (
-              <option key={slot} value={slot}>
-                {slot}
-              </option>
-            ))}
-          </select>
-          <input type="number" min="1" placeholder="Number of Guest" required value={fields.guests} onChange={update("guests")} className="border p-3 rounded" />
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <input
-              type="email"
-              placeholder="Email Address"
-              required
-              value={fields.email}
-              onChange={update("email")}
-              className="border p-3 rounded w-full"
-            />
-            {fieldErrors.email && <p className="mt-1 text-xs text-red-600">{fieldErrors.email}</p>}
+        <fieldset disabled={status === "submitting"} className="m-0 min-w-0 space-y-4 border-0 p-0">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <select value={fields.title} onChange={update("title")} className="border p-3 rounded text-gray-700">
+              <option value="">Title</option>
+              {TITLES.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
+            <input placeholder="First Name" required value={fields.firstName} onChange={update("firstName")} className="border p-3 rounded" />
+            <input placeholder="Last Name" required value={fields.lastName} onChange={update("lastName")} className="border p-3 rounded" />
           </div>
-          <PhoneField
-            countryCode={fields.whatsappCountry}
-            onCountryCodeChange={update("whatsappCountry")}
-            number={fields.whatsappNumber}
-            onNumberChange={update("whatsappNumber")}
-            error={fieldErrors.whatsapp}
-            className="border p-3 rounded"
-          />
-        </div>
-        <textarea placeholder="Any dietary requirements or special requests?" value={fields.message} onChange={update("message")} className="border p-3 rounded w-full h-24"></textarea>
-        <button
-          type="submit"
-          disabled={status === "submitting"}
-          className="flex items-center justify-center gap-2 bg-black text-white px-6 py-3 rounded w-full disabled:cursor-not-allowed disabled:opacity-60"
-        >
-          {status === "submitting" && (
-            <span
-              aria-hidden="true"
-              className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <input type="date" placeholder="DD/MM/YYYY" min={today} required value={fields.date} onChange={update("date")} className="border p-3 rounded" />
+            <select
+              required
+              value={fields.time}
+              onChange={update("time")}
+              className="border p-3 rounded text-gray-700"
+            >
+              <option value="" disabled>
+                Select a time
+              </option>
+              {timeSlots.map((slot) => (
+                <option key={slot} value={slot}>
+                  {slot}
+                </option>
+              ))}
+            </select>
+            <input type="number" min="1" placeholder="Number of Guest" required value={fields.guests} onChange={update("guests")} className="border p-3 rounded" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <input
+                type="email"
+                placeholder="Email Address"
+                required
+                value={fields.email}
+                onChange={update("email")}
+                className="border p-3 rounded w-full"
+              />
+              {fieldErrors.email && <p className="mt-1 text-xs text-red-600">{fieldErrors.email}</p>}
+            </div>
+            <PhoneField
+              countryCode={fields.whatsappCountry}
+              onCountryCodeChange={update("whatsappCountry")}
+              number={fields.whatsappNumber}
+              onNumberChange={update("whatsappNumber")}
+              error={fieldErrors.whatsapp}
+              className="border p-3 rounded"
             />
-          )}
-          {status === "submitting" ? "Sending..." : "Reserve Now"}
-        </button>
+          </div>
+          <textarea placeholder="Any dietary requirements or special requests?" value={fields.message} onChange={update("message")} className="border p-3 rounded w-full h-24"></textarea>
+          <SubmitButton status={status} label="Reserve Now" submittingMessage={submittingMessage} />
+        </fieldset>
         {status === "success" && (
           <p className="text-center text-sm text-emerald-600">
             Thank you! Your reservation request has been sent — we&apos;ll be in touch shortly.
