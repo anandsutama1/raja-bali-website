@@ -93,7 +93,7 @@ export default function ReservationForm() {
                 </option>
               ))}
             </select>
-            <input type="number" min="1" placeholder="Number of Guest" required value={fields.guests} onChange={update("guests")} className="border p-3 rounded" />
+            <input type="number" min="1" placeholder="Number of Adults" required value={fields.guests} onChange={update("guests")} className="border p-3 rounded" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>

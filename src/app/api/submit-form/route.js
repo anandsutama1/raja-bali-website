@@ -11,8 +11,8 @@ const BRANCH_EMAILS = {
 };
 
 const BRANCH_NAMES = {
-  main: "Raja Bali Main Restaurant, Tanjung Benoa",
-  nusadua: "Raja Bali Nusa Dua",
+  main: "Raja Bali Main Restaurant",
+  nusadua: "Raja Bali Second Outlet",
   general: "Raja Bali",
 };
 
@@ -43,6 +43,69 @@ const RESERVATION_FORM_TYPES = new Set([
   "private-events",
   "group-reservation",
 ]);
+
+// Guest email copy per experience — deliberately says "received", not
+// "confirmed": nothing is confirmed until the team follows up, so claiming
+// otherwise here would overpromise. Written separately per type rather than
+// one generic "reservation" voice, since a cooking class booking and a
+// private event enquiry aren't the same thing to the guest reading this.
+const BOOKING_COPY = {
+  "reservation-main": {
+    eyebrow: "Booking Received",
+    headline: "Your Booking Has Been Received",
+    intro: (locationName) =>
+      `Thank you for placing a table reservation with <strong>${escapeHtml(locationName)}</strong>. We&rsquo;ve received your request, and our team will get back to you shortly to confirm every detail.`,
+  },
+  "reservation-nusadua": {
+    eyebrow: "Booking Received",
+    headline: "Your Booking Has Been Received",
+    intro: (locationName) =>
+      `Thank you for placing a table reservation with <strong>${escapeHtml(locationName)}</strong>. We&rsquo;ve received your request, and our team will get back to you shortly to confirm every detail.`,
+  },
+  "cooking-class": {
+    eyebrow: "Booking Received",
+    headline: "Your Cooking Class Booking Has Been Received",
+    intro: () =>
+      `Thank you for booking a place in our Balinese Cooking Class. We&rsquo;ve received your request, and our team will get back to you shortly to confirm your session.`,
+  },
+  "bar-class": {
+    eyebrow: "Booking Received",
+    headline: "Your Cocktail Class Booking Has Been Received",
+    intro: () =>
+      `Thank you for booking a place in our Balinese Cocktail Class. We&rsquo;ve received your request, and our team will get back to you shortly to confirm your session.`,
+  },
+  "private-events": {
+    eyebrow: "Enquiry Received",
+    headline: "Your Private Event Enquiry Has Been Received",
+    intro: () =>
+      `Thank you for reaching out about hosting your event with us. We&rsquo;ve received your enquiry, and our events team will get back to you shortly to discuss the details.`,
+  },
+  "group-reservation": {
+    eyebrow: "Request Received",
+    headline: "Your Group Reservation Request Has Been Received",
+    intro: () =>
+      `Thank you for your group reservation request. We&rsquo;ve received your details, and our team will get back to you shortly to confirm availability and your buffet package.`,
+  },
+};
+
+// Where the "view details" button in the guest email points — keyed by
+// formType, only for actual bookings (contact enquiries don't get one).
+const EXPERIENCE_CTA = {
+  "reservation-main": { path: "/reservation-main", label: "View Restaurant Details" },
+  "reservation-nusadua": { path: "/reservation-nusadua", label: "View Restaurant Details" },
+  "cooking-class": { path: "/cooking-class", label: "View Cooking Class Details" },
+  "bar-class": { path: "/bar-class", label: "View Cocktail Class Details" },
+  "private-events": { path: "/private-events", label: "View Private Events" },
+  "group-reservation": { path: "/group-reservation", label: "View Group Packages" },
+};
+
+// Display names for the guest email only — the rest of the site still says
+// "Tanjung Benoa" / "Nusa Dua" (outlets page, schema.org, footer nav, etc.);
+// this is scoped narrowly to guest-facing email copy per request.
+const EMAIL_LOCATION_NAMES = {
+  "main-restaurant": "Raja Bali Main Restaurant",
+  "nusa-dua": "Raja Bali Second Outlet",
+};
 
 function escapeHtml(value) {
   return String(value)
@@ -92,7 +155,7 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
     ? [
         ["Date", fields.date],
         ["Time", fields.time],
-        ["Party Size", fields.guests],
+        ["Number of Adults", fields.guests],
       ].filter(([, value]) => value)
     : [];
 
@@ -112,23 +175,36 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
     `
     : "";
 
-  const eyebrow = isReservation ? "Reservation Confirmation" : "Message Received";
-
-  const headline = isReservation ? "Your Table Is Confirmed" : "Thank You for Writing to Us";
+  const booking = BOOKING_COPY[formType];
+  const eyebrow = isReservation ? booking.eyebrow : "Message Received";
+  const headline = isReservation ? booking.headline : "Thank You for Writing to Us";
 
   const intro = isReservation
-    ? `It is our pleasure to confirm that we have received your reservation request at <strong>${escapeHtml(locationName)}</strong>. Our team is already looking forward to your visit, and will be in touch shortly to finalize every detail.`
+    ? booking.intro(locationName)
     : `Thank you for writing to <strong>${escapeHtml(locationName)}</strong>. Your message has reached us safely, and a member of our team will respond to you personally very soon.`;
 
   const closing = isReservation
-    ? "We look forward to welcoming you into the warmth of Balinese hospitality — an experience of authentic flavor and gracious service awaits."
+    ? "We&rsquo;re looking forward to the opportunity to welcome you, and will follow up shortly to confirm every detail."
     : "We are grateful for your interest in Raja Bali, and look forward to the opportunity of welcoming you soon.";
+
+  const cta = EXPERIENCE_CTA[formType];
+  const ctaHtml = cta
+    ? `
+      <table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0 0;">
+        <tr>
+          <td style="background:#141414;">
+            <a href="${SITE_URL}${cta.path}" style="display:inline-block;padding:13px 30px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#ffffff;text-decoration:none;">${cta.label}</a>
+          </td>
+        </tr>
+      </table>
+    `
+    : "";
 
   const contactHtml = location
     ? `
       <p style="margin:0 0 8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#A31C1C;">Visit Us</p>
       <p style="margin:0;font-size:13px;line-height:1.7;color:#6b6355;">
-        <strong style="color:#2b2620;">${escapeHtml(location.name)}</strong><br />
+        <strong style="color:#2b2620;">${escapeHtml(EMAIL_LOCATION_NAMES[location.id] || location.name)}</strong><br />
         ${escapeHtml(location.streetAddress)}, ${escapeHtml(location.addressLocality)}<br />
         ${escapeHtml(location.telephone)}
       </p>
@@ -136,8 +212,8 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
     : `
       <p style="margin:0 0 8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#A31C1C;">Reach Us</p>
       <p style="margin:0;font-size:13px;line-height:1.7;color:#6b6355;">
-        Tanjung Benoa: ${escapeHtml(LOCATIONS[0].telephone)}<br />
-        Nusa Dua: ${escapeHtml(LOCATIONS[1].telephone)}
+        Main Restaurant: ${escapeHtml(LOCATIONS[0].telephone)}<br />
+        Second Outlet: ${escapeHtml(LOCATIONS[1].telephone)}
       </p>
     `;
 
@@ -160,6 +236,8 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
 
                 ${summaryHtml}
 
+                ${ctaHtml}
+
                 ${
                   fields.message
                     ? `<p style="margin:24px 0 0;font-size:14px;line-height:1.75;color:#2b2620;"><em>Your note to us:</em> &ldquo;${escapeHtml(fields.message)}&rdquo;</p>`
@@ -175,7 +253,7 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
               <td style="padding:36px 40px 40px;">
                 <hr style="border:none;border-top:1px solid #e8e0d0;margin:0 0 24px;" />
                 ${contactHtml}
-                <p style="margin:24px 0 0;font-size:11px;color:#a39c8c;">This is an automated confirmation — for urgent enquiries, please contact us directly.</p>
+                <p style="margin:24px 0 0;font-size:11px;color:#a39c8c;">This is an automated notice — for urgent enquiries, please contact us directly.</p>
               </td>
             </tr>
           </table>
@@ -224,7 +302,7 @@ async function sendGuestConfirmationEmail({ formType, branch, fields }) {
   const locationName = BRANCH_NAMES[branch] || BRANCH_NAMES.general;
   const isReservation = RESERVATION_FORM_TYPES.has(formType);
   const subject = isReservation
-    ? `Your Reservation, Confirmed — ${locationName}`
+    ? `We've Received Your Booking — ${locationName}`
     : `We've Received Your Message — ${locationName}`;
 
   const { error } = await resend.emails.send({
