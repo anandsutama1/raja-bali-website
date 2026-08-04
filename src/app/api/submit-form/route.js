@@ -73,6 +73,7 @@ const BOOKING_COPY = {
     headline: "Your Cocktail Class Booking Has Been Received",
     intro: () =>
       `Thank you for booking a place in our Balinese Cocktail Class. We&rsquo;ve received your request, and our team will get back to you shortly to confirm your session.`,
+    note: "This experience runs exclusively on Thursdays at 3:00 PM — if the date you requested isn't a Thursday, our team will reach out to reschedule.",
   },
   "private-events": {
     eyebrow: "Enquiry Received",
@@ -106,6 +107,11 @@ const EMAIL_LOCATION_NAMES = {
   "main-restaurant": "Raja Bali Main Restaurant",
   "nusa-dua": "Raja Bali Second Outlet",
 };
+
+// Shown on every booking-type confirmation, not just Nusa Dua reservations —
+// guests staying in the Nusa Dua area may be headed to either outlet.
+const PICKUP_NOTE =
+  "Complimentary pickup service for guests staying around the Nusa Dua area is available, subject to availability.";
 
 function escapeHtml(value) {
   return String(value)
@@ -200,6 +206,24 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
     `
     : "";
 
+  const notes = isReservation ? [booking.note, PICKUP_NOTE].filter(Boolean) : [];
+  const notesHtml = notes.length
+    ? `
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:24px 0 0;background:#faf7f1;border-left:3px solid #A31C1C;">
+        <tr>
+          <td style="padding:14px 18px;">
+            ${notes
+              .map(
+                (n, i) =>
+                  `<p style="margin:${i === 0 ? "0" : "8px 0 0"};font-size:13px;line-height:1.6;color:#6b6355;">${n}</p>`
+              )
+              .join("")}
+          </td>
+        </tr>
+      </table>
+    `
+    : "";
+
   const contactHtml = location
     ? `
       <p style="margin:0 0 8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#A31C1C;">Visit Us</p>
@@ -237,6 +261,8 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
                 ${summaryHtml}
 
                 ${ctaHtml}
+
+                ${notesHtml}
 
                 ${
                   fields.message

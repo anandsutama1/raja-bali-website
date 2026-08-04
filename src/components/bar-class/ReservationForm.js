@@ -8,20 +8,27 @@ import { TITLES } from "@/lib/titles";
 import PhoneField from "@/components/PhoneField";
 import SubmitButton from "@/components/SubmitButton";
 
-const timeSlots = ["11:00 AM - 1:00 PM", "2:00 PM - 4:00 PM", "5:00 PM - 7:00 PM"];
+// Single fixed session — Thursdays at 3:00 PM only (previously three
+// sessions across the day; the schedule has since changed to just this one).
+const SESSION_TIME = "3:00 PM";
 
 const initialFields = {
   title: "",
   firstName: "",
   lastName: "",
   date: "",
-  time: "",
+  time: SESSION_TIME,
   guests: "",
   email: "",
   whatsappCountry: DEFAULT_COUNTRY_CODE,
   whatsappNumber: "",
   message: "",
 };
+
+function isThursday(dateStr) {
+  if (!dateStr) return true;
+  return new Date(`${dateStr}T00:00:00`).getDay() === 4;
+}
 
 export default function ReservationForm() {
   const today = new Date().toISOString().split("T")[0];
@@ -38,6 +45,7 @@ export default function ReservationForm() {
     const errors = {};
     if (!isValidEmail(fields.email)) errors.email = EMAIL_ERROR;
     if (!isValidPhoneDigits(fields.whatsappNumber)) errors.whatsapp = PHONE_ERROR;
+    if (!isThursday(fields.date)) errors.date = "Bar class sessions run on Thursdays only.";
     setFieldErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -60,7 +68,7 @@ export default function ReservationForm() {
     <section id="reservation" className="border-t border-gray-200 py-20 px-6 max-w-2xl mx-auto">
       <h2 className="text-3xl font-serif text-center mb-2">Reservation</h2>
       <p className="text-center text-gray-600 mb-10">
-        Available Thursdays only — choose your preferred session for the Balinese cocktail class.
+        Available Thursdays only, 3:00 PM session — reserve your place in the Balinese cocktail class.
       </p>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <fieldset disabled={status === "submitting"} className="m-0 min-w-0 space-y-4 border-0 p-0">
@@ -77,22 +85,13 @@ export default function ReservationForm() {
             <input placeholder="Last Name" required value={fields.lastName} onChange={update("lastName")} className="border p-3 rounded" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <input type="date" placeholder="DD/MM/YYYY" min={today} required value={fields.date} onChange={update("date")} className="border p-3 rounded" />
-            <select
-              required
-              value={fields.time}
-              onChange={update("time")}
-              className="border p-3 rounded text-gray-700"
-            >
-              <option value="" disabled>
-                Select a time
-              </option>
-              {timeSlots.map((slot) => (
-                <option key={slot} value={slot}>
-                  {slot}
-                </option>
-              ))}
-            </select>
+            <div>
+              <input type="date" placeholder="DD/MM/YYYY" min={today} required value={fields.date} onChange={update("date")} className="border p-3 rounded w-full" />
+              {fieldErrors.date && <p className="mt-1 text-xs text-red-600">{fieldErrors.date}</p>}
+            </div>
+            <div className="flex items-center border p-3 rounded text-gray-700 bg-gray-50">
+              {SESSION_TIME} <span className="ml-1 text-xs text-gray-400">(Thu only)</span>
+            </div>
             <input type="number" min="1" placeholder="Number of Adults" required value={fields.guests} onChange={update("guests")} className="border p-3 rounded" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
