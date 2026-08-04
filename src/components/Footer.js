@@ -70,8 +70,8 @@ export default function Footer() {
       >
         <p>&copy; 2026 Raja Bali. All rights reserved.</p>
         <p>
-          Mon - Fri: 11.00 AM - 22.00 PM &nbsp;|&nbsp; Sat - Sun: 11.00 AM -
-          22.00 PM &nbsp;|&nbsp; Holiday: 11.00 AM - 22.00 PM
+          Mon - Fri: 12.00 PM - 9.00 PM &nbsp;|&nbsp; Sat - Sun: 12.00 PM -
+          9.00 PM &nbsp;|&nbsp; Holiday: 12.00 PM - 9.00 PM
         </p>
       </Reveal>
     </footer>

@@ -49,6 +49,6 @@ export const OPENING_HOURS = {
     "Saturday",
     "Sunday",
   ],
-  opens: "11:00",
-  closes: "22:00",
+  opens: "12:00",
+  closes: "21:00",
 };
