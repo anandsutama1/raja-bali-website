@@ -16,11 +16,19 @@
 }
 
 html {
+  /* Pinned so every rem-based size (Tailwind's whole type scale) is
+     predictable. Facebook/Instagram's in-app browser has been observed to
+     inflate the root font size well beyond 16px on some Android devices,
+     which blows up large rem headings (text-5xl etc.) dramatically while
+     leaving small text comparatively unaffected — text-size-adjust alone
+     didn't stop it, this does. */
+  font-size: 16px;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--nav-h) + 16px);
   /* clip, not hidden — hidden on the root breaks position: sticky */
   overflow-x: clip;
-  -webkit-text-size-adjust: 100%;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 
 body {
@@ -28,6 +36,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Confirmed on Samsung Galaxy S23 Ultra opening links inside Facebook's
+   in-app browser: large rem headings (text-5xl etc.) render far past their
+   intended size — pinning html's font-size and text-size-adjust above
+   wasn't enough to stop it. Since a single word at that size can be wider
+   than the viewport, and text doesn't break mid-word by default, it was
+   overflowing past `overflow-x: clip` on the root instead of wrapping,
+   which is what actually made it unreadable. This makes headings always
+   wrap to fit their container no matter how large the browser decides to
+   render them. */
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: anywhere;
 }
 
 ::selection {
@@ -193,7 +216,35 @@ body {
   animation-play-state: paused;
 }
 
+/* ---------------------------------------------------- submit progress bar */
+
+.progress-sweep-bar {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 2px;
+  overflow: hidden;
+}
+
+.progress-sweep-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30%;
+  background: rgba(255, 255, 255, 0.85);
+  animation: progress-sweep 1.1s ease-in-out infinite;
+}
+
 /* ------------------------------------------------------------- keyframes */
+
+@keyframes progress-sweep {
+  0% {
+    left: -30%;
+  }
+  100% {
+    left: 100%;
+  }
+}
 
 @keyframes marquee-x {
   from { transform: translate3d(0, 0, 0); }

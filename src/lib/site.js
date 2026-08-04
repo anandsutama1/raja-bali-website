@@ -1,8 +1,7 @@
-// TODO: replace with the real production domain once it's live, then update
-// NEXT_PUBLIC_SITE_URL (or this fallback) — canonical URLs, the sitemap, and
-// Open Graph tags all key off this.
+// Canonical URLs, the sitemap, and Open Graph tags all key off this. Note
+// the TLD is .co, not .com — that's the domain that's actually live.
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://www.rajabalirestaurant.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.rajabalirestaurant.co";
 
 export const SITE_NAME = "Raja Bali";
 
