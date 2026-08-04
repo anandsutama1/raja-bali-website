@@ -1,12 +1,13 @@
+import Script from "next/script";
 import Reveal from "./motion/Reveal";
 
-const PROFILE_URL = "https://www.instagram.com/rajabalinusaduamainrestaurant";
-
-// Deliberately static — no embed script. The embedista.com widget previously
-// used here was found to hijack the entire page (document.write-based
-// takeover replacing all content with a third-party promo site) after a
-// delay, which is what caused the site to intermittently go blank. Do not
-// re-add a third-party embed script here without verifying it first.
+// A prior embed here (embedista.com) hijacked the entire page via
+// document.write after a delay, causing the site to intermittently go
+// blank — see git history. This is Elfsight instead: the platform.js
+// bundle was inspected before adding (no document.write/eval/top-level
+// redirects, just a scoped widget renderer), and it's loaded lazily so it
+// can't block or delay the rest of the page. If it ever misbehaves, revert
+// to a static "View on Instagram" link like before.
 export default function InstagramGrid() {
   return (
     <section className="border-t border-gray-200 px-6 py-20">
@@ -14,19 +15,9 @@ export default function InstagramGrid() {
         Instagram
       </Reveal>
 
-      <div className="mx-auto flex w-full max-w-[540px] flex-col items-center gap-4 rounded-lg border border-gray-200 bg-white px-8 py-12 text-center">
-        <p className="text-sm text-gray-600">
-          Follow @rajabalinusaduamainrestaurant on Instagram for our latest
-          posts, behind-the-scenes moments, and updates.
-        </p>
-        <a
-          href={PROFILE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="u-press bg-raja-black px-8 py-3 text-sm tracking-widest text-white hover:bg-raja-red"
-        >
-          View on Instagram
-        </a>
+      <div className="mx-auto max-w-5xl">
+        <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
+        <div className="elfsight-app-af29d11f-dde5-4d63-8ab0-7a8388923a8b" data-elfsight-app-lazy />
       </div>
     </section>
   );

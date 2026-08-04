@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { LOCATIONS, SITE_URL } from "@/lib/site";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -13,6 +14,14 @@ const BRANCH_NAMES = {
   main: "Raja Bali Main Restaurant, Tanjung Benoa",
   nusadua: "Raja Bali Nusa Dua",
   general: "Raja Bali",
+};
+
+// Only the two dine-in branches map to a physical address — cooking/bar
+// classes, private events, and group bookings are all "general" and get a
+// central contact line instead in the guest confirmation footer.
+const BRANCH_LOCATION_ID = {
+  main: "main-restaurant",
+  nusadua: "nusa-dua",
 };
 
 const FORM_LABELS = {
@@ -76,6 +85,8 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
   const guestName =
     [fields.title, fields.firstName, fields.lastName].filter(Boolean).join(" ") || "Guest";
   const isReservation = RESERVATION_FORM_TYPES.has(formType);
+  const location = LOCATIONS.find((l) => l.id === BRANCH_LOCATION_ID[branch]);
+  const logoUrl = `${SITE_URL}/images/shared/RajaBali_Navbar.png`;
 
   const summaryRows = isReservation
     ? [
@@ -87,7 +98,7 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
 
   const summaryHtml = summaryRows.length
     ? `
-      <table style="width:100%;border-collapse:collapse;margin:28px 0;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:28px 0;">
         ${summaryRows
           .map(
             ([rowLabel, value]) => `
@@ -101,41 +112,76 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
     `
     : "";
 
+  const eyebrow = isReservation ? "Reservation Confirmation" : "Message Received";
+
+  const headline = isReservation ? "Your Table Is Confirmed" : "Thank You for Writing to Us";
+
   const intro = isReservation
-    ? `It is our pleasure to confirm that your reservation request with <strong>${escapeHtml(locationName)}</strong> has been received. Our team is preparing to welcome you, and will be in touch shortly to finalize every detail of your visit.`
-    : `Thank you for writing to <strong>${escapeHtml(locationName)}</strong>. Your message has been received with the greatest care, and a member of our team will respond to you shortly.`;
+    ? `It is our pleasure to confirm that we have received your reservation request at <strong>${escapeHtml(locationName)}</strong>. Our team is already looking forward to your visit, and will be in touch shortly to finalize every detail.`
+    : `Thank you for writing to <strong>${escapeHtml(locationName)}</strong>. Your message has reached us safely, and a member of our team will respond to you personally very soon.`;
 
   const closing = isReservation
-    ? "We look forward to welcoming you into the warmth of Balinese hospitality, and to sharing an experience of authentic flavor and gracious service you will long remember."
-    : "We are grateful for your interest in Raja Bali, and look forward to the opportunity to welcome you soon.";
+    ? "We look forward to welcoming you into the warmth of Balinese hospitality — an experience of authentic flavor and gracious service awaits."
+    : "We are grateful for your interest in Raja Bali, and look forward to the opportunity of welcoming you soon.";
+
+  const contactHtml = location
+    ? `
+      <p style="margin:0 0 8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#A31C1C;">Visit Us</p>
+      <p style="margin:0;font-size:13px;line-height:1.7;color:#6b6355;">
+        <strong style="color:#2b2620;">${escapeHtml(location.name)}</strong><br />
+        ${escapeHtml(location.streetAddress)}, ${escapeHtml(location.addressLocality)}<br />
+        ${escapeHtml(location.telephone)}
+      </p>
+    `
+    : `
+      <p style="margin:0 0 8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#A31C1C;">Reach Us</p>
+      <p style="margin:0;font-size:13px;line-height:1.7;color:#6b6355;">
+        Tanjung Benoa: ${escapeHtml(LOCATIONS[0].telephone)}<br />
+        Nusa Dua: ${escapeHtml(LOCATIONS[1].telephone)}
+      </p>
+    `;
 
   return `
-    <div style="background:#f4f0e6;padding:40px 16px;font-family:Georgia,'Times New Roman',serif;">
-      <div style="max-width:560px;margin:0 auto;background:#ffffff;padding:48px 40px;border:1px solid #e8e0d0;">
-        <div style="text-align:center;margin-bottom:32px;">
-          <p style="margin:0 0 10px;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#A31C1C;">Raja Bali</p>
-          <h1 style="margin:0;font-size:26px;font-weight:400;color:#141414;">Your Reservation, Confirmed with Care</h1>
-        </div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f0e6;font-family:Georgia,'Times New Roman',serif;">
+      <tr>
+        <td align="center" style="padding:48px 16px;">
+          <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border:1px solid #e8e0d0;border-top:3px solid #A31C1C;">
+            <tr>
+              <td style="padding:44px 40px 0;text-align:center;">
+                <img src="${logoUrl}" width="120" alt="Raja Bali" style="display:block;margin:0 auto 24px;width:120px;max-width:120px;" />
+                <p style="margin:0 0 14px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#A31C1C;">${eyebrow}</p>
+                <h1 style="margin:0 0 28px;font-size:25px;font-weight:400;color:#141414;line-height:1.35;">${headline}</h1>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 40px;">
+                <p style="margin:0 0 16px;font-size:15px;line-height:1.75;color:#2b2620;">Dear ${escapeHtml(guestName)},</p>
+                <p style="margin:0;font-size:15px;line-height:1.75;color:#2b2620;">${intro}</p>
 
-        <p style="font-size:15px;line-height:1.75;color:#2b2620;">Dear ${escapeHtml(guestName)},</p>
-        <p style="font-size:15px;line-height:1.75;color:#2b2620;">${intro}</p>
+                ${summaryHtml}
 
-        ${summaryHtml}
+                ${
+                  fields.message
+                    ? `<p style="margin:24px 0 0;font-size:14px;line-height:1.75;color:#2b2620;"><em>Your note to us:</em> &ldquo;${escapeHtml(fields.message)}&rdquo;</p>`
+                    : ""
+                }
 
-        ${
-          fields.message
-            ? `<p style="font-size:14px;line-height:1.75;color:#2b2620;"><em>Your note to us:</em> &ldquo;${escapeHtml(fields.message)}&rdquo;</p>`
-            : ""
-        }
+                <p style="margin:24px 0 0;font-size:15px;line-height:1.75;color:#2b2620;">${closing}</p>
 
-        <p style="font-size:15px;line-height:1.75;color:#2b2620;margin-top:24px;">${closing}</p>
-
-        <p style="font-size:15px;line-height:1.75;color:#2b2620;margin-top:32px;">With warmest regards,<br /><strong>Raja Bali</strong></p>
-
-        <hr style="border:none;border-top:1px solid #e8e0d0;margin:36px 0 16px;" />
-        <p style="font-size:11px;color:#a39c8c;text-align:center;margin:0;">This is an automated confirmation — for urgent enquiries, please contact us directly.</p>
-      </div>
-    </div>
+                <p style="margin:32px 0 0;font-size:15px;line-height:1.75;color:#2b2620;">Warmly,<br /><strong>The Raja Bali Team</strong></p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:36px 40px 40px;">
+                <hr style="border:none;border-top:1px solid #e8e0d0;margin:0 0 24px;" />
+                ${contactHtml}
+                <p style="margin:24px 0 0;font-size:11px;color:#a39c8c;">This is an automated confirmation — for urgent enquiries, please contact us directly.</p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
   `;
 }
 
@@ -160,7 +206,7 @@ async function sendNotificationEmail({ formType, targetEmail, fields }) {
   const label = FORM_LABELS[formType] || formType;
 
   const { error } = await resend.emails.send({
-    from: "Raja Bali Website <onboarding@resend.dev>",
+    from: "Raja Bali Website <noreply@rajabalirestaurant.co>",
     to: targetEmail,
     subject: `New ${label} submission — Raja Bali`,
     html: buildEmailHtml(formType, fields),
@@ -171,18 +217,20 @@ async function sendNotificationEmail({ formType, targetEmail, fields }) {
 
 // Confirmation email to the guest themselves — kept fully independent from
 // the restaurant notification above (Promise.allSettled in POST) so a
-// failure here (e.g. Resend's sandbox mode rejecting non-owner addresses
-// until a sending domain is verified) never blocks the restaurant from
-// getting the booking.
+// failure here never blocks the restaurant from getting the booking.
 async function sendGuestConfirmationEmail({ formType, branch, fields }) {
   if (!fields.email) throw new Error("No guest email address provided.");
 
   const locationName = BRANCH_NAMES[branch] || BRANCH_NAMES.general;
+  const isReservation = RESERVATION_FORM_TYPES.has(formType);
+  const subject = isReservation
+    ? `Your Reservation, Confirmed — ${locationName}`
+    : `We've Received Your Message — ${locationName}`;
 
   const { error } = await resend.emails.send({
-    from: "Raja Bali <onboarding@resend.dev>",
+    from: "Raja Bali <noreply@rajabalirestaurant.co>",
     to: fields.email,
-    subject: `Your Reservation, Confirmed — ${locationName}`,
+    subject,
     html: buildGuestConfirmationHtml(formType, branch, fields),
   });
 

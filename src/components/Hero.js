@@ -15,9 +15,9 @@ export default function Hero() {
           loop
           playsInline
         />
-        {/* Light touch — just enough to keep the white text/logo legible
-            without dimming the footage the way the old opaque overlay did. */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/25 to-black/45" />
+        {/* Darkened for legibility — the lighter touch tried before left the
+            title/body text too hard to read against brighter footage. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/50 to-black/70" />
       </Parallax>
 
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
