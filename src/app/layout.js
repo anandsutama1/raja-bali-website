@@ -39,13 +39,13 @@ export const metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} | Authentic Balinese Restaurant`,
     description,
-    images: [{ url: "/images/shared/og-cover-dance.jpg", width: 1200, height: 630, alt: SITE_NAME }],
+    images: [{ url: "/images/shared/og-dance.jpg", width: 1200, height: 630, alt: SITE_NAME }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} | Authentic Balinese Restaurant`,
     description,
-    images: ["/images/shared/og-cover-dance.jpg"],
+    images: ["/images/shared/og-dance.jpg"],
   },
 };
 
