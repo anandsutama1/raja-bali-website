@@ -44,23 +44,31 @@ const RESERVATION_FORM_TYPES = new Set([
   "group-reservation",
 ]);
 
-// Guest email copy per experience — deliberately says "received", not
+// Plain table reservations at either outlet are auto-confirmed on submit —
+// seating isn't capacity-constrained the way a class session or private
+// event is, so there's no reason to make the guest wait on a human reply.
+// Everything else in RESERVATION_FORM_TYPES still says "received", not
 // "confirmed": nothing is confirmed until the team follows up, so claiming
-// otherwise here would overpromise. Written separately per type rather than
-// one generic "reservation" voice, since a cooking class booking and a
-// private event enquiry aren't the same thing to the guest reading this.
+// otherwise there would overpromise. Written separately per type rather
+// than one generic "reservation" voice, since a cooking class booking and
+// a private event enquiry aren't the same thing to the guest reading this.
+const TABLE_RESERVATION_TYPES = new Set(["reservation-main", "reservation-nusadua"]);
 const BOOKING_COPY = {
   "reservation-main": {
-    eyebrow: "Booking Received",
-    headline: "Your Booking Has Been Received",
+    eyebrow: "Reservation Confirmed",
+    headline: "Your Table Is Confirmed",
     intro: (locationName) =>
-      `Thank you for placing a table reservation with <strong>${escapeHtml(locationName)}</strong>. We&rsquo;ve received your request, and our team will get back to you shortly to confirm every detail.`,
+      `Thank you for reserving a table with <strong>${escapeHtml(locationName)}</strong>. Your reservation is confirmed, and we&rsquo;re looking forward to welcoming you.`,
+    closing:
+      "If your plans change or you have any special requests, just reply to this email or reach out to us directly. We&rsquo;re happy to help.",
   },
   "reservation-nusadua": {
-    eyebrow: "Booking Received",
-    headline: "Your Booking Has Been Received",
+    eyebrow: "Reservation Confirmed",
+    headline: "Your Table Is Confirmed",
     intro: (locationName) =>
-      `Thank you for placing a table reservation with <strong>${escapeHtml(locationName)}</strong>. We&rsquo;ve received your request, and our team will get back to you shortly to confirm every detail.`,
+      `Thank you for reserving a table with <strong>${escapeHtml(locationName)}</strong>. Your reservation is confirmed, and we&rsquo;re looking forward to welcoming you.`,
+    closing:
+      "If your plans change or you have any special requests, just reply to this email or reach out to us directly. We&rsquo;re happy to help.",
   },
   "cooking-class": {
     eyebrow: "Booking Received",
@@ -190,7 +198,8 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
     : `Thank you for writing to <strong>${escapeHtml(locationName)}</strong>. Your message has reached us safely, and a member of our team will respond to you personally very soon.`;
 
   const closing = isReservation
-    ? "We&rsquo;re looking forward to the opportunity to welcome you, and will follow up shortly to confirm every detail."
+    ? booking.closing ||
+      "We&rsquo;re looking forward to the opportunity to welcome you, and will follow up shortly to confirm every detail."
     : "We are grateful for your interest in Raja Bali, and look forward to the opportunity of welcoming you soon.";
 
   const cta = EXPERIENCE_CTA[formType];
@@ -327,9 +336,11 @@ async function sendGuestConfirmationEmail({ formType, branch, fields }) {
 
   const locationName = BRANCH_NAMES[branch] || BRANCH_NAMES.general;
   const isReservation = RESERVATION_FORM_TYPES.has(formType);
-  const subject = isReservation
-    ? `We've Received Your Booking (${locationName})`
-    : `We've Received Your Message (${locationName})`;
+  const subject = TABLE_RESERVATION_TYPES.has(formType)
+    ? `Your Reservation Is Confirmed (${locationName})`
+    : isReservation
+      ? `We've Received Your Booking (${locationName})`
+      : `We've Received Your Message (${locationName})`;
 
   const { error } = await resend.emails.send({
     from: "Raja Bali <noreply@rajabalirestaurant.co>",
