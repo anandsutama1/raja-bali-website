@@ -138,6 +138,8 @@ function buildEmailHtml(formType, fields) {
     ["Date", fields.date],
     ["Time", fields.time],
     ["Guests", fields.guests],
+    ["Hotel Name", fields.hotelName],
+    ["Room Number", fields.roomNumber],
     ["Message", fields.message],
   ].filter(([, value]) => value);
 
@@ -170,6 +172,8 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
         ["Date", fields.date],
         ["Time", fields.time],
         ["Number of Adults", fields.guests],
+        ["Hotel Name", fields.hotelName],
+        ["Room Number", fields.roomNumber],
       ].filter(([, value]) => value)
     : [];
 
