@@ -10,7 +10,7 @@ const activities = [
     desc: "Learn authentic Balinese cooking hands-on with our experienced local chefs, from the spices we use every day to recipes passed down through generations.",
     cta: "Book Now",
     href: "/cooking-class",
-    image: "/images/cooking-class/CookingClass-Hero.jpg",
+    image: "/images/cooking-class/CookingClass-Card.jpg",
   },
   {
     tag: "EVERY THURSDAY",
@@ -26,7 +26,7 @@ const activities = [
     desc: "Step behind the bar with our bartenders and learn to mix cocktails using fresh tropical ingredients, from island classics to our own signature creations.",
     cta: "Book Now",
     href: "/bar-class",
-    image: "/images/bar-class/Hero.jpg",
+    image: "/images/bar-class/Bar-Card.jpg",
   },
 ];
 
