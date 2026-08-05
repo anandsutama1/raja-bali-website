@@ -8,6 +8,7 @@ import HotelTransfer from "@/components/HotelTransfer";
 import VenueRental from "@/components/VenueRental";
 import InstagramGrid from "@/components/InstagramGrid";
 import FAQ from "@/components/FAQ";
+import StickyReserveButton from "@/components/StickyReserveButton";
 
 export const metadata = {
   alternates: { canonical: "/" },
@@ -26,6 +27,7 @@ export default function Home() {
       <InstagramGrid />
       <Testimonials />
       <FAQ />
+      <StickyReserveButton />
     </main>
   );
 }

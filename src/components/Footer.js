@@ -39,10 +39,16 @@ export default function Footer() {
             height={354}
             className="mb-4 h-16 w-auto"
           />
-          <p className="text-sm leading-relaxed text-gray-400">
+          <p className="mb-6 text-sm leading-relaxed text-gray-400">
             Experience the authentic flavors, rich traditions, and warm
             hospitality of Bali.
           </p>
+          <Link
+            href="/contact"
+            className="u-press inline-block bg-white px-6 py-2.5 text-sm tracking-widest text-raja-black hover:bg-raja-red hover:text-white"
+          >
+            CONTACT US
+          </Link>
         </div>
 
         {columns.map((column) => (
