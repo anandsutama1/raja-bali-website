@@ -1,4 +1,4 @@
-import Image from "next/image";
+import GalleryGrid from "@/components/GalleryGrid";
 
 const images = [
   "/images/bar-class/Rectangle 12.jpg",
@@ -20,18 +20,8 @@ export default function GalleryExperience() {
       <p className="text-center text-gray-600 mb-14 max-w-xl mx-auto">
         Step behind the bar and discover the art of mixology through an immersive hands-on experience.
       </p>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 max-w-5xl mx-auto">
-        {images.map((src, index) => (
-          <div key={src} className="relative h-40">
-            <Image
-              src={src}
-              alt={`Bar class gallery photo ${index + 1}`}
-              fill
-              sizes="(min-width: 640px) 25vw, 50vw"
-              className="object-cover"
-            />
-          </div>
-        ))}
+      <div className="max-w-5xl mx-auto">
+        <GalleryGrid images={images} altPrefix="Bar class gallery photo" />
       </div>
     </section>
   );

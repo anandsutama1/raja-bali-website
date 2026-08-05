@@ -1,4 +1,4 @@
-import SmartImage from "@/components/SmartImage";
+import GalleryGrid from "@/components/GalleryGrid";
 
 const images = Array.from({ length: 8 }, (_, i) => `/images/group-reservation/gallery-${i + 1}.jpg`);
 
@@ -11,16 +11,8 @@ export default function GalleryExperience() {
       <p className="text-center text-gray-600 mb-14 max-w-xl mx-auto">
         Showcase beautifully captured moments from birthdays, family gatherings, corporate dinners, wedding receptions, and private events hosted at Raja Bali.
       </p>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 max-w-5xl mx-auto">
-        {images.map((src, index) => (
-          <div key={src} className="relative h-40">
-            <SmartImage
-              src={src}
-              alt={`Group reservation gallery photo ${index + 1}`}
-              sizes="(min-width: 640px) 25vw, 50vw"
-            />
-          </div>
-        ))}
+      <div className="max-w-5xl mx-auto">
+        <GalleryGrid images={images} altPrefix="Group reservation gallery photo" />
       </div>
     </section>
   );
