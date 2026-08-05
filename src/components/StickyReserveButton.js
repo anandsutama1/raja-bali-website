@@ -44,9 +44,12 @@ export default function StickyReserveButton() {
 
   useEffect(() => () => clearTimeout(idleTimer.current), []);
 
+  // z-30 is deliberately one below the mobile nav drawer's z-40
+  // (Navbar.js) so it sinks behind the drawer automatically once opened
+  // instead of floating on top of the menu.
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-40 px-4 pb-4 transition-transform duration-500 ease-expo md:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-30 px-4 pb-4 transition-transform duration-500 ease-expo md:hidden ${
         hidden ? "translate-y-[calc(100%+1rem)]" : "translate-y-0"
       }`}
       style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}

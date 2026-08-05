@@ -68,7 +68,7 @@ export default function ReservationForm() {
     <section id="reservation" className="border-t border-gray-200 py-20 px-6 max-w-2xl mx-auto">
       <h2 className="text-3xl font-serif text-center mb-2">Reservation</h2>
       <p className="text-center text-gray-600 mb-10">
-        Available Thursdays only, 3:00 PM session — reserve your place in the Balinese cocktail class.
+        Available Thursdays only, 3:00 PM session. Reserve your place in the Balinese cocktail class.
       </p>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <fieldset disabled={status === "submitting"} className="m-0 min-w-0 space-y-4 border-0 p-0">
@@ -120,7 +120,7 @@ export default function ReservationForm() {
         </fieldset>
         {status === "success" && (
           <p className="text-center text-sm text-emerald-600">
-            Thank you! Your reservation request has been sent — we&apos;ll be in touch shortly.
+            Thank you! Your reservation request has been sent. We&apos;ll be in touch shortly.
           </p>
         )}
         {status === "error" && (

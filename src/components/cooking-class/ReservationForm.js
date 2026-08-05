@@ -77,7 +77,7 @@ export default function ReservationForm() {
             <input placeholder="Last Name" required value={fields.lastName} onChange={update("lastName")} className="border p-3" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <input type="date" min={today} required value={fields.date} onChange={update("date")} className="border p-3" />
+            <input type="date" min={today} required value={fields.date} onChange={update("date")} className="border p-3 w-full" />
             <select
               required
               value={fields.time}
@@ -121,7 +121,7 @@ export default function ReservationForm() {
         </fieldset>
         {status === "success" && (
           <p className="text-center text-sm text-emerald-600">
-            Thank you! Your reservation request has been sent — we&apos;ll be in touch shortly.
+            Thank you! Your reservation request has been sent. We&apos;ll be in touch shortly.
           </p>
         )}
         {status === "error" && (
