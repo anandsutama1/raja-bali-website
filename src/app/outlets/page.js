@@ -6,7 +6,7 @@ import ContactCTA from "@/components/outlets/ContactCTA";
 export const metadata = {
   title: "Our Locations",
   description:
-    "Discover Raja Bali's two destinations — the flagship Main Restaurant in Tanjung Benoa and Raja Bali Nusa Dua — with maps, hours, and booking links for each.",
+    "Discover Raja Bali's two destinations, the flagship Main Restaurant in Tanjung Benoa and Raja Bali Nusa Dua, with maps, hours, and booking links for each.",
   alternates: { canonical: "/outlets" },
 };
 

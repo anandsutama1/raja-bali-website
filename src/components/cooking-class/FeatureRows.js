@@ -14,7 +14,7 @@ const rows = [
   },
   {
     title: "Create Memories Beyond the Kitchen",
-    desc: "More than mastering traditional recipes, this experience is about creating lasting memories. Share stories around the table, enjoy the dishes you've prepared, and immerse yourself in the genuine warmth of Balinese hospitality.",
+    desc: "This experience is about more than learning recipes. Share stories around the table, enjoy the dishes you've made, and take in the genuine warmth of Balinese hospitality.",
     image: "/images/cooking-class/CookingClass2.jpg",
     alt: "Guests enjoying the Balinese cooking class experience",
     imageLeft: false,

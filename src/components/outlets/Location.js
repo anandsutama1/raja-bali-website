@@ -20,7 +20,7 @@ export default function Location() {
           <p className="text-raja-red">Find Your Nearest Raja Bali</p>
         </div>
         <p className="text-gray-600 flex-1">
-          Whether you&apos;re exploring the cultural charm of Tanjung Benoa or enjoying the vibrant atmosphere of Nusa Dua, both destinations are conveniently located.
+          Both destinations are easy to reach, from Tanjung Benoa&apos;s cultural charm to Nusa Dua&apos;s vibrant atmosphere.
         </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

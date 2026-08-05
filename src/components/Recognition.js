@@ -3,8 +3,8 @@ import Reveal from "./motion/Reveal";
 import Marquee from "./motion/Marquee";
 
 const awards = [
-  { theme: "ctrip", title: "Ctrip Gourmet List 2018", desc: "Celebrating culinary excellence, authentic flavors, and memorable dining experiences for travelers from around the world.", logo: "/images/home/CTRIP.png" },
-  { theme: "ctrip", title: "Ctrip Gourmet List 2019", desc: "Celebrating culinary excellence, authentic flavors, and memorable dining experiences for travelers from around the world.", logo: "/images/home/CTRIP.png" },
+  { theme: "ctrip", title: "Ctrip Gourmet List 2018", desc: "Recognized by Ctrip for consistently great food and genuine hospitality.", logo: "/images/home/CTRIP.png" },
+  { theme: "ctrip", title: "Ctrip Gourmet List 2019", desc: "Recognized by Ctrip for consistently great food and genuine hospitality.", logo: "/images/home/CTRIP.png" },
   { theme: "tripadvisor", title: "Tripadvisor Travellers' Choice Awards 2024", desc: "Reviews from millions of Tripadvisor travelers place this winner in the top 10% worldwide.", logo: "/images/home/TripAdvisor.png" },
   { theme: "tripadvisor", title: "Tripadvisor Travellers' Choice Awards 2025", desc: "Reviews from millions of Tripadvisor travelers place this winner in the top 10% worldwide.", logo: "/images/home/TripAdvisor.png" },
   { theme: "tripadvisor", title: "Tripadvisor Travellers' Choice Awards 2026", desc: "Reviews from millions of Tripadvisor travelers place this winner in the top 10% worldwide.", logo: "/images/home/TripAdvisor.png" },
@@ -50,12 +50,12 @@ export default function Recognition() {
           delay={90}
           className="mx-auto mb-12 max-w-2xl border-l-4 border-raja-red pl-6 text-left text-sm leading-relaxed text-gray-600"
         >
-          For five consecutive years, Raja Bali Restaurant has proudly earned
-          the Tripadvisor Travelers&apos; Choice Award, placing us among the
-          Top 10% of restaurants worldwide. Together with our Ctrip
-          Certificate of Excellence, these recognitions reflect our
-          unwavering commitment to authentic Balinese cuisine, heartfelt
-          hospitality, and unforgettable dining experiences.
+          Raja Bali Restaurant has won the Tripadvisor Travelers&apos;
+          Choice Award five years running, placing us among the top 10% of
+          restaurants worldwide. Along with our Ctrip Certificate of
+          Excellence, it&apos;s recognition we&apos;re genuinely proud of,
+          and a reflection of the care we put into every dish and every
+          guest&apos;s visit.
         </Reveal>
       </div>
 

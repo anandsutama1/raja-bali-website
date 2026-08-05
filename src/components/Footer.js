@@ -34,7 +34,7 @@ export default function Footer() {
         <div>
           <Image
             src="/images/RajaBali_Footer.png"
-            alt="Raja Bali — Balinese Authentic Restaurant"
+            alt="Raja Bali, an authentic Balinese restaurant"
             width={704}
             height={354}
             className="mb-4 h-16 w-auto"

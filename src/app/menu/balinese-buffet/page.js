@@ -4,7 +4,7 @@ import BuffetCategory from "@/components/menu/BuffetCategory";
 export const metadata = {
   title: "Balinese Buffet Menu",
   description:
-    "Raja Bali's group dinner buffet menu featuring authentic Balinese dishes, starting from IDR 300K per person — ideal for group celebrations.",
+    "Raja Bali's group dinner buffet menu featuring authentic Balinese dishes, starting from IDR 300K per person, ideal for group celebrations.",
   alternates: { canonical: "/menu/balinese-buffet" },
 };
 
@@ -16,7 +16,7 @@ export default function BalineseBuffetPage() {
   <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black" />
   <div className="relative z-10 max-w-2xl mx-auto">
     <h1 className="text-5xl font-serif mb-2">Group Dinner Buffet Menu</h1>
-    <p className="text-sm text-gray-300">Balinese Buffet — Start from IDR 300K/pax</p>
+    <p className="text-sm text-gray-300">Balinese Buffet | Start from IDR 300K/pax</p>
   </div>
 </section>
 

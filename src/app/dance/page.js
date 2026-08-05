@@ -8,7 +8,7 @@ import ClosingCTA from "@/components/dance/ClosingCTA";
 export const metadata = {
   title: "Balinese Dance Performance",
   description:
-    "Experience a timeless Balinese dance performance at Raja Bali every Thursday evening — live music, traditional costumes, and a rotating repertoire of sacred stories.",
+    "Experience a timeless Balinese dance performance at Raja Bali every Thursday evening, featuring live music, traditional costumes, and a rotating repertoire of sacred stories.",
   alternates: { canonical: "/dance" },
 };
 

@@ -9,7 +9,7 @@ const rows = [
   },
   {
     title: "Create Memories Behind the Bar",
-    desc: "More than mastering the art of mixology, this experience is about celebrating creativity, connection, and unforgettable moments. From your first shake to your final sip, every moment is thoughtfully designed.",
+    desc: "This class is about more than mixing drinks. It's about creativity, connection, and the moments you'll remember, from your first shake to your final sip.",
     image: "/images/bar-class/barclass2.jpg",
     imageLeft: false,
   },

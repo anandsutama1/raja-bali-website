@@ -26,8 +26,8 @@ const BRANCH_LOCATION_ID = {
 
 const FORM_LABELS = {
   contact: "Contact Us",
-  "reservation-main": "Reservation — Main Restaurant",
-  "reservation-nusadua": "Reservation — Nusa Dua",
+  "reservation-main": "Main Restaurant Reservation",
+  "reservation-nusadua": "Nusa Dua Reservation",
   "cooking-class": "Cooking Class Reservation",
   "bar-class": "Bar Class Reservation",
   "private-events": "Private Events Enquiry",
@@ -73,7 +73,7 @@ const BOOKING_COPY = {
     headline: "Your Cocktail Class Booking Has Been Received",
     intro: () =>
       `Thank you for booking a place in our Balinese Cocktail Class. We&rsquo;ve received your request, and our team will get back to you shortly to confirm your session.`,
-    note: "This experience runs exclusively on Thursdays at 3:00 PM — if the date you requested isn't a Thursday, our team will reach out to reschedule.",
+    note: "This experience runs exclusively on Thursdays at 3:00 PM. If the date you requested isn't a Thursday, our team will reach out to reschedule.",
   },
   "private-events": {
     eyebrow: "Enquiry Received",
@@ -279,7 +279,7 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
               <td style="padding:36px 40px 40px;">
                 <hr style="border:none;border-top:1px solid #e8e0d0;margin:0 0 24px;" />
                 ${contactHtml}
-                <p style="margin:24px 0 0;font-size:11px;color:#a39c8c;">This is an automated notice — for urgent enquiries, please contact us directly.</p>
+                <p style="margin:24px 0 0;font-size:11px;color:#a39c8c;">This is an automated notice. For urgent enquiries, please contact us directly.</p>
               </td>
             </tr>
           </table>
@@ -312,7 +312,7 @@ async function sendNotificationEmail({ formType, targetEmail, fields }) {
   const { error } = await resend.emails.send({
     from: "Raja Bali Website <noreply@rajabalirestaurant.co>",
     to: targetEmail,
-    subject: `New ${label} submission — Raja Bali`,
+    subject: `New ${label} Submission | Raja Bali`,
     html: buildEmailHtml(formType, fields),
   });
 
@@ -328,8 +328,8 @@ async function sendGuestConfirmationEmail({ formType, branch, fields }) {
   const locationName = BRANCH_NAMES[branch] || BRANCH_NAMES.general;
   const isReservation = RESERVATION_FORM_TYPES.has(formType);
   const subject = isReservation
-    ? `We've Received Your Booking — ${locationName}`
-    : `We've Received Your Message — ${locationName}`;
+    ? `We've Received Your Booking (${locationName})`
+    : `We've Received Your Message (${locationName})`;
 
   const { error } = await resend.emails.send({
     from: "Raja Bali <noreply@rajabalirestaurant.co>",

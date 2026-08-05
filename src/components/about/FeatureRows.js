@@ -3,7 +3,7 @@ import Image from "next/image";
 const rows = [
   {
     title: "Inspired by Tradition, Crafted with Passion",
-    desc: "At Raja Bali, we believe that authentic cuisine begins with respect—for tradition, for ingredients, and for every guest who dines with us. Our commitment is to preserve the rich culinary heritage of Bali while presenting every dish with care, quality, and a modern touch.",
+    desc: "At Raja Bali, we believe authentic cuisine begins with respect: for tradition, for ingredients, and for every guest who dines with us. We're committed to preserving Bali's rich culinary heritage while presenting every dish with care, quality, and a modern touch.",
     imageLeft: true,
     image: "/images/about/about1.jpg",
   },

@@ -12,13 +12,11 @@ export default function Welcome() {
       </Reveal>
 
       <Reveal as="p" delay={110} className="mb-8 leading-relaxed text-gray-600">
-        Highly acclaimed for culinary excellence, Raja Bali Nusa Dua stands as
-        a premier destination for authentic Balinese cuisine. Celebrating
-        years of top-tier ratings and recognition from international
-        travelers, we seamlessly blend rich cultural heritage with
-        award-winning hospitality. Every dish is a journey through Bali&apos;s
-        finest time-honored recipes, crafted to deliver an unforgettable,
-        world-class dining experience.
+        Raja Bali Nusa Dua has built its reputation on genuinely great
+        Balinese food, backed by years of strong reviews from travelers
+        around the world. We bring together Bali&apos;s cultural heritage
+        and warm, personal hospitality, with every dish drawing on recipes
+        passed down through generations.
       </Reveal>
 
       <Reveal delay={220} className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">

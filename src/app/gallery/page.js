@@ -4,7 +4,7 @@ import CategoryGrid from "@/components/gallery/CategoryGrid";
 export const metadata = {
   title: "Gallery",
   description:
-    "A glimpse into the flavors, celebrations, and warm hospitality that define every Raja Bali experience — dining, cooking and bar classes, dance, and private events.",
+    "A glimpse into the flavors, celebrations, and warm hospitality that define every Raja Bali experience: dining, cooking and bar classes, dance, and private events.",
   alternates: { canonical: "/gallery" },
 };
 

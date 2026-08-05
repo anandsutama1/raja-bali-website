@@ -96,7 +96,7 @@ export default function MessageForm() {
         </fieldset>
         {status === "success" && (
           <p className="text-center text-sm text-emerald-600">
-            Thank you! Your message has been sent — we&apos;ll get back to you shortly.
+            Thank you! Your message has been sent. We&apos;ll get back to you shortly.
           </p>
         )}
         {status === "error" && (

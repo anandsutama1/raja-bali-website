@@ -8,7 +8,7 @@ import ReservationForm from "@/components/private-events/ReservationForm";
 export const metadata = {
   title: "Private Events & Venue Rental",
   description:
-    "Celebrate life's special moments at Raja Bali — private event spaces, venue rental, and personalized event planning for weddings, corporate dinners, and celebrations.",
+    "Celebrate life's special moments at Raja Bali with private event spaces, venue rental, and personalized event planning for weddings, corporate dinners, and celebrations.",
   alternates: { canonical: "/private-events" },
 };
 

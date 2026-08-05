@@ -18,7 +18,7 @@ const description =
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — One of the Best Restaurants in Bali`,
+    default: `${SITE_NAME} | One of the Best Restaurants in Bali`,
     template: `%s | ${SITE_NAME}`,
   },
   description,
@@ -37,13 +37,13 @@ export const metadata = {
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    title: `${SITE_NAME} — Authentic Balinese Restaurant`,
+    title: `${SITE_NAME} | Authentic Balinese Restaurant`,
     description,
     images: [{ url: "/images/shared/og-cover-dance.jpg", width: 1200, height: 630, alt: SITE_NAME }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} — Authentic Balinese Restaurant`,
+    title: `${SITE_NAME} | Authentic Balinese Restaurant`,
     description,
     images: ["/images/shared/og-cover-dance.jpg"],
   },

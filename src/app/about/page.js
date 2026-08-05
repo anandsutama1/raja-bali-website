@@ -7,7 +7,7 @@ import ClosingCTA from "@/components/about/ClosingCTA";
 export const metadata = {
   title: "About Us",
   description:
-    "The story behind Raja Bali — a restaurant rooted in Balinese tradition, authentic recipes, fresh local ingredients, and warm island hospitality across Tanjung Benoa and Nusa Dua.",
+    "The story behind Raja Bali, a restaurant rooted in Balinese tradition, authentic recipes, fresh local ingredients, and warm island hospitality across Tanjung Benoa and Nusa Dua.",
   alternates: { canonical: "/about" },
 };
 

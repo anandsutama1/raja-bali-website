@@ -5,7 +5,7 @@ import MessageForm from "@/components/contact/MessageForm";
 export const metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with Raja Bali Main Restaurant (Tanjung Benoa) or Raja Bali Nusa Dua — reservations, enquiries, and directions for both locations.",
+    "Get in touch with Raja Bali Main Restaurant (Tanjung Benoa) or Raja Bali Nusa Dua for reservations, enquiries, and directions to both locations.",
   alternates: { canonical: "/contact" },
 };
 

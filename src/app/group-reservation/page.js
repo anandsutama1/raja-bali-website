@@ -8,7 +8,7 @@ import ContactCTA from "@/components/group-reservation/ContactCTA";
 export const metadata = {
   title: "Group Reservation & Buffet Packages",
   description:
-    "Curated buffet packages for every occasion at Raja Bali — authentic Balinese and Western & Asian buffet menus for group celebrations and events.",
+    "Curated buffet packages for every occasion at Raja Bali, featuring authentic Balinese and Western & Asian buffet menus for group celebrations and events.",
   alternates: { canonical: "/group-reservation" },
 };
 

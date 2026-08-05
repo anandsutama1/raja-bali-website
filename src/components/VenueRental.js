@@ -11,10 +11,9 @@ export default function VenueRental() {
           Venue Rental &amp; Private Events
         </h2>
         <p className="mb-6 leading-relaxed text-gray-600">
-          Celebrate life&apos;s most meaningful moments in the heart of Bali.
-          Whether you&apos;re planning an intimate gathering, a corporate
-          dinner, or a wedding reception, Raja Bali Restaurant provides a
-          beautiful setting.
+          Planning an intimate gathering, a corporate dinner, or a wedding
+          reception? Raja Bali Restaurant offers a beautiful setting in the
+          heart of Bali for life&apos;s most meaningful moments.
         </p>
         <Link
           href="/private-events"

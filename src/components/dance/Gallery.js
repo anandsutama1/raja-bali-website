@@ -1,4 +1,4 @@
-import SmartImage from "@/components/SmartImage";
+import GalleryGrid from "@/components/GalleryGrid";
 
 const images = Array.from({ length: 8 }, (_, i) => `/images/dance/gallery-${i + 1}.jpg`);
 
@@ -9,18 +9,10 @@ export default function DanceGallery() {
         Gallery <span className="text-raja-red">Experience</span>
       </h2>
       <p className="text-center text-gray-600 mb-14 max-w-xl mx-auto">
-        Moments captured from our Balinese dance performances — a glimpse into the grace, color, and spirit of the evening.
+        Moments captured from our Balinese dance performances, offering a glimpse into the grace, color, and spirit of the evening.
       </p>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 max-w-5xl mx-auto">
-        {images.map((src, index) => (
-          <div key={src} className="relative h-40">
-            <SmartImage
-              src={src}
-              alt={`Balinese dance performance gallery photo ${index + 1}`}
-              sizes="(min-width: 640px) 25vw, 50vw"
-            />
-          </div>
-        ))}
+      <div className="max-w-5xl mx-auto">
+        <GalleryGrid images={images} altPrefix="Balinese dance performance gallery photo" />
       </div>
     </section>
   );

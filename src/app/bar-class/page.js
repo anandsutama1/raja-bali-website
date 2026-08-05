@@ -11,7 +11,7 @@ import ReservationForm from "@/components/bar-class/ReservationForm";
 export const metadata = {
   title: "Balinese Cocktail Class",
   description:
-    "Master the art of mixology with Raja Bali's hands-on Balinese cocktail class — learn from expert bartenders, taste authentic Balinese Arak, and craft your own signature drink.",
+    "Master the art of mixology with Raja Bali's hands-on Balinese cocktail class. Learn from expert bartenders, taste authentic Balinese Arak, and craft your own signature drink.",
   alternates: { canonical: "/bar-class" },
 };
 

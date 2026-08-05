@@ -4,7 +4,7 @@ import BuffetCategory from "@/components/menu/BuffetCategory";
 export const metadata = {
   title: "Western & Asian Buffet Menu",
   description:
-    "Raja Bali's group dinner buffet menu featuring Western & Asian favorites, starting from IDR 350K per person — ideal for groups with different preferences.",
+    "Raja Bali's group dinner buffet menu featuring Western & Asian favorites, starting from IDR 350K per person, ideal for groups with different preferences.",
   alternates: { canonical: "/menu/western-asian-buffet" },
 };
 
@@ -16,7 +16,7 @@ export default function WesternAsianBuffetPage() {
   <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black" />
   <div className="relative z-10 max-w-2xl mx-auto">
     <h1 className="text-5xl font-serif mb-2">Group Dinner Buffet Menu</h1>
-    <p className="text-sm text-gray-300">Western Asian — Start from IDR 350K/pax</p>
+    <p className="text-sm text-gray-300">Western Asian | Start from IDR 350K/pax</p>
   </div>
 </section>
 

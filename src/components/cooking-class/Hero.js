@@ -15,7 +15,7 @@ export default function CookingClassHero() {
       <div className="relative z-10">
         <h1 className="text-5xl font-serif mb-4">An Authentic Balinese Experience</h1>
         <p className="max-w-xl mx-auto text-sm text-gray-200">
-          More than a cooking class, this is an invitation to experience the traditions, flavors, and warm hospitality that have been passed down through generations of Balinese families.
+          This cooking class is your invitation into the traditions, flavors, and warm hospitality passed down through generations of Balinese families.
         </p>
       </div>
     </section>

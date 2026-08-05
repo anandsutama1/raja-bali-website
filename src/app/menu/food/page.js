@@ -5,7 +5,7 @@ import SetMenuCard from "@/components/menu/SetMenuCard";
 export const metadata = {
   title: "Food Menu",
   description:
-    "Explore Raja Bali's food menu — appetizers, soups, vegetarian dishes, rice & noodles, main courses, betutu, and Balinese set menus, all made with authentic recipes.",
+    "Explore Raja Bali's food menu, featuring appetizers, soups, vegetarian dishes, rice & noodles, main courses, betutu, and Balinese set menus, all made with authentic recipes.",
   alternates: { canonical: "/menu/food" },
 };
 

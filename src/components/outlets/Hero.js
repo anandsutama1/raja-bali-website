@@ -8,7 +8,7 @@ export default function OutletsHero() {
       <div className="relative z-10">
         <h1 className="text-5xl font-serif mb-4">Discover Our Destinations</h1>
         <p className="max-w-xl mx-auto text-sm text-gray-200">
-          Whether you're seeking an immersive cultural dining experience or an intimate evening of authentic Balinese cuisine, each Raja Bali destination offers its own unique atmosphere.
+          Each Raja Bali destination has its own atmosphere, from immersive cultural dining to an intimate evening of authentic Balinese cuisine.
         </p>
       </div>
     </section>

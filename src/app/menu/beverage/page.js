@@ -5,7 +5,7 @@ import WineTable from "@/components/menu/WineTable";
 export const metadata = {
   title: "Beverage Menu",
   description:
-    "Raja Bali's beverage menu — signature cocktails, wine, and refreshments crafted with tropical, island-inspired flavors.",
+    "Raja Bali's beverage menu features signature cocktails, wine, and refreshments crafted with tropical, island-inspired flavors.",
   alternates: { canonical: "/menu/beverage" },
 };
 

@@ -8,7 +8,7 @@ export default function ContactHero() {
       <div className="relative z-10">
         <h1 className="text-5xl font-serif mb-4">Let's Plan Your Raja Bali Experience</h1>
         <p className="max-w-xl mx-auto text-sm text-gray-200">
-          Whether you're planning an intimate dinner, a family gathering, a cultural experience, or simply have a question, our team is here to assist you.
+          Planning an intimate dinner, a family gathering, or a cultural experience? Our team is here to help, and happy to answer any questions too.
         </p>
       </div>
     </section>

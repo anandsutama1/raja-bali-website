@@ -1,5 +1,5 @@
 const dances = [
-  { name: "Tari Joged Bumbung", desc: "Our signature performance, gracing the stage every Thursday without fail — a playful, communal dance celebrated for its warmth and spontaneous charm." },
+  { name: "Tari Joged Bumbung", desc: "Our signature performance, gracing the stage every Thursday without fail. A playful, communal dance celebrated for its warmth and spontaneous charm." },
   { name: "Puspanjali", desc: "A graceful welcome dance offering flowers of gratitude to honor and greet our guests." },
   { name: "Sekar Jagat", desc: "A dance of the world's flowers, celebrating beauty and harmony through delicate, flowing movement." },
   { name: "Sekar Jepun", desc: "Inspired by the frangipani blossom, a gentle expression of elegance and femininity." },
@@ -16,7 +16,7 @@ export default function DanceRepertoire() {
       <h2 className="text-3xl font-serif text-center mb-2">The Repertoire</h2>
       <p className="text-center text-raja-red mb-2">Four Sacred Stories, Chosen Anew Each Week</p>
       <p className="text-center text-gray-600 max-w-2xl mx-auto mb-14">
-        Each Thursday, four performances are thoughtfully selected from our repertoire to unfold before you — with Tari Joged Bumbung, our beloved signature dance, gracing every evening.
+        Each Thursday, four performances are thoughtfully selected from our repertoire to unfold before you, with Tari Joged Bumbung, our beloved signature dance, gracing every evening.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {dances.map((dance, index) => (
