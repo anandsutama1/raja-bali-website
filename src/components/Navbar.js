@@ -20,6 +20,7 @@ const drawerLinks = [
   { href: "/cooking-class", label: "Cooking Class" },
   { href: "/dance", label: "Balinese Dance Performance" },
   { href: "/private-events", label: "Private Events" },
+  { href: "/group-reservation", label: "Group Reservation" },
 ];
 
 export default function Navbar() {

@@ -20,9 +20,6 @@ const initialFields = {
   whatsappCountry: DEFAULT_COUNTRY_CODE,
   whatsappNumber: "",
   message: "",
-  pickupNeeded: false,
-  hotelName: "",
-  roomNumber: "",
 };
 
 export default function ReservationForm() {
@@ -35,7 +32,6 @@ export default function ReservationForm() {
   });
 
   const update = (key) => (e) => setFields((f) => ({ ...f, [key]: e.target.value }));
-  const toggle = (key) => (e) => setFields((f) => ({ ...f, [key]: e.target.checked }));
 
   const validate = () => {
     const errors = {};
@@ -49,12 +45,8 @@ export default function ReservationForm() {
     e.preventDefault();
     if (!validate()) return;
 
-    const { whatsappCountry, whatsappNumber, pickupNeeded, hotelName, roomNumber, ...rest } = fields;
-    const payload = {
-      ...rest,
-      whatsapp: `${whatsappCountry} ${whatsappNumber}`,
-      ...(pickupNeeded ? { hotelName, roomNumber } : {}),
-    };
+    const { whatsappCountry, whatsappNumber, ...rest } = fields;
+    const payload = { ...rest, whatsapp: `${whatsappCountry} ${whatsappNumber}` };
 
     const ok = await submitForm(payload);
     if (ok) {
@@ -117,35 +109,6 @@ export default function ReservationForm() {
               error={fieldErrors.whatsapp}
               className="border p-3 rounded"
             />
-          </div>
-          <div>
-            <label className="flex items-center gap-2 text-sm text-gray-700">
-              <input
-                type="checkbox"
-                checked={fields.pickupNeeded}
-                onChange={toggle("pickupNeeded")}
-                className="h-4 w-4 border-gray-300"
-              />
-              I&apos;d like complimentary pickup around Nusa Dua
-            </label>
-            {fields.pickupNeeded && (
-              <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input
-                  placeholder="Hotel Name"
-                  required
-                  value={fields.hotelName}
-                  onChange={update("hotelName")}
-                  className="border p-3 rounded"
-                />
-                <input
-                  placeholder="Room Number"
-                  required
-                  value={fields.roomNumber}
-                  onChange={update("roomNumber")}
-                  className="border p-3 rounded"
-                />
-              </div>
-            )}
           </div>
           <textarea placeholder="Any dietary requirements or special requests?" required value={fields.message} onChange={update("message")} className="border p-3 rounded w-full h-24"></textarea>
           <SubmitButton status={status} label="Reserve Now" submittingMessage={submittingMessage} />

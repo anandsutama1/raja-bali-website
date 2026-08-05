@@ -1,6 +1,7 @@
 import SmartImage from "@/components/SmartImage";
 import MenuSection from "@/components/menu/MenuSection";
 import WineTable from "@/components/menu/WineTable";
+import StickyReserveButton from "@/components/StickyReserveButton";
 
 export const metadata = {
   title: "Beverage Menu",
@@ -256,6 +257,7 @@ export default function BeverageMenuPage() {
         <WineTable title="Sparkling Wine" items={importedSparklingWine} />
       </div>
 
+      <StickyReserveButton href="/outlets" label="RESERVE TABLE" />
     </main>
   );
 }

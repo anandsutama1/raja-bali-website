@@ -4,6 +4,7 @@ import BuffetPackages from "@/components/group-reservation/BuffetPackages";
 import GalleryExperience from "@/components/group-reservation/GalleryExperience";
 import ReservationForm from "@/components/group-reservation/ReservationForm";
 import ContactCTA from "@/components/group-reservation/ContactCTA";
+import StickyReserveButton from "@/components/StickyReserveButton";
 
 export const metadata = {
   title: "Group Reservation & Buffet Packages",
@@ -21,6 +22,7 @@ export default function GroupReservationPage() {
       <GalleryExperience />
       <ReservationForm />
       <ContactCTA />
+      <StickyReserveButton href="#reservation" label="RESERVE FOR GROUP" />
     </main>
   );
 }

@@ -1,6 +1,7 @@
 import SmartImage from "@/components/SmartImage";
 import MenuSection from "@/components/menu/MenuSection";
 import SetMenuCard from "@/components/menu/SetMenuCard";
+import StickyReserveButton from "@/components/StickyReserveButton";
 
 export const metadata = {
   title: "Food Menu",
@@ -134,6 +135,7 @@ export default function FoodMenuPage() {
         ))}
       </div>
 
+      <StickyReserveButton href="/outlets" label="RESERVE TABLE" />
     </main>
   );
 }
