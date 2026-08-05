@@ -7,6 +7,7 @@ import MenuSection from "@/components/cooking-class/MenuSection";
 import GalleryExperience from "@/components/cooking-class/GalleryExperience";
 import Pricing from "@/components/cooking-class/Pricing";
 import ReservationForm from "@/components/cooking-class/ReservationForm";
+import StickyReserveButton from "@/components/StickyReserveButton";
 import { SITE_NAME } from "@/lib/site";
 
 const title = "Balinese Cooking Class";
@@ -56,6 +57,7 @@ export default function CookingClassPage() {
       <GalleryExperience />
       <Pricing />
       <ReservationForm />
+      <StickyReserveButton href="#reservation" label="RESERVE COOKING CLASS" />
     </main>
   );
 }

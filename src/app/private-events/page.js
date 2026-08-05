@@ -4,6 +4,7 @@ import WhatsIncluded from "@/components/private-events/WhatsIncluded";
 import EventSpaces from "@/components/private-events/EventSpaces";
 import GalleryExperience from "@/components/private-events/GalleryExperience";
 import ReservationForm from "@/components/private-events/ReservationForm";
+import StickyReserveButton from "@/components/StickyReserveButton";
 
 export const metadata = {
   title: "Private Events & Venue Rental",
@@ -21,6 +22,7 @@ export default function PrivateEventsPage() {
       <EventSpaces />
       <GalleryExperience />
       <ReservationForm />
+      <StickyReserveButton href="#reservation" label="RESERVE PRIVATE EVENT" />
     </main>
   );
 }

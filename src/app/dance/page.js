@@ -4,6 +4,7 @@ import Schedule from "@/components/dance/Schedule";
 import DanceRepertoire from "@/components/dance/DanceRepertoire";
 import DanceGallery from "@/components/dance/Gallery";
 import ClosingCTA from "@/components/dance/ClosingCTA";
+import StickyReserveButton from "@/components/StickyReserveButton";
 import { SITE_NAME } from "@/lib/site";
 
 const title = "Balinese Dance Performance";
@@ -50,6 +51,7 @@ export default function DancePage() {
       <DanceRepertoire />
       <DanceGallery />
       <ClosingCTA />
+      <StickyReserveButton href="/outlets" label="RESERVE TABLE" />
     </main>
   );
 }

@@ -4,13 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { onScrollFrame } from "./motion/ticker";
 
-// Homepage only, mobile only — the hero's own "Reserve Table" button
-// scrolls away with it, so this picks up once the user has scrolled past
-// that point. Mirrors the navbar's show/hide, but inverted: the navbar
-// hides on scroll-down and shows on scroll-up/idle, so this one shows on
-// scroll-down/idle and hides only while actively scrolling up (an "up"
-// gesture reads as heading back toward the hero's own button).
-export default function StickyReserveButton() {
+// Mobile only — each page's own hero button scrolls away with it, so this
+// picks up once the user has scrolled past that point, acting as a shortcut
+// straight to that page's reservation form (or /outlets, for pages without
+// one of their own). Mirrors the navbar's show/hide, but inverted: the
+// navbar hides on scroll-down and shows on scroll-up/idle, so this one
+// shows on scroll-down/idle and hides only while actively scrolling up (an
+// "up" gesture reads as heading back toward the hero's own button).
+export default function StickyReserveButton({ href = "/outlets", label = "RESERVE TABLE" }) {
   const [hidden, setHidden] = useState(true);
   const lastY = useRef(0);
   const idleTimer = useRef(null);
@@ -55,10 +56,10 @@ export default function StickyReserveButton() {
       style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}
     >
       <Link
-        href="/outlets"
+        href={href}
         className="u-press block w-full bg-raja-black py-4 text-center text-sm tracking-widest text-white shadow-[0_4px_24px_-4px_rgb(0_0_0/0.4)] hover:bg-raja-red"
       >
-        RESERVE TABLE
+        {label}
       </Link>
     </div>
   );

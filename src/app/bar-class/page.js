@@ -7,6 +7,7 @@ import MenuSection from "@/components/bar-class/MenuSection";
 import GalleryExperience from "@/components/bar-class/GalleryExperience";
 import Pricing from "@/components/bar-class/Pricing";
 import ReservationForm from "@/components/bar-class/ReservationForm";
+import StickyReserveButton from "@/components/StickyReserveButton";
 import { SITE_NAME } from "@/lib/site";
 
 const title = "Balinese Cocktail Class";
@@ -56,6 +57,7 @@ export default function BarClassPage() {
       <GalleryExperience />
       <Pricing />
       <ReservationForm />
+      <StickyReserveButton href="#reservation" label="RESERVE COCKTAIL & HEALTHY DRINK CLASS" />
     </main>
   );
 }

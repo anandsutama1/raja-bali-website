@@ -5,7 +5,7 @@ import Stagger from "./motion/Stagger";
 
 const activities = [
   {
-    tag: "",
+    tag: "MOST POPULAR",
     title: "Balinese Cooking Class",
     desc: "Learn authentic Balinese cooking hands-on with our experienced local chefs, from the spices we use every day to recipes passed down through generations.",
     cta: "Book Now",
