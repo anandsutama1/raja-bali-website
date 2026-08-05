@@ -10,7 +10,7 @@ const activities = [
     desc: "Learn authentic Balinese cooking hands-on with our experienced local chefs, from the spices we use every day to recipes passed down through generations.",
     cta: "Book Now",
     href: "/cooking-class",
-    image: "/images/home/Cooking-Class.jpg",
+    image: "/images/cooking-class/CookingClass-Hero.jpg",
   },
   {
     tag: "EVERY THURSDAY",
@@ -18,7 +18,7 @@ const activities = [
     desc: "Watch a live traditional Balinese dance performance every Thursday evening, a beautiful mix of music, movement, and centuries-old tradition.",
     cta: "View Details",
     href: "/dance",
-    image: "/images/home/Balinese-Dance.jpg",
+    image: "/images/dance/Hero.jpg",
   },
   {
     tag: "LIMITED SLOT",
@@ -26,7 +26,7 @@ const activities = [
     desc: "Step behind the bar with our bartenders and learn to mix cocktails using fresh tropical ingredients, from island classics to our own signature creations.",
     cta: "Book Now",
     href: "/bar-class",
-    image: "/images/home/Bar-Class.jpg",
+    image: "/images/bar-class/Hero.jpg",
   },
 ];
 
