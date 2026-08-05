@@ -1,5 +1,6 @@
 import SmartImage from "@/components/SmartImage";
 import BuffetCategory from "@/components/menu/BuffetCategory";
+import StickyReserveButton from "@/components/StickyReserveButton";
 
 export const metadata = {
   title: "Western & Asian Buffet Menu",
@@ -110,6 +111,7 @@ export default function WesternAsianBuffetPage() {
         />
       </div>
 
+      <StickyReserveButton href="/group-reservation#reservation" label="RESERVE FOR GROUP" />
     </main>
   );
 }

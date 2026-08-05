@@ -1,5 +1,6 @@
 import SmartImage from "@/components/SmartImage";
 import BuffetCategory from "@/components/menu/BuffetCategory";
+import StickyReserveButton from "@/components/StickyReserveButton";
 
 export const metadata = {
   title: "Balinese Buffet Menu",
@@ -90,6 +91,7 @@ export default function BalineseBuffetPage() {
         <BuffetCategory title="Drinks" options={["Infused Water", "Ice Tea"]} />
       </div>
 
+      <StickyReserveButton href="/group-reservation#reservation" label="RESERVE FOR GROUP" />
     </main>
   );
 }
