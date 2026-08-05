@@ -16,12 +16,15 @@ const BRANCH_NAMES = {
   general: "Raja Bali",
 };
 
-// Only the two dine-in branches map to a physical address — cooking/bar
-// classes, private events, and group bookings are all "general" and get a
-// central contact line instead in the guest confirmation footer.
+// Which outlet's WhatsApp number and address appear in the guest
+// confirmation footer. Only the Nusa Dua reservation branch routes to that
+// outlet directly — every other branch (main restaurant dine-in, plus every
+// activity: cooking/bar classes, private events, group bookings) routes to
+// the main restaurant's WhatsApp number.
 const BRANCH_LOCATION_ID = {
   main: "main-restaurant",
   nusadua: "nusa-dua",
+  general: "main-restaurant",
 };
 
 const FORM_LABELS = {
@@ -59,16 +62,16 @@ const BOOKING_COPY = {
     headline: "Your Table Is Confirmed",
     intro: (locationName) =>
       `Thank you for reserving a table with <strong>${escapeHtml(locationName)}</strong>. Your reservation is confirmed, and we&rsquo;re looking forward to welcoming you.`,
-    closing:
-      "If your plans change or you have any special requests, just reply to this email or reach out to us directly. We&rsquo;re happy to help.",
+    closing: (whatsappLink) =>
+      `If your plans change or you have any special requests, please reach out to us on ${whatsappLink} &mdash; this inbox is unattended, so replying here won&rsquo;t reach us. We&rsquo;re happy to help.`,
   },
   "reservation-nusadua": {
     eyebrow: "Reservation Confirmed",
     headline: "Your Table Is Confirmed",
     intro: (locationName) =>
       `Thank you for reserving a table with <strong>${escapeHtml(locationName)}</strong>. Your reservation is confirmed, and we&rsquo;re looking forward to welcoming you.`,
-    closing:
-      "If your plans change or you have any special requests, just reply to this email or reach out to us directly. We&rsquo;re happy to help.",
+    closing: (whatsappLink) =>
+      `If your plans change or you have any special requests, please reach out to us on ${whatsappLink} &mdash; this inbox is unattended, so replying here won&rsquo;t reach us. We&rsquo;re happy to help.`,
   },
   "cooking-class": {
     eyebrow: "Booking Received",
@@ -164,7 +167,13 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
   const guestName =
     [fields.title, fields.firstName, fields.lastName].filter(Boolean).join(" ") || "Guest";
   const isReservation = RESERVATION_FORM_TYPES.has(formType);
-  const location = LOCATIONS.find((l) => l.id === BRANCH_LOCATION_ID[branch]);
+  // Every branch now maps to an outlet (general -> main restaurant), so this
+  // always resolves — the fallback only guards a formType/branch pairing
+  // that isn't wired up above.
+  const location =
+    LOCATIONS.find((l) => l.id === BRANCH_LOCATION_ID[branch]) ||
+    LOCATIONS.find((l) => l.id === "main-restaurant");
+  const whatsappHref = `https://wa.me/${location.telephone.replace(/\D/g, "")}`;
   const logoUrl = `${SITE_URL}/images/shared/RajaBali_Navbar.png`;
 
   const summaryRows = isReservation
@@ -201,8 +210,9 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
     ? booking.intro(locationName)
     : `Thank you for writing to <strong>${escapeHtml(locationName)}</strong>. Your message has reached us safely, and a member of our team will respond to you personally very soon.`;
 
+  const whatsappLink = `<a href="${whatsappHref}" style="color:#A31C1C;text-decoration:none;">WhatsApp</a>`;
   const closing = isReservation
-    ? booking.closing ||
+    ? (typeof booking.closing === "function" ? booking.closing(whatsappLink) : booking.closing) ||
       "We&rsquo;re looking forward to the opportunity to welcome you, and will follow up shortly to confirm every detail."
     : "We are grateful for your interest in Raja Bali, and look forward to the opportunity of welcoming you soon.";
 
@@ -237,22 +247,14 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
     `
     : "";
 
-  const contactHtml = location
-    ? `
-      <p style="margin:0 0 8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#A31C1C;">Visit Us</p>
-      <p style="margin:0;font-size:13px;line-height:1.7;color:#6b6355;">
-        <strong style="color:#2b2620;">${escapeHtml(EMAIL_LOCATION_NAMES[location.id] || location.name)}</strong><br />
-        ${escapeHtml(location.streetAddress)}, ${escapeHtml(location.addressLocality)}<br />
-        ${escapeHtml(location.telephone)}
-      </p>
-    `
-    : `
-      <p style="margin:0 0 8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#A31C1C;">Reach Us</p>
-      <p style="margin:0;font-size:13px;line-height:1.7;color:#6b6355;">
-        Main Restaurant: ${escapeHtml(LOCATIONS[0].telephone)}<br />
-        Second Outlet: ${escapeHtml(LOCATIONS[1].telephone)}
-      </p>
-    `;
+  const contactHtml = `
+    <p style="margin:0 0 8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#A31C1C;">Visit Us</p>
+    <p style="margin:0;font-size:13px;line-height:1.7;color:#6b6355;">
+      <strong style="color:#2b2620;">${escapeHtml(EMAIL_LOCATION_NAMES[location.id] || location.name)}</strong><br />
+      ${escapeHtml(location.streetAddress)}, ${escapeHtml(location.addressLocality)}<br />
+      WhatsApp: <a href="${whatsappHref}" style="color:#A31C1C;text-decoration:none;">${escapeHtml(location.telephone)}</a>
+    </p>
+  `;
 
   return `
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f0e6;font-family:Georgia,'Times New Roman',serif;">
