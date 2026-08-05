@@ -298,7 +298,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-page-in {
-  animation: pageIn 0.55s var(--ease-expo) both;
+  /* backwards, not both — "both" left transform: translate3d(0,0,0) applied
+     permanently after the animation ended (its "to" keyframe), which is a
+     no-op visually but still establishes a containing block for any
+     position:fixed descendant, breaking every fixed-position element
+     nested in page content (lightboxes, sticky CTAs, etc.) once the page
+     had finished loading. "backwards" only needs to hold the "from" state
+     before the animation starts; once it ends the element reverts to its
+     un-animated (transform: none) styles, which look identical anyway. */
+  animation: pageIn 0.55s var(--ease-expo) backwards;
 }
 
 .animate-cue {
