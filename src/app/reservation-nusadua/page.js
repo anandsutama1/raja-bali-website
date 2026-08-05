@@ -13,8 +13,8 @@ export default function ReservationNusaDuaPage() {
   return (
     <main>
       <ReservationNusaDuaHero />
-      <ReservationForm />
       <GalleryExperience />
+      <ReservationForm />
     </main>
   );
 }

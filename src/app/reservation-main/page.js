@@ -13,8 +13,8 @@ export default function ReservationMainPage() {
   return (
     <main>
       <ReservationMainHero />
-      <ReservationForm />
       <GalleryExperience />
+      <ReservationForm />
     </main>
   );
 }
