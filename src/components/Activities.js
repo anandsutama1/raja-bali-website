@@ -26,7 +26,7 @@ const activities = [
     desc: "Step behind the bar with our bartenders and learn to mix cocktails using fresh tropical ingredients, from island classics to our own signature creations.",
     cta: "Book Now",
     href: "/bar-class",
-    image: "/images/bar-class/Bar-Card.jpg",
+    image: "/images/home/cocktail-class.png",
   },
 ];
 
