@@ -13,8 +13,10 @@ import { onScrollFrame } from "./motion/ticker";
 // "up" gesture reads as heading back toward the hero's own button).
 export default function StickyReserveButton({ href = "/outlets", label = "RESERVE TABLE" }) {
   const [hidden, setHidden] = useState(true);
+  const [atTarget, setAtTarget] = useState(false);
   const lastY = useRef(0);
   const idleTimer = useRef(null);
+  const targetId = href.startsWith("#") ? href.slice(1) : null;
 
   useEffect(() => {
     lastY.current = window.scrollY;
@@ -45,13 +47,31 @@ export default function StickyReserveButton({ href = "/outlets", label = "RESERV
 
   useEffect(() => () => clearTimeout(idleTimer.current), []);
 
+  // Once the reservation form the button points to is on screen — whether
+  // the guest tapped the button or just scrolled there themselves — the
+  // shortcut has done its job, so it disappears instead of sitting on top
+  // of the form guests are trying to fill in.
+  useEffect(() => {
+    if (!targetId) return undefined;
+    const target = document.getElementById(targetId);
+    if (!target) return undefined;
+
+    // Default threshold (0): hides as soon as any part of the form is on
+    // screen and reappears the moment the form has scrolled fully out of
+    // view again — a ratio-based threshold would keep it hidden far too
+    // long on a form section this much taller than the viewport.
+    const observer = new IntersectionObserver(([entry]) => setAtTarget(entry.isIntersecting));
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [targetId]);
+
   // z-30 is deliberately one below the mobile nav drawer's z-40
   // (Navbar.js) so it sinks behind the drawer automatically once opened
   // instead of floating on top of the menu.
   return (
     <div
       className={`fixed inset-x-0 bottom-0 z-30 px-4 pb-4 transition-transform duration-500 ease-expo md:hidden ${
-        hidden ? "translate-y-[calc(100%+1rem)]" : "translate-y-0"
+        hidden || atTarget ? "translate-y-[calc(100%+1rem)]" : "translate-y-0"
       }`}
       style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}
     >
