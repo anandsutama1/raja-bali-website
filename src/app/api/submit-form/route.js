@@ -341,6 +341,15 @@ async function sendGuestConfirmationEmail({ formType, branch, fields }) {
   if (error) throw new Error(error.message || "Resend failed to send the guest confirmation.");
 }
 
+// Logs the failure (with a label) but re-throws, so this can wrap a promise
+// passed into Promise.any() without masking which branch actually failed.
+function withLogging(promise, label) {
+  return promise.catch((err) => {
+    console.error(`${label} failed:`, err);
+    throw err;
+  });
+}
+
 // TODO: WhatsApp notification (not implemented yet). Once a provider is
 // chosen (e.g. Twilio, WhatsApp Cloud API), send a message here using the
 // same `fields` payload as the email above, then call it from POST alongside
@@ -363,30 +372,36 @@ export async function POST(request) {
 
   const targetEmail = BRANCH_EMAILS[branch] || BRANCH_EMAILS.general;
 
-  const [sheetsResult, emailResult] = await Promise.allSettled([
-    submitToGoogleSheets({ formType, branch, ...fields }),
-    sendNotificationEmail({ formType, targetEmail, fields }),
-  ]);
-
-  const sheetsOk = sheetsResult.status === "fulfilled";
-  const emailOk = emailResult.status === "fulfilled";
-
-  if (!sheetsOk) console.error("Google Sheets submission failed:", sheetsResult.reason);
-  if (!emailOk) console.error("Resend email failed:", emailResult.reason);
-
   // Guest confirmation is best-effort only and never affects whether the
   // request is considered successful, so it doesn't need to hold up the
-  // response — it was previously awaited alongside Sheets/notification and
-  // was often the slowest of the three, adding a couple of seconds of pure
-  // wait with nothing for the guest to show for it. `after()` runs it once
-  // the response is already on its way back to the browser.
+  // response. `after()` runs it once the response is already on its way
+  // back to the browser.
   after(() =>
     sendGuestConfirmationEmail({ formType, branch, fields }).catch((err) =>
       console.error("Guest confirmation email failed:", err)
     )
   );
 
-  if (!sheetsOk && !emailOk) {
+  // Sheets and the restaurant notification email both count as "the booking
+  // got through" — whichever succeeds FIRST is enough to tell the guest so,
+  // instead of always waiting for both. This matters because Google Apps
+  // Script (Sheets) can take several seconds and used to dominate the whole
+  // request; Resend's email API is typically much faster. Only if BOTH fail
+  // do we tell the guest something went wrong. Sheets keeps running via
+  // after() even once the notification email alone has settled it.
+  const sheetsPromise = withLogging(
+    submitToGoogleSheets({ formType, branch, ...fields }),
+    "Google Sheets submission"
+  );
+  const emailPromise = withLogging(
+    sendNotificationEmail({ formType, targetEmail, fields }),
+    "Resend notification email"
+  );
+  after(() => Promise.allSettled([sheetsPromise, emailPromise]));
+
+  try {
+    await Promise.any([sheetsPromise, emailPromise]);
+  } catch {
     return NextResponse.json(
       {
         ok: false,
@@ -396,5 +411,5 @@ export async function POST(request) {
     );
   }
 
-  return NextResponse.json({ ok: true, sheetsOk, emailOk });
+  return NextResponse.json({ ok: true });
 }
