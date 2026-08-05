@@ -56,11 +56,16 @@ export default function StickyReserveButton({ href = "/outlets", label = "RESERV
     const target = document.getElementById(targetId);
     if (!target) return undefined;
 
-    // Default threshold (0): hides as soon as any part of the form is on
-    // screen and reappears the moment the form has scrolled fully out of
-    // view again — a ratio-based threshold would keep it hidden far too
-    // long on a form section this much taller than the viewport.
-    const observer = new IntersectionObserver(([entry]) => setAtTarget(entry.isIntersecting));
+    // Shrinks the intersection root to the middle third of the viewport, so
+    // only a real chunk of the form counts as "arrived" — not just a sliver
+    // grazing the very top edge. That sliver case is real: on pages where
+    // the form sits close to the end of the document, scrolling to the
+    // bottom can leave a few px of the (very tall) form permanently poking
+    // into the top of the viewport with nowhere further to scroll, which
+    // would otherwise pin the button hidden forever with no way back.
+    const observer = new IntersectionObserver(([entry]) => setAtTarget(entry.isIntersecting), {
+      rootMargin: "-35% 0px -35% 0px",
+    });
     observer.observe(target);
     return () => observer.disconnect();
   }, [targetId]);
