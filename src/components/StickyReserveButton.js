@@ -47,6 +47,24 @@ export default function StickyReserveButton({ href = "/outlets", label = "RESERV
 
   useEffect(() => () => clearTimeout(idleTimer.current), []);
 
+  // Native/Next.js hash navigation only scrolls on an actual hash *change*.
+  // The first tap sets the URL hash to #reservation and scrolls fine, but
+  // once a guest scrolls away and taps the reappeared button again, the
+  // hash is already #reservation — same href, no change, so nothing
+  // scrolls and the tap looks like it's doing nothing. Scrolling manually
+  // on every click sidesteps that entirely.
+  const handleClick = targetId
+    ? (e) => {
+        e.preventDefault();
+        document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        // replaceState (not pushState) so repeated taps don't pile up
+        // history entries the back button would have to click through.
+        if (window.location.hash !== `#${targetId}`) {
+          window.history.replaceState(null, "", `#${targetId}`);
+        }
+      }
+    : undefined;
+
   // Once the reservation form the button points to is on screen — whether
   // the guest tapped the button or just scrolled there themselves — the
   // shortcut has done its job, so it disappears instead of sitting on top
@@ -82,6 +100,7 @@ export default function StickyReserveButton({ href = "/outlets", label = "RESERV
     >
       <Link
         href={href}
+        onClick={handleClick}
         className="u-press block w-full bg-raja-black py-4 text-center text-sm tracking-widest text-white shadow-[0_4px_24px_-4px_rgb(0_0_0/0.4)] hover:bg-raja-red"
       >
         {label}
