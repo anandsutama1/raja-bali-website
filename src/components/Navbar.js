@@ -174,13 +174,24 @@ export default function Navbar() {
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >
+          <Link
+            href="/outlets"
+            className="mb-8 block bg-raja-black px-6 py-4 text-center text-sm tracking-widest text-white u-press hover:bg-raja-red"
+            style={{
+              transitionDelay: open ? "120ms" : "0ms",
+              opacity: open ? 1 : 0,
+            }}
+          >
+            RESERVE TABLE
+          </Link>
+
           <ul className="space-y-1">
             {drawerLinks.map((link, index) => (
               <li
                 key={link.href}
                 className="transition-all duration-[600ms] ease-expo"
                 style={{
-                  transitionDelay: open ? `${120 + index * 45}ms` : "0ms",
+                  transitionDelay: open ? `${120 + (index + 1) * 45}ms` : "0ms",
                   opacity: open ? 1 : 0,
                   transform: open ? "none" : "translateX(24px)",
                 }}
@@ -196,17 +207,6 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-
-          <Link
-            href="/outlets"
-            className="mt-10 block bg-raja-black px-6 py-4 text-center text-sm tracking-widest text-white u-press hover:bg-raja-red"
-            style={{
-              transitionDelay: open ? `${120 + drawerLinks.length * 45}ms` : "0ms",
-              opacity: open ? 1 : 0,
-            }}
-          >
-            RESERVE TABLE
-          </Link>
         </div>
       </div>
     </>
