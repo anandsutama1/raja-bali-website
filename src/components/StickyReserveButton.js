@@ -1,25 +1,53 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { onScrollFrame } from "./motion/ticker";
 
 // Homepage only, mobile only — the hero's own "Reserve Table" button
 // scrolls away with it, so this picks up once the user has scrolled past
-// that point and keeps the CTA within thumb's reach the rest of the page.
+// that point. Mirrors the navbar's show/hide, but inverted: the navbar
+// hides on scroll-down and shows on scroll-up/idle, so this one shows on
+// scroll-down/idle and hides only while actively scrolling up (an "up"
+// gesture reads as heading back toward the hero's own button).
 export default function StickyReserveButton() {
-  const [visible, setVisible] = useState(false);
+  const [hidden, setHidden] = useState(true);
+  const lastY = useRef(0);
+  const idleTimer = useRef(null);
 
   useEffect(() => {
+    lastY.current = window.scrollY;
+
     return onScrollFrame(({ y, height }) => {
-      setVisible(y > height * 0.6);
+      const pastHero = y > height * 0.6;
+
+      if (!pastHero) {
+        setHidden(true);
+        lastY.current = y;
+        clearTimeout(idleTimer.current);
+        return;
+      }
+
+      const delta = y - lastY.current;
+      if (Math.abs(delta) > 6) {
+        setHidden(delta < 0);
+        lastY.current = y;
+      }
+
+      // Idle: once scrolling settles (no significant movement for a beat),
+      // always reveal rather than leaving it stuck hidden from a prior
+      // upward scroll.
+      clearTimeout(idleTimer.current);
+      idleTimer.current = setTimeout(() => setHidden(false), 150);
     });
   }, []);
+
+  useEffect(() => () => clearTimeout(idleTimer.current), []);
 
   return (
     <div
       className={`fixed inset-x-0 bottom-0 z-40 px-4 pb-4 transition-transform duration-500 ease-expo md:hidden ${
-        visible ? "translate-y-0" : "translate-y-[calc(100%+1rem)]"
+        hidden ? "translate-y-[calc(100%+1rem)]" : "translate-y-0"
       }`}
       style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}
     >
