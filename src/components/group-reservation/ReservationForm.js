@@ -98,7 +98,7 @@ export default function ReservationForm() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <GuestCountField value={fields.guests} onChange={update("guests")} placeholder="Number of Adults" required className="border p-3 rounded" />
-            <GuestCountField value={fields.children} onChange={update("children")} placeholder="Number of Children" className="border p-3 rounded" />
+            <GuestCountField value={fields.children} onChange={update("children")} options={[0, 1, 2, 3, 4, 5]} placeholder="Number of Children" className="border p-3 rounded" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>

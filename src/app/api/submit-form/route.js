@@ -169,18 +169,21 @@ function buildEmailHtml(formType, fields) {
     .join("");
 
   // Hotel Name / Room Number are easy to miss as a "this guest needs pickup"
-  // signal if you're just skimming the table, so it's spelled out here too.
-  // Deliberately tied to the same `hasPickup` flag as the table rows above —
-  // never re-derive this separately, or the two can drift out of sync.
+  // signal if you're just skimming the table, so it's spelled out here too —
+  // placed ABOVE the table (not below), since a long guest message can push
+  // anything after the table out of view on mobile or below an email
+  // client's clipping point. Deliberately tied to the same `hasPickup` flag
+  // as the table rows above — never re-derive this separately, or the two
+  // can drift out of sync.
   const pickupNoteHtml = hasPickup
-    ? `<p style="margin:16px 0 0;padding:10px 14px;background:#fff4e5;border-left:3px solid #d97706;color:#7a4a00;font-size:13px;font-weight:600;">⚠ Guest needs pickup &mdash; see hotel/room details above.</p>`
+    ? `<p style="margin:0 0 16px;padding:12px 14px;background:#fff4e5;border-left:3px solid #d97706;color:#7a4a00;font-size:14px;font-weight:700;">⚠ GUEST NEEDS PICKUP &mdash; see Hotel Name / Room Number below.</p>`
     : "";
 
   return `
     <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;">
       <h2 style="color:#A31C1C;margin-bottom:16px;">New ${label} Submission</h2>
-      <table style="width:100%;border-collapse:collapse;border:1px solid #eee;">${rowsHtml}</table>
       ${pickupNoteHtml}
+      <table style="width:100%;border-collapse:collapse;border:1px solid #eee;">${rowsHtml}</table>
       <p style="color:#999;font-size:12px;margin-top:24px;">Sent automatically from the Raja Bali website.</p>
     </div>
   `;
@@ -350,6 +353,7 @@ async function sendNotificationEmail({ formType, targetEmail, fields }) {
   if (!targetEmail) throw new Error("No destination email configured for this branch.");
 
   const label = FORM_LABELS[formType] || formType;
+  const hasPickup = needsPickup(fields);
 
   // Logged unconditionally (not just on pickup) so a Vercel log search for
   // "pickup check" always shows exactly what the server computed for any
@@ -359,13 +363,20 @@ async function sendNotificationEmail({ formType, targetEmail, fields }) {
     formType,
     hasHotelName: Boolean(fields.hotelName),
     hasRoomNumber: Boolean(fields.roomNumber),
-    willShowPickupNote: needsPickup(fields),
+    willShowPickupNote: hasPickup,
   });
+
+  // Also flagged in the subject line, not just the email body — visible in
+  // the inbox list without even opening the email, so it can't be missed
+  // regardless of how the body renders or where it gets scrolled/clipped.
+  const subject = hasPickup
+    ? `🚗 PICKUP NEEDED — New ${label} Submission | Raja Bali`
+    : `New ${label} Submission | Raja Bali`;
 
   const { error } = await resend.emails.send({
     from: "Raja Bali Website <noreply@rajabalirestaurant.co>",
     to: targetEmail,
-    subject: `New ${label} Submission | Raja Bali`,
+    subject,
     html: buildEmailHtml(formType, fields),
   });
 
