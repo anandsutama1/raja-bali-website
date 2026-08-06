@@ -124,6 +124,11 @@ const EMAIL_LOCATION_NAMES = {
 const PICKUP_NOTE =
   "Complimentary pickup service for guests staying around the Nusa Dua area is available, subject to availability.";
 
+// Table reservations only — a cooking/bar class or private event session
+// isn't "released" the same way a table is, so this doesn't apply there.
+const NO_SHOW_NOTE =
+  "Please note: your table will be held for 30 minutes past the reservation time. If you haven't arrived by then, the booking may be released and treated as cancelled.";
+
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -153,10 +158,18 @@ function buildEmailHtml(formType, fields) {
     )
     .join("");
 
+  // Hotel Name / Room Number are easy to miss as a "this guest needs pickup"
+  // signal if you're just skimming the table, so it's spelled out here too.
+  const pickupNoteHtml =
+    fields.hotelName || fields.roomNumber
+      ? `<p style="margin:16px 0 0;padding:10px 14px;background:#fff4e5;border-left:3px solid #d97706;color:#7a4a00;font-size:13px;font-weight:600;">⚠ Guest needs pickup &mdash; see hotel/room details above.</p>`
+      : "";
+
   return `
     <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;">
       <h2 style="color:#A31C1C;margin-bottom:16px;">New ${label} Submission</h2>
       <table style="width:100%;border-collapse:collapse;border:1px solid #eee;">${rowsHtml}</table>
+      ${pickupNoteHtml}
       <p style="color:#999;font-size:12px;margin-top:24px;">Sent automatically from the Raja Bali website.</p>
     </div>
   `;
@@ -229,7 +242,9 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
     `
     : "";
 
-  const notes = isReservation ? [booking.note, PICKUP_NOTE].filter(Boolean) : [];
+  const notes = isReservation
+    ? [booking.note, TABLE_RESERVATION_TYPES.has(formType) ? NO_SHOW_NOTE : null, PICKUP_NOTE].filter(Boolean)
+    : [];
   const notesHtml = notes.length
     ? `
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:24px 0 0;background:#faf7f1;border-left:3px solid #A31C1C;">

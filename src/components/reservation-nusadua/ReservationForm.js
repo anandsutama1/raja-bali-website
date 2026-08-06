@@ -70,7 +70,7 @@ export default function ReservationForm() {
         Complete the form below and our team will confirm your reservation as soon as possible. If you have any special requests or dietary requirements, simply let us know&mdash;we&apos;ll be delighted to assist you.
       </p>
       <p className="text-center text-sm text-gray-500 mb-14">
-        Please note: indoor seating is non-smoking, while our outdoor tables welcome smoking guests.
+        Please note: indoor seating is non-smoking, while our outdoor tables welcome smoking guests. Your table will be held for 30 minutes past the reservation time, after which the booking may be released and treated as cancelled.
       </p>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <fieldset disabled={status === "submitting"} className="m-0 min-w-0 space-y-4 border-0 p-0">
