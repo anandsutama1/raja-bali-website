@@ -7,7 +7,7 @@ import { DEFAULT_COUNTRY_CODE } from "@/lib/countryCodes";
 import { TITLES } from "@/lib/titles";
 import { OPENING_HOUR_SLOTS } from "@/lib/timeSlots";
 import PhoneField from "@/components/PhoneField";
-import ChildrenField from "@/components/ChildrenField";
+import GuestCountField from "@/components/GuestCountField";
 import SubmitButton from "@/components/SubmitButton";
 
 const initialFields = {
@@ -78,21 +78,27 @@ export default function ReservationForm() {
             <input placeholder="Last Name" required value={fields.lastName} onChange={update("lastName")} className="border p-3 rounded" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <input type="date" placeholder="DD/MM/YYYY" min={today} required value={fields.date} onChange={update("date")} className="border p-3 rounded w-full" />
-            <select required value={fields.time} onChange={update("time")} className="border p-3 rounded text-gray-700">
-              <option value="" disabled>
-                Select a time
-              </option>
-              {OPENING_HOUR_SLOTS.map((slot) => (
-                <option key={slot} value={slot}>
-                  {slot}
+            <div>
+              <label className="mb-1 block text-xs text-gray-500">Date</label>
+              <input type="date" min={today} required value={fields.date} onChange={update("date")} className="border p-3 rounded w-full" />
+            </div>
+            <div>
+              <label className="mb-1 block text-xs text-gray-500">Time</label>
+              <select required value={fields.time} onChange={update("time")} className="border p-3 rounded text-gray-700 w-full">
+                <option value="" disabled>
+                  Select a time
                 </option>
-              ))}
-            </select>
+                {OPENING_HOUR_SLOTS.map((slot) => (
+                  <option key={slot} value={slot}>
+                    {slot}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <input type="number" min="1" placeholder="Number of Adults" required value={fields.guests} onChange={update("guests")} className="border p-3 rounded" />
-            <ChildrenField value={fields.children} onChange={update("children")} className="border p-3 rounded" />
+            <GuestCountField value={fields.guests} onChange={update("guests")} placeholder="Number of Adults" required className="border p-3 rounded" />
+            <GuestCountField value={fields.children} onChange={update("children")} placeholder="Number of Children" className="border p-3 rounded" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>

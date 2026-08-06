@@ -3,14 +3,22 @@
 import { useState } from "react";
 
 const OTHER_VALUE = "__other__";
-const CHILDREN_OPTIONS = [1, 2, 3, 4, 5];
+const DEFAULT_OPTIONS = [1, 2, 3, 4, 5];
 
 /**
- * Number-of-children dropdown (1-5, optional) with a "type manually" escape
- * hatch for larger groups — same combobox/manual-toggle pattern as
- * PhoneField's country code, so the two fields feel consistent.
+ * Guest-count dropdown (1-5 by default, with a "type manually" escape
+ * hatch for larger groups) — same combobox/manual-toggle pattern as
+ * PhoneField's country code. Shared by both Number of Adults (required)
+ * and Number of Children (optional) fields.
  */
-export default function ChildrenField({ value, onChange, className = "border p-3" }) {
+export default function GuestCountField({
+  value,
+  onChange,
+  options = DEFAULT_OPTIONS,
+  placeholder = "Number of Guests",
+  required = false,
+  className = "border p-3",
+}) {
   const [isManual, setIsManual] = useState(false);
 
   const handleSelectChange = (e) => {
@@ -31,8 +39,9 @@ export default function ChildrenField({ value, onChange, className = "border p-3
     <div className="flex flex-col gap-1">
       <input
         type="number"
-        min="0"
-        placeholder="Number of Children"
+        min={required ? 1 : 0}
+        placeholder={placeholder}
+        required={required}
         value={value}
         onChange={onChange}
         className={className}
@@ -46,9 +55,11 @@ export default function ChildrenField({ value, onChange, className = "border p-3
       </button>
     </div>
   ) : (
-    <select value={value} onChange={handleSelectChange} className={className}>
-      <option value="">Number of Children</option>
-      {CHILDREN_OPTIONS.map((n) => (
+    <select value={value} onChange={handleSelectChange} required={required} className={className}>
+      <option value="" disabled={required}>
+        {placeholder}
+      </option>
+      {options.map((n) => (
         <option key={n} value={n}>
           {n}
         </option>

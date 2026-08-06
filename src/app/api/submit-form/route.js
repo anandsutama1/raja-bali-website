@@ -136,8 +136,17 @@ function escapeHtml(value) {
     .replace(/>/g, "&gt;");
 }
 
+// Single source of truth for "this booking needs pickup" — computed once
+// from the raw fields and reused everywhere (table row filtering, the
+// warning banner, and logging) so there's no way for the banner to
+// disagree with whether hotel/room data actually made it into the email.
+function needsPickup(fields) {
+  return Boolean(fields.hotelName) || Boolean(fields.roomNumber);
+}
+
 function buildEmailHtml(formType, fields) {
   const label = FORM_LABELS[formType] || formType;
+  const hasPickup = needsPickup(fields);
 
   const rows = [
     ["Name", [fields.title, fields.firstName, fields.lastName].filter(Boolean).join(" ")],
@@ -161,10 +170,11 @@ function buildEmailHtml(formType, fields) {
 
   // Hotel Name / Room Number are easy to miss as a "this guest needs pickup"
   // signal if you're just skimming the table, so it's spelled out here too.
-  const pickupNoteHtml =
-    fields.hotelName || fields.roomNumber
-      ? `<p style="margin:16px 0 0;padding:10px 14px;background:#fff4e5;border-left:3px solid #d97706;color:#7a4a00;font-size:13px;font-weight:600;">⚠ Guest needs pickup &mdash; see hotel/room details above.</p>`
-      : "";
+  // Deliberately tied to the same `hasPickup` flag as the table rows above —
+  // never re-derive this separately, or the two can drift out of sync.
+  const pickupNoteHtml = hasPickup
+    ? `<p style="margin:16px 0 0;padding:10px 14px;background:#fff4e5;border-left:3px solid #d97706;color:#7a4a00;font-size:13px;font-weight:600;">⚠ Guest needs pickup &mdash; see hotel/room details above.</p>`
+    : "";
 
   return `
     <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;">
@@ -340,6 +350,17 @@ async function sendNotificationEmail({ formType, targetEmail, fields }) {
   if (!targetEmail) throw new Error("No destination email configured for this branch.");
 
   const label = FORM_LABELS[formType] || formType;
+
+  // Logged unconditionally (not just on pickup) so a Vercel log search for
+  // "pickup check" always shows exactly what the server computed for any
+  // given submission — the fastest way to confirm or rule out a mismatch
+  // if a guest ever reports the warning banner missing again.
+  console.log("[submit-form] pickup check", {
+    formType,
+    hasHotelName: Boolean(fields.hotelName),
+    hasRoomNumber: Boolean(fields.roomNumber),
+    willShowPickupNote: needsPickup(fields),
+  });
 
   const { error } = await resend.emails.send({
     from: "Raja Bali Website <noreply@rajabalirestaurant.co>",
