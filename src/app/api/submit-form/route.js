@@ -122,7 +122,7 @@ const EMAIL_LOCATION_NAMES = {
 // Shown on every booking-type confirmation, not just Nusa Dua reservations —
 // guests staying in the Nusa Dua area may be headed to either outlet.
 const PICKUP_NOTE =
-  "Complimentary pickup service for guests staying around the Nusa Dua area is available, subject to availability.";
+  "Complimentary pickup service for guests staying around the Nusa Dua area is available (minimum 2 adults per request), subject to availability.";
 
 // Table reservations only — a cooking/bar class or private event session
 // isn't "released" the same way a table is, so this doesn't apply there.
@@ -146,6 +146,7 @@ function buildEmailHtml(formType, fields) {
     ["Date", fields.date],
     ["Time", fields.time],
     ["Guests", fields.guests],
+    ["Children", fields.children],
     ["Hotel Name", fields.hotelName],
     ["Room Number", fields.roomNumber],
     ["Message", fields.message],
@@ -194,6 +195,7 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
         ["Date", fields.date],
         ["Time", fields.time],
         ["Number of Adults", fields.guests],
+        ["Number of Children", fields.children],
         ["Hotel Name", fields.hotelName],
         ["Room Number", fields.roomNumber],
       ].filter(([, value]) => value)

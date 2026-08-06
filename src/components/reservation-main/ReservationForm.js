@@ -7,6 +7,7 @@ import { DEFAULT_COUNTRY_CODE } from "@/lib/countryCodes";
 import { TITLES } from "@/lib/titles";
 import { OPENING_HOUR_SLOTS } from "@/lib/timeSlots";
 import PhoneField from "@/components/PhoneField";
+import ChildrenField from "@/components/ChildrenField";
 import SubmitButton from "@/components/SubmitButton";
 
 const initialFields = {
@@ -16,6 +17,7 @@ const initialFields = {
   date: "",
   time: "",
   guests: "",
+  children: "",
   email: "",
   whatsappCountry: DEFAULT_COUNTRY_CODE,
   whatsappNumber: "",
@@ -41,6 +43,9 @@ export default function ReservationForm() {
     const errors = {};
     if (!isValidEmail(fields.email)) errors.email = EMAIL_ERROR;
     if (!isValidPhoneDigits(fields.whatsappNumber)) errors.whatsapp = PHONE_ERROR;
+    if (fields.pickupNeeded && Number(fields.guests) < 2) {
+      errors.pickup = "Complimentary pickup requires a minimum of 2 adults.";
+    }
     setFieldErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -86,7 +91,7 @@ export default function ReservationForm() {
             <input placeholder="First Name" required value={fields.firstName} onChange={update("firstName")} className="border p-3" />
             <input placeholder="Last Name" required value={fields.lastName} onChange={update("lastName")} className="border p-3" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <input type="date" min={today} required value={fields.date} onChange={update("date")} className="border p-3 w-full" />
             <select required value={fields.time} onChange={update("time")} className="border p-3 text-gray-700">
               <option value="" disabled>
@@ -98,7 +103,10 @@ export default function ReservationForm() {
                 </option>
               ))}
             </select>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <input type="number" min="1" placeholder="Number of Adults" required value={fields.guests} onChange={update("guests")} className="border p-3" />
+            <ChildrenField value={fields.children} onChange={update("children")} className="border p-3" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -129,8 +137,9 @@ export default function ReservationForm() {
                 onChange={toggle("pickupNeeded")}
                 className="h-4 w-4 border-gray-300"
               />
-              I&apos;d like complimentary pickup around Nusa Dua
+              I&apos;d like complimentary pickup around Nusa Dua (minimum 2 adults)
             </label>
+            {fieldErrors.pickup && <p className="mt-1 text-xs text-red-600">{fieldErrors.pickup}</p>}
             {fields.pickupNeeded && (
               <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input

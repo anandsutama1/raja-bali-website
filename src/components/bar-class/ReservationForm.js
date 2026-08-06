@@ -6,6 +6,7 @@ import { isValidEmail, isValidPhoneDigits, EMAIL_ERROR, PHONE_ERROR } from "@/li
 import { DEFAULT_COUNTRY_CODE } from "@/lib/countryCodes";
 import { TITLES } from "@/lib/titles";
 import PhoneField from "@/components/PhoneField";
+import ChildrenField from "@/components/ChildrenField";
 import SubmitButton from "@/components/SubmitButton";
 
 // Single fixed session — Thursdays at 3:00 PM only (previously three
@@ -19,6 +20,7 @@ const initialFields = {
   date: "",
   time: SESSION_TIME,
   guests: "",
+  children: "",
   email: "",
   whatsappCountry: DEFAULT_COUNTRY_CODE,
   whatsappNumber: "",
@@ -50,6 +52,9 @@ export default function ReservationForm() {
     if (!isValidEmail(fields.email)) errors.email = EMAIL_ERROR;
     if (!isValidPhoneDigits(fields.whatsappNumber)) errors.whatsapp = PHONE_ERROR;
     if (!isThursday(fields.date)) errors.date = "Bar class sessions run on Thursdays only.";
+    if (fields.pickupNeeded && Number(fields.guests) < 2) {
+      errors.pickup = "Complimentary pickup requires a minimum of 2 adults.";
+    }
     setFieldErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -92,7 +97,7 @@ export default function ReservationForm() {
             <input placeholder="First Name" required value={fields.firstName} onChange={update("firstName")} className="border p-3 rounded" />
             <input placeholder="Last Name" required value={fields.lastName} onChange={update("lastName")} className="border p-3 rounded" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <input type="date" placeholder="DD/MM/YYYY" min={today} required value={fields.date} onChange={update("date")} className="border p-3 rounded w-full" />
               {fieldErrors.date && <p className="mt-1 text-xs text-red-600">{fieldErrors.date}</p>}
@@ -100,7 +105,10 @@ export default function ReservationForm() {
             <div className="flex items-center border p-3 rounded text-gray-700 bg-gray-50">
               {SESSION_TIME} <span className="ml-1 text-xs text-gray-400">(Thu only)</span>
             </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <input type="number" min="1" placeholder="Number of Adults" required value={fields.guests} onChange={update("guests")} className="border p-3 rounded" />
+            <ChildrenField value={fields.children} onChange={update("children")} className="border p-3 rounded" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -131,8 +139,9 @@ export default function ReservationForm() {
                 onChange={toggle("pickupNeeded")}
                 className="h-4 w-4 border-gray-300"
               />
-              I&apos;d like complimentary pickup around Nusa Dua
+              I&apos;d like complimentary pickup around Nusa Dua (minimum 2 adults)
             </label>
+            {fieldErrors.pickup && <p className="mt-1 text-xs text-red-600">{fieldErrors.pickup}</p>}
             {fields.pickupNeeded && (
               <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input

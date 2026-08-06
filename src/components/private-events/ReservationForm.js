@@ -7,6 +7,7 @@ import { DEFAULT_COUNTRY_CODE } from "@/lib/countryCodes";
 import { TITLES } from "@/lib/titles";
 import { OPENING_HOUR_SLOTS } from "@/lib/timeSlots";
 import PhoneField from "@/components/PhoneField";
+import ChildrenField from "@/components/ChildrenField";
 import SubmitButton from "@/components/SubmitButton";
 
 const initialFields = {
@@ -16,6 +17,7 @@ const initialFields = {
   date: "",
   time: "",
   guests: "",
+  children: "",
   email: "",
   whatsappCountry: DEFAULT_COUNTRY_CODE,
   whatsappNumber: "",
@@ -75,7 +77,7 @@ export default function ReservationForm() {
             <input placeholder="First Name" required value={fields.firstName} onChange={update("firstName")} className="border p-3 rounded" />
             <input placeholder="Last Name" required value={fields.lastName} onChange={update("lastName")} className="border p-3 rounded" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <input type="date" placeholder="DD/MM/YYYY" min={today} required value={fields.date} onChange={update("date")} className="border p-3 rounded w-full" />
             <select required value={fields.time} onChange={update("time")} className="border p-3 rounded text-gray-700">
               <option value="" disabled>
@@ -87,7 +89,10 @@ export default function ReservationForm() {
                 </option>
               ))}
             </select>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <input type="number" min="1" placeholder="Number of Adults" required value={fields.guests} onChange={update("guests")} className="border p-3 rounded" />
+            <ChildrenField value={fields.children} onChange={update("children")} className="border p-3 rounded" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
