@@ -5,7 +5,7 @@ const destinations = [
   {
     tag: "Flagship Cultural Destination",
     name: "Raja Bali Main Restaurant",
-    desc: "Experience authentic Balinese dining alongside cultural performances, immersive classes, and warm island hospitality, with a large on-site parking area for guests.",
+    desc: "Experience authentic Balinese dining alongside our complimentary Balinese Dance Performance, immersive classes, and warm island hospitality, with a large on-site parking area for guests.",
     features: "Restaurant · Culture · Experiences",
     href: "/reservation-main",
     image: "/images/outlets/Main-Restaurant.jpg",

@@ -13,9 +13,9 @@ const activities = [
     image: "/images/cooking-class/CookingClass-Card.jpg",
   },
   {
-    tag: "EVERY THURSDAY",
+    tag: "FREE · MAIN RESTAURANT ONLY",
     title: "Balinese Dance Performance",
-    desc: "Watch a live traditional Balinese dance performance every Thursday evening, a beautiful mix of music, movement, and centuries-old tradition.",
+    desc: "Watch a complimentary traditional Balinese dance performance every Thursday evening at our Main Restaurant, a beautiful mix of music, movement, and centuries-old tradition.",
     cta: "View Details",
     href: "/dance",
     image: "/images/dance/Hero.jpg",

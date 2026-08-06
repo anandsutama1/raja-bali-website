@@ -10,6 +10,13 @@ export default function ReservationNusaDuaHero() {
         <p className="max-w-xl mx-auto text-sm text-gray-200">
           Enjoy authentic Balinese cuisine in an elegant setting, perfect for romantic dinners, family gatherings, and memorable celebrations in the heart of Nusa Dua.
         </p>
+        <p className="mt-3 text-xs text-gray-300">
+          Looking for our complimentary Balinese Dance Performance? It&apos;s held every Thursday evening at{" "}
+          <a href="/reservation-main" className="underline hover:text-white">
+            Raja Bali Main Restaurant
+          </a>
+          , not this location.
+        </p>
       </div>
     </section>
   );

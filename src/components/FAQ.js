@@ -3,6 +3,7 @@ import Reveal from "./motion/Reveal";
 
 const faqs = [
   { q: "Do you offer complimentary hotel pick-up and drop-off?", a: "Yes. We provide complimentary return transfers for guests staying in selected areas around Nusa Dua." },
+  { q: "Where can I watch the Balinese Dance Performance?", a: "The Balinese Dance Performance is complimentary for dining guests and held exclusively at Raja Bali Main Restaurant in Tanjung Benoa, every Thursday evening. It isn't held at our second outlet, Raja Bali Nusa Dua, even though both are in the same general area." },
   { q: "Do I need to make a reservation?", a: "Reservations are recommended, especially during dinner hours and peak holiday seasons." },
   { q: "Do you accept credit cards?", a: "Yes. We accept major credit and debit cards, as well as cash payments." },
   { q: "Do you serve halal food?", a: "Yes. We offer a variety of halal-friendly dishes." },

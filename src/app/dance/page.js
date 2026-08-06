@@ -9,7 +9,7 @@ import { SITE_NAME } from "@/lib/site";
 
 const title = "Balinese Dance Performance";
 const description =
-  "Experience a timeless Balinese dance performance at Raja Bali every Thursday evening, featuring live music, traditional costumes, and a rotating repertoire of sacred stories.";
+  "Experience a complimentary Balinese dance performance every Thursday evening at Raja Bali Main Restaurant, featuring live music, traditional costumes, and a rotating repertoire of sacred stories.";
 
 // This page gets its own share image (the dance hero photo) instead of the
 // site-wide default. Next.js doesn't merge openGraph/twitter objects between
@@ -51,7 +51,7 @@ export default function DancePage() {
       <DanceRepertoire />
       <DanceGallery />
       <ClosingCTA />
-      <StickyReserveButton href="/outlets" label="RESERVE TABLE" />
+      <StickyReserveButton href="/reservation-main" label="RESERVE TABLE" />
     </main>
   );
 }
