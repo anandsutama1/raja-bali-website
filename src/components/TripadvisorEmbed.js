@@ -23,20 +23,24 @@ import { useEffect, useRef, useState } from "react";
  * "resizes itself" concern) since an iframe's box is a hard boundary
  * nothing inside it can escape.
  *
- * Height is measured from the iframe's own content rather than guessed:
- * a fixed height clipped the widget on some devices/outlets once
- * Tripadvisor's async data (which arrives after the iframe's load event)
- * finished rendering and turned out taller than the estimate. `srcDoc`
- * without a `sandbox` attribute keeps the iframe same-origin to us, so
- * `contentDocument` is readable — poll briefly after load to catch that
- * late-arriving height instead of clipping it.
+ * Both dimensions are measured from the iframe's own content rather than
+ * guessed: a fixed size clipped the widget (bottom, then separately the
+ * right edge) once Tripadvisor's async data — which arrives after the
+ * iframe's load event, and includes a horizontal logo SVG with its own
+ * natural width — finished rendering and turned out bigger than the
+ * estimate. `srcDoc` without a `sandbox` attribute keeps the iframe
+ * same-origin to us, so `contentDocument` is readable — poll briefly
+ * after load to catch that late-arriving size instead of clipping it.
+ * The body is forced `inline-block` + `nowrap` so its scrollWidth reflects
+ * the content's true natural width, not whatever width we happened to
+ * hand the iframe.
  *
  * `html` is Tripadvisor's embed code verbatim (not authored by us), so
  * this is safe to render as-is inside the iframe's own document.
  */
-export default function TripadvisorEmbed({ html, height: initialHeight }) {
+export default function TripadvisorEmbed({ html, height: initialHeight, width: initialWidth = 400 }) {
   const iframeRef = useRef(null);
-  const [height, setHeight] = useState(initialHeight);
+  const [size, setSize] = useState({ height: initialHeight, width: initialWidth });
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -44,8 +48,11 @@ export default function TripadvisorEmbed({ html, height: initialHeight }) {
 
     const measure = () => {
       const body = iframe.contentDocument?.body;
-      if (body && body.scrollHeight > 0) {
-        setHeight(body.scrollHeight);
+      if (!body) return;
+      const nextHeight = body.scrollHeight;
+      const nextWidth = body.scrollWidth;
+      if (nextHeight > 0 && nextWidth > 0) {
+        setSize({ height: nextHeight, width: nextWidth });
       }
     };
 
@@ -53,7 +60,7 @@ export default function TripadvisorEmbed({ html, height: initialHeight }) {
     // The load event fires once the iframe's static markup is in place,
     // but Tripadvisor's own script still needs to fetch and render the
     // real rating content after that — re-measure a few times afterward
-    // to catch the final, settled height.
+    // to catch the final, settled size.
     const timers = [300, 800, 1500, 2500, 4000].map((ms) => setTimeout(measure, ms));
 
     return () => {
@@ -62,7 +69,7 @@ export default function TripadvisorEmbed({ html, height: initialHeight }) {
     };
   }, []);
 
-  const doc = `<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1" /><style>html,body{margin:0;padding:0;}</style></head><body>${html}</body></html>`;
+  const doc = `<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1" /><style>html,body{margin:0;padding:0;}body{display:inline-block;white-space:nowrap;}</style></head><body>${html}</body></html>`;
 
   return (
     <iframe
@@ -72,13 +79,13 @@ export default function TripadvisorEmbed({ html, height: initialHeight }) {
       scrolling="no"
       style={{
         width: "100%",
-        maxWidth: 320,
-        height,
+        maxWidth: Math.min(size.width, 500),
+        height: size.height,
         maxHeight: 400,
         border: "none",
         display: "block",
         margin: "0 auto",
-        transition: "height 0.25s ease",
+        transition: "height 0.25s ease, max-width 0.25s ease",
       }}
     />
   );
