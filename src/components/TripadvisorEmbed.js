@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
  *
  * Why an iframe: Tripadvisor's widget script keeps its own internal
  * loaded/initialized state in the page's `window`. Re-injecting the
- * <script> tag ourselves (the previous approach, to work around Next's
+ * <script> tag ourselves (an earlier approach, to work around Next's
  * client-side navigation caching it as "already loaded") made the *tag*
  * re-execute, but the widget's own internal guard still saw itself as
  * already initialized and skipped the full init + data fetch — so only
@@ -21,14 +21,20 @@ import { useEffect, useRef, useState } from "react";
  * a narrower width, it has one fixed natural size (measured below via
  * `body { display:inline-block; white-space:nowrap }`, which forces
  * scrollWidth/scrollHeight to report the true unconstrained size rather
- * than whatever width we happened to hand the iframe). Simply capping the
- * iframe's own width to the container's width — the earlier approach —
- * shrank the *box* on mobile but not the *content* inside it, since
- * nowrap content doesn't reflow: the widget just overflowed and got
- * clipped instead of shrinking. Rendering the iframe at its true natural
- * size and then CSS-scaling it down (`transform: scale()`) to fit
- * whatever width is actually available shrinks the whole thing
- * proportionally instead, the same way a responsive image would.
+ * than whatever width we happened to hand the iframe). Rendering the
+ * iframe at its true natural size and then CSS-scaling it down
+ * (`transform: scale()`) to fit whatever width is actually available
+ * shrinks the whole thing proportionally, the same way a responsive image
+ * would, instead of clipping it.
+ *
+ * Why it stays invisible until `ready`: revealing the widget as soon as
+ * it mounts meant showing our size *guess* first, then visibly resizing
+ * (sometimes growing before shrinking) as real measurements replaced that
+ * guess and the scale recalculated — janky on mobile especially. Instead
+ * this holds the widget hidden (reserving no layout space) until the
+ * first real measurement and its matching scale are both known, then
+ * reveals it already at the correct size — no animated correction, no
+ * visible grow-then-shrink.
  *
  * `html` is Tripadvisor's embed code verbatim (not authored by us), so
  * this is safe to render as-is inside the iframe's own document.
@@ -44,8 +50,10 @@ const MAX_NATURAL_WIDTH = 520;
 export default function TripadvisorEmbed({ html, height: initialHeight, width: initialWidth = 400 }) {
   const containerRef = useRef(null);
   const iframeRef = useRef(null);
+  const hasRealMeasurement = useRef(false);
   const [natural, setNatural] = useState({ height: initialHeight, width: initialWidth });
   const [scale, setScale] = useState(1);
+  const [ready, setReady] = useState(false);
 
   // Measure the widget's true, unconstrained size once Tripadvisor's own
   // script has rendered it (which happens after the iframe's load event,
@@ -60,6 +68,7 @@ export default function TripadvisorEmbed({ html, height: initialHeight, width: i
       const nextHeight = body.scrollHeight;
       const nextWidth = body.scrollWidth;
       if (nextHeight > 0 && nextWidth > 0) {
+        hasRealMeasurement.current = true;
         setNatural({
           height: nextHeight + SIZE_BUFFER.height,
           width: Math.min(nextWidth + SIZE_BUFFER.width, MAX_NATURAL_WIDTH),
@@ -78,6 +87,8 @@ export default function TripadvisorEmbed({ html, height: initialHeight, width: i
 
   // Scale down to fit whatever width the surrounding layout actually
   // gives this component — recalculated on resize/orientation change too.
+  // Only reveals once a *real* measurement (not the initial guess) has
+  // been scaled at least once, so nothing visible ever needs correcting.
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return undefined;
@@ -86,6 +97,7 @@ export default function TripadvisorEmbed({ html, height: initialHeight, width: i
       const available = container.clientWidth;
       if (available > 0 && natural.width > 0) {
         setScale(Math.min(1, available / natural.width));
+        if (hasRealMeasurement.current) setReady(true);
       }
     };
 
@@ -103,10 +115,10 @@ export default function TripadvisorEmbed({ html, height: initialHeight, width: i
       style={{
         width: "100%",
         maxWidth: natural.width,
-        height: natural.height * scale,
+        height: ready ? natural.height * scale : 0,
         margin: "0 auto",
         overflow: "hidden",
-        transition: "height 0.25s ease",
+        visibility: ready ? "visible" : "hidden",
       }}
     >
       <iframe
@@ -121,7 +133,6 @@ export default function TripadvisorEmbed({ html, height: initialHeight, width: i
           display: "block",
           transform: `scale(${scale})`,
           transformOrigin: "top left",
-          transition: "transform 0.25s ease, width 0.25s ease, height 0.25s ease",
         }}
       />
     </div>
