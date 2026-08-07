@@ -6,11 +6,16 @@ import WhatsIncluded from "@/components/bar-class/WhatsIncluded";
 import MenuSection from "@/components/bar-class/MenuSection";
 import GalleryExperience from "@/components/bar-class/GalleryExperience";
 import Pricing from "@/components/bar-class/Pricing";
-import ReservationForm from "@/components/bar-class/ReservationForm";
 import StickyReserveButton from "@/components/StickyReserveButton";
 import BarClassStructuredData from "@/components/bar-class/StructuredData";
 import PageSchema from "@/components/PageSchema";
+import dynamic from "next/dynamic";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+
+// Below the fold — its form-state/validation JS ships in its own chunk
+// instead of the initial bundle. Still server-rendered (no ssr:false), so
+// there's no content/SEO regression, just a smaller initial JS payload.
+const ReservationForm = dynamic(() => import("@/components/bar-class/ReservationForm"));
 
 const title = "Balinese Cocktail Class";
 const description =

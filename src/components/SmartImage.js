@@ -25,6 +25,10 @@ export default function SmartImage({ src, alt, sizes, priority, className = "" }
       fill
       sizes={sizes}
       priority={priority}
+      // Next doesn't reliably set this from `priority` alone on every
+      // version — set it explicitly so the browser's preload scanner
+      // actually treats hero images as high priority for LCP.
+      fetchPriority={priority ? "high" : undefined}
       className={`object-cover ${className}`}
       onError={() => setErrored(true)}
     />

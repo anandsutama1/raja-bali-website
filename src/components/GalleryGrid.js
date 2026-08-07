@@ -1,8 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import SmartImage from "@/components/SmartImage";
-import Lightbox from "@/components/Lightbox";
+
+// Only needed once a thumbnail is actually clicked, so its JS (and the
+// Image it renders) ships in its own chunk instead of the initial bundle
+// every page with a gallery would otherwise pay for upfront.
+const Lightbox = dynamic(() => import("@/components/Lightbox"));
 
 /**
  * Clickable thumbnail grid + full-screen Lightbox viewer, shared by every

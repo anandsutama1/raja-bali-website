@@ -8,6 +8,7 @@ export default function BarClassHero() {
         alt="Bartender preparing a cocktail at Raja Bali"
         fill
         priority
+        fetchPriority="high"
         sizes="100vw"
         className="object-cover"
       />

@@ -6,11 +6,16 @@ import WhatsIncluded from "@/components/cooking-class/WhatsIncluded";
 import MenuSection from "@/components/cooking-class/MenuSection";
 import GalleryExperience from "@/components/cooking-class/GalleryExperience";
 import Pricing from "@/components/cooking-class/Pricing";
-import ReservationForm from "@/components/cooking-class/ReservationForm";
 import StickyReserveButton from "@/components/StickyReserveButton";
 import CookingClassStructuredData from "@/components/cooking-class/StructuredData";
 import PageSchema from "@/components/PageSchema";
+import dynamic from "next/dynamic";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+
+// Below the fold — its form-state/validation JS ships in its own chunk
+// instead of the initial bundle. Still server-rendered (no ssr:false), so
+// there's no content/SEO regression, just a smaller initial JS payload.
+const ReservationForm = dynamic(() => import("@/components/cooking-class/ReservationForm"));
 
 const title = "Balinese Cooking Class in Bali";
 const description =

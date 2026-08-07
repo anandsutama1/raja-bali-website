@@ -1,7 +1,11 @@
 import Link from "next/link";
-import Accordion from "@/components/Accordion";
+import dynamic from "next/dynamic";
 import FAQStructuredData from "./FAQStructuredData";
 import { mainRestaurantFaqs } from "@/lib/mainRestaurantFaqs";
+
+// Below the fold on every page that uses it — its open/close JS ships in
+// its own chunk instead of the initial bundle.
+const Accordion = dynamic(() => import("@/components/Accordion"));
 
 // The Accordion renders `a` directly, so this swaps in a JSX answer (with
 // a link to the Cooking Class page) for just that one item, while

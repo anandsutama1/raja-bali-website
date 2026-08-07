@@ -1,4 +1,8 @@
-import TripadvisorEmbed from "@/components/TripadvisorEmbed";
+import dynamic from "next/dynamic";
+
+// Below the fold on every page it appears on — its measurement/scaling JS
+// ships in its own chunk instead of the initial bundle.
+const TripadvisorEmbed = dynamic(() => import("@/components/TripadvisorEmbed"));
 
 /**
  * Official Tripadvisor "ratings only wide" widget for Raja Bali Nusa Dua's

@@ -8,6 +8,7 @@ export default function CookingClassHero() {
         alt="Balinese cooking class at Raja Bali"
         fill
         priority
+        fetchPriority="high"
         sizes="100vw"
         className="object-cover"
       />

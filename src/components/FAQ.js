@@ -1,7 +1,11 @@
-import Accordion from "./Accordion";
+import dynamic from "next/dynamic";
 import Reveal from "./motion/Reveal";
 import FAQStructuredData from "./FAQStructuredData";
 import { faqs } from "@/lib/faqs";
+
+// Below the fold on every page that uses it — its open/close JS ships in
+// its own chunk instead of the initial bundle.
+const Accordion = dynamic(() => import("./Accordion"));
 
 export default function FAQ() {
   return (

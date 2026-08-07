@@ -21,30 +21,29 @@ export default function Hero() {
       </Parallax>
 
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-        <p
-          className="animate-rise mb-6 text-[0.7rem] uppercase tracking-[0.35em] text-raja-red sm:text-xs"
-          style={{ animationDelay: "120ms" }}
-        >
+        {/* No entrance animation here (unlike the rest of the page) —
+            this is the LCP candidate, so it must paint on the first frame
+            instead of fading in after a delay. Everything below it still
+            gets the usual animate-rise treatment. */}
+        <p className="mb-6 text-[0.7rem] uppercase tracking-[0.35em] text-raja-red sm:text-xs">
           A premier destination for authentic Balinese cuisine
         </p>
 
-        <h1
-          className="animate-rise"
-          style={{ animationDelay: "260ms" }}
-        >
+        <h1>
           <Image
             src="/images/home/Hero-RajaBali.png"
             alt="Raja Bali"
             width={385}
             height={224}
             priority
+            fetchPriority="high"
             className="h-40 w-auto sm:h-52 md:h-64"
           />
         </h1>
 
         <p
           className="animate-rise mt-6 max-w-2xl text-sm leading-relaxed text-gray-200 sm:text-base"
-          style={{ animationDelay: "340ms" }}
+          style={{ animationDelay: "120ms" }}
         >
           A premier destination for authentic Balinese cuisine in the heart
           of Nusa Dua, where time-honored recipes meet heartfelt hospitality.
@@ -55,7 +54,7 @@ export default function Hero() {
 
         <div
           className="animate-rise mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4"
-          style={{ animationDelay: "460ms" }}
+          style={{ animationDelay: "240ms" }}
         >
           <Link
             href="/outlets"

@@ -1,11 +1,16 @@
+import dynamic from "next/dynamic";
 import ReservationNusaDuaHero from "@/components/reservation-nusadua/Hero";
-import ReservationForm from "@/components/reservation-nusadua/ReservationForm";
 import GalleryExperience from "@/components/reservation-nusadua/GalleryExperience";
 import LocationContext from "@/components/reservation-nusadua/LocationContext";
 import FAQ from "@/components/reservation-nusadua/FAQ";
 import PageSchema from "@/components/PageSchema";
 import TripadvisorBadgeNusaDua from "@/components/TripadvisorBadgeNusaDua";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+
+// Below the fold — its form-state/validation JS ships in its own chunk
+// instead of the initial bundle. Still server-rendered (no ssr:false), so
+// there's no content/SEO regression, just a smaller initial JS payload.
+const ReservationForm = dynamic(() => import("@/components/reservation-nusadua/ReservationForm"));
 
 const title = "Nusa Dua Restaurant Reservation";
 // Landmark names are real, well-known fixtures of the compact ITDC Nusa Dua
