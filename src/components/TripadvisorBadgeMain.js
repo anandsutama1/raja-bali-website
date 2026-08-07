@@ -18,13 +18,14 @@ import Script from "next/script";
  * The outer wrapper is defensive, not part of Tripadvisor's embed code:
  * their widget script has no intrinsic size until its async script/CSS
  * finishes loading, so it can flash much larger than the final badge
- * before settling. Capping the wrapper's max-width/height with
- * overflow-hidden keeps that bounded to this box instead of visibly
+ * before settling. Capping only the *height* (not width — it scales with
+ * the device's screen width instead of sitting in a small fixed box) with
+ * overflow-hidden keeps that flash bounded to this box instead of visibly
  * resizing the page around it.
  */
 export default function TripadvisorBadgeMain() {
   return (
-    <div className="mx-auto max-h-[140px] max-w-[320px] overflow-hidden" style={{ contain: "layout style" }}>
+    <div className="mx-auto w-full max-w-2xl max-h-[140px] overflow-hidden" style={{ contain: "layout style" }}>
       <div id="TA_cdsscrollingravenarrow568" className="TA_cdsscrollingravenarrow">
         <ul id="sfC4Yk" className="TA_links pCB2aiM">
           <li id="cKuJ1SRH" className="PW6l67">
