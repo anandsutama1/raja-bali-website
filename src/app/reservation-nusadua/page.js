@@ -60,7 +60,7 @@ export default function ReservationNusaDuaPage() {
         mainEntityId={`${SITE_URL}/#nusa-dua`}
       />
       <ReservationNusaDuaHero />
-      <div className="flex justify-center px-6 py-8">
+      <div className="flex justify-center py-8">
         <TripadvisorBadgeNusaDua />
       </div>
       <GalleryExperience />

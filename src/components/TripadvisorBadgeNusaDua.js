@@ -7,18 +7,17 @@ import Script from "next/script";
  * own review/AggregateRating markup.
  *
  * The outer wrapper below is defensive, not part of Tripadvisor's embed
- * code: their widget script has no intrinsic size until its async
- * script/CSS finishes loading, so it can flash much larger than the final
- * badge before settling. Capping only the *height* (not width — the
- * "wide" widget is meant to stretch to fill its container, so it scales
- * with the device's screen width) with overflow-hidden keeps that flash
- * bounded to this box instead of visibly resizing the page around it.
+ * code: their widget script has a history of briefly rendering oversized
+ * (no intrinsic size until its async script/CSS finishes loading, so it
+ * can flash much larger than the final badge before settling). Capping the
+ * wrapper's max-width/height with overflow-hidden keeps that bounded to
+ * this box instead of visibly resizing the page around it.
  *
  * IDs/classes inside are exactly what Tripadvisor's embed code specifies.
  */
 export default function TripadvisorBadgeNusaDua() {
   return (
-    <div className="mx-auto w-full max-w-2xl max-h-[60px] overflow-hidden" style={{ contain: "layout style" }}>
+    <div className="mx-auto max-h-[60px] max-w-[320px] overflow-hidden" style={{ contain: "layout style" }}>
       <div id="TA_cdsratingsonlywide504" className="TA_cdsratingsonlywide">
         <ul id="GbXBhcF" className="TA_links yuHVxRMTyr">
           <li id="HHNVYtU" className="cc1BlijLZd">

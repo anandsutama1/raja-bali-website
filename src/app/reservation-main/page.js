@@ -30,7 +30,7 @@ export default function ReservationMainPage() {
         mainEntityId={`${SITE_URL}/#main-restaurant`}
       />
       <ReservationMainHero />
-      <div className="flex justify-center px-6 py-8">
+      <div className="flex justify-center py-8">
         <TripadvisorBadgeMain />
       </div>
       <GalleryExperience />
