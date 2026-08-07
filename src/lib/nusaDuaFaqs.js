@@ -1,0 +1,34 @@
+// Single source of truth for the Nusa Dua page FAQ — read by both the
+// visible Accordion (components/reservation-nusadua/FAQ.js) and its
+// FAQPage structured data (components/reservation-nusadua/FAQStructuredData.js).
+//
+// Unlike Main Restaurant (in Tanjung Benoa, within the greater Nusa Dua
+// tourism area), this outlet sits directly within Nusa Dua itself — the
+// wording below reflects that distinction rather than repeating Main
+// Restaurant's framing.
+export const nusaDuaFaqs = [
+  {
+    q: "Where is Raja Bali Nusa Dua located?",
+    a: "Raja Bali Nusa Dua is located directly within Nusa Dua on Bali's southern peninsula, in a walk-friendly setting close to the area's resorts, shopping, and beaches.",
+  },
+  {
+    q: "Is Raja Bali Nusa Dua near Bali Collection?",
+    a: "Yes. Raja Bali Nusa Dua is within walking distance of Bali Collection, the area's central shopping and dining precinct.",
+  },
+  {
+    q: "Is Raja Bali Nusa Dua near The Westin Resort Nusa Dua?",
+    a: "Yes. Raja Bali Nusa Dua is conveniently located near The Westin Resort Nusa Dua and several of the area's other leading hotels and resorts.",
+  },
+  {
+    q: "Is Raja Bali Nusa Dua within walking distance of the ITDC Nusa Dua area?",
+    a: "Yes. Raja Bali Nusa Dua sits in a walk-friendly part of the ITDC Nusa Dua tourism area, making it an easy stroll from many nearby hotels and attractions.",
+  },
+  {
+    q: "Does Raja Bali Nusa Dua offer cooking classes or Balinese dance performances?",
+    a: "These experiences are hosted exclusively at Raja Bali Main Restaurant in Tanjung Benoa, not at this Nusa Dua location. Raja Bali Nusa Dua focuses on authentic Balinese dining in a refined setting.",
+  },
+  {
+    q: "Do I need a reservation?",
+    a: "Reservations are recommended, especially during dinner hours and peak holiday seasons. You can reserve a table directly on this page.",
+  },
+];

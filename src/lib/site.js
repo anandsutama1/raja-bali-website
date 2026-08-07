@@ -50,8 +50,12 @@ export const LOCATIONS = [
     // Dua tourism enclave (verified geographic context, not a distance/time
     // claim) — see the "Perfectly Located in Nusa Dua" section on
     // /reservation-nusadua for the on-page counterpart to this description.
+    // Unlike Main Restaurant (Tanjung Benoa, within the *greater* Nusa Dua
+    // area), this outlet sits directly within Nusa Dua itself — hence the
+    // "walk-friendly"/"walking distance" framing here, which Main
+    // Restaurant's description doesn't use.
     description:
-      "Raja Bali's signature dining destination in the heart of Nusa Dua, offering authentic Balinese cuisine in a refined setting for lunch, dinner, and events. Conveniently located within the Nusa Dua tourism area, near hotels such as The Westin Resort Nusa Dua and Nusa Dua Beach Hotel & Spa, and attractions including Bali Collection and Museum Pasifika.",
+      "Raja Bali's signature dining destination set directly within Nusa Dua, offering authentic Balinese cuisine in a refined setting for lunch, dinner, and events. A walk-friendly location within walking distance of Bali Collection and the ITDC Nusa Dua tourism area, close to hotels such as The Westin Resort Nusa Dua and Nusa Dua Beach Hotel & Spa.",
     areaServed: { "@type": "Place", name: "Nusa Dua, Bali" },
     touristDestination: {
       name: "Nusa Dua",

@@ -2,6 +2,7 @@ import ReservationNusaDuaHero from "@/components/reservation-nusadua/Hero";
 import ReservationForm from "@/components/reservation-nusadua/ReservationForm";
 import GalleryExperience from "@/components/reservation-nusadua/GalleryExperience";
 import LocationContext from "@/components/reservation-nusadua/LocationContext";
+import FAQ from "@/components/reservation-nusadua/FAQ";
 import PageSchema from "@/components/PageSchema";
 import TripadvisorBadgeNusaDua from "@/components/TripadvisorBadgeNusaDua";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
@@ -65,6 +66,7 @@ export default function ReservationNusaDuaPage() {
       </div>
       <GalleryExperience />
       <ReservationForm />
+      <FAQ />
       <LocationContext />
     </main>
   );

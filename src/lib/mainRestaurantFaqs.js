@@ -7,14 +7,6 @@ export const mainRestaurantFaqs = [
     a: "Raja Bali Main Restaurant is located in Tanjung Benoa, within the greater Nusa Dua tourism area on Bali's southern peninsula, close to Bali's leading luxury resorts and attractions.",
   },
   {
-    q: "Is Raja Bali Restaurant near Bali Collection?",
-    a: "Yes. Raja Bali Main Restaurant is conveniently located within the Nusa Dua tourism area, near Bali Collection and other popular shopping and dining destinations.",
-  },
-  {
-    q: "Is Raja Bali Restaurant near The Westin Resort Nusa Dua?",
-    a: "Yes. Raja Bali Main Restaurant is conveniently located near The Westin Resort Nusa Dua and several of Bali's other leading luxury hotels.",
-  },
-  {
     q: "Do I need a reservation?",
     a: "Reservations are recommended, especially during dinner hours and peak holiday seasons. You can reserve a table directly on this page.",
   },

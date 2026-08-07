@@ -1,12 +1,14 @@
 import Link from "next/link";
 
 /**
- * Deliberately just an h2 + one paragraph + a compact links row — no
- * hotel/attraction list, no extra visuals. The geographic SEO work
- * (specific hotel and landmark names, areaServed, containedInPlace) lives
- * in metadata and JSON-LD instead (see src/lib/site.js and
- * components/StructuredData.js), so the page itself stays uncluttered
- * while search engines still get the detailed context.
+ * Deliberately just an h2 + one paragraph — no hotel/attraction list, no
+ * extra visuals. The geographic SEO work (specific hotel and landmark
+ * names, areaServed, containedInPlace) lives in metadata and JSON-LD
+ * instead (see src/lib/site.js and components/StructuredData.js), so the
+ * page itself stays uncluttered while search engines still get the
+ * detailed context. No About/Gallery/Contact/Home links row here — the
+ * Navbar and Footer already cover those on every page, and repeating them
+ * here read as redundant.
  */
 export default function LocationContext() {
   return (
@@ -26,24 +28,6 @@ export default function LocationContext() {
           private event
         </Link>
         , or simply dining with family and friends, every experience takes place at our convenient Nusa Dua location.
-      </p>
-
-      <p className="mt-6 text-xs text-gray-500">
-        <Link href="/about" className="u-link hover:text-raja-red">
-          Our Story
-        </Link>
-        <span className="mx-2">&middot;</span>
-        <Link href="/gallery" className="u-link hover:text-raja-red">
-          Gallery
-        </Link>
-        <span className="mx-2">&middot;</span>
-        <Link href="/contact" className="u-link hover:text-raja-red">
-          Contact Us
-        </Link>
-        <span className="mx-2">&middot;</span>
-        <Link href="/" className="u-link hover:text-raja-red">
-          Raja Bali Home
-        </Link>
       </p>
     </section>
   );
