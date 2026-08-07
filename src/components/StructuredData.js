@@ -62,12 +62,28 @@ export default function StructuredData() {
     currenciesAccepted: BUSINESS_INFO.currenciesAccepted,
     paymentAccepted: BUSINESS_INFO.paymentAccepted,
     servesCuisine: BUSINESS_INFO.servesCuisine,
-    areaServed: BUSINESS_INFO.areaServed,
+    // Per-location override (e.g. Nusa Dua's Place object) falls back to
+    // the shared plain-text value when a location doesn't define its own.
+    areaServed: loc.areaServed || BUSINESS_INFO.areaServed,
     acceptsReservations: "True",
     hasMap: loc.hasMap,
     menu: `${SITE_URL}/menu/food`,
     parentOrganization: { "@id": organizationId },
     isPartOf: { "@id": websiteId },
+    // Only set for locations that define it (currently just Nusa Dua) —
+    // schema.org has no dedicated "touristArea" property, so this is the
+    // closest legitimate equivalent: a real Place/TouristDestination this
+    // location sits inside of.
+    ...(loc.touristDestination
+      ? {
+          containedInPlace: {
+            "@type": "TouristDestination",
+            name: loc.touristDestination.name,
+            description: loc.touristDestination.description,
+          },
+        }
+      : {}),
+    ...(loc.knowsAbout ? { knowsAbout: loc.knowsAbout } : {}),
     address: {
       "@type": "PostalAddress",
       streetAddress: loc.streetAddress,

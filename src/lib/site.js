@@ -33,8 +33,19 @@ export const LOCATIONS = [
   {
     id: "nusa-dua",
     name: "Raja Bali Nusa Dua",
+    // Landmark names are real, well-known fixtures of the compact ITDC Nusa
+    // Dua tourism enclave (verified geographic context, not a distance/time
+    // claim) — see the "Perfectly Located in Nusa Dua" section on
+    // /reservation-nusadua for the on-page counterpart to this description.
     description:
-      "Raja Bali's signature dining destination in Nusa Dua, offering authentic Balinese cuisine in a refined setting for lunch, dinner, and events.",
+      "Raja Bali's signature dining destination in the heart of Nusa Dua, offering authentic Balinese cuisine in a refined setting for lunch, dinner, and events. Conveniently located within the Nusa Dua tourism area, near hotels such as The Westin Resort Nusa Dua and Nusa Dua Beach Hotel & Spa, and attractions including Bali Collection and Museum Pasifika.",
+    areaServed: { "@type": "Place", name: "Nusa Dua, Bali" },
+    touristDestination: {
+      name: "Nusa Dua",
+      description:
+        "A resort and tourism area within South Kuta, Bali, home to luxury hotels, beaches, and cultural attractions.",
+    },
+    knowsAbout: ["Balinese cuisine", "Nusa Dua dining"],
     telephone: "+62 812-3864-4766",
     streetAddress: "Jl. Nusa Dua No.62, Benoa",
     addressLocality: "Kec. Kuta Sel., Kabupaten Badung",

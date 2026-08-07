@@ -12,7 +12,7 @@ const BRANCH_EMAILS = {
 
 const BRANCH_NAMES = {
   main: "Raja Bali Main Restaurant",
-  nusadua: "Raja Bali Second Outlet",
+  nusadua: "Raja Bali Nusa Dua",
   general: "Raja Bali",
 };
 
@@ -121,12 +121,10 @@ const EXPERIENCE_CTA = {
   "group-reservation": { path: "/group-reservation", label: "View Group Packages" },
 };
 
-// Display names for the guest email only — the rest of the site still says
-// "Tanjung Benoa" / "Nusa Dua" (outlets page, schema.org, footer nav, etc.);
-// this is scoped narrowly to guest-facing email copy per request.
+// Display names for the guest email only.
 const EMAIL_LOCATION_NAMES = {
   "main-restaurant": "Raja Bali Main Restaurant",
-  "nusa-dua": "Raja Bali Second Outlet",
+  "nusa-dua": "Raja Bali Nusa Dua",
 };
 
 // Shown on every booking-type confirmation, not just Nusa Dua reservations —

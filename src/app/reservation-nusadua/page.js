@@ -1,13 +1,18 @@
 import ReservationNusaDuaHero from "@/components/reservation-nusadua/Hero";
 import ReservationForm from "@/components/reservation-nusadua/ReservationForm";
 import GalleryExperience from "@/components/reservation-nusadua/GalleryExperience";
+import LocationContext from "@/components/reservation-nusadua/LocationContext";
 import PageSchema from "@/components/PageSchema";
 import TripadvisorBadgeNusaDua from "@/components/TripadvisorBadgeNusaDua";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
-const title = "Reservation | Nusa Dua";
+const title = "Nusa Dua Restaurant Reservation";
+// Landmark names are real, well-known fixtures of the compact ITDC Nusa Dua
+// tourism enclave — a verified geographic fact, not an unverifiable
+// distance/time claim (per Google Search Essentials, no specific "X km" or
+// "X minutes" figures are used here).
 const description =
-  "Book a table at Raja Bali Nusa Dua for authentic Balinese cuisine in a refined setting, perfect for romantic dinners, family gatherings, and memorable celebrations.";
+  "Book a table at Raja Bali Nusa Dua, serving authentic Balinese cuisine within the Nusa Dua tourism area, conveniently located near The Westin Resort Nusa Dua, Bali Collection, and other leading hotels and attractions.";
 
 // This page gets its own share image (the Nusa Dua outlet's hero photo)
 // instead of the site-wide default. Next.js doesn't merge openGraph/twitter
@@ -60,6 +65,7 @@ export default function ReservationNusaDuaPage() {
       </div>
       <GalleryExperience />
       <ReservationForm />
+      <LocationContext />
     </main>
   );
 }
