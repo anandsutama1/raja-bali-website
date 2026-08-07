@@ -1,8 +1,11 @@
+import TripadvisorBadgeMain from "@/components/TripadvisorBadgeMain";
+
 const locations = [
   {
     title: "Raja Bali Main Restaurant Tanjung Benoa",
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.121043258482!2d115.22276810000001!3d-8.7746812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd2433df57093b1%3A0x2e389415504432e6!2sRaja%20Bali%20Nusa%20Dua%20(Main%20Restaurant)!5e0!3m2!1sen!2sid!4v1785641257250!5m2!1sen!2sid",
+    Tripadvisor: TripadvisorBadgeMain,
   },
   {
     title: "Raja Bali Nusa Dua",
@@ -37,6 +40,11 @@ export default function Location() {
                 allowFullScreen
               />
             </div>
+            {loc.Tripadvisor && (
+              <div className="flex justify-center pt-6">
+                <loc.Tripadvisor />
+              </div>
+            )}
           </div>
         ))}
       </div>

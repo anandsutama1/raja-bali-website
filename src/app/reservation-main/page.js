@@ -68,9 +68,9 @@ export default function ReservationMainPage() {
       <div className="flex justify-center px-6 py-8">
         <TripadvisorBadgeMain />
       </div>
-      <Experiences />
       <GalleryExperience />
       <ReservationForm />
+      <Experiences />
       <FAQ />
       <LocationContext />
     </main>

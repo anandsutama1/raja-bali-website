@@ -8,13 +8,6 @@ import Stagger from "@/components/motion/Stagger";
 // introduces and routes to them instead of duplicating their content.
 const experiences = [
   {
-    title: "Reserve a Table",
-    desc: "Dine on authentic Balinese cuisine in the heart of Nusa Dua, any day of the week.",
-    cta: "Reserve Now",
-    href: "#reservation",
-    image: "/images/reservation-main/gallery-1.jpg",
-  },
-  {
     title: "Balinese Cooking Class",
     desc: "Learn traditional recipes hands-on with our local chefs, from spice garden to table.",
     cta: "Explore Experience",
@@ -34,20 +27,6 @@ const experiences = [
     cta: "Explore Experience",
     href: "/bar-class",
     image: "/images/bar-class/Bar-Card.jpg",
-  },
-  {
-    title: "Private Events",
-    desc: "Celebrate weddings, corporate dinners, and special occasions in our elegant event spaces.",
-    cta: "Explore Experience",
-    href: "/private-events",
-    image: "/images/private-events/Hero.jpg",
-  },
-  {
-    title: "Group Reservation",
-    desc: "Curated buffet packages for group celebrations, from intimate gatherings to large parties.",
-    cta: "Explore Experience",
-    href: "/group-reservation",
-    image: "/images/group-reservation/Hero.jpg",
   },
 ];
 
