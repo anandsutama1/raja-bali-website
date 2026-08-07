@@ -6,49 +6,50 @@ import { useEffect, useRef, useState } from "react";
  * Renders a Tripadvisor CDS widget's official embed code inside an
  * isolated iframe, instead of injecting it directly into the page's DOM.
  *
- * Why: Tripadvisor's widget script keeps its own internal
+ * Why an iframe: Tripadvisor's widget script keeps its own internal
  * loaded/initialized state in the page's `window`. Re-injecting the
  * <script> tag ourselves (the previous approach, to work around Next's
  * client-side navigation caching it as "already loaded") made the *tag*
  * re-execute, but the widget's own internal guard still saw itself as
  * already initialized and skipped the full init + data fetch — so only
  * the static fallback logo showed, not the actual rating, until a hard
- * refresh gave it a genuinely fresh `window` with no prior state.
+ * refresh gave it a genuinely fresh `window` with no prior state. An
+ * iframe's document is its own separate `window` every time it mounts,
+ * so the widget always gets a clean first-time initialization reliably.
  *
- * An iframe's document is its own separate `window` every time it mounts,
- * so the widget always gets the same clean, first-time initialization a
- * hard refresh would give it — reliably, on every page open and every
- * client-side navigation, no custom re-execution tricks needed. It also
- * fully contains any layout the widget's CSS tries to apply (the earlier
- * "resizes itself" concern) since an iframe's box is a hard boundary
- * nothing inside it can escape.
- *
- * Both dimensions are measured from the iframe's own content rather than
- * guessed: a fixed size clipped the widget (bottom, then separately the
- * right edge) once Tripadvisor's async data — which arrives after the
- * iframe's load event, and includes a horizontal logo SVG with its own
- * natural width — finished rendering and turned out bigger than the
- * estimate. `srcDoc` without a `sandbox` attribute keeps the iframe
- * same-origin to us, so `contentDocument` is readable — poll briefly
- * after load to catch that late-arriving size instead of clipping it.
- * The body is forced `inline-block` + `nowrap` so its scrollWidth reflects
- * the content's true natural width, not whatever width we happened to
- * hand the iframe.
+ * Why scale instead of reflow: the widget's logo image doesn't reflow to
+ * a narrower width, it has one fixed natural size (measured below via
+ * `body { display:inline-block; white-space:nowrap }`, which forces
+ * scrollWidth/scrollHeight to report the true unconstrained size rather
+ * than whatever width we happened to hand the iframe). Simply capping the
+ * iframe's own width to the container's width — the earlier approach —
+ * shrank the *box* on mobile but not the *content* inside it, since
+ * nowrap content doesn't reflow: the widget just overflowed and got
+ * clipped instead of shrinking. Rendering the iframe at its true natural
+ * size and then CSS-scaling it down (`transform: scale()`) to fit
+ * whatever width is actually available shrinks the whole thing
+ * proportionally instead, the same way a responsive image would.
  *
  * `html` is Tripadvisor's embed code verbatim (not authored by us), so
  * this is safe to render as-is inside the iframe's own document.
  *
- * A small buffer is added on top of the raw measurement: the widget URLs
- * below both pass border=true, and a box-shadow/outline-style border
- * doesn't add to scrollWidth/scrollHeight the way a real border would, so
- * measuring exactly still clipped that decoration by a few pixels.
+ * SIZE_BUFFER: both widget URLs pass border=true, and a box-shadow/
+ * outline-style border doesn't add to scrollWidth/scrollHeight the way a
+ * real border does, so measuring exactly still clipped that decoration by
+ * a few pixels.
  */
 const SIZE_BUFFER = { width: 16, height: 10 };
+const MAX_NATURAL_WIDTH = 520;
 
 export default function TripadvisorEmbed({ html, height: initialHeight, width: initialWidth = 400 }) {
+  const containerRef = useRef(null);
   const iframeRef = useRef(null);
-  const [size, setSize] = useState({ height: initialHeight, width: initialWidth });
+  const [natural, setNatural] = useState({ height: initialHeight, width: initialWidth });
+  const [scale, setScale] = useState(1);
 
+  // Measure the widget's true, unconstrained size once Tripadvisor's own
+  // script has rendered it (which happens after the iframe's load event,
+  // so a few follow-up re-measures catch that late-arriving content).
   useEffect(() => {
     const iframe = iframeRef.current;
     if (!iframe) return undefined;
@@ -59,15 +60,14 @@ export default function TripadvisorEmbed({ html, height: initialHeight, width: i
       const nextHeight = body.scrollHeight;
       const nextWidth = body.scrollWidth;
       if (nextHeight > 0 && nextWidth > 0) {
-        setSize({ height: nextHeight + SIZE_BUFFER.height, width: nextWidth + SIZE_BUFFER.width });
+        setNatural({
+          height: nextHeight + SIZE_BUFFER.height,
+          width: Math.min(nextWidth + SIZE_BUFFER.width, MAX_NATURAL_WIDTH),
+        });
       }
     };
 
     iframe.addEventListener("load", measure);
-    // The load event fires once the iframe's static markup is in place,
-    // but Tripadvisor's own script still needs to fetch and render the
-    // real rating content after that — re-measure a few times afterward
-    // to catch the final, settled size.
     const timers = [300, 800, 1500, 2500, 4000].map((ms) => setTimeout(measure, ms));
 
     return () => {
@@ -76,24 +76,54 @@ export default function TripadvisorEmbed({ html, height: initialHeight, width: i
     };
   }, []);
 
+  // Scale down to fit whatever width the surrounding layout actually
+  // gives this component — recalculated on resize/orientation change too.
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return undefined;
+
+    const updateScale = () => {
+      const available = container.clientWidth;
+      if (available > 0 && natural.width > 0) {
+        setScale(Math.min(1, available / natural.width));
+      }
+    };
+
+    updateScale();
+    const observer = new ResizeObserver(updateScale);
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [natural.width]);
+
   const doc = `<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1" /><style>html,body{margin:0;padding:0;}body{display:inline-block;white-space:nowrap;}</style></head><body>${html}</body></html>`;
 
   return (
-    <iframe
-      ref={iframeRef}
-      srcDoc={doc}
-      title="Tripadvisor rating"
-      scrolling="no"
+    <div
+      ref={containerRef}
       style={{
         width: "100%",
-        maxWidth: Math.min(size.width, 520),
-        height: size.height,
-        maxHeight: 420,
-        border: "none",
-        display: "block",
+        maxWidth: natural.width,
+        height: natural.height * scale,
         margin: "0 auto",
-        transition: "height 0.25s ease, max-width 0.25s ease",
+        overflow: "hidden",
+        transition: "height 0.25s ease",
       }}
-    />
+    >
+      <iframe
+        ref={iframeRef}
+        srcDoc={doc}
+        title="Tripadvisor rating"
+        scrolling="no"
+        style={{
+          width: natural.width,
+          height: natural.height,
+          border: "none",
+          display: "block",
+          transform: `scale(${scale})`,
+          transformOrigin: "top left",
+          transition: "transform 0.25s ease, width 0.25s ease, height 0.25s ease",
+        }}
+      />
+    </div>
   );
 }
