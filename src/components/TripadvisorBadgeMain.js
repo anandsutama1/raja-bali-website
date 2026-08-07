@@ -13,14 +13,18 @@ import Script from "next/script";
  *
  * IDs/classes below are exactly what Tripadvisor's embed code specifies —
  * their script (loaded via next/script) finds this markup by those IDs and
- * fills it in client-side, so they can't be renamed. Note the logo id
- * (CDSWIDEXCLOGO) is shared with TripadvisorBadgeNusaDua.js, so never
- * render both badges on the same page — keep Main on /outlets and
- * /reservation-main, Nusa Dua only on /reservation-nusadua.
+ * fills it in client-side, so they can't be renamed.
+ *
+ * The outer wrapper is defensive, not part of Tripadvisor's embed code:
+ * their widget script has no intrinsic size until its async script/CSS
+ * finishes loading, so it can flash much larger than the final badge
+ * before settling. Capping the wrapper's max-width/height with
+ * overflow-hidden keeps that bounded to this box instead of visibly
+ * resizing the page around it.
  */
 export default function TripadvisorBadgeMain() {
   return (
-    <>
+    <div className="mx-auto max-h-[140px] max-w-[320px] overflow-hidden" style={{ contain: "layout style" }}>
       <div id="TA_cdsscrollingravenarrow568" className="TA_cdsscrollingravenarrow">
         <ul id="sfC4Yk" className="TA_links pCB2aiM">
           <li id="cKuJ1SRH" className="PW6l67">
@@ -44,6 +48,6 @@ export default function TripadvisorBadgeMain() {
         src="https://www.jscache.com/wejs?wtype=cdsscrollingravenarrow&uniq=568&locationId=25432568&lang=en_US&border=true&shadow=false&display_version=2"
         strategy="afterInteractive"
       />
-    </>
+    </div>
   );
 }
