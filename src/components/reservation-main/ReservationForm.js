@@ -66,7 +66,7 @@ export default function ReservationForm() {
   };
 
   return (
-    <section className="border-t border-gray-200 py-24 px-6 max-w-2xl mx-auto bg-white">
+    <section id="reservation" className="border-t border-gray-200 py-24 px-6 max-w-2xl mx-auto bg-white">
       <h2 className="text-3xl font-serif text-center mb-2">Begin Your Experience</h2>
       <p className="text-center text-gray-600 mb-4">
         Complete the form below and our team will confirm your reservation as soon as possible. If you have any special requests or dietary requirements, simply let us know&mdash;we&apos;ll be delighted to assist you.

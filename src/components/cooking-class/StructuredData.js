@@ -21,6 +21,7 @@ export default function CookingClassStructuredData() {
   const offers = [
     {
       "@type": "Offer",
+      "@id": `${url}#offer-shared`,
       name: "Shared Experience",
       description: "Minimum 2 guests",
       price: "550000",
@@ -30,6 +31,7 @@ export default function CookingClassStructuredData() {
     },
     {
       "@type": "Offer",
+      "@id": `${url}#offer-individual`,
       name: "Individual Experience",
       description: "Perfect for solo travelers",
       price: "600000",

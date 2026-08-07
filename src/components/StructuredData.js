@@ -57,7 +57,7 @@ export default function StructuredData() {
     description: loc.description,
     url: loc.url,
     telephone: loc.telephone,
-    image: loc.image,
+    image: { "@type": "ImageObject", url: loc.image },
     priceRange: BUSINESS_INFO.priceRange,
     currenciesAccepted: BUSINESS_INFO.currenciesAccepted,
     paymentAccepted: BUSINESS_INFO.paymentAccepted,
@@ -67,7 +67,22 @@ export default function StructuredData() {
     areaServed: loc.areaServed || BUSINESS_INFO.areaServed,
     acceptsReservations: "True",
     hasMap: loc.hasMap,
-    menu: `${SITE_URL}/menu/food`,
+    // References the actual Menu entity defined on /menu/food (see
+    // app/menu/food/page.js) instead of a bare URL, so the two stay one
+    // connected graph.
+    hasMenu: { "@id": `${SITE_URL}/menu/food#menu` },
+    // Only Main Restaurant hosts the cooking/bar classes — see their own
+    // Offer @ids in components/cooking-class/StructuredData.js and
+    // components/bar-class/StructuredData.js.
+    ...(loc.id === "main-restaurant"
+      ? {
+          makesOffer: [
+            { "@id": `${SITE_URL}/cooking-class#offer-shared` },
+            { "@id": `${SITE_URL}/cooking-class#offer-individual` },
+            { "@id": `${SITE_URL}/bar-class#offer` },
+          ],
+        }
+      : {}),
     parentOrganization: { "@id": organizationId },
     isPartOf: { "@id": websiteId },
     // Only set for locations that define it (currently just Nusa Dua) —

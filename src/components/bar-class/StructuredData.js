@@ -16,6 +16,7 @@ export default function BarClassStructuredData() {
   const offers = [
     {
       "@type": "Offer",
+      "@id": `${url}#offer`,
       name: "Bartender Class",
       description: "Minimum 2 guests",
       price: "250000",
