@@ -37,7 +37,14 @@ import { useEffect, useRef, useState } from "react";
  *
  * `html` is Tripadvisor's embed code verbatim (not authored by us), so
  * this is safe to render as-is inside the iframe's own document.
+ *
+ * A small buffer is added on top of the raw measurement: the widget URLs
+ * below both pass border=true, and a box-shadow/outline-style border
+ * doesn't add to scrollWidth/scrollHeight the way a real border would, so
+ * measuring exactly still clipped that decoration by a few pixels.
  */
+const SIZE_BUFFER = { width: 16, height: 10 };
+
 export default function TripadvisorEmbed({ html, height: initialHeight, width: initialWidth = 400 }) {
   const iframeRef = useRef(null);
   const [size, setSize] = useState({ height: initialHeight, width: initialWidth });
@@ -52,7 +59,7 @@ export default function TripadvisorEmbed({ html, height: initialHeight, width: i
       const nextHeight = body.scrollHeight;
       const nextWidth = body.scrollWidth;
       if (nextHeight > 0 && nextWidth > 0) {
-        setSize({ height: nextHeight, width: nextWidth });
+        setSize({ height: nextHeight + SIZE_BUFFER.height, width: nextWidth + SIZE_BUFFER.width });
       }
     };
 
@@ -79,9 +86,9 @@ export default function TripadvisorEmbed({ html, height: initialHeight, width: i
       scrolling="no"
       style={{
         width: "100%",
-        maxWidth: Math.min(size.width, 500),
+        maxWidth: Math.min(size.width, 520),
         height: size.height,
-        maxHeight: 400,
+        maxHeight: 420,
         border: "none",
         display: "block",
         margin: "0 auto",
