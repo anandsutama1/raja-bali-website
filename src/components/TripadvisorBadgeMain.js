@@ -1,4 +1,4 @@
-import TripadvisorScript from "@/components/TripadvisorScript";
+import TripadvisorEmbed from "@/components/TripadvisorEmbed";
 
 /**
  * Official Tripadvisor "scrolling raven arrow" widget for Raja Bali Main
@@ -11,55 +11,27 @@ import TripadvisorScript from "@/components/TripadvisorScript";
  * why components/Testimonials.js isn't wrapped in AggregateRating/Review
  * schema).
  *
- * IDs/classes below are exactly what Tripadvisor's embed code specifies —
- * their script finds this markup by those IDs and fills it in
- * client-side, so they can't be renamed.
+ * Rendered via TripadvisorEmbed (an isolated iframe) — see that file for
+ * why: the widget needs a genuinely fresh document to fully initialize
+ * every time, not just a re-executed script tag.
  *
- * Loads immediately on mount (no scroll-triggered lazy loading — that
- * traded a slightly later widget appearance for a faster initial page,
- * but the ask here is the opposite: show it as soon as the page opens).
- * Performance/reliability measures kept:
- *  - preconnect/dns-prefetch to jscache.com and static.tacdn.com starts
- *    DNS + TLS for those origins immediately.
- *  - TripadvisorScript (not next/script's <Script>) makes sure the script
- *    actually re-executes on every mount, including after a client-side
- *    route change — see its own doc comment for why that matters here.
+ * preconnect/dns-prefetch to jscache.com and static.tacdn.com starts DNS
+ * + TLS for those origins immediately, shaving a little off the load
+ * inside the iframe too.
  *
- * The wrapper is defensive, not part of Tripadvisor's embed code: their
- * widget script has no intrinsic size until its async script/CSS finishes
- * loading, so it can flash much larger than the final badge before
- * settling. Capping the wrapper's max-width/height with overflow-hidden
- * keeps that bounded to this box instead of visibly resizing the page
- * around it.
+ * The embed code below (`html`) is Tripadvisor's own, verbatim, including
+ * the widget-instance IDs their script looks up — don't rename them.
  */
 export default function TripadvisorBadgeMain() {
+  const html = `<div id="TA_cdsscrollingravenarrow568" class="TA_cdsscrollingravenarrow"><ul id="sfC4Yk" class="TA_links pCB2aiM"><li id="cKuJ1SRH" class="PW6l67"><a target="_blank" href="https://www.tripadvisor.com/Restaurant_Review-g1465999-d25432568-Reviews-Raja_Bali_Activities_Main_Restaurant-Tanjung_Benoa_Nusa_Dua_Peninsula_Bali.html"><img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_lockup_vertical.svg" alt="TripAdvisor" class="widEXCIMG" id="CDSWIDEXCLOGO"/></a></li></ul></div><script async src="https://www.jscache.com/wejs?wtype=cdsscrollingravenarrow&uniq=568&locationId=25432568&lang=en_US&border=true&shadow=false&display_version=2" data-loadtrk onload="this.loadtrk=true"></script>`;
+
   return (
     <>
       <link rel="preconnect" href="https://www.jscache.com" />
       <link rel="dns-prefetch" href="https://www.jscache.com" />
       <link rel="preconnect" href="https://static.tacdn.com" />
       <link rel="dns-prefetch" href="https://static.tacdn.com" />
-      <div className="mx-auto max-h-[140px] max-w-[320px] overflow-hidden" style={{ contain: "layout style" }}>
-        <div id="TA_cdsscrollingravenarrow568" className="TA_cdsscrollingravenarrow">
-          <ul id="sfC4Yk" className="TA_links pCB2aiM">
-            <li id="cKuJ1SRH" className="PW6l67">
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.tripadvisor.com/Restaurant_Review-g1465999-d25432568-Reviews-Raja_Bali_Activities_Main_Restaurant-Tanjung_Benoa_Nusa_Dua_Peninsula_Bali.html"
-              >
-                <img
-                  src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_lockup_vertical.svg"
-                  alt="TripAdvisor"
-                  className="widEXCIMG"
-                  id="CDSWIDEXCLOGO"
-                />
-              </a>
-            </li>
-          </ul>
-        </div>
-        <TripadvisorScript src="https://www.jscache.com/wejs?wtype=cdsscrollingravenarrow&uniq=568&locationId=25432568&lang=en_US&border=true&shadow=false&display_version=2" />
-      </div>
+      <TripadvisorEmbed html={html} height={140} />
     </>
   );
 }

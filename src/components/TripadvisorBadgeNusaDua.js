@@ -1,4 +1,4 @@
-import TripadvisorScript from "@/components/TripadvisorScript";
+import TripadvisorEmbed from "@/components/TripadvisorEmbed";
 
 /**
  * Official Tripadvisor "ratings only wide" widget for Raja Bali Nusa Dua's
@@ -6,51 +6,23 @@ import TripadvisorScript from "@/components/TripadvisorScript";
  * third-party trust signal rendered by Tripadvisor's own script, not our
  * own review/AggregateRating markup.
  *
- * Loads immediately on mount (no scroll-triggered lazy loading — that
- * traded a slightly later widget appearance for a faster initial page,
- * but the ask here is the opposite: show it as soon as the page opens).
- * Performance/reliability measures kept:
- *  - preconnect/dns-prefetch to jscache.com and tripadvisor.com starts
- *    DNS + TLS for those origins immediately.
- *  - TripadvisorScript (not next/script's <Script>) makes sure the script
- *    actually re-executes on every mount, including after a client-side
- *    route change — see its own doc comment for why that matters here.
+ * Rendered via TripadvisorEmbed (an isolated iframe) — see that file for
+ * why: the widget needs a genuinely fresh document to fully initialize
+ * every time, not just a re-executed script tag.
  *
- * The wrapper is defensive, not part of Tripadvisor's embed code: their
- * widget script has no intrinsic size until its async script/CSS finishes
- * loading, so it can flash much larger than the final badge before
- * settling. Capping the wrapper's max-width/height with overflow-hidden
- * keeps that bounded to this box instead of visibly resizing the page
- * around it.
- *
- * IDs/classes inside are exactly what Tripadvisor's embed code specifies.
+ * The embed code below (`html`) is Tripadvisor's own, verbatim, including
+ * the widget-instance IDs their script looks up — don't rename them.
  */
 export default function TripadvisorBadgeNusaDua() {
+  const html = `<div id="TA_cdsratingsonlywide504" class="TA_cdsratingsonlywide"><ul id="GbXBhcF" class="TA_links yuHVxRMTyr"><li id="HHNVYtU" class="cc1BlijLZd"><a target="_blank" href="https://www.tripadvisor.com/Restaurant_Review-g297698-d13083794-Reviews-Raja_Bali_Restaurant_Nusadua-Nusa_Dua_Benoa_South_Kuta_Badung_Regency_Bali.html"><img src="https://www.tripadvisor.com/img/cdsi/img2/branding/v2/Tripadvisor_lockup_horizontal_secondary_registered-18034-2.svg" alt="TripAdvisor"/></a></li></ul></div><script async src="https://www.jscache.com/wejs?wtype=cdsratingsonlywide&uniq=504&locationId=13083794&lang=en_US&border=true&shadow=false&backgroundColor=white&display_version=2" data-loadtrk onload="this.loadtrk=true"></script>`;
+
   return (
     <>
       <link rel="preconnect" href="https://www.jscache.com" />
       <link rel="dns-prefetch" href="https://www.jscache.com" />
       <link rel="preconnect" href="https://www.tripadvisor.com" />
       <link rel="dns-prefetch" href="https://www.tripadvisor.com" />
-      <div className="mx-auto max-h-[60px] max-w-[320px] overflow-hidden" style={{ contain: "layout style" }}>
-        <div id="TA_cdsratingsonlywide504" className="TA_cdsratingsonlywide">
-          <ul id="GbXBhcF" className="TA_links yuHVxRMTyr">
-            <li id="HHNVYtU" className="cc1BlijLZd">
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.tripadvisor.com/Restaurant_Review-g297698-d13083794-Reviews-Raja_Bali_Restaurant_Nusadua-Nusa_Dua_Benoa_South_Kuta_Badung_Regency_Bali.html"
-              >
-                <img
-                  src="https://www.tripadvisor.com/img/cdsi/img2/branding/v2/Tripadvisor_lockup_horizontal_secondary_registered-18034-2.svg"
-                  alt="TripAdvisor"
-                />
-              </a>
-            </li>
-          </ul>
-        </div>
-        <TripadvisorScript src="https://www.jscache.com/wejs?wtype=cdsratingsonlywide&uniq=504&locationId=13083794&lang=en_US&border=true&shadow=false&backgroundColor=white&display_version=2" />
-      </div>
+      <TripadvisorEmbed html={html} height={60} />
     </>
   );
 }
