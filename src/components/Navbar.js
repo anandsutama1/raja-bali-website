@@ -18,6 +18,7 @@ const drawerLinks = [
   ...links,
   { href: "/menu/food", label: "Menu" },
   { href: "/cooking-class", label: "Cooking Class" },
+  { href: "/bar-class", label: "Balinese Bar Class" },
   { href: "/dance", label: "Balinese Dance Performance" },
   { href: "/private-events", label: "Private Events" },
   { href: "/group-reservation", label: "Group Reservation" },

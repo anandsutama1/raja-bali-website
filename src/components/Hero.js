@@ -30,6 +30,14 @@ export default function Hero() {
         </p>
 
         <h1>
+          {/* Visually hidden: the logo image below carries the same brand
+              name visually, but crawlers need actual text here to
+              understand what this page (and site) is about — an image alt
+              attribute alone is a weaker signal for the page's single
+              highest-weight heading. */}
+          <span className="sr-only">
+            Raja Bali, Authentic Balinese Restaurant in Nusa Dua &amp; Tanjung Benoa, Bali
+          </span>
           <Image
             src="/images/home/Hero-RajaBali.png"
             alt="Raja Bali"

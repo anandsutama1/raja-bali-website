@@ -14,14 +14,16 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 const ReservationForm = dynamic(() => import("@/components/reservation-main/ReservationForm"));
 
 const title = "Authentic Balinese Restaurant in Nusa Dua | Raja Bali Main Restaurant";
-// Landmark names are real, well-known fixtures of the compact ITDC Nusa Dua
-// tourism enclave — a verified geographic fact, not an unverifiable
-// distance/time claim (per Google Search Essentials, no specific "X km" or
-// "X minutes" figures are used here). Geography is precise here: this
-// location is in Tanjung Benoa, just north of Nusa Dua proper — see the
-// comment on this location's entry in src/lib/site.js.
+// Kept short (under ~160 chars) so it doesn't get truncated in search
+// results — the fuller landmark-name framing (Bali Collection, Westin,
+// Museum Pasifika) still lives in the Restaurant description in
+// src/lib/site.js (read by the site-wide JSON-LD), which is where this
+// component's own docs say that detail belongs; see LocationContext.js.
+// Geography is precise here: this location is in Tanjung Benoa, just north
+// of Nusa Dua proper — see the comment on this location's entry in
+// src/lib/site.js.
 const description =
-  "Experience authentic Balinese cuisine in Tanjung Benoa, within the Nusa Dua area. Raja Bali Main Restaurant is conveniently located near Bali Collection, The Westin Resort Nusa Dua, Museum Pasifika, and other leading attractions. Enjoy traditional dining, Balinese Cooking Class, cultural performances, private events, and group dining experiences.";
+  "Reserve a table at Raja Bali Main Restaurant in Tanjung Benoa, Nusa Dua. Authentic Balinese dining, cooking classes, and cultural performances await.";
 
 // This page gets its own share image (the Main Restaurant's hero photo)
 // instead of the site-wide default. Next.js doesn't merge openGraph/twitter

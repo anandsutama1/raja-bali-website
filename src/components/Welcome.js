@@ -12,7 +12,7 @@ export default function Welcome() {
       </Reveal>
 
       <Reveal as="p" delay={110} className="mb-8 leading-relaxed text-gray-600">
-        Raja Bali Nusa Dua has built its reputation on genuinely great
+        Raja Bali has built its reputation on genuinely great
         Balinese food, backed by years of strong reviews from travelers
         around the world. We bring together Bali&apos;s cultural heritage
         and warm, personal hospitality, with every dish drawing on recipes

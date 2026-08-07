@@ -3,7 +3,7 @@ import MenuSection from "@/components/menu/MenuSection";
 import WineTable from "@/components/menu/WineTable";
 import StickyReserveButton from "@/components/StickyReserveButton";
 import PageSchema from "@/components/PageSchema";
-import { buildMenuJsonLd } from "@/lib/menuSchema";
+import { buildMenuJsonLd, buildWineMenuSection } from "@/lib/menuSchema";
 import { SITE_URL } from "@/lib/site";
 
 const title = "Beverage Menu";
@@ -224,7 +224,7 @@ const wineItems = [
   ...importedRedWine,
   ...importedRoseWine,
   ...importedSparklingWine,
-].map((wine) => ({ name: wine.name }));
+];
 
 const menuJsonLd = buildMenuJsonLd({
   url: `${SITE_URL}/menu/beverage`,
@@ -245,9 +245,19 @@ const menuJsonLd = buildMenuJsonLd({
     { title: "Local Spirit", note: "By shot (45ml)", items: localSpirit },
     { title: "Whiskey Premium", note: "125K, by shot (45ml)", items: whiskeyPremium },
     { title: "Whiskey Local", note: "80K, by shot (45ml)", items: whiskeyLocal },
-    { title: "Wine List", note: "Priced by glass and/or bottle; ask your server for current pricing.", items: wineItems },
   ],
 });
+
+// Wine items price by glass and/or bottle rather than a single figure, so
+// they go through buildWineMenuSection (multiple named Offers per item)
+// instead of the sections array above, which assumes one price per item.
+menuJsonLd.hasMenuSection.push(
+  buildWineMenuSection({
+    title: "Wine List",
+    note: "Priced by glass and/or bottle; ask your server for current pricing.",
+    items: wineItems,
+  })
+);
 
 export default function BeverageMenuPage() {
   return (

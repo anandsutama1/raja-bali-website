@@ -13,12 +13,14 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 const ReservationForm = dynamic(() => import("@/components/reservation-nusadua/ReservationForm"));
 
 const title = "Nusa Dua Restaurant Reservation";
-// Landmark names are real, well-known fixtures of the compact ITDC Nusa Dua
-// tourism enclave — a verified geographic fact, not an unverifiable
-// distance/time claim (per Google Search Essentials, no specific "X km" or
-// "X minutes" figures are used here).
+// Kept short (under ~160 chars) so it doesn't get truncated in search
+// results — the fuller landmark-name framing (Westin, Bali Collection)
+// still lives in the Restaurant description in src/lib/site.js (read by
+// the site-wide JSON-LD). Landmark names themselves are real, well-known
+// fixtures of the compact ITDC Nusa Dua tourism enclave, a verified
+// geographic fact.
 const description =
-  "Book a table at Raja Bali Nusa Dua, serving authentic Balinese cuisine within the Nusa Dua tourism area, conveniently located near The Westin Resort Nusa Dua, Bali Collection, and other leading hotels and attractions.";
+  "Reserve a table at Raja Bali Nusa Dua, serving authentic Balinese cuisine in the heart of the Nusa Dua tourism area.";
 
 // This page gets its own share image (the Nusa Dua outlet's hero photo)
 // instead of the site-wide default. Next.js doesn't merge openGraph/twitter
