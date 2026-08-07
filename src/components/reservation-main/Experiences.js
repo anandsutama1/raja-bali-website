@@ -10,7 +10,6 @@ import ProductBadge from "@/components/ProductBadge";
 const experiences = [
   {
     badge: "Most Popular",
-    badgeVariant: "popular",
     title: "Balinese Cooking Class",
     desc: "Learn traditional recipes hands-on with our local chefs, from spice garden to table.",
     cta: "Explore Experience",
@@ -18,8 +17,7 @@ const experiences = [
     image: "/images/cooking-class/CookingClass-Card.jpg",
   },
   {
-    badge: "Free",
-    badgeVariant: "free",
+    badge: "Free Every Thursday",
     title: "Balinese Dance Dinner",
     desc: "A complimentary traditional dance performance every Thursday evening, exclusively here.",
     cta: "Explore Experience",
@@ -28,7 +26,6 @@ const experiences = [
   },
   {
     badge: "Limited Slot",
-    badgeVariant: "limited",
     title: "Balinese Bar Class",
     desc: "Step behind the bar and craft your own signature cocktail with authentic Balinese Arak.",
     cta: "Explore Experience",
@@ -65,7 +62,7 @@ export default function Experiences() {
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 className="u-zoom object-cover"
               />
-              <ProductBadge label={item.badge} variant={item.badgeVariant} />
+              <ProductBadge label={item.badge} />
             </div>
             <div className="flex flex-1 flex-col p-5">
               <h3 className="mb-2 text-lg font-semibold transition-colors duration-500 ease-expo group-hover:text-raja-red">

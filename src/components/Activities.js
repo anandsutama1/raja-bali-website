@@ -7,7 +7,6 @@ import ProductBadge from "./ProductBadge";
 const activities = [
   {
     badge: "Most Popular",
-    badgeVariant: "popular",
     title: "Balinese Cooking Class",
     desc: "Learn authentic Balinese cooking hands-on with our experienced local chefs, from the spices we use every day to recipes passed down through generations.",
     cta: "Book Now",
@@ -15,8 +14,7 @@ const activities = [
     image: "/images/cooking-class/CookingClass-Card.jpg",
   },
   {
-    badge: "Free",
-    badgeVariant: "free",
+    badge: "Free Every Thursday",
     title: "Balinese Dance Performance",
     desc: "Watch a complimentary traditional Balinese dance performance every Thursday evening at our Main Restaurant, a beautiful mix of music, movement, and centuries-old tradition.",
     cta: "View Details",
@@ -25,7 +23,6 @@ const activities = [
   },
   {
     badge: "Limited Slot",
-    badgeVariant: "limited",
     title: "Balinese Cocktail Class",
     desc: "Step behind the bar with our bartenders and learn to mix cocktails using fresh tropical ingredients, from island classics to our own signature creations.",
     cta: "Book Now",
@@ -59,7 +56,7 @@ export default function Activities() {
                 sizes="(min-width: 768px) 33vw, 100vw"
                 className="u-zoom object-cover"
               />
-              <ProductBadge label={item.badge} variant={item.badgeVariant} />
+              <ProductBadge label={item.badge} />
             </div>
             <div className="flex flex-1 flex-col p-5">
               <h3 className="mb-2 text-lg font-semibold transition-colors duration-500 ease-expo group-hover:text-raja-red">
