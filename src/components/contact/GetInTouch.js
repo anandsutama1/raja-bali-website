@@ -7,13 +7,13 @@ const EXTRA = {
   "main-restaurant": {
     desc: "Experience the heart of Raja Bali, where authentic Balinese cuisine meets cultural performances, immersive cooking experiences, and warm island hospitality.",
     instagram: "@rajabalinusaduamainrestaurant",
-    facebook: "Raja Bali - Nusa Dua Main Restaurant",
+    facebookLabel: "Raja Bali - Nusa Dua Main Restaurant",
     image: "/images/contact/Main-Restaurant.jpg",
   },
   "nusa-dua": {
     desc: "Enjoy authentic Balinese dining in an elegant and welcoming atmosphere, perfect for romantic dinners, family gatherings, and memorable celebrations.",
     instagram: "@rajabalinusadua",
-    facebook: "Raja Bali Nusa Dua",
+    facebookLabel: "Raja Bali Nusa Dua",
     image: "/images/contact/Nusadua-Restaurant.jpg",
   },
 };
@@ -66,7 +66,6 @@ export default function GetInTouch() {
         {locations.map((loc) => {
           const whatsappDigits = loc.telephone.replace(/\D/g, "");
           const mapsHref = `https://www.google.com/maps/search/?api=1&query=${loc.latitude},${loc.longitude}`;
-          const facebookHref = `https://www.facebook.com/search/top/?q=${encodeURIComponent(loc.facebook)}`;
 
           return (
             <div key={loc.id} className="border border-gray-200 rounded-lg overflow-hidden">
@@ -93,13 +92,13 @@ export default function GetInTouch() {
                     <span className="u-link">{loc.instagram}</span>
                   </a>
                   <a
-                    href={facebookHref}
+                    href={loc.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 hover:text-raja-red"
                   >
                     <FacebookIcon className="h-4 w-4 shrink-0" />
-                    <span className="u-link">{loc.facebook}</span>
+                    <span className="u-link">{loc.facebookLabel}</span>
                   </a>
                   <a
                     href={`https://wa.me/${whatsappDigits}`}

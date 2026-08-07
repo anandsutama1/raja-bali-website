@@ -21,8 +21,10 @@ export const LOCATIONS = [
     // Tripadvisor listing confirmed live: 5.0/5 from 63 reviews as of 2026-08-07.
     sameAs: [
       "https://www.instagram.com/rajabalinusaduamainrestaurant",
+      "https://www.facebook.com/share/19JwnjfRDe/",
       "https://www.tripadvisor.com/Restaurant_Review-g1465999-d25432568-Reviews-Raja_Bali_Activities_Main_Restaurant-Tanjung_Benoa_Nusa_Dua_Peninsula_Bali.html",
     ],
+    facebook: "https://www.facebook.com/share/19JwnjfRDe/",
     // Official Google share link, provided directly by the business.
     hasMap: "https://share.google/8gzSWdB217YXjQqfc",
     url: `${SITE_URL}/reservation-main`,
@@ -42,8 +44,10 @@ export const LOCATIONS = [
     longitude: 115.2246172,
     sameAs: [
       "https://www.instagram.com/rajabalinusadua",
+      "https://www.facebook.com/share/17tRPEG8w7/",
       "https://www.tripadvisor.com/Restaurant_Review-g297698-d13083794-Reviews-Raja_Bali_Restaurant_Nusadua-Nusa_Dua_Benoa_South_Kuta_Badung_Regency_Bali.html",
     ],
+    facebook: "https://www.facebook.com/share/17tRPEG8w7/",
     // Official Google share link, provided directly by the business.
     hasMap: "https://share.google/XJuUaLxjcCWsXTMhi",
     url: `${SITE_URL}/reservation-nusadua`,
