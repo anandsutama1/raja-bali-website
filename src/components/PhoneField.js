@@ -91,6 +91,7 @@ export default function PhoneField({
           required={required}
           value={number}
           onChange={onNumberChange}
+          aria-label="Whatsapp Number"
           className={`${className} min-w-0 flex-1`}
         />
       </div>

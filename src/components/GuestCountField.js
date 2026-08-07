@@ -44,6 +44,7 @@ export default function GuestCountField({
         required={required}
         value={value}
         onChange={onChange}
+        aria-label={placeholder}
         className={className}
       />
       <button
@@ -55,7 +56,7 @@ export default function GuestCountField({
       </button>
     </div>
   ) : (
-    <select value={value} onChange={handleSelectChange} required={required} className={className}>
+    <select value={value} onChange={handleSelectChange} required={required} aria-label={placeholder} className={className}>
       <option value="" disabled={required}>
         {placeholder}
       </option>

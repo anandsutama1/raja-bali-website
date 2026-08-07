@@ -59,7 +59,7 @@ export default function MessageForm() {
       <form className="space-y-4" onSubmit={handleSubmit}>
         <fieldset disabled={status === "submitting"} className="m-0 min-w-0 space-y-4 border-0 p-0">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <select value={fields.title} onChange={update("title")} className="border p-3 bg-white text-gray-700">
+            <select value={fields.title} onChange={update("title")} aria-label="Title" className="border p-3 bg-white text-gray-700">
               <option value="">Title</option>
               {TITLES.map((t) => (
                 <option key={t} value={t}>
@@ -67,14 +67,15 @@ export default function MessageForm() {
                 </option>
               ))}
             </select>
-            <input placeholder="First Name" required value={fields.firstName} onChange={update("firstName")} className="border p-3 bg-white" />
-            <input placeholder="Last Name" required value={fields.lastName} onChange={update("lastName")} className="border p-3 bg-white" />
+            <input placeholder="First Name" aria-label="First Name" required value={fields.firstName} onChange={update("firstName")} className="border p-3 bg-white" />
+            <input placeholder="Last Name" aria-label="Last Name" required value={fields.lastName} onChange={update("lastName")} className="border p-3 bg-white" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <input
                 type="email"
                 placeholder="Email Address"
+                aria-label="Email Address"
                 required
                 value={fields.email}
                 onChange={update("email")}
@@ -91,7 +92,7 @@ export default function MessageForm() {
               className="border p-3 bg-white"
             />
           </div>
-          <textarea placeholder="Add your Enquiries" required value={fields.message} onChange={update("message")} className="border p-3 bg-white w-full h-32"></textarea>
+          <textarea placeholder="Add your Enquiries" aria-label="Add your Enquiries" required value={fields.message} onChange={update("message")} className="border p-3 bg-white w-full h-32"></textarea>
           <SubmitButton status={status} label="Send" submittingMessage={submittingMessage} />
         </fieldset>
         {status === "success" && (

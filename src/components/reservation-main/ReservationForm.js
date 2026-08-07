@@ -77,7 +77,7 @@ export default function ReservationForm() {
       <form className="space-y-4" onSubmit={handleSubmit}>
         <fieldset disabled={status === "submitting"} className="m-0 min-w-0 space-y-4 border-0 p-0">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <select value={fields.title} onChange={update("title")} className="border p-3 text-gray-700">
+            <select value={fields.title} onChange={update("title")} aria-label="Title" className="border p-3 text-gray-700">
               <option value="">Title</option>
               {TITLES.map((t) => (
                 <option key={t} value={t}>
@@ -85,17 +85,17 @@ export default function ReservationForm() {
                 </option>
               ))}
             </select>
-            <input placeholder="First Name" required value={fields.firstName} onChange={update("firstName")} className="border p-3" />
-            <input placeholder="Last Name" required value={fields.lastName} onChange={update("lastName")} className="border p-3" />
+            <input placeholder="First Name" aria-label="First Name" required value={fields.firstName} onChange={update("firstName")} className="border p-3" />
+            <input placeholder="Last Name" aria-label="Last Name" required value={fields.lastName} onChange={update("lastName")} className="border p-3" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs text-gray-500">Date</label>
-              <input type="date" min={today} required value={fields.date} onChange={update("date")} className="border p-3 w-full" />
+              <label htmlFor="reservation-date" className="mb-1 block text-xs text-gray-500">Date</label>
+              <input id="reservation-date" type="date" min={today} required value={fields.date} onChange={update("date")} className="border p-3 w-full" />
             </div>
             <div>
-              <label className="mb-1 block text-xs text-gray-500">Time</label>
-              <select required value={fields.time} onChange={update("time")} className="border p-3 text-gray-700 w-full">
+              <label htmlFor="reservation-time" className="mb-1 block text-xs text-gray-500">Time</label>
+              <select id="reservation-time" required value={fields.time} onChange={update("time")} className="border p-3 text-gray-700 w-full">
                 <option value="" disabled>
                   Select a time
                 </option>
@@ -116,6 +116,7 @@ export default function ReservationForm() {
               <input
                 type="email"
                 placeholder="Email Address"
+                aria-label="Email Address"
                 required
                 value={fields.email}
                 onChange={update("email")}
@@ -146,6 +147,7 @@ export default function ReservationForm() {
               <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
                   placeholder="Hotel Name"
+                  aria-label="Hotel Name"
                   required
                   value={fields.hotelName}
                   onChange={update("hotelName")}
@@ -153,6 +155,7 @@ export default function ReservationForm() {
                 />
                 <input
                   placeholder="Room Number"
+                  aria-label="Room Number"
                   required
                   value={fields.roomNumber}
                   onChange={update("roomNumber")}
@@ -161,7 +164,7 @@ export default function ReservationForm() {
               </div>
             )}
           </div>
-          <textarea placeholder="Any dietary requirements or special requests?" required value={fields.message} onChange={update("message")} className="border p-3 w-full h-24"></textarea>
+          <textarea placeholder="Any dietary requirements or special requests?" aria-label="Any dietary requirements or special requests?" required value={fields.message} onChange={update("message")} className="border p-3 w-full h-24"></textarea>
           <SubmitButton status={status} label="Submit" submittingMessage={submittingMessage} />
         </fieldset>
         {status === "success" && (
