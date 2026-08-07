@@ -19,6 +19,7 @@ export default function Pricing() {
         </span>
         <h3 className="font-semibold text-lg mb-2">Bartender Class</h3>
         <p className="text-2xl font-serif mb-1">IDR 250,000 / person</p>
+        <p className="text-xs text-gray-400 mb-1">Approx. USD 14 estimated</p>
         <p className="text-sm text-gray-600 mb-4">Minimum 2 guests</p>
         <p className="text-sm font-semibold mb-2">Included in Your Experience:</p>
         <ul className="text-sm text-gray-600 space-y-1">
@@ -27,7 +28,7 @@ export default function Pricing() {
           ))}
         </ul>
       </div>
-      <p className="text-center text-xs text-gray-500 mt-4">Prices are subject to an 11% government tax.</p>
+      <p className="text-center text-xs text-gray-500 mt-4">Prices are subject to an 11% government tax. USD figure is an estimated equivalent; you are billed in IDR.</p>
     </section>
   );
 }

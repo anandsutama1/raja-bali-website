@@ -10,7 +10,11 @@ import { SITE_URL } from "@/lib/site";
  *    certificate of completion) genuinely matches schema.org's Course
  *    definition, so this is accurate, not a stretch to chase a rich result.
  * Prices mirror components/cooking-class/Pricing.js; keep both in sync if
- * pricing changes.
+ * pricing changes. Each offer's priceSpecification adds an approximate
+ * USD equivalent alongside the primary IDR price (the actual charged
+ * currency) — third-party resellers list this experience in USD, so
+ * giving Google/AI answer engines our own accurate, more competitive USD
+ * figure directly helps us compete on price for USD-denominated searches.
  */
 export default function CookingClassStructuredData() {
   const url = `${SITE_URL}/cooking-class`;
@@ -28,6 +32,14 @@ export default function CookingClassStructuredData() {
       priceCurrency: "IDR",
       availability: "https://schema.org/InStock",
       url: `${url}#reservation`,
+      priceSpecification: [
+        {
+          "@type": "UnitPriceSpecification",
+          price: "31",
+          priceCurrency: "USD",
+          description: "Estimated USD equivalent; guests are billed in IDR.",
+        },
+      ],
     },
     {
       "@type": "Offer",
@@ -38,6 +50,14 @@ export default function CookingClassStructuredData() {
       priceCurrency: "IDR",
       availability: "https://schema.org/InStock",
       url: `${url}#reservation`,
+      priceSpecification: [
+        {
+          "@type": "UnitPriceSpecification",
+          price: "34",
+          priceCurrency: "USD",
+          description: "Estimated USD equivalent; guests are billed in IDR.",
+        },
+      ],
     },
   ];
 

@@ -20,7 +20,7 @@ export const LOCATIONS = [
     // the "Perfectly Located in Nusa Dua" section on /reservation-main for
     // the on-page counterpart to this description.
     description:
-      "Raja Bali's flagship cultural destination in Tanjung Benoa, just north of Nusa Dua — an area often considered part of Nusa Dua given its immediate proximity and shared district — pairing authentic Balinese cuisine with live cultural performances and hands-on cooking and cocktail classes. Close to The Westin Resort Nusa Dua, Bali Collection, and Museum Pasifika.",
+      "Raja Bali's flagship cultural destination in Tanjung Benoa, just north of Nusa Dua, an area often considered part of Nusa Dua given its immediate proximity and shared district, pairing authentic Balinese cuisine with live cultural performances and hands-on cooking and cocktail classes. Close to The Westin Resort Nusa Dua, Bali Collection, and Museum Pasifika.",
     areaServed: { "@type": "Place", name: "Tanjung Benoa, Nusa Dua, Bali" },
     touristDestination: {
       name: "Tanjung Benoa",

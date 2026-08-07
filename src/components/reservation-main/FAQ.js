@@ -6,14 +6,15 @@ import { mainRestaurantFaqs } from "@/lib/mainRestaurantFaqs";
 // The Accordion renders `a` directly, so this swaps in a JSX answer (with
 // a link to the Cooking Class page) for just that one item, while
 // FAQStructuredData still reads the plain-text version straight from
-// mainRestaurantFaqs — same words either way, just a hyperlink on top.
+// mainRestaurantFaqs — same words either way, just a hyperlink on top
+// (see mainRestaurantFaqs.js for the plain-text equivalent).
 const displayFaqs = mainRestaurantFaqs.map((faq) =>
   faq.q === "Can I join the Balinese Cooking Class?"
     ? {
         ...faq,
         a: (
           <>
-            Yes. Our hands-on Balinese Cooking Class runs in three daily sessions at this location, learning authentic recipes from local chefs before enjoying what you cook. Reservations are required in advance — visit our{" "}
+            Yes. Our hands-on Balinese Cooking Class runs in three daily sessions at this location, learning authentic recipes from local chefs before enjoying what you cook. Reservations are required in advance. Visit our{" "}
             <Link href="/cooking-class" className="font-semibold text-raja-red u-link">
               Cooking Class page
             </Link>{" "}

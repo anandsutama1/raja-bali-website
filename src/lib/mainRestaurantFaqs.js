@@ -12,7 +12,7 @@ export const mainRestaurantFaqs = [
   },
   {
     q: "Can I join the Balinese Cooking Class?",
-    a: "Yes. Our hands-on Balinese Cooking Class runs in three daily sessions at this location, learning authentic recipes from local chefs before enjoying what you cook. Reservations are required in advance — visit our Cooking Class page to book.",
+    a: "Yes. Our hands-on Balinese Cooking Class runs in three daily sessions at this location, learning authentic recipes from local chefs before enjoying what you cook. Reservations are required in advance. Visit our Cooking Class page to book.",
   },
   {
     q: "Do you offer traditional Balinese dance performances?",
