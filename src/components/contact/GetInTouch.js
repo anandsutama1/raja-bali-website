@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { LOCATIONS } from "@/lib/site";
 
 // Per-location content that doesn't live in the shared LOCATIONS config
@@ -9,12 +10,14 @@ const EXTRA = {
     instagram: "@rajabalinusaduamainrestaurant",
     facebookLabel: "Raja Bali - Nusa Dua Main Restaurant",
     image: "/images/contact/Main-Restaurant.jpg",
+    reserveHref: "/reservation-main",
   },
   "nusa-dua": {
     desc: "Enjoy authentic Balinese dining in an elegant and welcoming atmosphere, perfect for romantic dinners, family gatherings, and memorable celebrations.",
     instagram: "@rajabalinusadua",
     facebookLabel: "Raja Bali Nusa Dua",
     image: "/images/contact/Nusadua-Restaurant.jpg",
+    reserveHref: "/reservation-nusadua",
   },
 };
 
@@ -119,6 +122,12 @@ export default function GetInTouch() {
                     <span className="u-link">View on Google Maps</span>
                   </a>
                 </div>
+                <Link
+                  href={loc.reserveHref}
+                  className="u-press mt-5 inline-flex w-full items-center justify-center bg-raja-black px-6 py-3 text-sm tracking-widest text-white hover:bg-raja-red"
+                >
+                  Reserve Table
+                </Link>
               </div>
             </div>
           );

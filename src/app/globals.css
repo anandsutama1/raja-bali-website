@@ -64,6 +64,22 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 2px;
 }
 
+/* iOS Safari's native input[type="date"] chrome carries its own intrinsic
+   width that ignores the box model, so it renders visibly wider than the
+   sibling field beside it in the same form row even though both are
+   width: 100%. Dropping the native appearance makes it size like a plain
+   text input; the tap-to-open wheel picker still works since that's tied
+   to the input type, not this styling. */
+input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  min-width: 0;
+}
+
+input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+}
+
 /* ---------------------------------------------------------------- reveal */
 
 /* Visible by default — Reveal.js only ever ADDS "reveal-armed" to opt an

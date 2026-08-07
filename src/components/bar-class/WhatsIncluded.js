@@ -6,7 +6,7 @@ const items = [
   { title: "Arak Tasting", desc: "Experience the distinctive character of authentic Balinese Arak and discover its role in local cocktail culture." },
   { title: "Certificate of Completion", desc: "Receive a certificate to commemorate your mixology experience at Raja Bali Restaurant." },
   { title: "Signature Cocktail", desc: "Create and enjoy your own handcrafted cocktail under the guidance of our expert bartender." },
-  { title: "Dining Experience", desc: "Conclude your journey by enjoying the traditional dishes you've lovingly prepared in a warm and welcoming setting." },
+  { title: "Balinese Dance", desc: "Your class runs on Thursday, so stay on and enjoy the complimentary Balinese dance performance from 7 PM, free for dining guests. It's all one package." },
 ];
 
 export default function WhatsIncluded() {

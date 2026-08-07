@@ -2,12 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/motion/Reveal";
 import Stagger from "@/components/motion/Stagger";
+import ProductBadge from "@/components/ProductBadge";
 
 // Short previews only, deliberately — the full details for each live on
 // its own dedicated page (linked via href below), so this section
 // introduces and routes to them instead of duplicating their content.
 const experiences = [
   {
+    badge: "Most Popular",
+    badgeVariant: "popular",
     title: "Balinese Cooking Class",
     desc: "Learn traditional recipes hands-on with our local chefs, from spice garden to table.",
     cta: "Explore Experience",
@@ -15,6 +18,8 @@ const experiences = [
     image: "/images/cooking-class/CookingClass-Card.jpg",
   },
   {
+    badge: "Free",
+    badgeVariant: "free",
     title: "Balinese Dance Dinner",
     desc: "A complimentary traditional dance performance every Thursday evening, exclusively here.",
     cta: "Explore Experience",
@@ -22,6 +27,8 @@ const experiences = [
     image: "/images/dance/Hero.jpg",
   },
   {
+    badge: "Limited Slot",
+    badgeVariant: "limited",
     title: "Balinese Bar Class",
     desc: "Step behind the bar and craft your own signature cocktail with authentic Balinese Arak.",
     cta: "Explore Experience",
@@ -58,6 +65,7 @@ export default function Experiences() {
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 className="u-zoom object-cover"
               />
+              <ProductBadge label={item.badge} variant={item.badgeVariant} />
             </div>
             <div className="flex flex-1 flex-col p-5">
               <h3 className="mb-2 text-lg font-semibold transition-colors duration-500 ease-expo group-hover:text-raja-red">

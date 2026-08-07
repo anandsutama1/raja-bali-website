@@ -19,7 +19,7 @@ const ReservationForm = dynamic(() => import("@/components/bar-class/Reservation
 
 const title = "Balinese Cocktail Class";
 const description =
-  "Master the art of mixology with Raja Bali's hands-on Balinese cocktail class. Learn from expert bartenders, taste authentic Balinese Arak, and craft your own signature drink.";
+  "Join Raja Bali's hands-on Balinese cocktail class every Thursday at 3 PM, then stay for the complimentary Balinese dance performance from 7 PM, free for dining guests at Main Restaurant. One Thursday, two experiences.";
 
 // This page gets its own share image (the cocktail class hero photo)
 // instead of the site-wide default. Next.js doesn't merge openGraph/twitter
@@ -29,6 +29,16 @@ const description =
 export const metadata = {
   title,
   description,
+  keywords: [
+    "Balinese cocktail class",
+    "cocktail class Bali",
+    "Thursday cocktail class Bali",
+    "bar class Bali",
+    "Balinese dance performance",
+    "free Balinese dance Thursday",
+    "complimentary Balinese dance Main Restaurant",
+    "Raja Bali Tanjung Benoa",
+  ],
   alternates: { canonical: "/bar-class" },
   openGraph: {
     type: "website",
