@@ -9,21 +9,26 @@ export const LOCATIONS = [
   {
     id: "main-restaurant",
     name: "Raja Bali Main Restaurant",
-    // Landmark names are real, well-known fixtures of the compact ITDC Nusa
-    // Dua tourism enclave (Tanjung Benoa sits within it — Tripadvisor's own
-    // listing for this location is titled "...Tanjung Benoa Nusa Dua
-    // Peninsula, Bali") — a verified geographic fact, not a distance/time
-    // claim. See the "Perfectly Located in Nusa Dua" section on
-    // /reservation-main for the on-page counterpart to this description.
+    // Precise framing: this location is in Tanjung Benoa, just north of
+    // Nusa Dua proper — not literally inside it. Tanjung Benoa is commonly
+    // considered part of Nusa Dua because it's immediately adjacent and
+    // shares the same kecamatan (district), which is why "Nusa Dua" still
+    // appears in marketing copy/title, but the description here stays
+    // precise about the actual location. Landmark names (Westin, Bali
+    // Collection, Museum Pasifika) are real, well-known fixtures of the
+    // area — a verified geographic fact, not a distance/time claim. See
+    // the "Perfectly Located in Nusa Dua" section on /reservation-main for
+    // the on-page counterpart to this description.
     description:
-      "Raja Bali's flagship cultural destination in the heart of Nusa Dua, pairing authentic Balinese cuisine with live cultural performances and hands-on cooking and cocktail classes. Conveniently located within the Nusa Dua tourism area, near The Westin Resort Nusa Dua, Bali Collection, and Museum Pasifika.",
-    areaServed: { "@type": "Place", name: "Nusa Dua, Bali" },
+      "Raja Bali's flagship cultural destination in Tanjung Benoa, just north of Nusa Dua — an area often considered part of Nusa Dua given its immediate proximity and shared district — pairing authentic Balinese cuisine with live cultural performances and hands-on cooking and cocktail classes. Close to The Westin Resort Nusa Dua, Bali Collection, and Museum Pasifika.",
+    areaServed: { "@type": "Place", name: "Tanjung Benoa, Nusa Dua, Bali" },
     touristDestination: {
-      name: "Nusa Dua",
+      name: "Tanjung Benoa",
       description:
-        "A resort and tourism area within South Kuta, Bali, home to luxury hotels, beaches, and cultural attractions.",
+        "A coastal village in the Nusa Dua area of South Kuta, Bali, immediately adjacent to Nusa Dua and sharing the same district.",
     },
     knowsAbout: ["Balinese cuisine", "Balinese cooking class", "Balinese cocktail class", "Nusa Dua dining"],
+    email: "rajabaliactivities@gmail.com",
     telephone: "+62 812-3269-2747",
     streetAddress: "Jl. Pratama No.808 B, Tanjung, Benoa",
     addressLocality: "Kec. Kuta Sel., Kabupaten Badung",
@@ -63,6 +68,7 @@ export const LOCATIONS = [
         "A resort and tourism area within South Kuta, Bali, home to luxury hotels, beaches, and cultural attractions.",
     },
     knowsAbout: ["Balinese cuisine", "Nusa Dua dining"],
+    email: "rajabalinusadua@gmail.com",
     telephone: "+62 812-3864-4766",
     streetAddress: "Jl. Nusa Dua No.62, Benoa",
     addressLocality: "Kec. Kuta Sel., Kabupaten Badung",

@@ -24,10 +24,6 @@ export const nusaDuaFaqs = [
     a: "Yes. Raja Bali Nusa Dua sits in a walk-friendly part of the ITDC Nusa Dua tourism area, making it an easy stroll from many nearby hotels and attractions.",
   },
   {
-    q: "Does Raja Bali Nusa Dua offer cooking classes or Balinese dance performances?",
-    a: "These experiences are hosted exclusively at Raja Bali Main Restaurant in Tanjung Benoa, not at this Nusa Dua location. Raja Bali Nusa Dua focuses on authentic Balinese dining in a refined setting.",
-  },
-  {
     q: "Do I need a reservation?",
     a: "Reservations are recommended, especially during dinner hours and peak holiday seasons. You can reserve a table directly on this page.",
   },

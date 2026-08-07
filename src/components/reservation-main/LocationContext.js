@@ -15,7 +15,7 @@ export default function LocationContext() {
     <section className="max-w-2xl mx-auto text-center border-t border-gray-200 py-16 px-6">
       <h2 className="text-2xl font-serif mb-4">Perfectly Located in Nusa Dua</h2>
       <p className="text-sm text-gray-600 leading-relaxed">
-        Raja Bali Main Restaurant is ideally located in the heart of Nusa Dua, close to Bali&apos;s leading luxury resorts, cultural attractions, shopping destinations, and pristine beaches. Whether you&apos;re joining our{" "}
+        Raja Bali Main Restaurant is located in Tanjung Benoa, just north of Nusa Dua &mdash; an area often considered part of Nusa Dua given its immediate proximity and shared district &mdash; close to Bali&apos;s leading luxury resorts, cultural attractions, shopping destinations, and pristine beaches. Whether you&apos;re joining our{" "}
         <Link href="/cooking-class" className="u-link text-raja-red">
           Balinese Cooking Class
         </Link>
@@ -27,7 +27,7 @@ export default function LocationContext() {
         <Link href="/private-events" className="u-link text-raja-red">
           private event
         </Link>
-        , or simply dining with family and friends, every experience takes place at our convenient Nusa Dua location.
+        , or simply dining with family and friends, every experience takes place at this convenient location.
       </p>
     </section>
   );
