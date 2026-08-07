@@ -2,11 +2,17 @@ import SmartImage from "@/components/SmartImage";
 import MenuSection from "@/components/menu/MenuSection";
 import SetMenuCard from "@/components/menu/SetMenuCard";
 import StickyReserveButton from "@/components/StickyReserveButton";
+import PageSchema from "@/components/PageSchema";
+import { buildMenuJsonLd } from "@/lib/menuSchema";
+import { SITE_URL } from "@/lib/site";
+
+const title = "Food Menu";
+const description =
+  "Explore Raja Bali's food menu, featuring appetizers, soups, vegetarian dishes, rice & noodles, main courses, betutu, and Balinese set menus, all made with authentic recipes.";
 
 export const metadata = {
-  title: "Food Menu",
-  description:
-    "Explore Raja Bali's food menu, featuring appetizers, soups, vegetarian dishes, rice & noodles, main courses, betutu, and Balinese set menus, all made with authentic recipes.",
+  title,
+  description,
   alternates: { canonical: "/menu/food" },
 };
 
@@ -105,11 +111,50 @@ const setMenus = [
   },
 ];
 
+const menuJsonLd = buildMenuJsonLd({
+  url: `${SITE_URL}/menu/food`,
+  name: "Raja Bali Food Menu",
+  description,
+  sections: [
+    { title: "Appetizer", items: appetizer },
+    { title: "Soup", items: soup },
+    { title: "Vegetarian", items: vegetarian },
+    { title: "Rice & Noodles", items: riceNoodles },
+    { title: "Main Course", items: mainCourse },
+    { title: "Betutu (request 2 days before)", items: betutu },
+    { title: "Kids Menu", items: kidsMenu },
+    { title: "Dessert", items: dessert },
+    {
+      title: "Signature Set Menu",
+      // Each set menu is a fixed multi-course meal sold at one price, so it
+      // maps to a single MenuItem whose description lists everything
+      // included rather than one MenuItem per dish.
+      items: setMenus.map((set) => ({
+        name: set.name,
+        desc: set.sections.map((s) => `${s.label}: ${s.items.join(", ")}`).join(" | "),
+        price: set.price,
+      })),
+    },
+  ],
+});
+
 export default function FoodMenuPage() {
   return (
     <main>
+      <PageSchema
+        path="/menu/food"
+        name={title}
+        description={description}
+        crumbs={[{ name: "Home", path: "/" }, { name: "Food Menu" }]}
+        mainEntityId={`${SITE_URL}/menu/food#menu`}
+      />
+      <script
+        type="application/ld+json"
+        // Data is built from the arrays above, not user input.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(menuJsonLd) }}
+      />
       <section className="relative h-[40vh] bg-raja-black flex flex-col items-center justify-center text-center text-white px-6">
-  <SmartImage src="/images/menu/food-hero.jpg" alt="Raja Bali" priority sizes="100vw" />
+  <SmartImage src="/images/menu/food-hero.jpg" alt="Raja Bali food menu: appetizers, soups, main courses, and betutu" priority sizes="100vw" />
   <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black" />
   <div className="relative z-10 max-w-2xl mx-auto">
     <h1 className="text-5xl font-serif mb-2">Food Menu</h1>

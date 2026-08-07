@@ -1,19 +1,50 @@
 import SmartImage from "@/components/SmartImage";
 import BuffetCategory from "@/components/menu/BuffetCategory";
 import StickyReserveButton from "@/components/StickyReserveButton";
+import PageSchema from "@/components/PageSchema";
+import { SITE_URL } from "@/lib/site";
+
+const title = "Western & Asian Buffet Menu";
+const description =
+  "Raja Bali's group dinner buffet menu featuring Western & Asian favorites, starting from IDR 350K per person, ideal for groups with different preferences.";
 
 export const metadata = {
-  title: "Western & Asian Buffet Menu",
-  description:
-    "Raja Bali's group dinner buffet menu featuring Western & Asian favorites, starting from IDR 350K per person, ideal for groups with different preferences.",
+  title,
+  description,
   alternates: { canonical: "/menu/western-asian-buffet" },
+};
+
+const menuJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "@id": `${SITE_URL}/menu/western-asian-buffet#menu`,
+  name: "Raja Bali Western & Asian Buffet Menu",
+  description,
+  url: `${SITE_URL}/menu/western-asian-buffet`,
+  offers: {
+    "@type": "Offer",
+    price: "350000",
+    priceCurrency: "IDR",
+    unitText: "per person",
+  },
 };
 
 export default function WesternAsianBuffetPage() {
   return (
     <main>
+      <PageSchema
+        path="/menu/western-asian-buffet"
+        name={title}
+        description={description}
+        crumbs={[{ name: "Home", path: "/" }, { name: "Western & Asian Buffet Menu" }]}
+        mainEntityId={`${SITE_URL}/menu/western-asian-buffet#menu`}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(menuJsonLd) }}
+      />
       <section className="relative h-[40vh] bg-raja-black flex flex-col items-center justify-center text-center text-white px-6">
-  <SmartImage src="/images/menu/western-asian-buffet-hero.jpg" alt="Raja Bali" priority sizes="100vw" />
+  <SmartImage src="/images/menu/western-asian-buffet-hero.jpg" alt="Raja Bali Western and Asian group dinner buffet spread" priority sizes="100vw" />
   <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black" />
   <div className="relative z-10 max-w-2xl mx-auto">
     <h1 className="text-5xl font-serif mb-2">Group Dinner Buffet Menu</h1>

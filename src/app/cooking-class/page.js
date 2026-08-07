@@ -9,7 +9,8 @@ import Pricing from "@/components/cooking-class/Pricing";
 import ReservationForm from "@/components/cooking-class/ReservationForm";
 import StickyReserveButton from "@/components/StickyReserveButton";
 import CookingClassStructuredData from "@/components/cooking-class/StructuredData";
-import { SITE_NAME } from "@/lib/site";
+import PageSchema from "@/components/PageSchema";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const title = "Balinese Cooking Class in Bali";
 const description =
@@ -56,6 +57,13 @@ export const metadata = {
 export default function CookingClassPage() {
   return (
     <main>
+      <PageSchema
+        path="/cooking-class"
+        name={title}
+        description={description}
+        crumbs={[{ name: "Home", path: "/" }, { name: "Balinese Cooking Class" }]}
+        mainEntityId={`${SITE_URL}/cooking-class#course`}
+      />
       <CookingClassStructuredData />
       <CookingClassHero />
       <Intro />

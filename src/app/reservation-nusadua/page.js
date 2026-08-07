@@ -1,7 +1,9 @@
 import ReservationNusaDuaHero from "@/components/reservation-nusadua/Hero";
 import ReservationForm from "@/components/reservation-nusadua/ReservationForm";
 import GalleryExperience from "@/components/reservation-nusadua/GalleryExperience";
-import { SITE_NAME } from "@/lib/site";
+import PageSchema from "@/components/PageSchema";
+import TripadvisorBadgeNusaDua from "@/components/TripadvisorBadgeNusaDua";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const title = "Reservation | Nusa Dua";
 const description =
@@ -41,7 +43,21 @@ export const metadata = {
 export default function ReservationNusaDuaPage() {
   return (
     <main>
+      <PageSchema
+        path="/reservation-nusadua"
+        name={title}
+        description={description}
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Our Locations", path: "/outlets" },
+          { name: "Nusa Dua Reservation" },
+        ]}
+        mainEntityId={`${SITE_URL}/#nusa-dua`}
+      />
       <ReservationNusaDuaHero />
+      <div className="flex justify-center py-8">
+        <TripadvisorBadgeNusaDua />
+      </div>
       <GalleryExperience />
       <ReservationForm />
     </main>

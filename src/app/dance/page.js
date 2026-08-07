@@ -5,7 +5,9 @@ import DanceRepertoire from "@/components/dance/DanceRepertoire";
 import DanceGallery from "@/components/dance/Gallery";
 import ClosingCTA from "@/components/dance/ClosingCTA";
 import StickyReserveButton from "@/components/StickyReserveButton";
-import { SITE_NAME } from "@/lib/site";
+import PageSchema from "@/components/PageSchema";
+import DanceStructuredData from "@/components/dance/StructuredData";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const title = "Balinese Dance Performance";
 const description =
@@ -45,6 +47,14 @@ export const metadata = {
 export default function DancePage() {
   return (
     <main>
+      <PageSchema
+        path="/dance"
+        name={title}
+        description={description}
+        crumbs={[{ name: "Home", path: "/" }, { name: "Balinese Dance Performance" }]}
+        mainEntityId={`${SITE_URL}/dance#event`}
+      />
+      <DanceStructuredData />
       <DanceHero />
       <Intro />
       <Schedule />

@@ -18,8 +18,15 @@ export const LOCATIONS = [
     postalCode: "80361",
     latitude: -8.7746812,
     longitude: 115.22276810000001,
-    sameAs: ["https://www.instagram.com/rajabalinusaduamainrestaurant"],
+    // Tripadvisor listing confirmed live: 5.0/5 from 63 reviews as of 2026-08-07.
+    sameAs: [
+      "https://www.instagram.com/rajabalinusaduamainrestaurant",
+      "https://www.tripadvisor.com/Restaurant_Review-g1465999-d25432568-Reviews-Raja_Bali_Activities_Main_Restaurant-Tanjung_Benoa_Nusa_Dua_Peninsula_Bali.html",
+    ],
+    // Official Google share link, provided directly by the business.
+    hasMap: "https://share.google/8gzSWdB217YXjQqfc",
     url: `${SITE_URL}/reservation-main`,
+    image: `${SITE_URL}/images/contact/Main-Restaurant.jpg`,
   },
   {
     id: "nusa-dua",
@@ -33,8 +40,14 @@ export const LOCATIONS = [
     postalCode: "80361",
     latitude: -8.7978961,
     longitude: 115.2246172,
-    sameAs: ["https://www.instagram.com/rajabalinusadua"],
+    sameAs: [
+      "https://www.instagram.com/rajabalinusadua",
+      "https://www.tripadvisor.com/Restaurant_Review-g297698-d13083794-Reviews-Raja_Bali_Restaurant_Nusadua-Nusa_Dua_Benoa_South_Kuta_Badung_Regency_Bali.html",
+    ],
+    // Official Google share link, provided directly by the business.
+    hasMap: "https://share.google/XJuUaLxjcCWsXTMhi",
     url: `${SITE_URL}/reservation-nusadua`,
+    image: `${SITE_URL}/images/contact/Nusadua-Restaurant.jpg`,
   },
 ];
 
@@ -51,4 +64,15 @@ export const OPENING_HOURS = {
   ],
   opens: "12:00",
   closes: "21:00",
+};
+
+// Shared LocalBusiness facts that don't vary by outlet. priceRange/
+// paymentAccepted use schema.org's plain-text conventions (no fixed
+// enum), so these strings are what Google's Rich Results Test expects.
+export const BUSINESS_INFO = {
+  priceRange: "$$",
+  currenciesAccepted: "IDR",
+  paymentAccepted: "Cash, Credit Card, Debit Card",
+  areaServed: "Bali, Indonesia",
+  servesCuisine: ["Balinese", "Indonesian"],
 };

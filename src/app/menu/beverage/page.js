@@ -2,11 +2,17 @@ import SmartImage from "@/components/SmartImage";
 import MenuSection from "@/components/menu/MenuSection";
 import WineTable from "@/components/menu/WineTable";
 import StickyReserveButton from "@/components/StickyReserveButton";
+import PageSchema from "@/components/PageSchema";
+import { buildMenuJsonLd } from "@/lib/menuSchema";
+import { SITE_URL } from "@/lib/site";
+
+const title = "Beverage Menu";
+const description =
+  "Raja Bali's beverage menu features signature cocktails, wine, and refreshments crafted with tropical, island-inspired flavors.";
 
 export const metadata = {
-  title: "Beverage Menu",
-  description:
-    "Raja Bali's beverage menu features signature cocktails, wine, and refreshments crafted with tropical, island-inspired flavors.",
+  title,
+  description,
   alternates: { canonical: "/menu/beverage" },
 };
 
@@ -209,11 +215,57 @@ const importedSparklingWine = [
   { name: "Corte Giara (Italy)", bottle: "505K" },
 ];
 
+const wineItems = [
+  ...localWhiteWine,
+  ...localRedWine,
+  ...localRoseWine,
+  ...localSparklingWine,
+  ...importedWhiteWine,
+  ...importedRedWine,
+  ...importedRoseWine,
+  ...importedSparklingWine,
+].map((wine) => ({ name: wine.name }));
+
+const menuJsonLd = buildMenuJsonLd({
+  url: `${SITE_URL}/menu/beverage`,
+  name: "Raja Bali Beverage Menu",
+  description,
+  sections: [
+    { title: "Signature Cocktails", note: "Premium Spirit 130K / Local Spirit 95K", items: signatureCocktails },
+    { title: "Balinese Cocktail", note: "All price 80K", items: balineseCocktails },
+    { title: "Classic Cocktail", note: "Premium Spirit 130K / Local Spirit 95K", items: classicCocktails },
+    { title: "Raja Bali's Refreshing", items: refreshing },
+    { title: "Wellness Drink", items: wellness },
+    { title: "Juice", items: juice },
+    { title: "Beer", items: beers },
+    { title: "Tea & Coffee", items: teaCoffee },
+    { title: "Soft Drink & Water", items: softDrinks },
+    { title: "Milkshake & Smoothies", items: milkshakes },
+    { title: "Premium Spirit", note: "100K, by shot (45ml)", items: premiumSpirit },
+    { title: "Local Spirit", note: "By shot (45ml)", items: localSpirit },
+    { title: "Whiskey Premium", note: "125K, by shot (45ml)", items: whiskeyPremium },
+    { title: "Whiskey Local", note: "80K, by shot (45ml)", items: whiskeyLocal },
+    { title: "Wine List", note: "Priced by glass and/or bottle; ask your server for current pricing.", items: wineItems },
+  ],
+});
+
 export default function BeverageMenuPage() {
   return (
     <main>
+      <PageSchema
+        path="/menu/beverage"
+        name={title}
+        description={description}
+        crumbs={[{ name: "Home", path: "/" }, { name: "Beverage Menu" }]}
+        mainEntityId={`${SITE_URL}/menu/beverage#menu`}
+      />
+      <script
+        type="application/ld+json"
+        // Data is built from the arrays above, not user input.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(menuJsonLd) }}
+      />
       <section className="relative h-[40vh] bg-raja-black flex flex-col items-center justify-center text-center text-white px-6">
-  <SmartImage src="/images/menu/beverage-hero.jpg" alt="Raja Bali" priority sizes="100vw" />
+  <SmartImage src="/images/menu/beverage-hero.jpg" alt="Raja Bali beverage menu: signature cocktails, Balinese Arak, wine, and refreshments" priority sizes="100vw" />
   <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black" />
   <div className="relative z-10 max-w-2xl mx-auto">
     <h1 className="text-5xl font-serif mb-2">Beverage Menu</h1>

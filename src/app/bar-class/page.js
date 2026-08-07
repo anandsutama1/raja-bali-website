@@ -8,7 +8,9 @@ import GalleryExperience from "@/components/bar-class/GalleryExperience";
 import Pricing from "@/components/bar-class/Pricing";
 import ReservationForm from "@/components/bar-class/ReservationForm";
 import StickyReserveButton from "@/components/StickyReserveButton";
-import { SITE_NAME } from "@/lib/site";
+import BarClassStructuredData from "@/components/bar-class/StructuredData";
+import PageSchema from "@/components/PageSchema";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const title = "Balinese Cocktail Class";
 const description =
@@ -48,6 +50,14 @@ export const metadata = {
 export default function BarClassPage() {
   return (
     <main>
+      <PageSchema
+        path="/bar-class"
+        name={title}
+        description={description}
+        crumbs={[{ name: "Home", path: "/" }, { name: "Balinese Cocktail Class" }]}
+        mainEntityId={`${SITE_URL}/bar-class#course`}
+      />
+      <BarClassStructuredData />
       <BarClassHero />
       <Intro />
       <FeatureRows />
