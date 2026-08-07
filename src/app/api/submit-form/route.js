@@ -56,6 +56,16 @@ const RESERVATION_FORM_TYPES = new Set([
 // than one generic "reservation" voice, since a cooking class booking and
 // a private event enquiry aren't the same thing to the guest reading this.
 const TABLE_RESERVATION_TYPES = new Set(["reservation-main", "reservation-nusadua"]);
+
+// The only form types that ever present the Nusa Dua pickup checkbox to the
+// guest. Private events and group reservations never offer it, so their ops
+// emails shouldn't claim a pickup status either way.
+const PICKUP_ELIGIBLE_TYPES = new Set([
+  "reservation-main",
+  "reservation-nusadua",
+  "cooking-class",
+  "bar-class",
+]);
 const BOOKING_COPY = {
   "reservation-main": {
     eyebrow: "Reservation Confirmed",
@@ -147,6 +157,7 @@ function needsPickup(fields) {
 function buildEmailHtml(formType, fields) {
   const label = FORM_LABELS[formType] || formType;
   const hasPickup = needsPickup(fields);
+  const isPickupEligible = PICKUP_ELIGIBLE_TYPES.has(formType);
 
   const rows = [
     ["Name", [fields.title, fields.firstName, fields.lastName].filter(Boolean).join(" ")],
@@ -154,7 +165,7 @@ function buildEmailHtml(formType, fields) {
     ["WhatsApp", fields.whatsapp],
     ["Date", fields.date],
     ["Time", fields.time],
-    ["Guests", fields.guests],
+    ["Adults", fields.guests],
     ["Children", fields.children],
     ["Hotel Name", fields.hotelName],
     ["Room Number", fields.roomNumber],
@@ -175,9 +186,15 @@ function buildEmailHtml(formType, fields) {
   // client's clipping point. Deliberately tied to the same `hasPickup` flag
   // as the table rows above — never re-derive this separately, or the two
   // can drift out of sync.
-  const pickupNoteHtml = hasPickup
-    ? `<p style="margin:0 0 16px;padding:12px 14px;background:#fff4e5;border-left:3px solid #d97706;color:#7a4a00;font-size:14px;font-weight:700;">⚠ GUEST NEEDS PICKUP &mdash; see Hotel Name / Room Number below.</p>`
-    : "";
+  //
+  // Shown either way (needed or not) for every pickup-eligible form type,
+  // not just when pickup is requested — staff should never have to wonder
+  // whether "no warning" means "no pickup" or "the note didn't render".
+  const pickupNoteHtml = !isPickupEligible
+    ? ""
+    : hasPickup
+      ? `<p style="margin:0 0 16px;padding:12px 14px;background:#fff4e5;border-left:3px solid #d97706;color:#7a4a00;font-size:14px;font-weight:700;">⚠ GUEST NEEDS PICKUP &mdash; see Hotel Name / Room Number below.</p>`
+      : `<p style="margin:0 0 16px;padding:12px 14px;background:#f0f7f0;border-left:3px solid #4a8f4a;color:#2f5c2f;font-size:14px;font-weight:700;">✓ No pickup needed for this booking.</p>`;
 
   return `
     <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;">

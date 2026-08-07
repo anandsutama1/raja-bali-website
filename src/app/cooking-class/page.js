@@ -8,11 +8,12 @@ import GalleryExperience from "@/components/cooking-class/GalleryExperience";
 import Pricing from "@/components/cooking-class/Pricing";
 import ReservationForm from "@/components/cooking-class/ReservationForm";
 import StickyReserveButton from "@/components/StickyReserveButton";
+import CookingClassStructuredData from "@/components/cooking-class/StructuredData";
 import { SITE_NAME } from "@/lib/site";
 
-const title = "Balinese Cooking Class";
+const title = "Balinese Cooking Class in Bali";
 const description =
-  "Discover the secrets of authentic Balinese cuisine in a hands-on cooking class with Raja Bali's experienced local chefs, from traditional spices to timeless family recipes.";
+  "Hands-on Balinese cooking class in Tanjung Benoa, Bali. Learn authentic recipes from local chefs, tour our spice garden, and enjoy what you cook. From IDR 550K/person.";
 
 // This page gets its own share image (the cooking class hero photo) instead
 // of the site-wide default. Next.js doesn't merge openGraph/twitter objects
@@ -22,6 +23,13 @@ const description =
 export const metadata = {
   title,
   description,
+  keywords: [
+    "Balinese cooking class",
+    "cooking class Bali",
+    "cooking class Tanjung Benoa",
+    "learn Balinese cooking",
+    "Bali culinary experience",
+  ],
   alternates: { canonical: "/cooking-class" },
   openGraph: {
     type: "website",
@@ -48,6 +56,7 @@ export const metadata = {
 export default function CookingClassPage() {
   return (
     <main>
+      <CookingClassStructuredData />
       <CookingClassHero />
       <Intro />
       <FeatureRows />
