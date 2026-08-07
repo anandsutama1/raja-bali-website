@@ -27,14 +27,18 @@ import { useEffect, useRef, useState } from "react";
  * shrinks the whole thing proportionally, the same way a responsive image
  * would, instead of clipping it.
  *
- * Why it stays invisible until `ready`: revealing the widget as soon as
- * it mounts meant showing our size *guess* first, then visibly resizing
- * (sometimes growing before shrinking) as real measurements replaced that
- * guess and the scale recalculated — janky on mobile especially. Instead
- * this holds the widget hidden (reserving no layout space) until the
- * first real measurement and its matching scale are both known, then
- * reveals it already at the correct size — no animated correction, no
- * visible grow-then-shrink.
+ * Why it stays invisible until `ready`: the very first measurement the
+ * iframe's `load` event gives us is often the *unstyled* fallback logo
+ * (Tripadvisor's own script hasn't fetched/rendered the real rating
+ * content yet at that point), which renders bigger than the final,
+ * properly-sized widget — revealing on that first measurement showed the
+ * big logo, then visibly shrank once the real content replaced it a
+ * moment later. There's no explicit "fully loaded" event from
+ * Tripadvisor's script to wait for instead, so this compares each
+ * re-measurement to the previous one and only reveals once two
+ * consecutive readings agree (the content has stopped changing size) —
+ * whatever that settled size is, that's what gets shown, with no
+ * visible growing or shrinking beforehand.
  *
  * `html` is Tripadvisor's embed code verbatim (not authored by us), so
  * this is safe to render as-is inside the iframe's own document.
@@ -47,48 +51,65 @@ import { useEffect, useRef, useState } from "react";
 const SIZE_BUFFER = { width: 16, height: 10 };
 const MAX_NATURAL_WIDTH = 520;
 
+const STABLE_TOLERANCE_PX = 2;
+
 export default function TripadvisorEmbed({ html, height: initialHeight, width: initialWidth = 400 }) {
   const containerRef = useRef(null);
   const iframeRef = useRef(null);
-  const hasRealMeasurement = useRef(false);
+  const lastMeasured = useRef(null);
+  const isStable = useRef(false);
   const [natural, setNatural] = useState({ height: initialHeight, width: initialWidth });
   const [scale, setScale] = useState(1);
   const [ready, setReady] = useState(false);
 
-  // Measure the widget's true, unconstrained size once Tripadvisor's own
-  // script has rendered it (which happens after the iframe's load event,
-  // so a few follow-up re-measures catch that late-arriving content).
+  // Measure the widget's true, unconstrained size, re-checking a few
+  // times since Tripadvisor's script replaces the unstyled fallback logo
+  // with the real rating content asynchronously after the iframe's load
+  // event. Only marks the size "stable" (and therefore revealable) once
+  // two consecutive readings match — see the component doc comment above.
   useEffect(() => {
     const iframe = iframeRef.current;
     if (!iframe) return undefined;
 
-    const measure = () => {
+    const measure = (isFinalCheck) => {
       const body = iframe.contentDocument?.body;
       if (!body) return;
       const nextHeight = body.scrollHeight;
       const nextWidth = body.scrollWidth;
-      if (nextHeight > 0 && nextWidth > 0) {
-        hasRealMeasurement.current = true;
-        setNatural({
-          height: nextHeight + SIZE_BUFFER.height,
-          width: Math.min(nextWidth + SIZE_BUFFER.width, MAX_NATURAL_WIDTH),
-        });
-      }
+      if (nextHeight <= 0 || nextWidth <= 0) return;
+
+      const prev = lastMeasured.current;
+      const matchesPrevious =
+        prev &&
+        Math.abs(prev.height - nextHeight) <= STABLE_TOLERANCE_PX &&
+        Math.abs(prev.width - nextWidth) <= STABLE_TOLERANCE_PX;
+
+      lastMeasured.current = { height: nextHeight, width: nextWidth };
+      // Reveal once the size has settled, or once we've run out of
+      // scheduled re-checks — whatever it measured by then is final, so
+      // it's better to show that than stay hidden forever.
+      if (matchesPrevious || isFinalCheck) isStable.current = true;
+
+      setNatural({
+        height: nextHeight + SIZE_BUFFER.height,
+        width: Math.min(nextWidth + SIZE_BUFFER.width, MAX_NATURAL_WIDTH),
+      });
     };
 
-    iframe.addEventListener("load", measure);
-    const timers = [300, 800, 1500, 2500, 4000].map((ms) => setTimeout(measure, ms));
+    const onLoad = () => measure(false);
+    iframe.addEventListener("load", onLoad);
+    const checkpoints = [300, 800, 1500, 2500, 4000];
+    const timers = checkpoints.map((ms, i) => setTimeout(() => measure(i === checkpoints.length - 1), ms));
 
     return () => {
-      iframe.removeEventListener("load", measure);
+      iframe.removeEventListener("load", onLoad);
       timers.forEach(clearTimeout);
     };
   }, []);
 
   // Scale down to fit whatever width the surrounding layout actually
   // gives this component — recalculated on resize/orientation change too.
-  // Only reveals once a *real* measurement (not the initial guess) has
-  // been scaled at least once, so nothing visible ever needs correcting.
+  // Only reveals once the measured size above has settled (see `measure`).
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return undefined;
@@ -97,7 +118,7 @@ export default function TripadvisorEmbed({ html, height: initialHeight, width: i
       const available = container.clientWidth;
       if (available > 0 && natural.width > 0) {
         setScale(Math.min(1, available / natural.width));
-        if (hasRealMeasurement.current) setReady(true);
+        if (isStable.current) setReady(true);
       }
     };
 
