@@ -57,7 +57,6 @@ export default function TripadvisorEmbed({ html, height: initialHeight, width: i
   const containerRef = useRef(null);
   const iframeRef = useRef(null);
   const lastMeasured = useRef(null);
-  const isStable = useRef(false);
   const [natural, setNatural] = useState({ height: initialHeight, width: initialWidth });
   const [scale, setScale] = useState(1);
   const [ready, setReady] = useState(false);
@@ -65,8 +64,10 @@ export default function TripadvisorEmbed({ html, height: initialHeight, width: i
   // Measure the widget's true, unconstrained size, re-checking a few
   // times since Tripadvisor's script replaces the unstyled fallback logo
   // with the real rating content asynchronously after the iframe's load
-  // event. Only marks the size "stable" (and therefore revealable) once
-  // two consecutive readings match — see the component doc comment above.
+  // event. Only reveals (setReady) once two consecutive readings agree —
+  // see the component doc comment above. setReady is called directly here
+  // (a real state update) rather than through a ref another effect polls,
+  // since a ref mutation alone doesn't make that other effect re-run.
   useEffect(() => {
     const iframe = iframeRef.current;
     if (!iframe) return undefined;
@@ -85,15 +86,15 @@ export default function TripadvisorEmbed({ html, height: initialHeight, width: i
         Math.abs(prev.width - nextWidth) <= STABLE_TOLERANCE_PX;
 
       lastMeasured.current = { height: nextHeight, width: nextWidth };
-      // Reveal once the size has settled, or once we've run out of
-      // scheduled re-checks — whatever it measured by then is final, so
-      // it's better to show that than stay hidden forever.
-      if (matchesPrevious || isFinalCheck) isStable.current = true;
 
       setNatural({
         height: nextHeight + SIZE_BUFFER.height,
         width: Math.min(nextWidth + SIZE_BUFFER.width, MAX_NATURAL_WIDTH),
       });
+      // Reveal once the size has settled, or once we've run out of
+      // scheduled re-checks — whatever it measured by then is final, so
+      // it's better to show that than stay hidden forever.
+      if (matchesPrevious || isFinalCheck) setReady(true);
     };
 
     const onLoad = () => measure(false);
@@ -109,7 +110,6 @@ export default function TripadvisorEmbed({ html, height: initialHeight, width: i
 
   // Scale down to fit whatever width the surrounding layout actually
   // gives this component — recalculated on resize/orientation change too.
-  // Only reveals once the measured size above has settled (see `measure`).
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return undefined;
@@ -118,7 +118,6 @@ export default function TripadvisorEmbed({ html, height: initialHeight, width: i
       const available = container.clientWidth;
       if (available > 0 && natural.width > 0) {
         setScale(Math.min(1, available / natural.width));
-        if (isStable.current) setReady(true);
       }
     };
 
