@@ -1,5 +1,5 @@
-import Script from "next/script";
 import LazyMount from "@/components/LazyMount";
+import TripadvisorScript from "@/components/TripadvisorScript";
 
 /**
  * Official Tripadvisor "ratings only wide" widget for Raja Bali Nusa Dua's
@@ -7,14 +7,16 @@ import LazyMount from "@/components/LazyMount";
  * third-party trust signal rendered by Tripadvisor's own script, not our
  * own review/AggregateRating markup.
  *
- * Two performance measures, both aimed at the "loads very slowly on
- * mobile" complaint:
+ * Performance/reliability measures:
  *  - preconnect/dns-prefetch to jscache.com and tripadvisor.com starts
  *    DNS + TLS for those origins immediately, instead of only once the
  *    script tag itself is discovered.
  *  - LazyMount defers even injecting the script until the badge is about
  *    to scroll into view, so its execution never competes with hydration
  *    for the main thread on slower mobile CPUs.
+ *  - TripadvisorScript (not next/script's <Script>) makes sure the script
+ *    actually re-executes on every mount, including after a client-side
+ *    route change — see its own doc comment for why that matters here.
  *
  * The inner wrapper is defensive, not part of Tripadvisor's embed code:
  * their widget script has no intrinsic size until its async script/CSS
@@ -50,11 +52,7 @@ export default function TripadvisorBadgeNusaDua() {
               </li>
             </ul>
           </div>
-          <Script
-            async
-            src="https://www.jscache.com/wejs?wtype=cdsratingsonlywide&uniq=504&locationId=13083794&lang=en_US&border=true&shadow=false&backgroundColor=white&display_version=2"
-            strategy="afterInteractive"
-          />
+          <TripadvisorScript src="https://www.jscache.com/wejs?wtype=cdsratingsonlywide&uniq=504&locationId=13083794&lang=en_US&border=true&shadow=false&backgroundColor=white&display_version=2" />
         </div>
       </LazyMount>
     </>
