@@ -6,6 +6,7 @@ import StructuredData from "@/components/StructuredData";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const ibarra = Ibarra_Real_Nova({
   subsets: ["latin"],
