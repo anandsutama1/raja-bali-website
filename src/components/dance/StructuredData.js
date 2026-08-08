@@ -78,6 +78,10 @@ export default function DanceStructuredData() {
       availability: "https://schema.org/InStock",
       url: `${SITE_URL}/dance`,
       description: "Complimentary for dining guests",
+      // Reuses the same rolling "valid from today" date as eventSchedule
+      // below, rather than a fixed date that would eventually read as
+      // stale.
+      validFrom: startDate,
     },
     eventSchedule: {
       "@type": "Schedule",
