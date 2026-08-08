@@ -10,20 +10,19 @@ const destinations = [
     desc: (
       <>
         Our flagship destination in Tanjung Benoa, within the wider Nusa Dua
-        area, pairing authentic Balinese dining with the{" "}
+        area, home to the{" "}
         <Link href="/cooking-class" className="u-link text-raja-red">
           Balinese Cooking Class
         </Link>
-        , the{" "}
+        , Balinese{" "}
         <Link href="/bar-class" className="u-link text-raja-red">
-          Balinese Bar Class
+          Bar Class
         </Link>
-        , and our complimentary Thursday{" "}
+        , and a complimentary Thursday{" "}
         <Link href="/dance" className="u-link text-raja-red">
           Balinese Dance Performance
         </Link>
-        , plus warm island hospitality and a large on-site parking area for
-        guests.
+        .
       </>
     ),
     features: "Restaurant · Culture · Experiences",

@@ -23,6 +23,13 @@ export default function LocationContext() {
         </Link>{" "}
         is always within easy reach.
       </p>
+      <p className="mt-4 text-xs text-gray-400">
+        Looking for the Balinese Cooking Class, Bar Class, or Dance Performance? Those are hosted at{" "}
+        <Link href="/outlets" className="u-link">
+          Raja Bali Main Restaurant
+        </Link>{" "}
+        in Tanjung Benoa.
+      </p>
     </section>
   );
 }

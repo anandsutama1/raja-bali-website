@@ -10,9 +10,6 @@ export default function ReservationMainHero() {
         <p className="max-w-xl mx-auto text-sm text-gray-200">
           Reserve your table at Raja Bali Tanjung Benoa and immerse yourself in authentic Balinese cuisine, live cultural performances, and hands-on cooking and cocktail classes.
         </p>
-        <p className="mt-3 text-xs text-gray-300">
-          Join us Thursday evenings for our complimentary Balinese Dance Performance, held exclusively here at the Main Restaurant.
-        </p>
       </div>
     </section>
   );
