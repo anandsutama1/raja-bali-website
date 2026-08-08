@@ -1,5 +1,6 @@
 import { Ibarra_Real_Nova } from "next/font/google";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
 import Navbar from "@/components/Navbar";
@@ -79,6 +80,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
