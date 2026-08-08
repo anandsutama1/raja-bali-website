@@ -65,17 +65,6 @@ export default function RootLayout({ children }) {
         <Script id="no-js" strategy="beforeInteractive">
           {`document.documentElement.classList.remove('no-js')`}
         </Script>
-        {/* Google Ads conversion tracking (gtag.js) */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-18370649578"
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-18370649578');`}
-        </Script>
         <StructuredData />
         <Navbar />
         {children}
