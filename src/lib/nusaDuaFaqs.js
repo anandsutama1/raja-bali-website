@@ -27,4 +27,8 @@ export const nusaDuaFaqs = [
     q: "Do I need a reservation?",
     a: "Reservations are recommended, especially during dinner hours and peak holiday seasons. You can reserve a table directly on this page.",
   },
+  {
+    q: "Does Raja Bali Nusa Dua offer the Cooking Class, Bar Class, or Balinese Dance?",
+    a: "No. The Balinese Cooking Class, Balinese Bar Class, and Balinese Dance Performance are only available at Raja Bali Main Restaurant in Tanjung Benoa.",
+  },
 ];

@@ -1,6 +1,7 @@
 import OutletsHero from "@/components/outlets/Hero";
 import Destinations from "@/components/outlets/Destinations";
 import Location from "@/components/outlets/Location";
+import FAQ from "@/components/outlets/FAQ";
 import ContactCTA from "@/components/outlets/ContactCTA";
 import PageSchema from "@/components/PageSchema";
 
@@ -27,6 +28,7 @@ export default function OutletsPage() {
       <OutletsHero />
       <Destinations />
       <Location />
+      <FAQ />
       <ContactCTA />
     </main>
   );

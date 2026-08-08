@@ -3,6 +3,7 @@ import Intro from "@/components/dance/Intro";
 import Schedule from "@/components/dance/Schedule";
 import DanceRepertoire from "@/components/dance/DanceRepertoire";
 import DanceGallery from "@/components/dance/Gallery";
+import FAQ from "@/components/dance/FAQ";
 import ClosingCTA from "@/components/dance/ClosingCTA";
 import StickyReserveButton from "@/components/StickyReserveButton";
 import PageSchema from "@/components/PageSchema";
@@ -60,6 +61,7 @@ export default function DancePage() {
       <Schedule />
       <DanceRepertoire />
       <DanceGallery />
+      <FAQ />
       <ClosingCTA />
       <StickyReserveButton href="/reservation-main" label="RESERVE TABLE" />
     </main>

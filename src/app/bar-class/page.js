@@ -6,6 +6,7 @@ import WhatsIncluded from "@/components/bar-class/WhatsIncluded";
 import MenuSection from "@/components/bar-class/MenuSection";
 import GalleryExperience from "@/components/bar-class/GalleryExperience";
 import Pricing from "@/components/bar-class/Pricing";
+import FAQ from "@/components/bar-class/FAQ";
 import StickyReserveButton from "@/components/StickyReserveButton";
 import BarClassStructuredData from "@/components/bar-class/StructuredData";
 import PageSchema from "@/components/PageSchema";
@@ -81,6 +82,7 @@ export default function BarClassPage() {
       <MenuSection />
       <GalleryExperience />
       <Pricing />
+      <FAQ />
       <ReservationForm />
       <StickyReserveButton href="#reservation" label="RESERVE COCKTAIL & HEALTHY DRINK CLASS" />
     </main>
