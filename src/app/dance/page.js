@@ -11,7 +11,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const title = "Balinese Dance Performance";
 const description =
-  "Experience a complimentary Balinese dance performance every Thursday evening at Raja Bali Main Restaurant, featuring live music, traditional costumes, and a rotating repertoire of sacred stories.";
+  "Watch a complimentary Balinese Dance performance every Thursday evening at Raja Bali Main Restaurant in Tanjung Benoa, free for dining guests.";
 
 // This page gets its own share image (the dance hero photo) instead of the
 // site-wide default. Next.js doesn't merge openGraph/twitter objects between

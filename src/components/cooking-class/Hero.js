@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CookingClassHero() {
   return (
@@ -15,7 +16,11 @@ export default function CookingClassHero() {
       <div className="relative z-10">
         <h1 className="text-5xl font-serif mb-4">An Authentic Balinese Cooking Class Experience</h1>
         <p className="max-w-xl mx-auto text-sm text-gray-200">
-          This Balinese cooking class in Bali is your invitation into the traditions, flavors, and warm hospitality passed down through generations of Balinese families.
+          This Balinese cooking class at{" "}
+          <Link href="/outlets" className="u-link text-white">
+            Raja Bali Main Restaurant
+          </Link>{" "}
+          in Tanjung Benoa is your invitation into the traditions, flavors, and warm hospitality passed down through generations of Balinese families.
         </p>
       </div>
     </section>

@@ -5,7 +5,27 @@ const destinations = [
   {
     tag: "Flagship Cultural Destination",
     name: "Raja Bali Main Restaurant",
-    desc: "Experience authentic Balinese dining alongside our complimentary Balinese Dance Performance, immersive classes, and warm island hospitality, with a large on-site parking area for guests.",
+    // Names all three Main Restaurant-exclusive experiences with links, so
+    // /outlets works as the entity hub connecting this location to each.
+    desc: (
+      <>
+        Our flagship destination in Tanjung Benoa, within the wider Nusa Dua
+        area, pairing authentic Balinese dining with the{" "}
+        <Link href="/cooking-class" className="u-link text-raja-red">
+          Balinese Cooking Class
+        </Link>
+        , the{" "}
+        <Link href="/bar-class" className="u-link text-raja-red">
+          Balinese Bar Class
+        </Link>
+        , and our complimentary Thursday{" "}
+        <Link href="/dance" className="u-link text-raja-red">
+          Balinese Dance Performance
+        </Link>
+        , plus warm island hospitality and a large on-site parking area for
+        guests.
+      </>
+    ),
     features: "Restaurant · Culture · Experiences",
     href: "/reservation-main",
     image: "/images/outlets/Main-Restaurant.jpg",
