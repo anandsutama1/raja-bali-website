@@ -8,6 +8,14 @@ const packages = [
 export default function BuffetPackages() {
   return (
     <section className="border-t border-gray-200 py-10 px-6 max-w-4xl mx-auto bg-white">
+      <h2 className="text-3xl font-serif text-center mb-3">Group Dining Packages</h2>
+      <p className="text-center text-gray-600 mb-10 max-w-xl mx-auto">
+        Two buffet packages built for group dining, priced per guest. You can also{" "}
+        <Link href="/menu/food" className="font-semibold text-raja-red u-link">
+          explore our menu
+        </Link>{" "}
+        for a la carte options.
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {packages.map((pkg, index) => (
           <div key={index} className="border border-gray-200 rounded-lg p-6">

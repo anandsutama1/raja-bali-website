@@ -59,9 +59,9 @@ export default function ReservationForm() {
 
   return (
     <section id="reservation" className="border-t border-gray-200 py-20 px-6 max-w-2xl mx-auto bg-white">
-      <h2 className="text-3xl font-serif text-center mb-2">Reserve Your Buffet</h2>
+      <h2 className="text-3xl font-serif text-center mb-2">Plan Your Group Reservation</h2>
       <p className="text-center text-gray-600 mb-10">
-        Tell us about your group and preferred buffet package, and our events team will confirm availability.
+        Tell us about your corporate dinner or group celebration, and our events team will confirm availability.
       </p>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <fieldset disabled={status === "submitting"} className="m-0 min-w-0 space-y-4 border-0 p-0">

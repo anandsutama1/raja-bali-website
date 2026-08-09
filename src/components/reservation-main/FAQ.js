@@ -12,22 +12,37 @@ const Accordion = dynamic(() => import("@/components/Accordion"));
 // FAQStructuredData still reads the plain-text version straight from
 // mainRestaurantFaqs — same words either way, just a hyperlink on top
 // (see mainRestaurantFaqs.js for the plain-text equivalent).
-const displayFaqs = mainRestaurantFaqs.map((faq) =>
-  faq.q === "Can I join the Balinese Cooking Class?"
-    ? {
-        ...faq,
-        a: (
-          <>
-            Yes. Our hands-on Balinese Cooking Class runs in three daily sessions at this location, learning authentic recipes from local chefs before enjoying what you cook. Reservations are required in advance. Visit our{" "}
-            <Link href="/cooking-class" className="font-semibold text-raja-red u-link">
-              Cooking Class page
-            </Link>{" "}
-            to book.
-          </>
-        ),
-      }
-    : faq
-);
+const displayFaqs = mainRestaurantFaqs.map((faq) => {
+  if (faq.q === "Can I join the Balinese Cooking Class?") {
+    return {
+      ...faq,
+      a: (
+        <>
+          Yes. Our hands-on Balinese Cooking Class runs in three daily sessions at this location, learning authentic recipes from local chefs before enjoying what you cook. Reservations are required in advance. Visit our{" "}
+          <Link href="/cooking-class" className="font-semibold text-raja-red u-link">
+            Cooking Class page
+          </Link>{" "}
+          to book.
+        </>
+      ),
+    };
+  }
+  if (faq.q === "Do you accept group reservations?") {
+    return {
+      ...faq,
+      a: (
+        <>
+          Yes. We offer curated buffet packages for group celebrations of every size at this location. Visit our{" "}
+          <Link href="/group-reservation" className="font-semibold text-raja-red u-link">
+            Group Reservation page
+          </Link>{" "}
+          to view packages and book.
+        </>
+      ),
+    };
+  }
+  return faq;
+});
 
 export default function FAQ() {
   return (
