@@ -202,10 +202,16 @@ function buildSuggestedLinksHtml(formType) {
   const links = THANK_YOU_LINKS[formType];
   if (!links || !links.length) return "";
 
+  // Chip-style buttons (not the page's image cards — email clients block
+  // remote images by default often enough that leading with a photo would
+  // just as often show a broken icon). Same brand colors as the rest of
+  // this template (#faf7f1/#e8e0d0 from notesHtml, #A31C1C accent),
+  // fixed min-width so a short label like "Contact Us" and a long one like
+  // "Balinese Cooking Class" still read as the same size button.
   const itemsHtml = links
     .map(
       (link) =>
-        `<a href="${SITE_URL}${link.path}" style="display:inline-block;margin:0 8px 8px 0;padding:10px 18px;border:1px solid #141414;color:#141414;font-size:12px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;">${escapeHtml(link.label)}</a>`
+        `<a href="${SITE_URL}${link.path}" style="display:inline-block;min-width:140px;margin:0 8px 8px 0;padding:12px 18px;border:1px solid #e8e0d0;border-radius:6px;background:#faf7f1;color:#141414;font-size:12px;font-weight:700;letter-spacing:0.4px;text-decoration:none;text-align:center;">${escapeHtml(link.label)}</a>`
     )
     .join("");
 

@@ -9,45 +9,51 @@
 // Main Restaurant since that's where every class/event/enquiry branch
 // resolves to (see BRANCH_LOCATION_ID in route.js), and no page links to
 // itself.
+//
+// `image` reuses the same product photography already live on the homepage
+// (Activities.js/Menus.js) and each experience's own Hero, so nothing new was
+// shot or uploaded. `badge` mirrors the exact same badge text Activities.js
+// already uses on the homepage — Cooking Class/Bar Class/Dance are the only
+// three with one there, so that's preserved here too.
 export const THANK_YOU_LINKS = {
   "reservation-main": [
-    { label: "View Food Menu", path: "/menu/food" },
-    { label: "Balinese Cooking Class", path: "/cooking-class" },
-    { label: "Balinese Bar Class", path: "/bar-class" },
-    { label: "Balinese Dance", path: "/dance" },
+    { label: "View Food Menu", path: "/menu/food", image: "/images/home/Food-Menu.jpg" },
+    { label: "Balinese Cooking Class", path: "/cooking-class", image: "/images/cooking-class/CookingClass-Card.jpg", badge: "Most Popular" },
+    { label: "Balinese Bar Class", path: "/bar-class", image: "/images/home/cocktail-class.png", badge: "Limited Slot" },
+    { label: "Balinese Dance", path: "/dance", image: "/images/dance/Hero.jpg", badge: "Free Every Thursday" },
   ],
   "reservation-nusadua": [
-    { label: "View Food Menu", path: "/menu/food" },
-    { label: "View Beverage Menu", path: "/menu/beverage" },
-    { label: "Contact Us", path: "/contact" },
+    { label: "View Food Menu", path: "/menu/food", image: "/images/home/Food-Menu.jpg" },
+    { label: "View Beverage Menu", path: "/menu/beverage", image: "/images/home/Beverage-Menu.jpg" },
+    { label: "Contact Us", path: "/contact", image: "/images/contact/Hero.jpg" },
   ],
   "cooking-class": [
-    { label: "Reserve a Table", path: "/reservation-main" },
-    { label: "Balinese Bar Class", path: "/bar-class" },
-    { label: "Balinese Dance", path: "/dance" },
-    { label: "View Food Menu", path: "/menu/food" },
+    { label: "Reserve a Table", path: "/reservation-main", image: "/images/reservation-main/Hero.jpg" },
+    { label: "Balinese Bar Class", path: "/bar-class", image: "/images/home/cocktail-class.png", badge: "Limited Slot" },
+    { label: "Balinese Dance", path: "/dance", image: "/images/dance/Hero.jpg", badge: "Free Every Thursday" },
+    { label: "View Food Menu", path: "/menu/food", image: "/images/home/Food-Menu.jpg" },
   ],
   "bar-class": [
-    { label: "Reserve a Table", path: "/reservation-main" },
-    { label: "Balinese Cooking Class", path: "/cooking-class" },
-    { label: "Balinese Dance", path: "/dance" },
-    { label: "View Food Menu", path: "/menu/food" },
+    { label: "Reserve a Table", path: "/reservation-main", image: "/images/reservation-main/Hero.jpg" },
+    { label: "Balinese Cooking Class", path: "/cooking-class", image: "/images/cooking-class/CookingClass-Card.jpg", badge: "Most Popular" },
+    { label: "Balinese Dance", path: "/dance", image: "/images/dance/Hero.jpg", badge: "Free Every Thursday" },
+    { label: "View Food Menu", path: "/menu/food", image: "/images/home/Food-Menu.jpg" },
   ],
   "group-reservation": [
-    { label: "Reserve a Table", path: "/reservation-main" },
-    { label: "Private Events", path: "/private-events" },
-    { label: "View Food Menu", path: "/menu/food" },
-    { label: "Contact Us", path: "/contact" },
+    { label: "Reserve a Table", path: "/reservation-main", image: "/images/reservation-main/Hero.jpg" },
+    { label: "Private Events", path: "/private-events", image: "/images/private-events/Hero.jpg" },
+    { label: "View Food Menu", path: "/menu/food", image: "/images/home/Food-Menu.jpg" },
+    { label: "Contact Us", path: "/contact", image: "/images/contact/Hero.jpg" },
   ],
   "private-events": [
-    { label: "Group Reservation", path: "/group-reservation" },
-    { label: "Reserve a Table", path: "/reservation-main" },
-    { label: "View Food Menu", path: "/menu/food" },
-    { label: "Contact Us", path: "/contact" },
+    { label: "Group Reservation", path: "/group-reservation", image: "/images/home/Group-Menu.jpg" },
+    { label: "Reserve a Table", path: "/reservation-main", image: "/images/reservation-main/Hero.jpg" },
+    { label: "View Food Menu", path: "/menu/food", image: "/images/home/Food-Menu.jpg" },
+    { label: "Contact Us", path: "/contact", image: "/images/contact/Hero.jpg" },
   ],
   contact: [
-    { label: "Reserve a Table", path: "/reservation-main" },
-    { label: "View Food Menu", path: "/menu/food" },
-    { label: "Balinese Cooking Class", path: "/cooking-class" },
+    { label: "Reserve a Table", path: "/reservation-main", image: "/images/reservation-main/Hero.jpg" },
+    { label: "View Food Menu", path: "/menu/food", image: "/images/home/Food-Menu.jpg" },
+    { label: "Balinese Cooking Class", path: "/cooking-class", image: "/images/cooking-class/CookingClass-Card.jpg", badge: "Most Popular" },
   ],
 };
