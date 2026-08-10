@@ -8,6 +8,10 @@
 // Restaurant's framing.
 export const nusaDuaFaqs = [
   {
+    q: "What kind of restaurant is Raja Bali Nusa Dua?",
+    a: "Raja Bali Nusa Dua is an authentic Balinese restaurant, serving traditional Balinese cuisine in an elegant dining setting for lunch, dinner, and events.",
+  },
+  {
     q: "Where is Raja Bali Nusa Dua located?",
     a: "Raja Bali Nusa Dua is located directly within Nusa Dua on Bali's southern peninsula, in a walk-friendly setting close to the area's resorts, shopping, and beaches.",
   },

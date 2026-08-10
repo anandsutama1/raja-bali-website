@@ -12,15 +12,19 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 // there's no content/SEO regression, just a smaller initial JS payload.
 const ReservationForm = dynamic(() => import("@/components/reservation-nusadua/ReservationForm"));
 
-const title = "Nusa Dua Restaurant Reservation";
-// Kept short (under ~160 chars) so it doesn't get truncated in search
-// results — the fuller landmark-name framing (Westin, Bali Collection)
-// still lives in the Restaurant description in src/lib/site.js (read by
-// the site-wide JSON-LD). Landmark names themselves are real, well-known
-// fixtures of the compact ITDC Nusa Dua tourism enclave, a verified
-// geographic fact.
+// Previously "Nusa Dua Restaurant Reservation" — a transactional title that
+// didn't say what kind of restaurant this is. GSC shows this page earning
+// 316 impressions but only 9 clicks (~2.9% CTR, well under the site's ~7.9%
+// average), the largest non-homepage CTR gap on the site, so the title/
+// description are worth strengthening. Deliberately distinct from
+// reservation-main's "Authentic Balinese Restaurant in Nusa Dua | Raja Bali
+// Main Restaurant" (that page's differentiator is the cooking/bar
+// class + dance experiences) so the two location pages don't compete for
+// the identical phrase — this one leans on its own real differentiator,
+// the elegant dining setting, per Destinations.js on /outlets.
+const title = "Balinese Restaurant in Nusa Dua | Raja Bali Nusa Dua";
 const description =
-  "Reserve a table at Raja Bali Nusa Dua, serving authentic Balinese cuisine in the heart of the Nusa Dua tourism area.";
+  "Reserve a table at Raja Bali Nusa Dua for authentic Balinese cuisine in an elegant setting, perfect for romantic dinners and memorable evenings in Nusa Dua.";
 
 // This page gets its own share image (the Nusa Dua outlet's hero photo)
 // instead of the site-wide default. Next.js doesn't merge openGraph/twitter
@@ -28,13 +32,16 @@ const description =
 // the root's, so every field needed for a full share card is repeated here
 // rather than just the image.
 export const metadata = {
-  title,
+  // title.absolute bypasses the root layout's "%s | Raja Bali" template —
+  // the brand name is already in this title, so appending it again would
+  // just duplicate it (matches the pattern on reservation-main/page.js).
+  title: { absolute: title },
   description,
   alternates: { canonical: "/reservation-nusadua" },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    title: `${title} | ${SITE_NAME}`,
+    title,
     description,
     images: [
       {
@@ -47,7 +54,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${title} | ${SITE_NAME}`,
+    title,
     description,
     images: ["/images/shared/og-reservation-nusadua.jpg"],
   },
