@@ -6,9 +6,16 @@ import { THANK_YOU_LINKS } from "@/lib/thankYouLinks";
 // the intended Google Ads conversion destination URL. Deliberately not
 // wired into PageSchema/sitemap/navigation: it's a transient per-guest
 // confirmation, not indexable marketing content.
-const title = "Reservation Request Received";
+//
+// Table reservations at both outlets are auto-confirmed on submit (see the
+// TABLE_RESERVATION_TYPES comment in app/api/submit-form/route.js — seating
+// isn't capacity-constrained the way a class session or private event is),
+// so this says "confirmed", matching the guest email's BOOKING_COPY exactly
+// — unlike every other form type below, which is still pending a human
+// reply and says so.
+const title = "Your Table Is Confirmed";
 const description =
-  "Thank you for your reservation request at Raja Bali Main Restaurant.";
+  "Your table reservation at Raja Bali Main Restaurant is confirmed.";
 
 export const metadata = {
   title,
@@ -23,7 +30,7 @@ export default function ThankYouPage() {
   return (
     <ThankYou
       heading={title}
-      body="Thank you for your reservation request at Raja Bali Main Restaurant. We'll be in touch shortly to confirm your reservation."
+      body="Thank you for reserving a table with Raja Bali Main Restaurant. Your reservation is confirmed, and we're looking forward to welcoming you."
       links={THANK_YOU_LINKS["reservation-main"]}
     />
   );

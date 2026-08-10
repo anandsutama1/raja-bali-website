@@ -175,7 +175,7 @@ export default function ReservationForm() {
         </fieldset>
         {status === "success" && (
           <p className="text-center text-sm text-emerald-600">
-            Thank you! Your reservation request has been sent. We&apos;ll be in touch shortly.
+            Thank you! Your table is confirmed. We&apos;re looking forward to welcoming you.
           </p>
         )}
         {status === "error" && (
