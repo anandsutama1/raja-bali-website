@@ -127,6 +127,16 @@ const PICKUP_NOTE =
 const NO_SHOW_NOTE =
   "Please note: your table will be held for 30 minutes past the reservation time. If you haven't arrived by then, the booking may be released and treated as cancelled.";
 
+// Staff sometimes hit "Reply" on this notification instead of messaging the
+// guest directly, which silently goes nowhere (this inbox isn't monitored)
+// and the guest never hears back. Placed as the very first thing in the
+// email — before the heading — so it's the first line shown even in an
+// inbox preview snippet, not something that only shows up after scrolling
+// or that could get buried under a later "show quoted text" fold once this
+// thread has a few messages in it.
+const NO_REPLY_BANNER_HTML =
+  '<p style="margin:0 0 16px;padding:12px 14px;background:#fdecea;border-left:4px solid #A31C1C;color:#7a1f1f;font-size:14px;font-weight:700;">⚠️ Do not reply to this email.<br />Replying will NOT reach the guest.<br />To contact the guest, use their email or WhatsApp number below.</p>';
+
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -186,6 +196,7 @@ function buildEmailHtml(formType, fields) {
 
   return `
     <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;">
+      ${NO_REPLY_BANNER_HTML}
       <h2 style="color:#A31C1C;margin-bottom:16px;">New ${label} Submission</h2>
       ${pickupNoteHtml}
       <table style="width:100%;border-collapse:collapse;border:1px solid #eee;">${rowsHtml}</table>
