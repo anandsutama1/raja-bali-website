@@ -65,24 +65,6 @@ export default function RootLayout({ children }) {
         <Script id="no-js" strategy="beforeInteractive">
           {`document.documentElement.classList.remove('no-js')`}
         </Script>
-        {/* Google Analytics (GA4). lazyOnload — not afterInteractive — so
-            this doesn't repeat the ~155KB critical-path regression the old
-            Google Ads gtag.js caused (see performance audit history):
-            afterInteractive makes Next inject an early <link rel=preload>
-            for it, competing with the hero image/first-party JS during the
-            render-critical window even though execution is deferred.
-            lazyOnload waits until the browser is idle, same pattern already
-            used for the Elfsight widget below (InstagramGrid.js). */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-EJGW66W1FR"
-          strategy="lazyOnload"
-        />
-        <Script id="ga4-init" strategy="lazyOnload">
-          {`window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-EJGW66W1FR');`}
-        </Script>
         <StructuredData />
         <Navbar />
         {children}

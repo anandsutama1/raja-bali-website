@@ -15,7 +15,7 @@ function ReviewCard({ review }) {
   return (
     <blockquote className="u-lift w-64 shrink-0 rounded-lg border border-gray-200 bg-white px-6 py-8 text-center sm:w-72 md:w-80">
       <div className="relative mx-auto mb-4 h-16 w-16 overflow-hidden rounded-full">
-        <Image src={review.avatar} alt={review.name} fill className="object-cover" />
+        <Image src={review.avatar} alt={review.name} fill sizes="64px" className="object-cover" />
       </div>
       <p className="mb-1 font-serif text-lg">{review.name}</p>
       <p className="mb-3 text-sm tracking-[0.3em] text-emerald-600">★★★★★</p>
