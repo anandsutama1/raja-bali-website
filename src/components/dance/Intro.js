@@ -14,7 +14,7 @@ export default function Intro() {
         <Link href="/outlets" className="u-link">
           Raja Bali Main Restaurant
         </Link>{" "}
-        in Tanjung Benoa, within the Nusa Dua area of Bali.
+        in Nusa Dua&apos;s Tanjung Benoa area.
       </p>
       <div className="flex gap-4 justify-center">
         <Link href="/reservation-main" className="bg-raja-black text-white px-8 py-3 text-sm tracking-widest hover:bg-raja-red transition">Reserve Table</Link>

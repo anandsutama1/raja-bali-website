@@ -8,7 +8,7 @@ export default function ReservationMainHero() {
       <div className="relative z-10 max-w-2xl mx-auto">
         <h1 className="text-5xl font-serif mb-4">Raja Bali Main Restaurant</h1>
         <p className="max-w-xl mx-auto text-sm text-gray-200">
-          Reserve your table at Raja Bali Main Restaurant in Tanjung Benoa, within the Nusa Dua area of Bali, and immerse yourself in authentic Balinese cuisine, live cultural performances, and hands-on cooking and cocktail classes.
+          Reserve your table at Raja Bali Main Restaurant in Nusa Dua&apos;s Tanjung Benoa area, and immerse yourself in authentic Balinese cuisine, live cultural performances, and hands-on cooking and cocktail classes.
         </p>
       </div>
     </section>

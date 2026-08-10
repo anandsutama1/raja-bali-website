@@ -20,7 +20,7 @@ export default function CookingClassStructuredData() {
   const url = `${SITE_URL}/cooking-class`;
   const image = `${SITE_URL}/images/cooking-class/CookingClass-Hero.jpg`;
   const description =
-    "Hands-on Balinese cooking class at Raja Bali in Tanjung Benoa, within the Nusa Dua area of Bali. Learn authentic recipes from local chefs, tour the spice garden, and enjoy the dishes you cook.";
+    "Hands-on Balinese cooking class at Raja Bali in Nusa Dua's Tanjung Benoa area. Learn authentic recipes from local chefs, tour the spice garden, and enjoy the dishes you cook.";
 
   const offers = [
     {

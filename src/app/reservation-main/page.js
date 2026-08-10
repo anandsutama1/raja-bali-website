@@ -23,7 +23,7 @@ const title = "Authentic Balinese Restaurant in Nusa Dua | Raja Bali Main Restau
 // of Nusa Dua proper — see the comment on this location's entry in
 // src/lib/site.js.
 const description =
-  "Reserve a table at Raja Bali Main Restaurant in Tanjung Benoa, Nusa Dua. Authentic Balinese dining, cooking classes, and cultural performances await.";
+  "Reserve a table at Raja Bali Main Restaurant in Nusa Dua's Tanjung Benoa area. Authentic Balinese dining, cooking classes, and cultural performances await.";
 
 // This page gets its own share image (the Main Restaurant's hero photo)
 // instead of the site-wide default. Next.js doesn't merge openGraph/twitter
