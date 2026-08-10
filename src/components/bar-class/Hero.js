@@ -21,7 +21,7 @@ export default function BarClassHero() {
           <Link href="/outlets" className="u-link text-white">
             Raja Bali Main Restaurant
           </Link>{" "}
-          in Tanjung Benoa, inspired by the vibrant flavors of Bali.
+          in Tanjung Benoa, within the Nusa Dua area, inspired by the vibrant flavors of Bali.
         </p>
       </div>
     </section>

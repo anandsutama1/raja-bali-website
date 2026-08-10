@@ -14,7 +14,7 @@ const ReservationForm = dynamic(() => import("@/components/private-events/Reserv
 
 const title = "Private Events & Venue Rental";
 const description =
-  "Celebrate life's special moments at Raja Bali with private event spaces, venue rental, and personalized event planning for weddings, corporate dinners, and celebrations.";
+  "Celebrate life's special moments at Raja Bali in Bali's Nusa Dua area, with private event spaces, venue rental, and personalized event planning for weddings, corporate dinners, and celebrations.";
 
 export const metadata = {
   title,

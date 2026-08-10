@@ -15,7 +15,7 @@ export default function BarClassStructuredData() {
   const url = `${SITE_URL}/bar-class`;
   const image = `${SITE_URL}/images/shared/og-bar-class.jpg`;
   const description =
-    "Hands-on Balinese cocktail class at Raja Bali in Tanjung Benoa, Bali. Learn mixology from expert bartenders, taste authentic Balinese Arak, and craft your own signature drink. Thursdays only, followed by a complimentary Balinese dance performance the same evening, free for dining guests.";
+    "Hands-on Balinese cocktail class at Raja Bali in Tanjung Benoa, within the Nusa Dua area of Bali. Learn mixology from expert bartenders, taste authentic Balinese Arak, and craft your own signature drink. Thursdays only, followed by a complimentary Balinese dance performance the same evening, free for dining guests.";
 
   const offers = [
     {

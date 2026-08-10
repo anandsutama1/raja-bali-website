@@ -59,7 +59,7 @@ export default function DanceStructuredData() {
     "@id": `${SITE_URL}/dance#event`,
     name: "Balinese Dance Performance at Raja Bali Main Restaurant",
     description:
-      "A complimentary Balinese dance performance for dining guests, held every Thursday evening at Raja Bali Main Restaurant in Tanjung Benoa, featuring live music, traditional costumes, and a rotating repertoire of sacred stories.",
+      "A complimentary Balinese dance performance for dining guests, held every Thursday evening at Raja Bali Main Restaurant in Tanjung Benoa, within the Nusa Dua area of Bali, featuring live music, traditional costumes, and a rotating repertoire of sacred stories.",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     eventStatus: "https://schema.org/EventScheduled",
     startDate: nextEvent.startDate,

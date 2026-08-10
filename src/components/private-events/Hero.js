@@ -8,7 +8,7 @@ export default function PrivateEventsHero() {
       <div className="relative z-10 max-w-2xl mx-auto">
         <h1 className="text-5xl font-serif mb-4">Celebrate Life's Special Moments at Raja Bali</h1>
         <p className="max-w-xl mx-auto text-sm text-gray-200">
-          From intimate gatherings to grand celebrations, Raja Bali offers elegant venues, authentic Balinese cuisine, and warm hospitality.
+          From intimate gatherings to grand celebrations, Raja Bali offers elegant venues, authentic Balinese cuisine, and warm hospitality in Bali's Nusa Dua area.
         </p>
       </div>
     </section>

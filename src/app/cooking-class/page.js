@@ -19,7 +19,7 @@ const ReservationForm = dynamic(() => import("@/components/cooking-class/Reserva
 
 const title = "Balinese Cooking Class in Bali";
 const description =
-  "Hands-on Balinese cooking class in Tanjung Benoa, Bali. Learn authentic recipes from local chefs, tour our spice garden, and enjoy what you cook. From IDR 550K/person.";
+  "Hands-on Balinese cooking class in Tanjung Benoa, Nusa Dua area. Learn authentic recipes, tour our spice garden, and enjoy what you cook. From IDR 550K/person.";
 
 // This page gets its own share image (the cooking class hero photo) instead
 // of the site-wide default. Next.js doesn't merge openGraph/twitter objects
