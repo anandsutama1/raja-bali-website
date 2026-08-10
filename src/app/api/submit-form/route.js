@@ -1,6 +1,7 @@
 import { NextResponse, after } from "next/server";
 import { Resend } from "resend";
 import { LOCATIONS, SITE_URL } from "@/lib/site";
+import { THANK_YOU_LINKS } from "@/lib/thankYouLinks";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -110,17 +111,6 @@ const BOOKING_COPY = {
   },
 };
 
-// Where the "view details" button in the guest email points — keyed by
-// formType, only for actual bookings (contact enquiries don't get one).
-const EXPERIENCE_CTA = {
-  "reservation-main": { path: "/reservation-main", label: "View Restaurant Details" },
-  "reservation-nusadua": { path: "/reservation-nusadua", label: "View Restaurant Details" },
-  "cooking-class": { path: "/cooking-class", label: "View Cooking Class Details" },
-  "bar-class": { path: "/bar-class", label: "View Cocktail Class Details" },
-  "private-events": { path: "/private-events", label: "View Private Events" },
-  "group-reservation": { path: "/group-reservation", label: "View Group Packages" },
-};
-
 // Display names for the guest email only.
 const EMAIL_LOCATION_NAMES = {
   "main-restaurant": "Raja Bali Main Restaurant",
@@ -204,6 +194,33 @@ function buildEmailHtml(formType, fields) {
   `;
 }
 
+// Small "what to do next" block appended to the guest confirmation email —
+// the email counterpart of the thank-you page's "You May Also Like" links
+// (both read from the same THANK_YOU_LINKS, so the two surfaces never
+// disagree on what's suggested for a given formType).
+function buildSuggestedLinksHtml(formType) {
+  const links = THANK_YOU_LINKS[formType];
+  if (!links || !links.length) return "";
+
+  const itemsHtml = links
+    .map(
+      (link) =>
+        `<a href="${SITE_URL}${link.path}" style="display:inline-block;margin:0 8px 8px 0;padding:10px 18px;border:1px solid #141414;color:#141414;font-size:12px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;">${escapeHtml(link.label)}</a>`
+    )
+    .join("");
+
+  return `
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:28px 0 0;">
+      <tr>
+        <td>
+          <p style="margin:0 0 12px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#A31C1C;">While You&rsquo;re Planning Your Visit</p>
+          ${itemsHtml}
+        </td>
+      </tr>
+    </table>
+  `;
+}
+
 function buildGuestConfirmationHtml(formType, branch, fields) {
   const locationName = BRANCH_NAMES[branch] || BRANCH_NAMES.general;
   const guestName =
@@ -259,18 +276,7 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
       "We&rsquo;re looking forward to the opportunity to welcome you, and will follow up shortly to confirm every detail."
     : "We are grateful for your interest in Raja Bali, and look forward to the opportunity of welcoming you soon.";
 
-  const cta = EXPERIENCE_CTA[formType];
-  const ctaHtml = cta
-    ? `
-      <table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0 0;">
-        <tr>
-          <td style="background:#141414;">
-            <a href="${SITE_URL}${cta.path}" style="display:inline-block;padding:13px 30px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#ffffff;text-decoration:none;">${cta.label}</a>
-          </td>
-        </tr>
-      </table>
-    `
-    : "";
+  const suggestedLinksHtml = buildSuggestedLinksHtml(formType);
 
   const notes = isReservation
     ? [booking.note, TABLE_RESERVATION_TYPES.has(formType) ? NO_SHOW_NOTE : null, PICKUP_NOTE].filter(Boolean)
@@ -320,7 +326,7 @@ function buildGuestConfirmationHtml(formType, branch, fields) {
 
                 ${summaryHtml}
 
-                ${ctaHtml}
+                ${suggestedLinksHtml}
 
                 ${notesHtml}
 

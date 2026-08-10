@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useFormSubmit } from "@/lib/useFormSubmit";
 import { isValidEmail, isValidPhoneDigits, EMAIL_ERROR, PHONE_ERROR } from "@/lib/validation";
 import { DEFAULT_COUNTRY_CODE } from "@/lib/countryCodes";
@@ -29,6 +30,7 @@ const initialFields = {
 };
 
 export default function ReservationForm() {
+  const router = useRouter();
   const today = new Date().toISOString().split("T")[0];
   const [fields, setFields] = useState(initialFields);
   const [fieldErrors, setFieldErrors] = useState({});
@@ -63,6 +65,10 @@ export default function ReservationForm() {
     if (ok) {
       setFields(initialFields);
       setFieldErrors({});
+      // Only reached once the API has confirmed the booking actually went
+      // through (see useFormSubmit: `ok` is true only when res.ok &&
+      // data.ok). Validation/API failures never reach here.
+      router.push("/cooking-class/thank-you");
     }
   };
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useFormSubmit } from "@/lib/useFormSubmit";
 import { isValidEmail, isValidPhoneDigits, EMAIL_ERROR, PHONE_ERROR } from "@/lib/validation";
 import { DEFAULT_COUNTRY_CODE } from "@/lib/countryCodes";
@@ -19,6 +20,7 @@ const initialFields = {
 };
 
 export default function MessageForm() {
+  const router = useRouter();
   const [fields, setFields] = useState(initialFields);
   const [fieldErrors, setFieldErrors] = useState({});
   const { status, errorMessage, submitForm, submittingMessage } = useFormSubmit({
@@ -47,6 +49,10 @@ export default function MessageForm() {
     if (ok) {
       setFields(initialFields);
       setFieldErrors({});
+      // Only reached once the API has confirmed the message actually sent
+      // (see useFormSubmit: `ok` is true only when res.ok && data.ok).
+      // Validation/API failures never reach here.
+      router.push("/contact/thank-you");
     }
   };
 

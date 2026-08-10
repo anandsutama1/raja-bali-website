@@ -1,4 +1,5 @@
-import Link from "next/link";
+import ThankYou from "@/components/ThankYou";
+import { THANK_YOU_LINKS } from "@/lib/thankYouLinks";
 
 // Confirmation page reached only after a successful reservation-main form
 // submission (see components/reservation-main/ReservationForm.js) — this is
@@ -20,25 +21,10 @@ export const metadata = {
 
 export default function ThankYouPage() {
   return (
-    <main className="flex min-h-[60vh] flex-col items-center justify-center px-6 py-24 text-center">
-      <h1 className="mb-4 font-serif text-4xl">{title}</h1>
-      <p className="max-w-md text-gray-600">
-        Thank you for your reservation request at Raja Bali Main Restaurant. We&apos;ll be in touch shortly to confirm your reservation.
-      </p>
-      <div className="mt-10 flex flex-wrap justify-center gap-4">
-        <Link
-          href="/"
-          className="bg-raja-black px-8 py-3 text-sm tracking-widest text-white transition hover:bg-raja-red"
-        >
-          Back to Raja Bali
-        </Link>
-        <Link
-          href="/reservation-main"
-          className="border border-raja-black px-8 py-3 text-sm tracking-widest transition hover:border-raja-red hover:text-raja-red"
-        >
-          Make Another Reservation
-        </Link>
-      </div>
-    </main>
+    <ThankYou
+      heading={title}
+      body="Thank you for your reservation request at Raja Bali Main Restaurant. We'll be in touch shortly to confirm your reservation."
+      links={THANK_YOU_LINKS["reservation-main"]}
+    />
   );
 }
