@@ -8,7 +8,7 @@ export default function CorporateEvents() {
         Raja Bali can accommodate dining occasions ranging from individual reservations to corporate and larger group experiences. Business dinners, team gatherings, and corporate celebrations are all part of our regular group dining and private events service, alongside the indoor dining, garden, and group seating settings across our event spaces.
       </p>
       <p className="text-gray-600 leading-relaxed">
-        Whether you&apos;re planning a company dinner, a team celebration, or a corporate gathering, our events team can help tailor the details — from buffet selection to dietary requirements — around your occasion, at either of{" "}
+        Whether you&apos;re planning a company dinner, a team celebration, or a corporate gathering, our events team can help tailor the details, from buffet selection to dietary requirements, around your occasion, at either of{" "}
         <Link href="/outlets" className="font-semibold text-raja-red u-link">
           our Nusa Dua-area locations
         </Link>

@@ -8,7 +8,7 @@ export const groupReservationFaqs = [
   },
   {
     q: "Does Raja Bali accept group reservations?",
-    a: "Yes. We offer curated buffet packages — an Authentic Balinese Buffet and a Western & Asian Buffet — designed for group celebrations of every size, from family gatherings to corporate events.",
+    a: "Yes. We offer curated buffet packages: an Authentic Balinese Buffet and a Western & Asian Buffet, designed for group celebrations of every size, from family gatherings to corporate events.",
   },
   {
     q: "Can I organize a company dinner at Raja Bali?",
@@ -24,10 +24,10 @@ export const groupReservationFaqs = [
   },
   {
     q: "How do I make a group reservation?",
-    a: "Complete the group reservation form on this page with your preferred date, time, number of guests, and any special requests — such as dietary requirements or your preferred buffet package. Our events team will confirm availability and follow up directly.",
+    a: "Complete the group reservation form on this page with your preferred date, time, number of guests, and any special requests, such as dietary requirements or your preferred buffet package. Our events team will confirm availability and follow up directly.",
   },
   {
     q: "Can I request a special arrangement for a corporate dinner?",
-    a: "Yes. Let us know your requirements — such as menu preferences, dietary needs, or event details — in the special request field of the reservation form, or contact us directly and our events team will help personalize your corporate dinner.",
+    a: "Yes. Let us know your requirements, such as menu preferences, dietary needs, or event details, in the special request field of the reservation form, or contact us directly and our events team will help personalize your corporate dinner.",
   },
 ];
