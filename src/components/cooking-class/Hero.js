@@ -20,7 +20,7 @@ export default function CookingClassHero() {
           <Link href="/outlets" className="u-link text-white">
             Raja Bali Main Restaurant
           </Link>{" "}
-          in Nusa Dua&apos;s Tanjung Benoa area is your invitation into the traditions, flavors, and warm hospitality passed down through generations of Balinese families.
+          in Nusa Dua is your invitation into the traditions, flavors, and warm hospitality passed down through generations of Balinese families.
         </p>
       </div>
     </section>

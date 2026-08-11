@@ -27,8 +27,8 @@ export default function LocationContext() {
         Looking for the Balinese Cooking Class, Bar Class, or Dance Performance? Those are hosted at{" "}
         <Link href="/outlets" className="u-link">
           Raja Bali Main Restaurant
-        </Link>{" "}
-        in Tanjung Benoa.
+        </Link>
+        .
       </p>
     </section>
   );

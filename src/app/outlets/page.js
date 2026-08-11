@@ -7,7 +7,7 @@ import PageSchema from "@/components/PageSchema";
 
 const title = "Our Locations";
 const description =
-  "Discover Raja Bali's two destinations, the flagship Main Restaurant in Tanjung Benoa and Raja Bali Nusa Dua, with maps, hours, and booking links for each.";
+  "Discover Raja Bali's two destinations in Nusa Dua, the flagship Main Restaurant and Raja Bali Nusa Dua, with maps, hours, and booking links for each.";
 
 export const metadata = {
   title,

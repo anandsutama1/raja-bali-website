@@ -14,7 +14,7 @@ const ibarra = Ibarra_Real_Nova({
 });
 
 const description =
-  "Raja Bali is one of the best restaurants in Bali, a Tripadvisor Travelers' Choice Award winner for five consecutive years, offering authentic Balinese cuisine in Nusa Dua and Tanjung Benoa, cultural dance performances, and hands-on cooking and cocktail classes.";
+  "Raja Bali is one of the best restaurants in Bali, a Tripadvisor Travelers' Choice Award winner for five consecutive years, offering authentic Balinese cuisine in Nusa Dua, cultural dance performances, and hands-on cooking and cocktail classes.";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -28,7 +28,6 @@ export const metadata = {
     "best restaurant in Bali",
     "top rated restaurant Bali",
     "Balinese restaurant Nusa Dua",
-    "Balinese restaurant Tanjung Benoa",
     "authentic Balinese cuisine",
     "Tripadvisor Travelers Choice Award Bali",
     "Balinese cooking class",

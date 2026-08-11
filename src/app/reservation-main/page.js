@@ -19,11 +19,11 @@ const title = "Authentic Balinese Restaurant in Nusa Dua | Raja Bali Main Restau
 // Museum Pasifika) still lives in the Restaurant description in
 // src/lib/site.js (read by the site-wide JSON-LD), which is where this
 // component's own docs say that detail belongs; see LocationContext.js.
-// Geography is precise here: this location is in Tanjung Benoa, just north
-// of Nusa Dua proper — see the comment on this location's entry in
-// src/lib/site.js.
+// Positioning is unified under "Nusa Dua" everywhere on the site — no page
+// names the Tanjung Benoa sub-area; see the comment on this location's
+// entry in src/lib/site.js.
 const description =
-  "Reserve a table at Raja Bali Main Restaurant in Nusa Dua's Tanjung Benoa area. Authentic Balinese dining, cooking classes, and cultural performances await.";
+  "Reserve a table at Raja Bali Main Restaurant in Nusa Dua. Authentic Balinese dining, cooking classes, and cultural performances await.";
 
 // This page gets its own share image (the Main Restaurant's hero photo)
 // instead of the site-wide default. Next.js doesn't merge openGraph/twitter

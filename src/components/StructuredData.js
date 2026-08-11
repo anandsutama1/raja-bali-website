@@ -46,7 +46,7 @@ export default function StructuredData() {
     url: SITE_URL,
     name: SITE_NAME,
     description:
-      "Official website of Raja Bali, an authentic Balinese restaurant with two locations in Tanjung Benoa and Nusa Dua, Bali.",
+      "Official website of Raja Bali, an authentic Balinese restaurant with two locations in Nusa Dua, Bali.",
     publisher: { "@id": organizationId },
     inLanguage: "en",
   };

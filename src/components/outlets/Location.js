@@ -3,7 +3,7 @@ import TripadvisorBadgeNusaDua from "@/components/TripadvisorBadgeNusaDua";
 
 const locations = [
   {
-    title: "Raja Bali Main Restaurant Tanjung Benoa",
+    title: "Raja Bali Main Restaurant",
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.121043258482!2d115.22276810000001!3d-8.7746812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd2433df57093b1%3A0x2e389415504432e6!2sRaja%20Bali%20Nusa%20Dua%20(Main%20Restaurant)!5e0!3m2!1sen!2sid!4v1785641257250!5m2!1sen!2sid",
     Tripadvisor: TripadvisorBadgeMain,
@@ -25,7 +25,7 @@ export default function Location() {
           <p className="text-raja-red">Find Your Nearest Raja Bali</p>
         </div>
         <p className="text-gray-600 flex-1">
-          Both destinations are easy to reach, from Tanjung Benoa&apos;s cultural charm to Nusa Dua&apos;s vibrant atmosphere.
+          Both destinations are easy to reach, each with its own Nusa Dua charm, from cultural experiences to elegant dining.
         </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

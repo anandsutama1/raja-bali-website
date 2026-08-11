@@ -7,7 +7,7 @@ export default function manifest() {
     name: `${SITE_NAME} | Authentic Balinese Restaurant`,
     short_name: SITE_NAME,
     description:
-      "Raja Bali is one of the best restaurants in Bali, offering authentic Balinese cuisine in Nusa Dua and Tanjung Benoa, cultural dance performances, and hands-on cooking and cocktail classes.",
+      "Raja Bali is one of the best restaurants in Bali, offering authentic Balinese cuisine in Nusa Dua, cultural dance performances, and hands-on cooking and cocktail classes.",
     start_url: "/",
     display: "standalone",
     background_color: "#FAF7F1",

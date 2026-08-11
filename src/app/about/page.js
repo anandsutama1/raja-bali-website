@@ -7,7 +7,7 @@ import PageSchema from "@/components/PageSchema";
 
 const title = "About Us";
 const description =
-  "The story behind Raja Bali, a restaurant rooted in Balinese tradition, authentic recipes, fresh local ingredients, and warm island hospitality across Tanjung Benoa and Nusa Dua.";
+  "The story behind Raja Bali, a restaurant rooted in Balinese tradition, authentic recipes, fresh local ingredients, and warm island hospitality in Nusa Dua.";
 
 export const metadata = {
   title,

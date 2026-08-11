@@ -9,8 +9,7 @@ const destinations = [
     // /outlets works as the entity hub connecting this location to each.
     desc: (
       <>
-        Our flagship destination in Tanjung Benoa, within the wider Nusa Dua
-        area, home to the{" "}
+        Our flagship destination in Nusa Dua, home to the{" "}
         <Link href="/cooking-class" className="u-link text-raja-red">
           Balinese Cooking Class
         </Link>

@@ -36,7 +36,7 @@ export default function Hero() {
               attribute alone is a weaker signal for the page's single
               highest-weight heading. */}
           <span className="sr-only">
-            Raja Bali, Authentic Balinese Restaurant in Nusa Dua &amp; Tanjung Benoa, Bali
+            Raja Bali, Authentic Balinese Restaurant in Nusa Dua, Bali
           </span>
           <Image
             src="/images/home/Hero-RajaBali.png"

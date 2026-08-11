@@ -4,7 +4,7 @@
 export const barClassFaqs = [
   {
     q: "Where is the Balinese Cocktail Class held?",
-    a: "At Raja Bali Main Restaurant in Tanjung Benoa, within the wider Nusa Dua area.",
+    a: "At Raja Bali Main Restaurant in Nusa Dua.",
   },
   {
     q: "When does the Bar Class take place?",

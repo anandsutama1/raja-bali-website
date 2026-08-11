@@ -9,23 +9,20 @@ export const LOCATIONS = [
   {
     id: "main-restaurant",
     name: "Raja Bali Main Restaurant",
-    // Precise framing: this location is in Tanjung Benoa, just north of
-    // Nusa Dua proper — not literally inside it. Tanjung Benoa is commonly
-    // considered part of Nusa Dua because it's immediately adjacent and
-    // shares the same kecamatan (district), which is why "Nusa Dua" still
-    // appears in marketing copy/title, but the description here stays
-    // precise about the actual location. Landmark names (Westin, Bali
-    // Collection, Museum Pasifika) are real, well-known fixtures of the
-    // area — a verified geographic fact, not a distance/time claim. See
-    // the "Perfectly Located in Nusa Dua" section on /reservation-main for
-    // the on-page counterpart to this description.
+    // Marketing/SEO positioning deliberately unifies both outlets under
+    // "Nusa Dua" — no page, title, meta description, or JSON-LD description
+    // names the Tanjung Benoa sub-area anymore. The literal streetAddress
+    // below is left untouched (it's the real postal address on file with
+    // Google Business Profile/Maps — changing it would create a NAP
+    // mismatch and could hurt local pack ranking more than the simplified
+    // positioning helps).
     description:
-      "Raja Bali's flagship cultural destination in Tanjung Benoa, just north of Nusa Dua, an area often considered part of Nusa Dua given its immediate proximity and shared district, pairing authentic Balinese cuisine with live cultural performances and hands-on cooking and cocktail classes. Close to The Westin Resort Nusa Dua, Bali Collection, and Museum Pasifika.",
-    areaServed: { "@type": "Place", name: "Tanjung Benoa, Nusa Dua, Bali" },
+      "Raja Bali's flagship cultural destination in Nusa Dua, pairing authentic Balinese cuisine with live cultural performances and hands-on cooking and cocktail classes. Close to The Westin Resort Nusa Dua, Bali Collection, and Museum Pasifika.",
+    areaServed: { "@type": "Place", name: "Nusa Dua, Bali" },
     touristDestination: {
-      name: "Tanjung Benoa",
+      name: "Nusa Dua",
       description:
-        "A coastal village in the Nusa Dua area of South Kuta, Bali, immediately adjacent to Nusa Dua and sharing the same district.",
+        "A resort and tourism area within South Kuta, Bali, home to luxury hotels, beaches, and cultural attractions.",
     },
     knowsAbout: ["Balinese cuisine", "Balinese cooking class", "Balinese cocktail class", "Nusa Dua dining"],
     email: "rajabaliactivities@gmail.com",
@@ -55,10 +52,6 @@ export const LOCATIONS = [
     // Dua tourism enclave (verified geographic context, not a distance/time
     // claim) — see the "Perfectly Located in Nusa Dua" section on
     // /reservation-nusadua for the on-page counterpart to this description.
-    // Unlike Main Restaurant (Tanjung Benoa, within the *greater* Nusa Dua
-    // area), this outlet sits directly within Nusa Dua itself — hence the
-    // "walk-friendly"/"walking distance" framing here, which Main
-    // Restaurant's description doesn't use.
     description:
       "Raja Bali's signature dining destination set directly within Nusa Dua, offering authentic Balinese cuisine in a refined setting for lunch, dinner, and events. A walk-friendly location within walking distance of Bali Collection and the ITDC Nusa Dua tourism area, close to hotels such as The Westin Resort Nusa Dua and Nusa Dua Beach Hotel & Spa.",
     areaServed: { "@type": "Place", name: "Nusa Dua, Bali" },

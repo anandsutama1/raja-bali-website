@@ -2,10 +2,9 @@
 // visible Accordion (components/reservation-nusadua/FAQ.js) and its
 // FAQPage structured data (components/reservation-nusadua/FAQStructuredData.js).
 //
-// Unlike Main Restaurant (in Tanjung Benoa, within the greater Nusa Dua
-// tourism area), this outlet sits directly within Nusa Dua itself — the
-// wording below reflects that distinction rather than repeating Main
-// Restaurant's framing.
+// Both outlets are positioned under "Nusa Dua" for SEO — this outlet is
+// differentiated from Main Restaurant by name and by experience (dine-in
+// only, no classes/dance), not by neighborhood.
 export const nusaDuaFaqs = [
   {
     q: "What kind of restaurant is Raja Bali Nusa Dua?",
