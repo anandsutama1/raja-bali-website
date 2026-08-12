@@ -11,7 +11,7 @@ const MessageForm = dynamic(() => import("@/components/contact/MessageForm"));
 
 const title = "Contact Us";
 const description =
-  "Get in touch with Raja Bali Main Restaurant or Raja Bali Nusa Dua for reservations, enquiries, and directions to both locations in Nusa Dua.";
+  "Get in touch with Raja Bali Nusa Dua (Main Restaurant) or Raja Bali Nusa Dua (Dine-in Restaurant) for reservations, enquiries, and directions to both locations in Nusa Dua.";
 
 export const metadata = {
   title,

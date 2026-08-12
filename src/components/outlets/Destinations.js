@@ -4,7 +4,7 @@ import Link from "next/link";
 const destinations = [
   {
     tag: "Flagship Cultural Destination",
-    name: "Raja Bali Main Restaurant",
+    name: "Raja Bali Nusa Dua (Main Restaurant)",
     // Names all three Main Restaurant-exclusive experiences with links, so
     // /outlets works as the entity hub connecting this location to each.
     desc: (
@@ -30,7 +30,7 @@ const destinations = [
   },
   {
     tag: "Signature Dining Destination",
-    name: "Raja Bali Nusa Dua",
+    name: "Raja Bali Nusa Dua (Dine-in Restaurant)",
     desc: "Enjoy authentic Balinese cuisine in a refined setting, perfect for romantic dinners, family gatherings, and memorable evenings in Nusa Dua.",
     features: "Lunch • Dinner • Events",
     href: "/reservation-nusadua",

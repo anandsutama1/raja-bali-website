@@ -7,7 +7,7 @@ export default function DailySessions() {
       <p className="text-center text-raja-red mb-14">
         Available Thursdays only, at{" "}
         <Link href="/reservation-main" className="u-link">
-          Raja Bali Main Restaurant
+          Raja Bali Nusa Dua (Main Restaurant)
         </Link>
       </p>
       <div className="max-w-sm mx-auto border border-gray-200 border-t-2 border-t-raja-red rounded-lg bg-raja-cream p-8 text-center">

@@ -10,7 +10,7 @@ export default function Schedule() {
             Performances typically continue until around 9:00 PM, gracefully paced to the rhythm of the evening and the flow of our guests.
           </p>
           <p className="mt-4 text-sm font-semibold text-raja-red">
-            Complimentary for dining guests, exclusively at Raja Bali Main Restaurant.
+            Complimentary for dining guests, exclusively at Raja Bali Nusa Dua (Main Restaurant).
           </p>
         </div>
       </div>

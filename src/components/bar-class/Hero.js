@@ -19,9 +19,9 @@ export default function BarClassHero() {
         <p className="max-w-xl mx-auto text-sm text-gray-200">
           Shake, stir, and sip your way through an interactive cocktail-making experience at{" "}
           <Link href="/outlets" className="u-link text-white">
-            Raja Bali Main Restaurant
-          </Link>{" "}
-          in Nusa Dua, inspired by the vibrant flavors of Bali.
+            Raja Bali Nusa Dua (Main Restaurant)
+          </Link>
+          , inspired by the vibrant flavors of Bali.
         </p>
       </div>
     </section>

@@ -14,7 +14,7 @@ import { THANK_YOU_LINKS } from "@/lib/thankYouLinks";
 // reply and says so.
 const title = "Your Table Is Confirmed";
 const description =
-  "Your table reservation at Raja Bali Nusa Dua is confirmed.";
+  "Your table reservation at Raja Bali Nusa Dua (Dine-in Restaurant) is confirmed.";
 
 export const metadata = {
   title,
@@ -27,7 +27,7 @@ export default function ThankYouPage() {
   return (
     <ThankYou
       heading={title}
-      body="Thank you for reserving a table with Raja Bali Nusa Dua. Your reservation is confirmed, and we're looking forward to welcoming you."
+      body="Thank you for reserving a table with Raja Bali Nusa Dua (Dine-in Restaurant). Your reservation is confirmed, and we're looking forward to welcoming you."
       links={THANK_YOU_LINKS["reservation-nusadua"]}
     />
   );

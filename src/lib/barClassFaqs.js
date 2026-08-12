@@ -4,7 +4,7 @@
 export const barClassFaqs = [
   {
     q: "Where is the Balinese Cocktail Class held?",
-    a: "At Raja Bali Main Restaurant in Nusa Dua.",
+    a: "At Raja Bali Nusa Dua (Main Restaurant).",
   },
   {
     q: "When does the Bar Class take place?",
@@ -19,7 +19,7 @@ export const barClassFaqs = [
     a: "Yes. Since the class runs on Thursday, guests can stay on and enjoy the complimentary Balinese Dance Performance from 7 PM, free for dining guests.",
   },
   {
-    q: "Is the Balinese Cocktail Class available at Raja Bali Nusa Dua?",
-    a: "No. It's only offered at Raja Bali Main Restaurant.",
+    q: "Is the Balinese Cocktail Class available at Raja Bali Nusa Dua (Dine-in Restaurant)?",
+    a: "No. It's only offered at Raja Bali Nusa Dua (Main Restaurant).",
   },
 ];

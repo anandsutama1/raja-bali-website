@@ -12,7 +12,7 @@ export const danceFaqs = [
   },
   {
     q: "Where is the Balinese Dance performance held?",
-    a: "At Raja Bali Main Restaurant in Nusa Dua. It is not held at Raja Bali Nusa Dua, the other outlet.",
+    a: "At Raja Bali Nusa Dua (Main Restaurant). It is not held at Raja Bali Nusa Dua (Dine-in Restaurant), the other outlet.",
   },
   {
     q: "What dances are performed?",

@@ -12,7 +12,7 @@ export default function GalleryExperience() {
         Showcase beautifully captured moments from birthdays, family gatherings, corporate dinners, wedding receptions, and private events hosted at Raja Bali.
       </p>
       <div className="max-w-5xl mx-auto">
-        <GalleryGrid images={images} altPrefix="Raja Bali Main Restaurant gallery photo" />
+        <GalleryGrid images={images} altPrefix="Raja Bali Nusa Dua (Main Restaurant) gallery photo" />
       </div>
     </section>
   );

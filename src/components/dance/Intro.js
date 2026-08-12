@@ -12,9 +12,9 @@ export default function Intro() {
       <p className="text-sm font-semibold text-raja-red mb-10">
         Complimentary for dining guests, every Thursday, exclusively at{" "}
         <Link href="/outlets" className="u-link">
-          Raja Bali Main Restaurant
-        </Link>{" "}
-        in Nusa Dua.
+          Raja Bali Nusa Dua (Main Restaurant)
+        </Link>
+        .
       </p>
       <div className="flex gap-4 justify-center">
         <Link href="/reservation-main" className="bg-raja-black text-white px-8 py-3 text-sm tracking-widest hover:bg-raja-red transition">Reserve Table</Link>

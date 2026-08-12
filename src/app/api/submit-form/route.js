@@ -12,8 +12,8 @@ const BRANCH_EMAILS = {
 };
 
 const BRANCH_NAMES = {
-  main: "Raja Bali Main Restaurant",
-  nusadua: "Raja Bali Nusa Dua",
+  main: "Raja Bali Nusa Dua (Main Restaurant)",
+  nusadua: "Raja Bali Nusa Dua (Dine-in Restaurant)",
   general: "Raja Bali",
 };
 
@@ -113,8 +113,8 @@ const BOOKING_COPY = {
 
 // Display names for the guest email only.
 const EMAIL_LOCATION_NAMES = {
-  "main-restaurant": "Raja Bali Main Restaurant",
-  "nusa-dua": "Raja Bali Nusa Dua",
+  "main-restaurant": "Raja Bali Nusa Dua (Main Restaurant)",
+  "nusa-dua": "Raja Bali Nusa Dua (Dine-in Restaurant)",
 };
 
 // Shown on every booking-type confirmation, not just Nusa Dua reservations —

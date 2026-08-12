@@ -16,7 +16,7 @@ const activities = [
   {
     badge: "Free Every Thursday",
     title: "Balinese Dance Performance",
-    desc: "Watch a complimentary traditional Balinese dance performance every Thursday evening at our Main Restaurant, a beautiful mix of music, movement, and centuries-old tradition.",
+    desc: "Watch a complimentary traditional Balinese dance performance every Thursday evening at Raja Bali Nusa Dua (Main Restaurant), a beautiful mix of music, movement, and centuries-old tradition.",
     cta: "View Details",
     href: "/dance",
     image: "/images/dance/Hero.jpg",

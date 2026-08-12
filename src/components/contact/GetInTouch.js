@@ -8,14 +8,14 @@ const EXTRA = {
   "main-restaurant": {
     desc: "Experience the heart of Raja Bali, where authentic Balinese cuisine meets cultural performances, immersive cooking experiences, and warm island hospitality.",
     instagram: "@rajabalinusaduamainrestaurant",
-    facebookLabel: "Raja Bali - Nusa Dua Main Restaurant",
+    facebookLabel: "Raja Bali Nusa Dua (Main Restaurant)",
     image: "/images/contact/Main-Restaurant.jpg",
     reserveHref: "/reservation-main",
   },
   "nusa-dua": {
     desc: "Enjoy authentic Balinese dining in an elegant and welcoming atmosphere, perfect for romantic dinners, family gatherings, and memorable celebrations.",
     instagram: "@rajabalinusadua",
-    facebookLabel: "Raja Bali Nusa Dua",
+    facebookLabel: "Raja Bali Nusa Dua (Dine-in Restaurant)",
     image: "/images/contact/Nusadua-Restaurant.jpg",
     reserveHref: "/reservation-nusadua",
   },

@@ -38,7 +38,7 @@ export const metadata = {
     "Balinese dance performance",
     "free Balinese dance Thursday",
     "complimentary Balinese dance Main Restaurant",
-    "Raja Bali Main Restaurant",
+    "Raja Bali Nusa Dua Main Restaurant",
   ],
   alternates: { canonical: "/bar-class" },
   openGraph: {

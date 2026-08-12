@@ -41,7 +41,7 @@ export default function Experiences() {
         Every Experience, <span className="text-raja-red">One Address</span>
       </Reveal>
       <Reveal as="p" delay={90} className="mx-auto mb-2 max-w-2xl text-center text-gray-600">
-        From dining to dancing to hands-on classes, every experience at Raja Bali Main Restaurant takes place at this one Nusa Dua location.
+        From dining to dancing to hands-on classes, every experience at Raja Bali Nusa Dua (Main Restaurant) takes place at this one location.
       </Reveal>
       <Reveal as="p" delay={120} className="mx-auto mb-14 max-w-2xl text-center text-sm text-raja-red">
         Join us Thursday evenings for our complimentary Balinese Dance Performance, held exclusively here at the Main Restaurant.

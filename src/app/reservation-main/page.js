@@ -13,7 +13,11 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 // there's no content/SEO regression, just a smaller initial JS payload.
 const ReservationForm = dynamic(() => import("@/components/reservation-main/ReservationForm"));
 
-const title = "Authentic Balinese Restaurant in Nusa Dua | Raja Bali Main Restaurant";
+// Entity name matches src/lib/site.js's LOCATIONS[0].name exactly — both
+// outlets now lead with "Raja Bali Nusa Dua", told apart by the
+// parenthetical. Title runs long as a result (~80 chars); accepted
+// deliberately for full naming consistency over SERP snippet length.
+const title = "Authentic Balinese Restaurant in Nusa Dua | Raja Bali Nusa Dua (Main Restaurant)";
 // Kept short (under ~160 chars) so it doesn't get truncated in search
 // results — the fuller landmark-name framing (Bali Collection, Westin,
 // Museum Pasifika) still lives in the Restaurant description in
@@ -23,7 +27,7 @@ const title = "Authentic Balinese Restaurant in Nusa Dua | Raja Bali Main Restau
 // names the Tanjung Benoa sub-area; see the comment on this location's
 // entry in src/lib/site.js.
 const description =
-  "Reserve a table at Raja Bali Main Restaurant in Nusa Dua. Authentic Balinese dining, cooking classes, and cultural performances await.";
+  "Reserve a table at Raja Bali Nusa Dua (Main Restaurant). Authentic Balinese dining, cooking classes, and cultural performances await.";
 
 // This page gets its own share image (the Main Restaurant's hero photo)
 // instead of the site-wide default. Next.js doesn't merge openGraph/twitter
@@ -47,7 +51,7 @@ export const metadata = {
         url: "/images/reservation-main/Hero.jpg",
         width: 1200,
         height: 630,
-        alt: "Raja Bali Main Restaurant",
+        alt: "Raja Bali Nusa Dua (Main Restaurant)",
       },
     ],
   },

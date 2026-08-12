@@ -3,8 +3,8 @@
 // FAQPage structured data (components/reservation-main/FAQStructuredData.js).
 export const mainRestaurantFaqs = [
   {
-    q: "Where is Raja Bali Main Restaurant located?",
-    a: "Raja Bali Main Restaurant is located in Nusa Dua, close to Bali's leading luxury resorts and attractions.",
+    q: "Where is Raja Bali Nusa Dua (Main Restaurant) located?",
+    a: "Raja Bali Nusa Dua (Main Restaurant) is located in Nusa Dua, close to Bali's leading luxury resorts and attractions.",
   },
   {
     q: "Do I need a reservation?",
@@ -16,7 +16,7 @@ export const mainRestaurantFaqs = [
   },
   {
     q: "Do you offer traditional Balinese dance performances?",
-    a: "Yes. We host a complimentary Balinese Dance Performance every Thursday evening, exclusively at Raja Bali Main Restaurant.",
+    a: "Yes. We host a complimentary Balinese Dance Performance every Thursday evening, exclusively at Raja Bali Nusa Dua (Main Restaurant).",
   },
   {
     q: "Can I book private events?",

@@ -26,7 +26,7 @@ export default function LocationContext() {
       <p className="mt-4 text-xs text-gray-400">
         Looking for the Balinese Cooking Class, Bar Class, or Dance Performance? Those are hosted at{" "}
         <Link href="/outlets" className="u-link">
-          Raja Bali Main Restaurant
+          Raja Bali Nusa Dua (Main Restaurant)
         </Link>
         .
       </p>

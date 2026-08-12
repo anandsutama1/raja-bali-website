@@ -8,7 +8,7 @@ export default function ClosingCTA() {
         Join us for dinner beneath the stars, accompanied by an unforgettable display of Balinese cultural heritage.
       </p>
       <p className="text-sm font-semibold text-raja-red mb-8">
-        Complimentary for dining guests, exclusively at Raja Bali Main Restaurant.
+        Complimentary for dining guests, exclusively at Raja Bali Nusa Dua (Main Restaurant).
       </p>
       <div className="flex gap-4 justify-center">
         <Link href="/reservation-main" className="bg-raja-black text-white px-8 py-3 text-sm tracking-widest hover:bg-raja-red transition">Reserve Table</Link>

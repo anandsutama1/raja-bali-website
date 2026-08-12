@@ -18,13 +18,16 @@ const ReservationForm = dynamic(() => import("@/components/reservation-nusadua/R
 // average), the largest non-homepage CTR gap on the site, so the title/
 // description are worth strengthening. Deliberately distinct from
 // reservation-main's "Authentic Balinese Restaurant in Nusa Dua | Raja Bali
-// Main Restaurant" (that page's differentiator is the cooking/bar
+// Nusa Dua (Main Restaurant)" (that page's differentiator is the cooking/bar
 // class + dance experiences) so the two location pages don't compete for
-// the identical phrase — this one leans on its own real differentiator,
-// the elegant dining setting, per Destinations.js on /outlets.
-const title = "Balinese Restaurant in Nusa Dua | Raja Bali Nusa Dua";
+// the identical phrase — this one leans on its own real differentiator, the
+// elegant dining setting, per Destinations.js on /outlets. Entity name
+// matches src/lib/site.js's LOCATIONS[1].name exactly — see the naming note
+// on that entry for why both outlets now share the "Raja Bali Nusa Dua"
+// base name.
+const title = "Balinese Restaurant in Nusa Dua | Raja Bali Nusa Dua (Dine-in Restaurant)";
 const description =
-  "Reserve a table at Raja Bali Nusa Dua for authentic Balinese cuisine in an elegant setting, perfect for romantic dinners and memorable evenings in Nusa Dua.";
+  "Reserve a table at Raja Bali Nusa Dua (Dine-in Restaurant) for authentic Balinese cuisine in an elegant setting, perfect for romantic dinners and memorable evenings in Nusa Dua.";
 
 // This page gets its own share image (the Nusa Dua outlet's hero photo)
 // instead of the site-wide default. Next.js doesn't merge openGraph/twitter
@@ -48,7 +51,7 @@ export const metadata = {
         url: "/images/shared/og-reservation-nusadua.jpg",
         width: 1200,
         height: 630,
-        alt: "Raja Bali Nusa Dua",
+        alt: "Raja Bali Nusa Dua (Dine-in Restaurant)",
       },
     ],
   },

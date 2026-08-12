@@ -18,9 +18,9 @@ export default function CookingClassHero() {
         <p className="max-w-xl mx-auto text-sm text-gray-200">
           This Balinese cooking class at{" "}
           <Link href="/outlets" className="u-link text-white">
-            Raja Bali Main Restaurant
-          </Link>{" "}
-          in Nusa Dua is your invitation into the traditions, flavors, and warm hospitality passed down through generations of Balinese families.
+            Raja Bali Nusa Dua (Main Restaurant)
+          </Link>
+          {" "}is your invitation into the traditions, flavors, and warm hospitality passed down through generations of Balinese families.
         </p>
       </div>
     </section>

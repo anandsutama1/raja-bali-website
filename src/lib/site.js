@@ -8,14 +8,17 @@ export const SITE_NAME = "Raja Bali";
 export const LOCATIONS = [
   {
     id: "main-restaurant",
-    name: "Raja Bali Main Restaurant",
-    // Marketing/SEO positioning deliberately unifies both outlets under
-    // "Nusa Dua" — no page, title, meta description, or JSON-LD description
-    // names the Tanjung Benoa sub-area anymore. The literal streetAddress
-    // below is left untouched (it's the real postal address on file with
-    // Google Business Profile/Maps — changing it would create a NAP
-    // mismatch and could hurt local pack ranking more than the simplified
-    // positioning helps).
+    // Both outlets now lead with "Raja Bali Nusa Dua" and are told apart by
+    // the parenthetical only — this one is the cultural/experience venue
+    // (cooking class, bar class, dance), the other is the dine-in venue.
+    // Note this is now the same base name as the "nusa-dua" location below,
+    // so anywhere both are listed together (e.g. /outlets), the qualifier
+    // must stay visible or the two become indistinguishable. The literal
+    // streetAddress below is left untouched (it's the real postal address
+    // on file with Google Business Profile/Maps — changing it would create
+    // a NAP mismatch and could hurt local pack ranking more than the
+    // simplified positioning helps).
+    name: "Raja Bali Nusa Dua (Main Restaurant)",
     description:
       "Raja Bali's flagship cultural destination in Nusa Dua, pairing authentic Balinese cuisine with live cultural performances and hands-on cooking and cocktail classes. Close to The Westin Resort Nusa Dua, Bali Collection, and Museum Pasifika.",
     areaServed: { "@type": "Place", name: "Nusa Dua, Bali" },
@@ -47,7 +50,7 @@ export const LOCATIONS = [
   },
   {
     id: "nusa-dua",
-    name: "Raja Bali Nusa Dua",
+    name: "Raja Bali Nusa Dua (Dine-in Restaurant)",
     // Landmark names are real, well-known fixtures of the compact ITDC Nusa
     // Dua tourism enclave (verified geographic context, not a distance/time
     // claim) — see the "Perfectly Located in Nusa Dua" section on
