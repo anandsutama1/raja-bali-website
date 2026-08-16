@@ -44,14 +44,6 @@ function MessengerIcon(props) {
   );
 }
 
-function XIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" {...props}>
-      <path d="M4 4l16 16M20 4L4 20" />
-    </svg>
-  );
-}
-
 function InstagramIcon(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
@@ -114,12 +106,6 @@ const links = [
     href: `fb-messenger://share/?link=${encodeURIComponent(SHARE_URL)}`,
     bg: "bg-[#0084FF]",
   },
-  {
-    label: "X",
-    Icon: XIcon,
-    href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(SHARE_MESSAGE)}&url=${encodeURIComponent(SHARE_URL)}`,
-    bg: "bg-raja-black",
-  },
 ];
 
 export default function ShareButtons() {
@@ -162,13 +148,7 @@ export default function ShareButtons() {
   };
 
   return (
-    <main className="flex min-h-[70vh] flex-col items-center justify-center bg-raja-cream px-6 py-24 text-center">
-      <p className="mb-3 text-xs font-semibold tracking-widest text-raja-red uppercase">Enjoyed Your Visit?</p>
-      <h1 className="mb-4 font-serif text-4xl">Share Raja Bali With Friends</h1>
-      <p className="mb-10 max-w-md text-gray-600">
-        Word of mouth means the world to us. Tap a platform below to share Raja Bali, a short message is already written for you.
-      </p>
-
+    <section className="flex flex-col items-center justify-center border-t border-gray-200 bg-raja-cream px-6 py-24 text-center">
       {canNativeShare && (
         <button
           type="button"
@@ -222,6 +202,6 @@ export default function ShareButtons() {
       <Link href="/" className="u-link mt-12 text-sm text-gray-500">
         Back to Raja Bali
       </Link>
-    </main>
+    </section>
   );
 }

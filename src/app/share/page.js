@@ -1,3 +1,4 @@
+import ShareHero from "@/components/share/Hero";
 import ShareButtons from "@/components/share/ShareButtons";
 
 // Reached via a QR code on the guest's bill (word-of-mouth prompt at
@@ -16,5 +17,10 @@ export const metadata = {
 };
 
 export default function SharePage() {
-  return <ShareButtons />;
+  return (
+    <main>
+      <ShareHero />
+      <ShareButtons />
+    </main>
+  );
 }
