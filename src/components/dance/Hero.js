@@ -7,11 +7,11 @@ export default function DanceHero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black" />
       <div className="relative z-10 max-w-2xl mx-auto">
         <p className="mb-3 text-xs font-semibold tracking-widest text-raja-red uppercase">
-          Complimentary &middot; Every Thursday &middot; Exclusively at Raja Bali Nusa Dua (Main Restaurant)
+          The Only Balinese Dance Performance in Nusa Dua &middot; Complimentary &middot; Every Thursday
         </p>
         <h1 className="text-5xl font-serif mb-4">A Timeless Balinese Dance Experience</h1>
         <p className="max-w-xl mx-auto text-sm text-gray-200">
-          Step into an evening where ancient stories come alive through movement, music, and the sacred artistry of Bali.
+          Step into an evening where ancient stories come alive through movement, music, and the sacred artistry of Bali, held exclusively at Raja Bali Nusa Dua (Main Restaurant).
         </p>
       </div>
     </section>

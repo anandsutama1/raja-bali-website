@@ -10,7 +10,7 @@ export default function Intro() {
         For generations, Balinese dance has served as a sacred bridge between the island's spiritual heritage and the stories of everyday life. Every gesture, every gaze, and every intricate movement carries meaning passed down through centuries of tradition. At Raja Bali, we invite you to witness this living art form performed with grace, precision, and heartfelt devotion, an experience that lingers long after the final note fades.
       </p>
       <p className="text-sm font-semibold text-raja-red mb-10">
-        Complimentary for dining guests, every Thursday, exclusively at{" "}
+        The only Balinese dance performance in Nusa Dua, complimentary for dining guests every Thursday, exclusively at{" "}
         <Link href="/outlets" className="u-link">
           Raja Bali Nusa Dua (Main Restaurant)
         </Link>

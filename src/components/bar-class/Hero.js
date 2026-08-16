@@ -21,7 +21,7 @@ export default function BarClassHero() {
           <Link href="/outlets" className="u-link text-white">
             Raja Bali Nusa Dua (Main Restaurant)
           </Link>
-          , inspired by the vibrant flavors of Bali.
+          , inspired by the vibrant flavors of Bali. Held Thursdays at 3 PM, stay on and pair it with our complimentary Balinese Dance Performance from 7 PM.
         </p>
       </div>
     </section>

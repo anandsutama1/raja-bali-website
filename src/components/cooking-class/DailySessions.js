@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const sessions = [
   { name: "Session 1", tag: "Lunch", time: "11:00 AM – 1:00 PM", desc: "A relaxed daytime session followed by a freshly prepared Balinese lunch." },
   { name: "Session 2", tag: "Afternoon", time: "2:00 PM – 4:00 PM", desc: "Perfect between sightseeing and your evening plans." },
@@ -21,6 +23,13 @@ export default function DailySessions() {
           </div>
         ))}
       </div>
+      <p className="mx-auto mt-10 max-w-sm border-t border-raja-red/20 pt-6 text-center text-sm font-semibold text-raja-red">
+        Booking the Dinner session on a Thursday? Stay on after 7 PM for our complimentary{" "}
+        <Link href="/dance" className="u-link">
+          Balinese Dance Performance
+        </Link>
+        , the only one in Nusa Dua, free for dining guests.
+      </p>
     </section>
   );
 }
