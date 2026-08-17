@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import PromoTicker from "@/components/PromoTicker";
 import Welcome from "@/components/Welcome";
 import Recognition from "@/components/Recognition";
 import Menus from "@/components/Menus";
@@ -18,6 +19,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <PromoTicker />
       <Welcome />
       <Recognition />
       <Menus />
