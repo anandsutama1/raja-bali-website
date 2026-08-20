@@ -7,30 +7,30 @@ import PageSchema from "@/components/PageSchema";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { localeAlternates } from "@/lib/i18n/alternates";
 
-const title = "About Us";
-const description =
-  "The story behind Raja Bali, a restaurant rooted in Balinese tradition, authentic recipes, fresh local ingredients, and warm island hospitality in Nusa Dua.";
-
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  const { about } = await getDictionary(locale, "metadata");
   return {
-    title,
-    description,
+    title: about.title,
+    description: about.description,
     alternates: localeAlternates(locale, "/about"),
   };
 }
 
 export default async function AboutPage({ params }) {
   const { locale } = await params;
-  const about = await getDictionary(locale, "content-about");
+  const [meta, about] = await Promise.all([
+    getDictionary(locale, "metadata"),
+    getDictionary(locale, "content-about"),
+  ]);
 
   return (
     <main>
       <PageSchema
         path="/about"
         locale={locale}
-        name={title}
-        description={description}
+        name={meta.about.title}
+        description={meta.about.description}
         type="AboutPage"
         crumbs={[{ name: "Home", path: "/" }, { name: "About Us" }]}
       />

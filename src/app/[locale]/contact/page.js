@@ -11,22 +11,20 @@ import { localeAlternates } from "@/lib/i18n/alternates";
 // there's no content/SEO regression, just a smaller initial JS payload.
 const MessageForm = dynamic(() => import("@/components/contact/MessageForm"));
 
-const title = "Contact Us";
-const description =
-  "Get in touch with Raja Bali Nusa Dua (Main Restaurant) or Raja Bali Nusa Dua (Dine-in Restaurant) for reservations, enquiries, and directions to both locations in Nusa Dua.";
-
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  const { contact } = await getDictionary(locale, "metadata");
   return {
-    title,
-    description,
+    title: contact.title,
+    description: contact.description,
     alternates: localeAlternates(locale, "/contact"),
   };
 }
 
 export default async function ContactPage({ params }) {
   const { locale } = await params;
-  const [forms, contact] = await Promise.all([
+  const [meta, forms, contact] = await Promise.all([
+    getDictionary(locale, "metadata"),
     getDictionary(locale, "forms"),
     getDictionary(locale, "content-contact"),
   ]);
@@ -36,8 +34,8 @@ export default async function ContactPage({ params }) {
       <PageSchema
         path="/contact"
         locale={locale}
-        name={title}
-        description={description}
+        name={meta.contact.title}
+        description={meta.contact.description}
         type="ContactPage"
         crumbs={[{ name: "Home", path: "/" }, { name: "Contact Us" }]}
         mainEntityId={`${SITE_URL}/#organization`}

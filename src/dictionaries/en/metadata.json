@@ -1,1 +1,71 @@
-{}
+{
+  "home": {
+    "titleDefault": "Raja Bali | One of the Best Restaurants in Bali",
+    "titleOg": "Raja Bali | Authentic Balinese Restaurant",
+    "description": "Raja Bali is one of the best restaurants in Bali, a Tripadvisor Travelers' Choice Award winner for five consecutive years, offering authentic Balinese cuisine in Nusa Dua, cultural dance performances, and hands-on cooking and cocktail classes."
+  },
+  "about": {
+    "title": "About Us",
+    "description": "The story behind Raja Bali, a restaurant rooted in Balinese tradition, authentic recipes, fresh local ingredients, and warm island hospitality in Nusa Dua."
+  },
+  "outlets": {
+    "title": "Our Locations",
+    "description": "Discover Raja Bali's two destinations in Nusa Dua, Raja Bali Nusa Dua (Main Restaurant) and Raja Bali Nusa Dua (Dine-in Restaurant), with maps, hours, and booking links for each."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Get in touch with Raja Bali Nusa Dua (Main Restaurant) or Raja Bali Nusa Dua (Dine-in Restaurant) for reservations, enquiries, and directions to both locations in Nusa Dua."
+  },
+  "gallery": {
+    "title": "Gallery",
+    "description": "A glimpse into the flavors, celebrations, and warm hospitality that define every Raja Bali experience: dining, cooking and bar classes, dance, and private events."
+  },
+  "menuFood": {
+    "title": "Food Menu",
+    "description": "Explore Raja Bali's food menu, featuring appetizers, soups, vegetarian dishes, rice & noodles, main courses, betutu, and Balinese set menus, all made with authentic recipes."
+  },
+  "menuBeverage": {
+    "title": "Beverage Menu",
+    "description": "Raja Bali's beverage menu features signature cocktails, wine, and refreshments crafted with tropical, island-inspired flavors."
+  },
+  "menuBalineseBuffet": {
+    "title": "Balinese Buffet Menu",
+    "description": "Raja Bali's group dinner buffet menu featuring authentic Balinese dishes, starting from IDR 300K per person, ideal for group celebrations."
+  },
+  "menuWesternAsianBuffet": {
+    "title": "Western & Asian Buffet Menu",
+    "description": "Raja Bali's group dinner buffet menu featuring Western & Asian favorites, starting from IDR 350K per person, ideal for groups with different preferences."
+  },
+  "cookingClass": {
+    "title": "Balinese Cooking Class in Bali",
+    "description": "Hands-on Balinese cooking class in Nusa Dua. Learn authentic recipes, tour our spice garden, and enjoy what you cook. From IDR 550K/person."
+  },
+  "barClass": {
+    "title": "Balinese Cocktail Class",
+    "description": "Join Raja Bali's Balinese cocktail class every Thursday at 3 PM in Nusa Dua, then stay for the complimentary Balinese dance from 7 PM. One Thursday, two experiences."
+  },
+  "dance": {
+    "title": "Balinese Dance Performance",
+    "description": "The only Balinese Dance performance in Nusa Dua. Watch it complimentary every Thursday evening at Raja Bali Nusa Dua (Main Restaurant), free for dining guests."
+  },
+  "privateEvents": {
+    "title": "Private Events & Venue Rental",
+    "description": "Celebrate life's special moments at Raja Bali in Bali's Nusa Dua area, with private event spaces, venue rental, and personalized event planning for weddings, corporate dinners, and celebrations."
+  },
+  "groupReservation": {
+    "title": "Corporate & Group Dining in Bali",
+    "description": "Host corporate dinners, company gatherings, and group celebrations at Raja Bali in Bali's Nusa Dua area. Reserve your group dining experience today."
+  },
+  "reservationMain": {
+    "title": "Authentic Balinese Restaurant in Nusa Dua | Raja Bali Nusa Dua (Main Restaurant)",
+    "description": "Reserve a table at Raja Bali Nusa Dua (Main Restaurant). Authentic Balinese dining, cooking classes, and cultural performances await."
+  },
+  "reservationNusadua": {
+    "title": "Balinese Restaurant in Nusa Dua | Raja Bali Nusa Dua (Dine-in Restaurant)",
+    "description": "Reserve a table at Raja Bali Nusa Dua (Dine-in Restaurant) for authentic Balinese cuisine in an elegant setting, perfect for romantic dinners and memorable evenings in Nusa Dua."
+  },
+  "share": {
+    "title": "Share Raja Bali",
+    "description": "Share your Raja Bali experience with friends and family."
+  }
+}

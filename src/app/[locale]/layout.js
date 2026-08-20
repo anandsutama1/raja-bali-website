@@ -16,28 +16,25 @@ const ibarra = Ibarra_Real_Nova({
   display: "swap",
 });
 
-const description =
-  "Raja Bali is one of the best restaurants in Bali, a Tripadvisor Travelers' Choice Award winner for five consecutive years, offering authentic Balinese cuisine in Nusa Dua, cultural dance performances, and hands-on cooking and cocktail classes.";
-
 // Prerenders both "en" and "zh" variants of every route at build time.
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
 
 // Site-wide fallback metadata — real per-page metadata (set by each
-// page.js) overrides this via the title template below. Still English-only
-// content for now (see the i18n migration plan; translated per-locale
-// metadata comes from the "metadata" dictionary domain in a later phase) —
-// only the canonical/hreflang alternates are locale-correct at this stage.
+// page.js) overrides this via the title template below. Sourced from the
+// "metadata" dictionary domain so title/description/OG/Twitter are all
+// locale-correct, matching the canonical/hreflang alternates below.
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  const { home } = await getDictionary(locale, "metadata");
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: `${SITE_NAME} | One of the Best Restaurants in Bali`,
+      default: home.titleDefault,
       template: `%s | ${SITE_NAME}`,
     },
-    description,
+    description: home.description,
     keywords: [
       "Raja Bali",
       "best restaurant in Bali",
@@ -53,14 +50,14 @@ export async function generateMetadata({ params }) {
     openGraph: {
       type: "website",
       siteName: SITE_NAME,
-      title: `${SITE_NAME} | Authentic Balinese Restaurant`,
-      description,
+      title: home.titleOg,
+      description: home.description,
       images: [{ url: "/images/shared/og-dance.jpg", width: 1200, height: 630, alt: SITE_NAME }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${SITE_NAME} | Authentic Balinese Restaurant`,
-      description,
+      title: home.titleOg,
+      description: home.description,
       images: ["/images/shared/og-dance.jpg"],
     },
   };

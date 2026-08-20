@@ -7,25 +7,27 @@ import StickyReserveButton from "@/components/StickyReserveButton";
 import PageSchema from "@/components/PageSchema";
 import dynamic from "next/dynamic";
 import { getDictionary } from "@/lib/i18n/getDictionary";
+import { localeAlternates } from "@/lib/i18n/alternates";
 
 // Below the fold — its form-state/validation JS ships in its own chunk
 // instead of the initial bundle. Still server-rendered (no ssr:false), so
 // there's no content/SEO regression, just a smaller initial JS payload.
 const ReservationForm = dynamic(() => import("@/components/private-events/ReservationForm"));
 
-const title = "Private Events & Venue Rental";
-const description =
-  "Celebrate life's special moments at Raja Bali in Bali's Nusa Dua area, with private event spaces, venue rental, and personalized event planning for weddings, corporate dinners, and celebrations.";
-
-export const metadata = {
-  title,
-  description,
-  alternates: { canonical: "/private-events" },
-};
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const { privateEvents } = await getDictionary(locale, "metadata");
+  return {
+    title: privateEvents.title,
+    description: privateEvents.description,
+    alternates: localeAlternates(locale, "/private-events"),
+  };
+}
 
 export default async function PrivateEventsPage({ params }) {
   const { locale } = await params;
-  const [forms, pe, common] = await Promise.all([
+  const [meta, forms, pe, common] = await Promise.all([
+    getDictionary(locale, "metadata"),
     getDictionary(locale, "forms"),
     getDictionary(locale, "content-private-events"),
     getDictionary(locale, "common"),
@@ -36,8 +38,8 @@ export default async function PrivateEventsPage({ params }) {
       <PageSchema
         path="/private-events"
         locale={locale}
-        name={title}
-        description={description}
+        name={meta.privateEvents.title}
+        description={meta.privateEvents.description}
         crumbs={[{ name: "Home", path: "/" }, { name: "Private Events & Venue Rental" }]}
       />
       <PrivateEventsHero content={pe.hero} />

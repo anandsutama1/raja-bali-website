@@ -4,15 +4,12 @@ import PageSchema from "@/components/PageSchema";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { localeAlternates } from "@/lib/i18n/alternates";
 
-const title = "Gallery";
-const description =
-  "A glimpse into the flavors, celebrations, and warm hospitality that define every Raja Bali experience: dining, cooking and bar classes, dance, and private events.";
-
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  const { gallery } = await getDictionary(locale, "metadata");
   return {
-    title,
-    description,
+    title: gallery.title,
+    description: gallery.description,
     alternates: localeAlternates(locale, "/gallery"),
   };
 }
@@ -46,7 +43,10 @@ const groupCelebrationsImages = Array.from({ length: 8 }, (_, i) => `/images/gro
 
 export default async function GalleryPage({ params }) {
   const { locale } = await params;
-  const gallery = await getDictionary(locale, "content-gallery");
+  const [meta, gallery] = await Promise.all([
+    getDictionary(locale, "metadata"),
+    getDictionary(locale, "content-gallery"),
+  ]);
   const c = gallery.categories;
 
   return (
@@ -54,8 +54,8 @@ export default async function GalleryPage({ params }) {
       <PageSchema
         path="/gallery"
         locale={locale}
-        name={title}
-        description={description}
+        name={meta.gallery.title}
+        description={meta.gallery.description}
         type="ImageGallery"
         crumbs={[{ name: "Home", path: "/" }, { name: "Gallery" }]}
       />

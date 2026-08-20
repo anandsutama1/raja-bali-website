@@ -9,25 +9,27 @@ import StickyReserveButton from "@/components/StickyReserveButton";
 import PageSchema from "@/components/PageSchema";
 import dynamic from "next/dynamic";
 import { getDictionary } from "@/lib/i18n/getDictionary";
+import { localeAlternates } from "@/lib/i18n/alternates";
 
 // Below the fold — its form-state/validation JS ships in its own chunk
 // instead of the initial bundle. Still server-rendered (no ssr:false), so
 // there's no content/SEO regression, just a smaller initial JS payload.
 const ReservationForm = dynamic(() => import("@/components/group-reservation/ReservationForm"));
 
-const title = "Corporate & Group Dining in Bali";
-const description =
-  "Host corporate dinners, company gatherings, and group celebrations at Raja Bali in Bali's Nusa Dua area. Reserve your group dining experience today.";
-
-export const metadata = {
-  title,
-  description,
-  alternates: { canonical: "/group-reservation" },
-};
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const { groupReservation } = await getDictionary(locale, "metadata");
+  return {
+    title: groupReservation.title,
+    description: groupReservation.description,
+    alternates: localeAlternates(locale, "/group-reservation"),
+  };
+}
 
 export default async function GroupReservationPage({ params }) {
   const { locale } = await params;
-  const [forms, faqs, common, gr] = await Promise.all([
+  const [meta, forms, faqs, common, gr] = await Promise.all([
+    getDictionary(locale, "metadata"),
     getDictionary(locale, "forms"),
     getDictionary(locale, "faqs"),
     getDictionary(locale, "common"),
@@ -39,8 +41,8 @@ export default async function GroupReservationPage({ params }) {
       <PageSchema
         path="/group-reservation"
         locale={locale}
-        name={title}
-        description={description}
+        name={meta.groupReservation.title}
+        description={meta.groupReservation.description}
         crumbs={[{ name: "Home", path: "/" }, { name: "Corporate & Group Dining" }]}
       />
       <GroupReservationHero content={gr.hero} />

@@ -12,57 +12,59 @@ import PageSchema from "@/components/PageSchema";
 import dynamic from "next/dynamic";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getDictionary } from "@/lib/i18n/getDictionary";
+import { localeAlternates } from "@/lib/i18n/alternates";
 
 // Below the fold — its form-state/validation JS ships in its own chunk
 // instead of the initial bundle. Still server-rendered (no ssr:false), so
 // there's no content/SEO regression, just a smaller initial JS payload.
 const ReservationForm = dynamic(() => import("@/components/cooking-class/ReservationForm"));
 
-const title = "Balinese Cooking Class in Bali";
-const description =
-  "Hands-on Balinese cooking class in Nusa Dua. Learn authentic recipes, tour our spice garden, and enjoy what you cook. From IDR 550K/person.";
-
 // This page gets its own share image (the cooking class hero photo) instead
 // of the site-wide default. Next.js doesn't merge openGraph/twitter objects
 // between layout.js and page.js, a page-level one fully replaces the root's,
 // so every field needed for a full share card is repeated here rather than
 // just the image.
-export const metadata = {
-  title,
-  description,
-  keywords: [
-    "Balinese cooking class",
-    "cooking class Bali",
-    "cooking class Nusa Dua",
-    "learn Balinese cooking",
-    "Bali culinary experience",
-  ],
-  alternates: { canonical: "/cooking-class" },
-  openGraph: {
-    type: "website",
-    siteName: SITE_NAME,
-    title: `${title} | ${SITE_NAME}`,
-    description,
-    images: [
-      {
-        url: "/images/shared/og-cooking-class.jpg",
-        width: 1200,
-        height: 630,
-        alt: title,
-      },
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const { cookingClass } = await getDictionary(locale, "metadata");
+  return {
+    title: cookingClass.title,
+    description: cookingClass.description,
+    keywords: [
+      "Balinese cooking class",
+      "cooking class Bali",
+      "cooking class Nusa Dua",
+      "learn Balinese cooking",
+      "Bali culinary experience",
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${title} | ${SITE_NAME}`,
-    description,
-    images: ["/images/shared/og-cooking-class.jpg"],
-  },
-};
+    alternates: localeAlternates(locale, "/cooking-class"),
+    openGraph: {
+      type: "website",
+      siteName: SITE_NAME,
+      title: `${cookingClass.title} | ${SITE_NAME}`,
+      description: cookingClass.description,
+      images: [
+        {
+          url: "/images/shared/og-cooking-class.jpg",
+          width: 1200,
+          height: 630,
+          alt: cookingClass.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${cookingClass.title} | ${SITE_NAME}`,
+      description: cookingClass.description,
+      images: ["/images/shared/og-cooking-class.jpg"],
+    },
+  };
+}
 
 export default async function CookingClassPage({ params }) {
   const { locale } = await params;
-  const [forms, cc, common] = await Promise.all([
+  const [meta, forms, cc, common] = await Promise.all([
+    getDictionary(locale, "metadata"),
     getDictionary(locale, "forms"),
     getDictionary(locale, "content-cooking-class"),
     getDictionary(locale, "common"),
@@ -73,8 +75,8 @@ export default async function CookingClassPage({ params }) {
       <PageSchema
         path="/cooking-class"
         locale={locale}
-        name={title}
-        description={description}
+        name={meta.cookingClass.title}
+        description={meta.cookingClass.description}
         crumbs={[{ name: "Home", path: "/" }, { name: "Balinese Cooking Class" }]}
         mainEntityId={`${SITE_URL}/cooking-class#course`}
       />

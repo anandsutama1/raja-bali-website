@@ -8,25 +8,24 @@ import { SITE_URL } from "@/lib/site";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { localeAlternates } from "@/lib/i18n/alternates";
 
-const title = "Beverage Menu";
-const description =
-  "Raja Bali's beverage menu features signature cocktails, wine, and refreshments crafted with tropical, island-inspired flavors.";
-
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  const { menuBeverage } = await getDictionary(locale, "metadata");
   return {
-    title,
-    description,
+    title: menuBeverage.title,
+    description: menuBeverage.description,
     alternates: localeAlternates(locale, "/menu/beverage"),
   };
 }
 
 export default async function BeverageMenuPage({ params }) {
   const { locale } = await params;
-  const [menuDict, common] = await Promise.all([
+  const [meta, menuDict, common] = await Promise.all([
+    getDictionary(locale, "metadata"),
     getDictionary(locale, "menu"),
     getDictionary(locale, "common"),
   ]);
+  const { title, description } = meta.menuBeverage;
   const bev = menuDict.beverage;
   const {
     signatureCocktails, balineseCocktails, classicCocktails, refreshing, wellness,

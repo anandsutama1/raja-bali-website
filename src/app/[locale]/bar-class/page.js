@@ -13,60 +13,62 @@ import PageSchema from "@/components/PageSchema";
 import dynamic from "next/dynamic";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getDictionary } from "@/lib/i18n/getDictionary";
+import { localeAlternates } from "@/lib/i18n/alternates";
 
 // Below the fold — its form-state/validation JS ships in its own chunk
 // instead of the initial bundle. Still server-rendered (no ssr:false), so
 // there's no content/SEO regression, just a smaller initial JS payload.
 const ReservationForm = dynamic(() => import("@/components/bar-class/ReservationForm"));
 
-const title = "Balinese Cocktail Class";
-const description =
-  "Join Raja Bali's Balinese cocktail class every Thursday at 3 PM in Nusa Dua, then stay for the complimentary Balinese dance from 7 PM. One Thursday, two experiences.";
-
 // This page gets its own share image (the cocktail class hero photo)
 // instead of the site-wide default. Next.js doesn't merge openGraph/twitter
 // objects between layout.js and page.js, a page-level one fully replaces
 // the root's, so every field needed for a full share card is repeated here
 // rather than just the image.
-export const metadata = {
-  title,
-  description,
-  keywords: [
-    "Balinese cocktail class",
-    "cocktail class Bali",
-    "Thursday cocktail class Bali",
-    "bar class Bali",
-    "Balinese dance performance",
-    "free Balinese dance Thursday",
-    "complimentary Balinese dance Main Restaurant",
-    "Raja Bali Nusa Dua Main Restaurant",
-  ],
-  alternates: { canonical: "/bar-class" },
-  openGraph: {
-    type: "website",
-    siteName: SITE_NAME,
-    title: `${title} | ${SITE_NAME}`,
-    description,
-    images: [
-      {
-        url: "/images/shared/og-bar-class.jpg",
-        width: 1200,
-        height: 630,
-        alt: title,
-      },
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const { barClass } = await getDictionary(locale, "metadata");
+  return {
+    title: barClass.title,
+    description: barClass.description,
+    keywords: [
+      "Balinese cocktail class",
+      "cocktail class Bali",
+      "Thursday cocktail class Bali",
+      "bar class Bali",
+      "Balinese dance performance",
+      "free Balinese dance Thursday",
+      "complimentary Balinese dance Main Restaurant",
+      "Raja Bali Nusa Dua Main Restaurant",
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${title} | ${SITE_NAME}`,
-    description,
-    images: ["/images/shared/og-bar-class.jpg"],
-  },
-};
+    alternates: localeAlternates(locale, "/bar-class"),
+    openGraph: {
+      type: "website",
+      siteName: SITE_NAME,
+      title: `${barClass.title} | ${SITE_NAME}`,
+      description: barClass.description,
+      images: [
+        {
+          url: "/images/shared/og-bar-class.jpg",
+          width: 1200,
+          height: 630,
+          alt: barClass.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${barClass.title} | ${SITE_NAME}`,
+      description: barClass.description,
+      images: ["/images/shared/og-bar-class.jpg"],
+    },
+  };
+}
 
 export default async function BarClassPage({ params }) {
   const { locale } = await params;
-  const [forms, faqs, common, bc] = await Promise.all([
+  const [meta, forms, faqs, common, bc] = await Promise.all([
+    getDictionary(locale, "metadata"),
     getDictionary(locale, "forms"),
     getDictionary(locale, "faqs"),
     getDictionary(locale, "common"),
@@ -78,8 +80,8 @@ export default async function BarClassPage({ params }) {
       <PageSchema
         path="/bar-class"
         locale={locale}
-        name={title}
-        description={description}
+        name={meta.barClass.title}
+        description={meta.barClass.description}
         crumbs={[{ name: "Home", path: "/" }, { name: "Balinese Cocktail Class" }]}
         mainEntityId={`${SITE_URL}/bar-class#course`}
       />

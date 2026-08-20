@@ -10,45 +10,47 @@ import PageSchema from "@/components/PageSchema";
 import DanceStructuredData from "@/components/dance/StructuredData";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getDictionary } from "@/lib/i18n/getDictionary";
-
-const title = "Balinese Dance Performance";
-const description =
-  "The only Balinese Dance performance in Nusa Dua. Watch it complimentary every Thursday evening at Raja Bali Nusa Dua (Main Restaurant), free for dining guests.";
+import { localeAlternates } from "@/lib/i18n/alternates";
 
 // This page gets its own share image (the dance hero photo) instead of the
 // site-wide default. Next.js doesn't merge openGraph/twitter objects between
 // layout.js and page.js, a page-level one fully replaces the root's, so
 // every field needed for a full share card is repeated here rather than
 // just the image.
-export const metadata = {
-  title,
-  description,
-  alternates: { canonical: "/dance" },
-  openGraph: {
-    type: "website",
-    siteName: SITE_NAME,
-    title: `${title} | ${SITE_NAME}`,
-    description,
-    images: [
-      {
-        url: "/images/shared/og-dance.jpg",
-        width: 1200,
-        height: 630,
-        alt: title,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${title} | ${SITE_NAME}`,
-    description,
-    images: ["/images/shared/og-dance.jpg"],
-  },
-};
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const { dance } = await getDictionary(locale, "metadata");
+  return {
+    title: dance.title,
+    description: dance.description,
+    alternates: localeAlternates(locale, "/dance"),
+    openGraph: {
+      type: "website",
+      siteName: SITE_NAME,
+      title: `${dance.title} | ${SITE_NAME}`,
+      description: dance.description,
+      images: [
+        {
+          url: "/images/shared/og-dance.jpg",
+          width: 1200,
+          height: 630,
+          alt: dance.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${dance.title} | ${SITE_NAME}`,
+      description: dance.description,
+      images: ["/images/shared/og-dance.jpg"],
+    },
+  };
+}
 
 export default async function DancePage({ params }) {
   const { locale } = await params;
-  const [faqs, common, dance] = await Promise.all([
+  const [meta, faqs, common, dance] = await Promise.all([
+    getDictionary(locale, "metadata"),
     getDictionary(locale, "faqs"),
     getDictionary(locale, "common"),
     getDictionary(locale, "content-dance"),
@@ -59,8 +61,8 @@ export default async function DancePage({ params }) {
       <PageSchema
         path="/dance"
         locale={locale}
-        name={title}
-        description={description}
+        name={meta.dance.title}
+        description={meta.dance.description}
         crumbs={[{ name: "Home", path: "/" }, { name: "Balinese Dance Performance" }]}
         mainEntityId={`${SITE_URL}/dance#event`}
       />

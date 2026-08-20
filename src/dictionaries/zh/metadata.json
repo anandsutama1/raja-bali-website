@@ -1,1 +1,71 @@
-{}
+{
+  "home": {
+    "titleDefault": "Raja Bali | 巴厘岛最佳餐厅之一",
+    "titleOg": "Raja Bali | 正宗巴厘岛风味餐厅",
+    "description": "Raja Bali 是巴厘岛最佳餐厅之一,连续五年荣获 Tripadvisor 旅行者之选大奖,坐落于努沙杜瓦(Nusa Dua),供应正宗巴厘风味美食、传统舞蹈表演,以及亲手体验的烹饪与调酒课程。"
+  },
+  "about": {
+    "title": "关于我们",
+    "description": "了解 Raja Bali 的故事——一家扎根于巴厘传统、坚持正宗配方、选用新鲜本地食材,并在努沙杜瓦(Nusa Dua)传递温暖岛屿待客之道的餐厅。"
+  },
+  "outlets": {
+    "title": "餐厅位置",
+    "description": "探索 Raja Bali 在努沙杜瓦(Nusa Dua)的两家分店——Raja Bali Nusa Dua(主餐厅)与 Raja Bali Nusa Dua(堂食餐厅),查看各分店的地图、营业时间与预订链接。"
+  },
+  "contact": {
+    "title": "联系我们",
+    "description": "如需预订、咨询或前往努沙杜瓦(Nusa Dua)两家分店的路线,请联系 Raja Bali Nusa Dua(主餐厅)或 Raja Bali Nusa Dua(堂食餐厅)。"
+  },
+  "gallery": {
+    "title": "图库",
+    "description": "一览 Raja Bali 独特体验的精彩瞬间:美味佳肴、烹饪与调酒课程、舞蹈表演,以及私人活动的温馨时刻。"
+  },
+  "menuFood": {
+    "title": "美食菜单",
+    "description": "探索 Raja Bali 的美食菜单,包括开胃菜、汤品、素食、米饭与面食、主菜、巴厘烤鸭(Betutu)以及巴厘套餐,均采用正宗配方精心制作。"
+  },
+  "menuBeverage": {
+    "title": "饮品菜单",
+    "description": "Raja Bali 的饮品菜单精选招牌鸡尾酒、葡萄酒及各类清爽饮品,融入热带岛屿风情。"
+  },
+  "menuBalineseBuffet": {
+    "title": "巴厘风味自助餐菜单",
+    "description": "Raja Bali 的团体聚餐自助菜单,精选正宗巴厘风味菜肴,每人低至 IDR 300K 起,是团体聚会庆祝的理想之选。"
+  },
+  "menuWesternAsianBuffet": {
+    "title": "西式与亚洲风味自助餐菜单",
+    "description": "Raja Bali 的团体聚餐自助菜单,精选西式与亚洲风味佳肴,每人低至 IDR 350K 起,满足不同口味需求的团体聚餐首选。"
+  },
+  "cookingClass": {
+    "title": "巴厘岛烹饪课程",
+    "description": "在努沙杜瓦(Nusa Dua)亲手体验正宗巴厘烹饪课程。学习传统食谱、参观香料园,并享用亲手烹制的美食。每人 IDR 550K 起。"
+  },
+  "barClass": {
+    "title": "巴厘调酒课程",
+    "description": "每周四下午 3 点参加 Raja Bali 的巴厘调酒课程,随后可留下欣赏晚上 7 点的免费巴厘舞蹈表演——一个周四,两种精彩体验。"
+  },
+  "dance": {
+    "title": "巴厘舞蹈表演",
+    "description": "努沙杜瓦(Nusa Dua)独有的巴厘舞蹈表演。每周四傍晚在 Raja Bali Nusa Dua(主餐厅)免费呈现,用餐宾客均可免费观赏。"
+  },
+  "privateEvents": {
+    "title": "私人活动与场地租赁",
+    "description": "在巴厘岛努沙杜瓦(Nusa Dua)的 Raja Bali 庆祝人生中的重要时刻,提供私人活动场地、场地租赁及婚礼、企业晚宴与各类庆典的专属活动策划服务。"
+  },
+  "groupReservation": {
+    "title": "巴厘岛企业与团体聚餐",
+    "description": "在巴厘岛努沙杜瓦(Nusa Dua)的 Raja Bali 举办企业晚宴、公司聚会及团体庆祝活动。立即预订您的团体聚餐体验。"
+  },
+  "reservationMain": {
+    "title": "努沙杜瓦正宗巴厘餐厅 | Raja Bali Nusa Dua(主餐厅)",
+    "description": "预订 Raja Bali Nusa Dua(主餐厅)的餐桌。正宗巴厘风味美食、烹饪课程与传统文化表演,等您来体验。"
+  },
+  "reservationNusadua": {
+    "title": "努沙杜瓦巴厘餐厅 | Raja Bali Nusa Dua(堂食餐厅)",
+    "description": "预订 Raja Bali Nusa Dua(堂食餐厅)的餐桌,在优雅氛围中品味正宗巴厘美食,是浪漫晚餐与难忘夜晚的理想之选。"
+  },
+  "share": {
+    "title": "分享 Raja Bali",
+    "description": "与亲朋好友分享您的 Raja Bali 体验。"
+  }
+}

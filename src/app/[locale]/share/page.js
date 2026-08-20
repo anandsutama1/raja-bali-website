@@ -8,14 +8,12 @@ import { localeAlternates } from "@/lib/i18n/alternates";
 // deliberately kept out of search entirely rather than competing with the
 // site's real content pages. No PageSchema/JSON-LD either, same reasoning
 // as the thank-you pages.
-const title = "Share Raja Bali";
-const description = "Share your Raja Bali experience with friends and family.";
-
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  const { share } = await getDictionary(locale, "metadata");
   return {
-    title,
-    description,
+    title: share.title,
+    description: share.description,
     alternates: localeAlternates(locale, "/share"),
     robots: { index: false, follow: true },
   };

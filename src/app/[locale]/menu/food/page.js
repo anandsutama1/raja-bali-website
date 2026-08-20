@@ -8,25 +8,24 @@ import { SITE_URL } from "@/lib/site";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { localeAlternates } from "@/lib/i18n/alternates";
 
-const title = "Food Menu";
-const description =
-  "Explore Raja Bali's food menu, featuring appetizers, soups, vegetarian dishes, rice & noodles, main courses, betutu, and Balinese set menus, all made with authentic recipes.";
-
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  const { menuFood } = await getDictionary(locale, "metadata");
   return {
-    title,
-    description,
+    title: menuFood.title,
+    description: menuFood.description,
     alternates: localeAlternates(locale, "/menu/food"),
   };
 }
 
 export default async function FoodMenuPage({ params }) {
   const { locale } = await params;
-  const [menuDict, common] = await Promise.all([
+  const [meta, menuDict, common] = await Promise.all([
+    getDictionary(locale, "metadata"),
     getDictionary(locale, "menu"),
     getDictionary(locale, "common"),
   ]);
+  const { title, description } = meta.menuFood;
   const food = menuDict.food;
   const { appetizer, soup, vegetarian, riceNoodles, mainCourse, betutu, kidsMenu, dessert } = food.sections;
   const setMenus = food.setMenus;

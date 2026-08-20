@@ -7,25 +7,24 @@ import { SITE_URL } from "@/lib/site";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { localeAlternates } from "@/lib/i18n/alternates";
 
-const title = "Balinese Buffet Menu";
-const description =
-  "Raja Bali's group dinner buffet menu featuring authentic Balinese dishes, starting from IDR 300K per person, ideal for group celebrations.";
-
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  const { menuBalineseBuffet } = await getDictionary(locale, "metadata");
   return {
-    title,
-    description,
+    title: menuBalineseBuffet.title,
+    description: menuBalineseBuffet.description,
     alternates: localeAlternates(locale, "/menu/balinese-buffet"),
   };
 }
 
 export default async function BalineseBuffetPage({ params }) {
   const { locale } = await params;
-  const [menuDict, common] = await Promise.all([
+  const [meta, menuDict, common] = await Promise.all([
+    getDictionary(locale, "metadata"),
     getDictionary(locale, "menu"),
     getDictionary(locale, "common"),
   ]);
+  const { title, description } = meta.menuBalineseBuffet;
   const buffet = menuDict.balineseBuffet;
   const { starters, mainCourses } = buffet;
 

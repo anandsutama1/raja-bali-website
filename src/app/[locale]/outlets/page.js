@@ -5,20 +5,22 @@ import FAQ from "@/components/outlets/FAQ";
 import ContactCTA from "@/components/outlets/ContactCTA";
 import PageSchema from "@/components/PageSchema";
 import { getDictionary } from "@/lib/i18n/getDictionary";
+import { localeAlternates } from "@/lib/i18n/alternates";
 
-const title = "Our Locations";
-const description =
-  "Discover Raja Bali's two destinations in Nusa Dua, Raja Bali Nusa Dua (Main Restaurant) and Raja Bali Nusa Dua (Dine-in Restaurant), with maps, hours, and booking links for each.";
-
-export const metadata = {
-  title,
-  description,
-  alternates: { canonical: "/outlets" },
-};
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const { outlets } = await getDictionary(locale, "metadata");
+  return {
+    title: outlets.title,
+    description: outlets.description,
+    alternates: localeAlternates(locale, "/outlets"),
+  };
+}
 
 export default async function OutletsPage({ params }) {
   const { locale } = await params;
-  const [faqs, common, outlets] = await Promise.all([
+  const [meta, faqs, common, outlets] = await Promise.all([
+    getDictionary(locale, "metadata"),
     getDictionary(locale, "faqs"),
     getDictionary(locale, "common"),
     getDictionary(locale, "content-outlets"),
@@ -29,8 +31,8 @@ export default async function OutletsPage({ params }) {
       <PageSchema
         path="/outlets"
         locale={locale}
-        name={title}
-        description={description}
+        name={meta.outlets.title}
+        description={meta.outlets.description}
         type="CollectionPage"
         crumbs={[{ name: "Home", path: "/" }, { name: "Our Locations" }]}
       />
