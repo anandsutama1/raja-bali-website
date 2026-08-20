@@ -1,1 +1,107 @@
-{}
+{
+  "food": {
+    "heroTitle": "餐食菜单",
+    "priceNote": "价格以印尼盾(IDR)标示,另加收11%政府税。",
+    "sectionTitles": {
+      "appetizer": "开胃菜",
+      "soup": "汤品",
+      "vegetarian": "素食",
+      "riceNoodles": "米饭与面条",
+      "mainCourse": "主菜",
+      "betutu": "巴度香料菜(需提前2天预订)",
+      "kidsMenu": "儿童餐",
+      "dessert": "甜点"
+    },
+    "setMenuHeadingPrefix": "我们的招牌",
+    "setMenuHeadingAccent": "套餐",
+    "setMenuHeadingSuffix": "体验",
+    "sections": {
+      "appetizer": [
+        { "name": "Ayam Pelalah 香辣手撕鸡", "desc": "手撕鸡肉配香辣参巴酱", "price": "85K" },
+        { "name": "Tuna Sambal Matah 参巴金枪鱼", "desc": "金枪鱼配红葱头和香茅", "price": "85K" },
+        { "name": "海鲜沙拉", "desc": "虾、金枪鱼、鱼肉和鱿鱼配红葱头、番茄和香茅", "price": "120K" },
+        { "name": "Sayur Pecel 花生酱蔬菜沙拉", "desc": "什锦蒸蔬菜配花生酱、豆腐、天贝和水煮蛋", "price": "65K" },
+        { "name": "Satay Lilit Ayam 印尼鸡肉沙嗲(6串)", "desc": "6串鸡肉沙嗲配甜酱油和辣椒", "price": "90K" },
+        { "name": "Satay Lilit Ikan 印尼鱼肉沙嗲(6串)", "desc": "6串鱼肉沙嗲配甜酱油和辣椒", "price": "100K" }
+      ],
+      "soup": [
+        { "name": "Soup Ikan 巴厘鱼汤", "desc": "巴厘岛风味鱼汤", "price": "75K" },
+        { "name": "Soup Ayam 巴厘鸡汤", "desc": "巴厘岛风味蔬菜鸡汤", "price": "75K" }
+      ],
+      "vegetarian": [
+        { "name": "Sayur Pecel 花生酱蔬菜", "desc": "什锦蒸蔬菜配花生酱、豆腐和天贝", "price": "65K" },
+        { "name": "Kare Sayur 咖喱蔬菜", "desc": "咖喱炖什锦蔬菜配米饭", "price": "70K" },
+        { "name": "Mie Goreng 印尼炒面", "desc": "蔬菜炒面配豆腐和天贝", "price": "70K" },
+        { "name": "Nasi Goreng 印尼炒饭", "desc": "蔬菜炒饭配豆腐和天贝", "price": "70K" },
+        { "name": "Kare Tahu Tempe 咖喱豆腐天贝", "desc": "咖喱炖豆腐天贝配米饭", "price": "70K" }
+      ],
+      "riceNoodles": [
+        { "name": "Nasi Goreng Ayam Panggang 烤鸡炒饭", "desc": "炒饭配鸡蛋及半只烤嫩鸡", "price": "115K" },
+        { "name": "Mie Goreng Ayam Panggang 烤鸡炒面", "desc": "炒面配鸡蛋及半只烤嫩鸡", "price": "115K" },
+        { "name": "Nasi Goreng Lamb Curry 咖喱羊肉炒饭", "desc": "炒饭配鸡蛋及咖喱羊肉", "price": "140K" },
+        { "name": "Mie Goreng Lamb Curry 咖喱羊肉炒面", "desc": "炒面配鸡蛋及咖喱羊肉", "price": "140K" },
+        { "name": "Nasi Goreng Beef Rendang 仁当牛肉炒饭", "desc": "炒饭配鸡蛋及巴厘风味仁当牛肉", "price": "140K" },
+        { "name": "Mie Goreng Beef Rendang 仁当牛肉炒面", "desc": "炒面配鸡蛋及巴厘风味仁当牛肉", "price": "140K" }
+      ],
+      "mainCourse": [
+        { "name": "巴厘仁当牛肉", "desc": "香辣炖牛肉配当日巴厘蔬菜、米饭及配料", "price": "150K" },
+        { "name": "Ayam Panggang 烤鸡", "desc": "腌制烤嫩鸡半只配当日巴厘蔬菜、米饭及配料", "price": "115K" },
+        { "name": "香煎鱼柳", "desc": "200克烤鬼头刀鱼配当日巴厘蔬菜、米饭及配料", "price": "135K" },
+        { "name": "海鲜串烧", "desc": "烤鱼肉、虾、鱿鱼及蔬菜串配蔬菜、米饭及配料", "price": "200K" },
+        { "name": "咖喱羊肉", "desc": "咖喱炖羊肉配当日巴厘蔬菜、米饭及配料", "price": "160K" },
+        { "name": "Udang Mesanten 椰浆虾咖喱", "desc": "巴厘风味虾咖喱配当日巴厘蔬菜及米饭", "price": "180K" },
+        { "name": "Udang Panggang 烤大虾", "desc": "烤帝王虾配当日巴厘蔬菜及米饭", "price": "180K" },
+        { "name": "Ikan Panggang 烤全鱼", "desc": "350克烤鲷鱼配当日巴厘蔬菜及米饭", "price": "160K" },
+        { "name": "海鲜咖喱", "desc": "巴厘风味海鲜咖喱(虾、鱿鱼及鬼头刀鱼)配蔬菜及米饭", "price": "190K" },
+        { "name": "Serosob Ayam 巴厘鸡肉咖喱", "desc": "巴厘风味鸡肉咖喱配当日蔬菜及米饭", "price": "115K" },
+        { "name": "综合沙嗲", "desc": "9串鸡肉、鱼肉及羊肉沙嗲配蔬菜、米饭及配料", "price": "135K" },
+        { "name": "Ayam Betutu 巴度香料炖鸡", "desc": "巴度香料炖嫩鸡半只配蔬菜、米饭及配料", "price": "135K" },
+        { "name": "香酥鸭", "desc": "香炸半只鸭配当日巴厘蔬菜、米饭及配料", "price": "135K" }
+      ],
+      "betutu": [
+        { "name": "Ayam Betutu 巴度香料全鸡", "desc": "巴度香料炖全鸡,配巴厘鸡汤、两款蔬菜、黄姜饭及白饭、巴厘甜点。(需提前2天预订)", "price": "350K" },
+        { "name": "Bebek Betutu 巴度香料全鸭", "desc": "巴度香料炖全鸭,配巴厘鸡汤、两款蔬菜、黄姜饭及白饭、巴厘甜点。(需提前2天预订)", "price": "400K" }
+      ],
+      "kidsMenu": [
+        { "name": "炸鱼薯条", "desc": "配薯条及蛋黄酱", "price": "50K" },
+        { "name": "鸡块", "desc": "配薯条及蛋黄酱", "price": "50K" },
+        { "name": "香肠或鸡肉炒饭", "desc": "炒饭配鸡蛋及鸡肉香肠或鸡肉沙嗲", "price": "70K" },
+        { "name": "香肠或鸡肉炒面", "desc": "炒面配鸡蛋及鸡肉香肠或鸡肉沙嗲", "price": "70K" },
+        { "name": "薯条", "desc": "", "price": "40K" },
+        { "name": "迷你汉堡", "desc": "白面包配牛肉饼、鸡蛋、芝士及生菜", "price": "70K" },
+        { "name": "那不勒斯意面", "desc": "意大利面配番茄酱及帕玛森芝士", "price": "60K" },
+        { "name": "蒜香橄榄油意面", "desc": "橄榄油炒意面配帕玛森芝士", "price": "60K" }
+      ],
+      "dessert": [
+        { "name": "时令鲜果", "desc": "什锦时令水果", "price": "50K" },
+        { "name": "Bubur Injin 黑糯米粥", "desc": "黑糯米椰浆粥", "price": "50K" },
+        { "name": "冰淇淋(单球)", "desc": "香草、草莓或巧克力口味", "price": "20K" },
+        { "name": "巴厘特色糕点拼盘", "desc": "", "price": "50K" },
+        { "name": "Pisang Goreng 炸香蕉", "desc": "香炸香蕉配椰糖酱", "price": "50K" },
+        { "name": "香蕉船", "desc": "香蕉配香草、巧克力及草莓冰淇淋", "price": "65K" }
+      ]
+    },
+    "setMenus": [
+      {
+        "name": "巴厘岛盛宴套餐",
+        "price": "IDR 550K(2人份)",
+        "sections": [
+          { "label": "开胃菜", "items": ["沙嗲鸡肉串(印尼香茅鸡肉沙嗲)", "参巴金枪鱼(配红葱头和香茅)"] },
+          { "label": "汤品", "items": ["巴厘鸡汤"] },
+          { "label": "主菜", "items": ["巴厘仁当牛肉", "咖喱羊肉(咖喱炖羊肉)", "巴厘椰浆鸡肉咖喱", "香煎鱼柳(去骨烤鬼头刀鱼)", "烤虾", "香蕉叶蒸鸡肉", "鸡肉长豆椰丝沙拉", "当日时蔬", "两款米饭(黄姜饭及白饭)"] },
+          { "label": "甜点", "items": ["时令鲜果", "黑糯米椰浆粥", "巴厘特色糕点拼盘"] }
+        ]
+      },
+      {
+        "name": "皇家盛宴套餐",
+        "price": "IDR 1,100K(2人份)",
+        "sections": [
+          { "label": "开胃菜", "items": ["沙嗲鱼肉串", "参巴金枪鱼(配红葱头和香茅)"] },
+          { "label": "汤品", "items": ["鱼汤(巴厘香草清鱼汤)"] },
+          { "label": "主菜", "items": ["烤龙虾(配特制酱汁)", "烤鬼头刀鱼柳", "巴厘海鲜串烧(虾、鬼头刀鱼、鱿鱼、彩椒、洋葱、西葫芦)", "海鲜咖喱(虾、鬼头刀鱼及鱿鱼)", "炖菜拼盘(羊肉、牛肉、鸡肉及鱼肉炖菜)", "巴厘什锦蔬菜沙拉及鸡肉沙拉", "两款米饭(黄姜饭及白饭)"] },
+          { "label": "甜点", "items": ["巴厘特色糕点及什锦水果配香草冰淇淋"] }
+        ]
+      }
+    ]
+  }
+}
