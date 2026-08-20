@@ -1,36 +1,41 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { onScrollFrame } from "./motion/ticker";
 import ScrollProgress from "./motion/ScrollProgress";
+import LocalizedLink from "./LocalizedLink";
+import LanguageSwitcher from "./LanguageSwitcher";
 
-const links = [
-  { href: "/gallery", label: "Gallery" },
-  { href: "/contact", label: "Contact" },
-  { href: "/about", label: "About us" },
-];
+export default function Navbar({ dict }) {
+  const nav = dict.nav;
+  const links = [
+    { href: "/gallery", label: nav.gallery },
+    { href: "/contact", label: nav.contact },
+    { href: "/about", label: nav.aboutUs },
+  ];
+  const drawerLinks = [
+    { href: "/", label: nav.home },
+    ...links,
+    { href: "/menu/food", label: nav.menu },
+    { href: "/cooking-class", label: nav.cookingClass },
+    { href: "/bar-class", label: nav.barClass },
+    { href: "/dance", label: nav.dance },
+    { href: "/private-events", label: nav.privateEvents },
+    { href: "/group-reservation", label: nav.groupReservation },
+  ];
 
-const drawerLinks = [
-  { href: "/", label: "Home" },
-  ...links,
-  { href: "/menu/food", label: "Menu" },
-  { href: "/cooking-class", label: "Cooking Class" },
-  { href: "/bar-class", label: "Balinese Bar Class" },
-  { href: "/dance", label: "Balinese Dance Performance" },
-  { href: "/private-events", label: "Private Events" },
-  { href: "/group-reservation", label: "Group Reservation" },
-];
-
-export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const lastY = useRef(0);
   const lastToggle = useRef(0);
   const pathname = usePathname();
+  const { locale } = useParams();
+  // pathname includes the /{locale} prefix; strip it so link-active
+  // comparisons below match the bare hrefs in `links`/`drawerLinks`.
+  const barePathname = pathname.startsWith(`/${locale}`) ? pathname.slice(`/${locale}`.length) || "/" : pathname;
 
   // Belt-and-suspenders for mobile browsers where the synthetic click after
   // a tap has been unreliable: onTouchEnd fires the same toggle directly,
@@ -92,7 +97,7 @@ export default function Navbar() {
             scrolled ? "py-1" : "py-2"
           }`}
         >
-          <Link href="/" className="u-press shrink-0">
+          <LocalizedLink href="/" className="u-press shrink-0">
             <Image
               src="/images/shared/RajaBali_Navbar.png"
               alt="Raja Bali"
@@ -101,36 +106,38 @@ export default function Navbar() {
               priority
               className="-my-2 h-20 w-20 md:h-24 md:w-24"
             />
-          </Link>
+          </LocalizedLink>
 
           <ul className="hidden md:flex gap-10 text-sm tracking-wide">
             {links.map((link) => (
               <li key={link.href}>
-                <Link
+                <LocalizedLink
                   href={link.href}
                   className={`u-link transition-colors duration-500 ease-expo hover:text-raja-red ${
-                    pathname === link.href ? "text-raja-red" : ""
+                    barePathname === link.href ? "text-raja-red" : ""
                   }`}
                 >
                   {link.label}
-                </Link>
+                </LocalizedLink>
               </li>
             ))}
           </ul>
 
           <div className="flex items-center gap-3">
-            <Link
+            <LanguageSwitcher className="hidden sm:flex" />
+
+            <LocalizedLink
               href="/outlets"
               className="hidden sm:inline-block bg-raja-black text-white px-6 py-2.5 text-sm tracking-wide u-press hover:bg-raja-red"
             >
-              Reserve Table
-            </Link>
+              {nav.reserveTable}
+            </LocalizedLink>
 
             <button
               type="button"
               onClick={toggleMenu}
               onTouchEnd={toggleMenu}
-              aria-label={open ? "Close menu" : "Open menu"}
+              aria-label={open ? nav.closeMenu : nav.openMenu}
               aria-expanded={open}
               className="md:hidden relative h-10 w-10 -mr-2 grid touch-manipulation place-items-center"
             >
@@ -165,7 +172,7 @@ export default function Navbar() {
         <button
           type="button"
           tabIndex={open ? 0 : -1}
-          aria-label="Close menu"
+          aria-label={nav.closeMenu}
           onClick={() => setOpen(false)}
           className="absolute inset-0 h-full w-full bg-raja-black/40 backdrop-blur-sm"
         />
@@ -176,7 +183,15 @@ export default function Navbar() {
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <Link
+          <LanguageSwitcher
+            className="mb-6 justify-center gap-4 text-sm"
+            style={{
+              transitionDelay: open ? "80ms" : "0ms",
+              opacity: open ? 1 : 0,
+            }}
+          />
+
+          <LocalizedLink
             href="/outlets"
             className="mb-8 block bg-raja-black px-6 py-4 text-center text-sm tracking-widest text-white u-press hover:bg-raja-red"
             style={{
@@ -184,8 +199,8 @@ export default function Navbar() {
               opacity: open ? 1 : 0,
             }}
           >
-            RESERVE TABLE
-          </Link>
+            {nav.reserveTable.toUpperCase()}
+          </LocalizedLink>
 
           <ul className="space-y-1">
             {drawerLinks.map((link, index) => (
@@ -198,14 +213,14 @@ export default function Navbar() {
                   transform: open ? "none" : "translateX(24px)",
                 }}
               >
-                <Link
+                <LocalizedLink
                   href={link.href}
                   className={`block border-b border-raja-black/10 py-4 text-xl font-serif transition-colors duration-[400ms] ease-expo hover:text-raja-red ${
-                    pathname === link.href ? "text-raja-red" : ""
+                    barePathname === link.href ? "text-raja-red" : ""
                   }`}
                 >
                   {link.label}
-                </Link>
+                </LocalizedLink>
               </li>
             ))}
           </ul>

@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "gallery": "图库",
+    "contact": "联系我们",
+    "aboutUs": "关于我们",
+    "home": "首页",
+    "menu": "菜单",
+    "cookingClass": "烹饪课程",
+    "barClass": "巴厘岛调酒课程",
+    "dance": "巴厘岛舞蹈表演",
+    "privateEvents": "私人活动",
+    "groupReservation": "团体预订",
+    "reserveTable": "预订餐桌",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单"
+  },
+  "footer": {
+    "tagline": "体验巴厘岛的地道风味、悠久传统与热情好客。",
+    "contactUs": "联系我们",
+    "exploreHeading": "探索",
+    "experiencesHeading": "体验项目",
+    "home": "首页",
+    "about": "关于我们",
+    "menu": "菜单",
+    "outlets": "分店",
+    "copyright": "© 2026 Raja Bali. 版权所有。",
+    "hours": "每日营业：中午12:00 - 晚上10:00"
+  },
+  "faqHeading": "常见问题",
+  "breadcrumbHome": "首页",
+  "expandAll": "全部展开",
+  "collapseAll": "全部收起",
+  "thankYouMayAlsoLike": "您可能还喜欢"
+}

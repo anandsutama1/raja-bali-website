@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "aboutUs": "About us",
+    "home": "Home",
+    "menu": "Menu",
+    "cookingClass": "Cooking Class",
+    "barClass": "Balinese Bar Class",
+    "dance": "Balinese Dance Performance",
+    "privateEvents": "Private Events",
+    "groupReservation": "Group Reservation",
+    "reserveTable": "Reserve Table",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "footer": {
+    "tagline": "Experience the authentic flavors, rich traditions, and warm hospitality of Bali.",
+    "contactUs": "CONTACT US",
+    "exploreHeading": "Explore",
+    "experiencesHeading": "Experiences",
+    "home": "Home",
+    "about": "About",
+    "menu": "Menu",
+    "outlets": "Outlets",
+    "copyright": "© 2026 Raja Bali. All rights reserved.",
+    "hours": "Open Daily: 12:00 PM – 10:00 PM"
+  },
+  "faqHeading": "Frequently Asked Questions",
+  "breadcrumbHome": "Home",
+  "expandAll": "Expand All",
+  "collapseAll": "Collapse All",
+  "thankYouMayAlsoLike": "You May Also Like"
+}

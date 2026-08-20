@@ -1,31 +1,32 @@
 import Image from "next/image";
-import Link from "next/link";
 import Reveal from "./motion/Reveal";
 import Stagger from "./motion/Stagger";
+import LocalizedLink from "./LocalizedLink";
 
-const columns = [
-  {
-    heading: "Explore",
-    links: [
-      { href: "/", label: "Home" },
-      { href: "/about", label: "About" },
-      { href: "/menu/food", label: "Menu" },
-      { href: "/outlets", label: "Outlets" },
-    ],
-  },
-  {
-    heading: "Experiences",
-    links: [
-      { href: "/cooking-class", label: "Balinese Cooking Class" },
-      { href: "/bar-class", label: "Balinese Bar Class" },
-      { href: "/dance", label: "Balinese Dance Performance" },
-      { href: "/private-events", label: "Private Events" },
-      { href: "/group-reservation", label: "Group Reservation" },
-    ],
-  },
-];
+export default function Footer({ dict }) {
+  const f = dict.footer;
+  const columns = [
+    {
+      heading: f.exploreHeading,
+      links: [
+        { href: "/", label: f.home },
+        { href: "/about", label: f.about },
+        { href: "/menu/food", label: f.menu },
+        { href: "/outlets", label: f.outlets },
+      ],
+    },
+    {
+      heading: f.experiencesHeading,
+      links: [
+        { href: "/cooking-class", label: dict.nav.cookingClass },
+        { href: "/bar-class", label: dict.nav.barClass },
+        { href: "/dance", label: dict.nav.dance },
+        { href: "/private-events", label: dict.nav.privateEvents },
+        { href: "/group-reservation", label: dict.nav.groupReservation },
+      ],
+    },
+  ];
 
-export default function Footer() {
   return (
     <footer className="bg-raja-black px-6 py-16 text-white">
       <Stagger
@@ -40,16 +41,13 @@ export default function Footer() {
             height={354}
             className="mb-4 h-16 w-auto"
           />
-          <p className="mb-6 text-sm leading-relaxed text-gray-400">
-            Experience the authentic flavors, rich traditions, and warm
-            hospitality of Bali.
-          </p>
-          <Link
+          <p className="mb-6 text-sm leading-relaxed text-gray-400">{f.tagline}</p>
+          <LocalizedLink
             href="/contact"
             className="u-press inline-block bg-white px-6 py-2.5 text-sm tracking-widest text-raja-black hover:bg-raja-red hover:text-white"
           >
-            CONTACT US
-          </Link>
+            {f.contactUs}
+          </LocalizedLink>
         </div>
 
         {columns.map((column) => (
@@ -58,12 +56,12 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-gray-400">
               {column.links.map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <LocalizedLink
                     href={link.href}
                     className="u-link transition-colors duration-500 ease-expo hover:text-raja-red"
                   >
                     {link.label}
-                  </Link>
+                  </LocalizedLink>
                 </li>
               ))}
             </ul>
@@ -75,11 +73,8 @@ export default function Footer() {
         delay={200}
         className="mx-auto mt-10 flex max-w-5xl flex-col gap-3 border-t border-white/15 pt-6 text-sm text-gray-400 sm:flex-row sm:items-center sm:justify-between"
       >
-        <p>&copy; 2026 Raja Bali. All rights reserved.</p>
-        <p>
-          Mon - Fri: 12.00 PM - 9.00 PM &nbsp;|&nbsp; Sat - Sun: 12.00 PM -
-          9.00 PM &nbsp;|&nbsp; Holiday: 12.00 PM - 9.00 PM
-        </p>
+        <p>{f.copyright}</p>
+        <p>{f.hours}</p>
       </Reveal>
     </footer>
   );

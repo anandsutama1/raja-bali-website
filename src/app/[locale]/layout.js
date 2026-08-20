@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { LOCALES } from "@/lib/i18n/config";
 import { localeAlternates } from "@/lib/i18n/alternates";
+import { getDictionary } from "@/lib/i18n/getDictionary";
 
 const ibarra = Ibarra_Real_Nova({
   subsets: ["latin"],
@@ -73,6 +74,7 @@ export const viewport = {
 
 export default async function LocaleLayout({ children, params }) {
   const { locale } = await params;
+  const common = await getDictionary(locale, "common");
 
   return (
     <html lang={locale} className="no-js" suppressHydrationWarning>
@@ -87,9 +89,9 @@ export default async function LocaleLayout({ children, params }) {
             stays a single canonical schema.org node rather than being
             duplicated per language. */}
         <StructuredData />
-        <Navbar />
+        <Navbar dict={common} />
         {children}
-        <Footer />
+        <Footer dict={common} />
         <SpeedInsights />
       </body>
     </html>
