@@ -1,1 +1,51 @@
-{}
+{
+  "hero": {
+    "title": "探索我们的目的地",
+    "body": "每个 Raja Bali 目的地都拥有独特氛围,从沉浸式文化用餐体验到私密的正宗巴厘美食之夜。"
+  },
+  "destinations": {
+    "heading": "两处目的地,同一份巴厘热情",
+    "intro": "从文化表演与互动体验,到努沙杜瓦中心地带的优雅用餐,每一个 Raja Bali 目的地都经过精心设计,以独特方式展现巴厘岛的魅力。",
+    "bookNow": "立即预订 →",
+    "items": [
+      {
+        "tag": "旗舰文化目的地",
+        "name": "Raja Bali Nusa Dua(主餐厅)",
+        "descParts": [
+          { "text": "我们在努沙杜瓦的旗舰目的地,是" },
+          { "link": "/cooking-class", "text": "巴厘岛烹饪课程" },
+          { "text": "、巴厘岛" },
+          { "link": "/bar-class", "text": "调酒课程" },
+          { "text": "及每周四免费" },
+          { "link": "/dance", "text": "巴厘岛舞蹈表演" },
+          { "text": "的所在地。" }
+        ],
+        "features": "餐厅 · 文化 · 体验",
+        "href": "/reservation-main"
+      },
+      {
+        "tag": "招牌用餐目的地",
+        "name": "Raja Bali Nusa Dua(努沙杜瓦餐厅)",
+        "descParts": [
+          { "text": "在优雅环境中享受正宗巴厘美食,是浪漫晚餐、家庭聚会及努沙杜瓦难忘夜晚的完美选择。" }
+        ],
+        "features": "午餐 · 晚餐 · 活动",
+        "href": "/reservation-nusadua"
+      }
+    ]
+  },
+  "location": {
+    "heading": "位置",
+    "subheading": "寻找离您最近的 Raja Bali",
+    "intro": "两处目的地都交通便利,各自拥有独特的努沙杜瓦魅力,从文化体验到优雅用餐一应俱全。",
+    "titles": {
+      "main": "Raja Bali Nusa Dua(主餐厅)",
+      "nusadua": "Raja Bali Nusa Dua(努沙杜瓦餐厅)"
+    }
+  },
+  "contactCTA": {
+    "heading": "不确定该选哪个目的地?",
+    "body": "我们的团队很乐意协助您选择最适合此行的 Raja Bali 体验。",
+    "contactUs": "联系我们"
+  }
+}

@@ -18,9 +18,10 @@ export const metadata = {
 
 export default async function OutletsPage({ params }) {
   const { locale } = await params;
-  const [faqs, common] = await Promise.all([
+  const [faqs, common, outlets] = await Promise.all([
     getDictionary(locale, "faqs"),
     getDictionary(locale, "common"),
+    getDictionary(locale, "content-outlets"),
   ]);
 
   return (
@@ -33,11 +34,11 @@ export default async function OutletsPage({ params }) {
         type="CollectionPage"
         crumbs={[{ name: "Home", path: "/" }, { name: "Our Locations" }]}
       />
-      <OutletsHero />
-      <Destinations />
-      <Location />
+      <OutletsHero content={outlets.hero} />
+      <Destinations content={outlets.destinations} />
+      <Location content={outlets.location} />
       <FAQ faqs={faqs.outlets} heading={common.faqHeading} subheading={common.outletsFaqSubheading} />
-      <ContactCTA />
+      <ContactCTA content={outlets.contactCTA} />
     </main>
   );
 }

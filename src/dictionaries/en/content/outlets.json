@@ -1,1 +1,51 @@
-{}
+{
+  "hero": {
+    "title": "Discover Our Destinations",
+    "body": "Each Raja Bali destination has its own atmosphere, from immersive cultural dining to an intimate evening of authentic Balinese cuisine."
+  },
+  "destinations": {
+    "heading": "Two Destinations, One Balinese Hospitality",
+    "intro": "From cultural performances and interactive experiences to elegant dining in the heart of Nusa Dua, every Raja Bali destination is thoughtfully designed to showcase Bali in its own unique way.",
+    "bookNow": "Book Now →",
+    "items": [
+      {
+        "tag": "Flagship Cultural Destination",
+        "name": "Raja Bali Nusa Dua (Main Restaurant)",
+        "descParts": [
+          { "text": "Our flagship destination in Nusa Dua, home to the " },
+          { "link": "/cooking-class", "text": "Balinese Cooking Class" },
+          { "text": ", Balinese " },
+          { "link": "/bar-class", "text": "Bar Class" },
+          { "text": ", and a complimentary Thursday " },
+          { "link": "/dance", "text": "Balinese Dance Performance" },
+          { "text": "." }
+        ],
+        "features": "Restaurant · Culture · Experiences",
+        "href": "/reservation-main"
+      },
+      {
+        "tag": "Signature Dining Destination",
+        "name": "Raja Bali Nusa Dua (Dine-in Restaurant)",
+        "descParts": [
+          { "text": "Enjoy authentic Balinese cuisine in a refined setting, perfect for romantic dinners, family gatherings, and memorable evenings in Nusa Dua." }
+        ],
+        "features": "Lunch • Dinner • Events",
+        "href": "/reservation-nusadua"
+      }
+    ]
+  },
+  "location": {
+    "heading": "Location",
+    "subheading": "Find Your Nearest Raja Bali",
+    "intro": "Both destinations are easy to reach, each with its own Nusa Dua charm, from cultural experiences to elegant dining.",
+    "titles": {
+      "main": "Raja Bali Nusa Dua (Main Restaurant)",
+      "nusadua": "Raja Bali Nusa Dua (Dine-in Restaurant)"
+    }
+  },
+  "contactCTA": {
+    "heading": "Not Sure Which Destination Is Right for You?",
+    "body": "Our team is happy to help you choose the Raja Bali experience that best matches your visit.",
+    "contactUs": "Contact Us"
+  }
+}
