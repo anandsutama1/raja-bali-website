@@ -25,9 +25,10 @@ export const metadata = {
 
 export default async function PrivateEventsPage({ params }) {
   const { locale } = await params;
-  const [forms, pe] = await Promise.all([
+  const [forms, pe, common] = await Promise.all([
     getDictionary(locale, "forms"),
     getDictionary(locale, "content-private-events"),
+    getDictionary(locale, "common"),
   ]);
 
   return (
@@ -45,7 +46,7 @@ export default async function PrivateEventsPage({ params }) {
       <EventSpaces content={pe.eventSpaces} />
       <GalleryExperience content={pe.gallery} />
       <ReservationForm dict={forms.privateEvents} common={forms.common} />
-      <StickyReserveButton href="#reservation" label="RESERVE PRIVATE EVENT" />
+      <StickyReserveButton href="#reservation" label={common.stickyReserve.privateEvent} />
     </main>
   );
 }

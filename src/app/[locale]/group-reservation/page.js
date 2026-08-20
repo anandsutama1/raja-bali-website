@@ -51,7 +51,7 @@ export default async function GroupReservationPage({ params }) {
       <FAQ faqs={faqs.groupReservation} heading={common.faqHeading} subheading={common.faqSubheading} />
       <ReservationForm dict={forms.groupReservation} common={forms.common} />
       <ContactCTA content={gr.contactCTA} />
-      <StickyReserveButton href="#reservation" label="RESERVE FOR GROUP" />
+      <StickyReserveButton href="#reservation" label={common.stickyReserve.groupBooking} />
     </main>
   );
 }

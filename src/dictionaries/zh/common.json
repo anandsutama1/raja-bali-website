@@ -47,5 +47,12 @@
     "mostPopular": "最受欢迎",
     "limitedSlot": "名额有限",
     "freeEveryThursday": "每周四免费"
+  },
+  "stickyReserve": {
+    "table": "预订餐桌",
+    "cookingClass": "预订烹饪课程",
+    "groupBooking": "预订团体用餐",
+    "cocktailClass": "预订调酒课程",
+    "privateEvent": "预订私人活动"
   }
 }

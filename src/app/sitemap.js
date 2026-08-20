@@ -1,4 +1,6 @@
 import { SITE_URL } from "@/lib/site";
+import { LOCALES, DEFAULT_LOCALE } from "@/lib/i18n/config";
+import { localePath } from "@/lib/i18n/alternates";
 
 const routes = [
   { path: "/", priority: 1 },
@@ -22,10 +24,18 @@ const routes = [
 export default function sitemap() {
   const lastModified = new Date();
 
-  return routes.map(({ path, priority }) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified,
-    changeFrequency: "monthly",
-    priority,
-  }));
+  return routes.flatMap(({ path, priority }) =>
+    LOCALES.map((locale) => ({
+      url: `${SITE_URL}${localePath(locale, path)}`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority,
+      alternates: {
+        languages: {
+          ...Object.fromEntries(LOCALES.map((l) => [l, `${SITE_URL}${localePath(l, path)}`])),
+          "x-default": `${SITE_URL}${localePath(DEFAULT_LOCALE, path)}`,
+        },
+      },
+    }))
+  );
 }

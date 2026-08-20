@@ -39,7 +39,7 @@ export default async function Home({ params }) {
       <InstagramGrid content={home.instagram} />
       <Testimonials content={home.testimonials} />
       <FAQ faqs={faqs.home} heading={common.homeFaqHeading} subheading={common.faqSubheading} />
-      <StickyReserveButton />
+      <StickyReserveButton label={common.stickyReserve.table} />
     </main>
   );
 }

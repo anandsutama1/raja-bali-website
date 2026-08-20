@@ -94,7 +94,7 @@ export default async function BarClassPage({ params }) {
       <Pricing content={bc.pricing} />
       <FAQ faqs={faqs.barClass} heading={common.faqHeading} subheading={common.faqSubheading} />
       <ReservationForm dict={forms.barClass} common={forms.common} />
-      <StickyReserveButton href="#reservation" label="RESERVE COCKTAIL & HEALTHY DRINK CLASS" />
+      <StickyReserveButton href="#reservation" label={common.stickyReserve.cocktailClass} />
     </main>
   );
 }

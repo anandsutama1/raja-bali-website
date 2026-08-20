@@ -62,9 +62,10 @@ export const metadata = {
 
 export default async function CookingClassPage({ params }) {
   const { locale } = await params;
-  const [forms, cc] = await Promise.all([
+  const [forms, cc, common] = await Promise.all([
     getDictionary(locale, "forms"),
     getDictionary(locale, "content-cooking-class"),
+    getDictionary(locale, "common"),
   ]);
 
   return (
@@ -87,7 +88,7 @@ export default async function CookingClassPage({ params }) {
       <GalleryExperience content={cc.gallery} />
       <Pricing content={cc.pricing} />
       <ReservationForm dict={forms.cookingClass} common={forms.common} />
-      <StickyReserveButton href="#reservation" label="RESERVE COOKING CLASS" />
+      <StickyReserveButton href="#reservation" label={common.stickyReserve.cookingClass} />
     </main>
   );
 }

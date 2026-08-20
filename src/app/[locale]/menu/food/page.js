@@ -23,7 +23,10 @@ export async function generateMetadata({ params }) {
 
 export default async function FoodMenuPage({ params }) {
   const { locale } = await params;
-  const menuDict = await getDictionary(locale, "menu");
+  const [menuDict, common] = await Promise.all([
+    getDictionary(locale, "menu"),
+    getDictionary(locale, "common"),
+  ]);
   const food = menuDict.food;
   const { appetizer, soup, vegetarian, riceNoodles, mainCourse, betutu, kidsMenu, dessert } = food.sections;
   const setMenus = food.setMenus;
@@ -100,7 +103,7 @@ export default async function FoodMenuPage({ params }) {
         ))}
       </div>
 
-      <StickyReserveButton href="/outlets" label="RESERVE TABLE" />
+      <StickyReserveButton href="/outlets" label={common.stickyReserve.table} />
     </main>
   );
 }

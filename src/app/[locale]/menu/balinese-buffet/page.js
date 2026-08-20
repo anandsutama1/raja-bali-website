@@ -22,7 +22,10 @@ export async function generateMetadata({ params }) {
 
 export default async function BalineseBuffetPage({ params }) {
   const { locale } = await params;
-  const menuDict = await getDictionary(locale, "menu");
+  const [menuDict, common] = await Promise.all([
+    getDictionary(locale, "menu"),
+    getDictionary(locale, "common"),
+  ]);
   const buffet = menuDict.balineseBuffet;
   const { starters, mainCourses } = buffet;
 
@@ -81,7 +84,7 @@ export default async function BalineseBuffetPage({ params }) {
         ))}
       </div>
 
-      <StickyReserveButton href="/group-reservation#reservation" label="RESERVE FOR GROUP" />
+      <StickyReserveButton href="/group-reservation#reservation" label={common.stickyReserve.groupBooking} />
     </main>
   );
 }

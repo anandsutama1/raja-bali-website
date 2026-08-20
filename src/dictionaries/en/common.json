@@ -47,5 +47,12 @@
     "mostPopular": "Most Popular",
     "limitedSlot": "Limited Slot",
     "freeEveryThursday": "Free Every Thursday"
+  },
+  "stickyReserve": {
+    "table": "RESERVE TABLE",
+    "cookingClass": "RESERVE COOKING CLASS",
+    "groupBooking": "RESERVE FOR GROUP",
+    "cocktailClass": "RESERVE COCKTAIL & HEALTHY DRINK CLASS",
+    "privateEvent": "RESERVE PRIVATE EVENT"
   }
 }

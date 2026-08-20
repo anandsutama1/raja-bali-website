@@ -72,7 +72,7 @@ export default async function DancePage({ params }) {
       <DanceGallery content={dance.gallery} />
       <FAQ faqs={faqs.dance} heading={common.faqHeading} subheading={common.faqSubheading} />
       <ClosingCTA content={dance.closingCTA} />
-      <StickyReserveButton href="/reservation-main" label="RESERVE TABLE" />
+      <StickyReserveButton href="/reservation-main" label={common.stickyReserve.table} />
     </main>
   );
 }

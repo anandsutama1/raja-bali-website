@@ -23,7 +23,10 @@ export async function generateMetadata({ params }) {
 
 export default async function BeverageMenuPage({ params }) {
   const { locale } = await params;
-  const menuDict = await getDictionary(locale, "menu");
+  const [menuDict, common] = await Promise.all([
+    getDictionary(locale, "menu"),
+    getDictionary(locale, "common"),
+  ]);
   const bev = menuDict.beverage;
   const {
     signatureCocktails, balineseCocktails, classicCocktails, refreshing, wellness,
@@ -135,7 +138,7 @@ export default async function BeverageMenuPage({ params }) {
         <WineTable title={t.sparklingWine} items={importedSparklingWine} />
       </div>
 
-      <StickyReserveButton href="/outlets" label="RESERVE TABLE" />
+      <StickyReserveButton href="/outlets" label={common.stickyReserve.table} />
     </main>
   );
 }

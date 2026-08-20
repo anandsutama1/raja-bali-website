@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import LocalizedLink from "./LocalizedLink";
 import { onScrollFrame } from "./motion/ticker";
 
 // Mobile only — each page's own hero button scrolls away with it, so this
@@ -98,13 +98,13 @@ export default function StickyReserveButton({ href = "/outlets", label = "RESERV
       }`}
       style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}
     >
-      <Link
+      <LocalizedLink
         href={href}
         onClick={handleClick}
         className="u-press block w-full bg-raja-black py-4 text-center text-sm tracking-widest text-white shadow-[0_4px_24px_-4px_rgb(0_0_0/0.4)] hover:bg-raja-red"
       >
         {label}
-      </Link>
+      </LocalizedLink>
     </div>
   );
 }
