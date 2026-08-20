@@ -1,1 +1,51 @@
-{}
+{
+  "hero": {
+    "eyebrow": "努沙杜瓦唯一巴厘岛舞蹈表演 · 免费 · 每周四",
+    "title": "永恒的巴厘岛舞蹈体验",
+    "body": "踏入一个夜晚,古老的故事透过舞姿、音乐与巴厘岛的神圣艺术焕发生机,仅在 Raja Bali Nusa Dua(主餐厅)呈现。"
+  },
+  "intro": {
+    "headingPrefix": "鲜活的艺术:",
+    "headingAccent": "巴厘岛舞蹈表演",
+    "body": "世代以来,巴厘岛舞蹈一直是连接岛屿精神传承与日常生活故事的神圣桥梁。每一个手势、每一个眼神、每一个精妙的动作,都承载着数百年传统流传下来的深意。在 Raja Bali,我们诚邀您见证这门活态艺术,以优雅、精准与真挚的虔诚演绎,余韵在终章落幕后久久萦绕。",
+    "notePrefix": "努沙杜瓦唯一的巴厘岛舞蹈表演,每周四为用餐客人免费呈现,仅在",
+    "noteLinkLabel": "Raja Bali Nusa Dua(主餐厅)",
+    "reserveTable": "预订餐桌",
+    "contactUs": "联系我们"
+  },
+  "schedule": {
+    "heading": "每周四晚上",
+    "subheading": "巴厘星空下的迷人庆典",
+    "time": "晚上7:00起",
+    "body": "表演通常持续至晚上9点左右,节奏优雅,随夜晚氛围与宾客流动自然调整。",
+    "note": "用餐客人免费观赏,仅限 Raja Bali Nusa Dua(主餐厅)。"
+  },
+  "repertoire": {
+    "heading": "舞蹈曲目",
+    "subheading": "四则神圣故事,每周精选呈现",
+    "intro": "每周四,我们精心从曲目库中挑选四场表演为您呈现,而深受喜爱的招牌舞蹈 Tari Joged Bumbung 每晚都会登场。",
+    "dances": [
+      { "name": "Tari Joged Bumbung", "desc": "我们的招牌表演,每周四必定登台。一支充满欢乐与即兴魅力的社群舞蹈。" },
+      { "name": "Puspanjali", "desc": "优雅的迎宾舞,献上感恩之花,向宾客致敬问候。" },
+      { "name": "Sekar Jagat", "desc": "世界之花之舞,以细腻流畅的舞姿颂扬美丽与和谐。" },
+      { "name": "Sekar Jepun", "desc": "灵感源自鸡蛋花,温柔诠释优雅与女性之美。" },
+      { "name": "Margapati", "desc": "一支充满力量与动感的舞蹈,以强烈的表现力刻画狩猎精神。" },
+      { "name": "Condong", "desc": "精致的宫廷舞蹈,描绘巴厘公主身边忠诚侍女的形象。" },
+      { "name": "Panyembrahma", "desc": "仪式性的迎宾舞蹈,撒落花瓣以示祝福与款待之意。" },
+      { "name": "Tari Baris", "desc": "高贵的战士之舞,体现纪律、力量与祖先的荣耀。" },
+      { "name": "Tari Cendrawasih", "desc": "灵感源自天堂鸟,一支迷人的双人舞,颂扬求偶之美与动态之姿。" }
+    ]
+  },
+  "gallery": {
+    "headingPrefix": "画廊",
+    "headingAccent": "剪影",
+    "body": "捕捉巴厘岛舞蹈表演的精彩瞬间,一窥夜晚的优雅、色彩与精神。"
+  },
+  "closingCTA": {
+    "heading": "预订您的巴厘璀璨之夜",
+    "body": "与我们共赴星空下的晚宴,伴随难忘的巴厘文化盛宴。",
+    "note": "用餐客人免费观赏,仅限 Raja Bali Nusa Dua(主餐厅)。",
+    "reserveTable": "预订餐桌",
+    "contactUs": "联系我们"
+  }
+}

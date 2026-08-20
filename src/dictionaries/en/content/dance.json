@@ -1,1 +1,51 @@
-{}
+{
+  "hero": {
+    "eyebrow": "The Only Balinese Dance Performance in Nusa Dua · Complimentary · Every Thursday",
+    "title": "A Timeless Balinese Dance Experience",
+    "body": "Step into an evening where ancient stories come alive through movement, music, and the sacred artistry of Bali, held exclusively at Raja Bali Nusa Dua (Main Restaurant)."
+  },
+  "intro": {
+    "headingPrefix": "The Living Art of ",
+    "headingAccent": "Balinese Dance Performance",
+    "body": "For generations, Balinese dance has served as a sacred bridge between the island's spiritual heritage and the stories of everyday life. Every gesture, every gaze, and every intricate movement carries meaning passed down through centuries of tradition. At Raja Bali, we invite you to witness this living art form performed with grace, precision, and heartfelt devotion, an experience that lingers long after the final note fades.",
+    "notePrefix": "The only Balinese dance performance in Nusa Dua, complimentary for dining guests every Thursday, exclusively at ",
+    "noteLinkLabel": "Raja Bali Nusa Dua (Main Restaurant)",
+    "reserveTable": "Reserve Table",
+    "contactUs": "Contact Us"
+  },
+  "schedule": {
+    "heading": "Every Thursday Evening",
+    "subheading": "An Enchanting Celebration Beneath the Balinese Sky",
+    "time": "7:00 PM Onwards",
+    "body": "Performances typically continue until around 9:00 PM, gracefully paced to the rhythm of the evening and the flow of our guests.",
+    "note": "Complimentary for dining guests, exclusively at Raja Bali Nusa Dua (Main Restaurant)."
+  },
+  "repertoire": {
+    "heading": "The Repertoire",
+    "subheading": "Four Sacred Stories, Chosen Anew Each Week",
+    "intro": "Each Thursday, four performances are thoughtfully selected from our repertoire to unfold before you, with Tari Joged Bumbung, our beloved signature dance, gracing every evening.",
+    "dances": [
+      { "name": "Tari Joged Bumbung", "desc": "Our signature performance, gracing the stage every Thursday without fail. A playful, communal dance celebrated for its warmth and spontaneous charm." },
+      { "name": "Puspanjali", "desc": "A graceful welcome dance offering flowers of gratitude to honor and greet our guests." },
+      { "name": "Sekar Jagat", "desc": "A dance of the world's flowers, celebrating beauty and harmony through delicate, flowing movement." },
+      { "name": "Sekar Jepun", "desc": "Inspired by the frangipani blossom, a gentle expression of elegance and femininity." },
+      { "name": "Margapati", "desc": "A powerful, dynamic dance portraying the spirit of the hunt, performed with striking intensity." },
+      { "name": "Condong", "desc": "A refined court dance depicting the devoted attendant of a Balinese princess." },
+      { "name": "Panyembrahma", "desc": "A ceremonial welcome dance, scattering flower petals as a gesture of blessing and hospitality." },
+      { "name": "Tari Baris", "desc": "A noble warrior's dance, embodying discipline, strength, and ancestral pride." },
+      { "name": "Tari Cendrawasih", "desc": "Inspired by the Bird of Paradise, a mesmerizing duet celebrating courtship and beauty in motion." }
+    ]
+  },
+  "gallery": {
+    "headingPrefix": "Gallery ",
+    "headingAccent": "Experience",
+    "body": "Moments captured from our Balinese dance performances, offering a glimpse into the grace, color, and spirit of the evening."
+  },
+  "closingCTA": {
+    "heading": "Reserve Your Evening of Balinese Splendor",
+    "body": "Join us for dinner beneath the stars, accompanied by an unforgettable display of Balinese cultural heritage.",
+    "note": "Complimentary for dining guests, exclusively at Raja Bali Nusa Dua (Main Restaurant).",
+    "reserveTable": "Reserve Table",
+    "contactUs": "Contact Us"
+  }
+}

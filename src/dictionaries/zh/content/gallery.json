@@ -1,1 +1,12 @@
-{}
+{
+  "heroTitle": "图库",
+  "heroBody": "一窥定义每一次 Raja Bali 体验的风味、庆典与热情款待。",
+  "categories": {
+    "diningVenue": "用餐环境",
+    "cookingClass": "巴厘岛烹饪课程",
+    "barClass": "巴厘岛调酒课程",
+    "dance": "巴厘岛舞蹈表演",
+    "privateEvents": "私人活动",
+    "groupCelebrations": "团体庆典"
+  }
+}

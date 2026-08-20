@@ -48,9 +48,10 @@ export const metadata = {
 
 export default async function DancePage({ params }) {
   const { locale } = await params;
-  const [faqs, common] = await Promise.all([
+  const [faqs, common, dance] = await Promise.all([
     getDictionary(locale, "faqs"),
     getDictionary(locale, "common"),
+    getDictionary(locale, "content-dance"),
   ]);
 
   return (
@@ -64,13 +65,13 @@ export default async function DancePage({ params }) {
         mainEntityId={`${SITE_URL}/dance#event`}
       />
       <DanceStructuredData />
-      <DanceHero />
-      <Intro />
-      <Schedule />
-      <DanceRepertoire />
-      <DanceGallery />
+      <DanceHero content={dance.hero} />
+      <Intro content={dance.intro} />
+      <Schedule content={dance.schedule} />
+      <DanceRepertoire content={dance.repertoire} />
+      <DanceGallery content={dance.gallery} />
       <FAQ faqs={faqs.dance} heading={common.faqHeading} subheading={common.faqSubheading} />
-      <ClosingCTA />
+      <ClosingCTA content={dance.closingCTA} />
       <StickyReserveButton href="/reservation-main" label="RESERVE TABLE" />
     </main>
   );

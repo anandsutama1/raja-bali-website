@@ -1,1 +1,12 @@
-{}
+{
+  "heroTitle": "Gallery",
+  "heroBody": "A glimpse into the flavors, celebrations, and warm hospitality that define every Raja Bali experience.",
+  "categories": {
+    "diningVenue": "Dining & Venue",
+    "cookingClass": "Balinese Cooking Class",
+    "barClass": "Balinese Bar Class",
+    "dance": "Balinese Dance Performance",
+    "privateEvents": "Private Events",
+    "groupCelebrations": "Group Celebrations"
+  }
+}
