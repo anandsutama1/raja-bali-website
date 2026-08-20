@@ -1,1 +1,26 @@
-{}
+{
+  "hero": {
+    "title": "Raja Bali Nusa Dua (Dine-in Restaurant)",
+    "body": "Enjoy authentic Balinese cuisine in an elegant setting, perfect for romantic dinners, family gatherings, and memorable celebrations in the heart of Nusa Dua."
+  },
+  "gallery": {
+    "headingPrefix": "Gallery ",
+    "headingAccent": "Experience",
+    "body": "Showcase beautifully captured moments from birthdays, family gatherings, corporate dinners, wedding receptions, and private events hosted at Raja Bali."
+  },
+  "locationContext": {
+    "heading": "Perfectly Located in Nusa Dua",
+    "para1Parts": [
+      { "text": "Raja Bali Restaurant is ideally located in the heart of " },
+      { "link": "/outlets", "text": "Nusa Dua" },
+      { "text": ", just moments from Bali's leading luxury resorts, shopping destinations, cultural attractions, and pristine beaches. Whether you're staying nearby or exploring the area, " },
+      { "link": "/menu/food", "text": "authentic Balinese cuisine" },
+      { "text": " is always within easy reach." }
+    ],
+    "para2Parts": [
+      { "text": "Looking for the Balinese Cooking Class, Bar Class, or Dance Performance? Those are hosted at " },
+      { "link": "/outlets", "text": "Raja Bali Nusa Dua (Main Restaurant)" },
+      { "text": "." }
+    ]
+  }
+}

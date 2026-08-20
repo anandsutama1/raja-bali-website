@@ -1,1 +1,22 @@
-{}
+{
+  "hero": {
+    "title": "Let's Plan Your Raja Bali Experience",
+    "body": "Planning an intimate dinner, a family gathering, or a cultural experience? Our team is here to help, and happy to answer any questions too."
+  },
+  "getInTouch": {
+    "heading": "Get in Touch",
+    "intro": "Have a question or need assistance with your reservation? Choose your preferred Raja Bali destination below.",
+    "viewOnGoogleMaps": "View on Google Maps",
+    "reserveTable": "Reserve Table",
+    "locations": {
+      "main-restaurant": {
+        "desc": "Experience the heart of Raja Bali, where authentic Balinese cuisine meets cultural performances, immersive cooking experiences, and warm island hospitality.",
+        "facebookLabel": "Raja Bali Nusa Dua (Main Restaurant)"
+      },
+      "nusa-dua": {
+        "desc": "Enjoy authentic Balinese dining in an elegant and welcoming atmosphere, perfect for romantic dinners, family gatherings, and memorable celebrations.",
+        "facebookLabel": "Raja Bali Nusa Dua (Dine-in Restaurant)"
+      }
+    }
+  }
+}

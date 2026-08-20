@@ -66,10 +66,11 @@ export const metadata = {
 
 export default async function ReservationNusaDuaPage({ params }) {
   const { locale } = await params;
-  const [forms, faqs, common] = await Promise.all([
+  const [forms, faqs, common, rn] = await Promise.all([
     getDictionary(locale, "forms"),
     getDictionary(locale, "faqs"),
     getDictionary(locale, "common"),
+    getDictionary(locale, "content-reservation-nusadua"),
   ]);
 
   return (
@@ -86,14 +87,14 @@ export default async function ReservationNusaDuaPage({ params }) {
         ]}
         mainEntityId={`${SITE_URL}/#nusa-dua`}
       />
-      <ReservationNusaDuaHero />
+      <ReservationNusaDuaHero content={rn.hero} />
       <div className="flex justify-center py-8">
         <TripadvisorBadgeNusaDua />
       </div>
-      <GalleryExperience />
+      <GalleryExperience content={rn.gallery} />
       <ReservationForm dict={forms.reservationNusadua} common={forms.common} />
       <FAQ faqs={faqs.reservationNusadua} heading={common.faqHeading} subheading={common.faqSubheading} />
-      <LocationContext />
+      <LocationContext content={rn.locationContext} />
     </main>
   );
 }

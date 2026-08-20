@@ -1,1 +1,34 @@
-{}
+{
+  "hero": {
+    "title": "Raja Bali Nusa Dua (Main Restaurant)",
+    "body": "Reserve your table at Raja Bali Nusa Dua (Main Restaurant), and immerse yourself in authentic Balinese cuisine, live cultural performances, and hands-on cooking and cocktail classes."
+  },
+  "experiences": {
+    "headingPrefix": "Every Experience, ",
+    "headingAccent": "One Address",
+    "intro1": "From dining to dancing to hands-on classes, every experience at Raja Bali Nusa Dua (Main Restaurant) takes place at this one location.",
+    "intro2": "Join us Thursday evenings for our complimentary Balinese Dance Performance, held exclusively here at the Main Restaurant.",
+    "items": [
+      { "badge": "Most Popular", "title": "Balinese Cooking Class", "desc": "Learn traditional recipes hands-on with our local chefs, from spice garden to table.", "cta": "Explore Experience", "href": "/cooking-class" },
+      { "badge": "Free Every Thursday", "title": "Balinese Dance Dinner", "desc": "A complimentary traditional dance performance every Thursday evening, exclusively here.", "cta": "Explore Experience", "href": "/dance" },
+      { "badge": "Limited Slot", "title": "Balinese Bar Class", "desc": "Step behind the bar and craft your own signature cocktail with authentic Balinese Arak.", "cta": "Explore Experience", "href": "/bar-class" }
+    ]
+  },
+  "gallery": {
+    "headingPrefix": "Gallery ",
+    "headingAccent": "Experience",
+    "body": "Showcase beautifully captured moments from birthdays, family gatherings, corporate dinners, wedding receptions, and private events hosted at Raja Bali."
+  },
+  "locationContext": {
+    "heading": "Perfectly Located in Nusa Dua",
+    "descParts": [
+      { "text": "Raja Bali Nusa Dua (Main Restaurant) is located in Nusa Dua, close to Bali's leading luxury resorts, cultural attractions, shopping destinations, and pristine beaches. Whether you're joining our " },
+      { "link": "/cooking-class", "text": "Balinese Cooking Class" },
+      { "text": ", enjoying a traditional " },
+      { "link": "/dance", "text": "Balinese Dance Dinner" },
+      { "text": ", attending a " },
+      { "link": "/private-events", "text": "private event" },
+      { "text": ", or simply dining with family and friends, every experience takes place at this convenient location." }
+    ]
+  }
+}

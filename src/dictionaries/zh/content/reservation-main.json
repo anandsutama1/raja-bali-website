@@ -1,1 +1,34 @@
-{}
+{
+  "hero": {
+    "title": "Raja Bali Nusa Dua(主餐厅)",
+    "body": "在 Raja Bali Nusa Dua(主餐厅)预订餐桌,沉浸于正宗巴厘美食、现场文化表演及亲手体验的烹饪与调酒课程。"
+  },
+  "experiences": {
+    "headingPrefix": "所有体验,",
+    "headingAccent": "尽在一处",
+    "intro1": "从用餐、舞蹈表演到亲手体验课程,Raja Bali Nusa Dua(主餐厅)的所有体验都在这一处地点举行。",
+    "intro2": "每周四晚上欢迎光临,观赏我们仅在主餐厅举行的免费巴厘岛舞蹈表演。",
+    "items": [
+      { "badge": "最受欢迎", "title": "巴厘岛烹饪课程", "desc": "跟随本地厨师亲手学习传统食谱,从香料花园到餐桌。", "cta": "探索体验", "href": "/cooking-class" },
+      { "badge": "每周四免费", "title": "巴厘岛舞蹈晚宴", "desc": "每周四晚上免费传统舞蹈表演,仅在此处呈现。", "cta": "探索体验", "href": "/dance" },
+      { "badge": "名额有限", "title": "巴厘岛调酒课程", "desc": "走进吧台,用正宗巴厘亚拉克酒调制属于您的招牌鸡尾酒。", "cta": "探索体验", "href": "/bar-class" }
+    ]
+  },
+  "gallery": {
+    "headingPrefix": "画廊",
+    "headingAccent": "剪影",
+    "body": "展示 Raja Bali 举办的生日、家庭聚会、商务晚宴、婚礼喜宴及私人活动中精彩捕捉的瞬间。"
+  },
+  "locationContext": {
+    "heading": "坐落努沙杜瓦绝佳位置",
+    "descParts": [
+      { "text": "Raja Bali Nusa Dua(主餐厅)坐落于努沙杜瓦,毗邻巴厘岛顶级豪华度假村、文化景点、购物中心及纯净海滩。无论您是参加我们的" },
+      { "link": "/cooking-class", "text": "巴厘岛烹饪课程" },
+      { "text": "、享受传统的" },
+      { "link": "/dance", "text": "巴厘岛舞蹈晚宴" },
+      { "text": "、出席" },
+      { "link": "/private-events", "text": "私人活动" },
+      { "text": ",还是单纯与亲友共进晚餐,所有体验都在这个便利的位置举行。" }
+    ]
+  }
+}

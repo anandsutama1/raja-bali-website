@@ -1,5 +1,7 @@
 import ShareHero from "@/components/share/Hero";
 import ShareButtons from "@/components/share/ShareButtons";
+import { getDictionary } from "@/lib/i18n/getDictionary";
+import { localeAlternates } from "@/lib/i18n/alternates";
 
 // Reached via a QR code on the guest's bill (word-of-mouth prompt at
 // checkout) and by direct link — not a marketing landing page, so it's
@@ -9,18 +11,24 @@ import ShareButtons from "@/components/share/ShareButtons";
 const title = "Share Raja Bali";
 const description = "Share your Raja Bali experience with friends and family.";
 
-export const metadata = {
-  title,
-  description,
-  alternates: { canonical: "/share" },
-  robots: { index: false, follow: true },
-};
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  return {
+    title,
+    description,
+    alternates: localeAlternates(locale, "/share"),
+    robots: { index: false, follow: true },
+  };
+}
 
-export default function SharePage() {
+export default async function SharePage({ params }) {
+  const { locale } = await params;
+  const share = await getDictionary(locale, "content-share");
+
   return (
     <main>
-      <ShareHero />
-      <ShareButtons />
+      <ShareHero content={share.hero} />
+      <ShareButtons content={share.shareButtons} />
     </main>
   );
 }

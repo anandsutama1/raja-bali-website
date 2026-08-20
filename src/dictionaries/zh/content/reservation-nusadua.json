@@ -1,1 +1,26 @@
-{}
+{
+  "hero": {
+    "title": "Raja Bali Nusa Dua(努沙杜瓦餐厅)",
+    "body": "在优雅环境中享受正宗巴厘美食,是努沙杜瓦中心地带浪漫晚餐、家庭聚会及难忘庆典的完美之选。"
+  },
+  "gallery": {
+    "headingPrefix": "画廊",
+    "headingAccent": "剪影",
+    "body": "展示 Raja Bali 举办的生日、家庭聚会、商务晚宴、婚礼喜宴及私人活动中精彩捕捉的瞬间。"
+  },
+  "locationContext": {
+    "heading": "坐落努沙杜瓦绝佳位置",
+    "para1Parts": [
+      { "text": "Raja Bali 餐厅坐落于" },
+      { "link": "/outlets", "text": "努沙杜瓦" },
+      { "text": "中心地带,毗邻巴厘岛顶级豪华度假村、购物中心、文化景点及纯净海滩。无论您入住附近还是探索周边," },
+      { "link": "/menu/food", "text": "正宗巴厘美食" },
+      { "text": "始终触手可及。" }
+    ],
+    "para2Parts": [
+      { "text": "想体验巴厘岛烹饪课程、调酒课程或舞蹈表演?这些活动均在" },
+      { "link": "/outlets", "text": "Raja Bali Nusa Dua(主餐厅)" },
+      { "text": "举行。" }
+    ]
+  }
+}

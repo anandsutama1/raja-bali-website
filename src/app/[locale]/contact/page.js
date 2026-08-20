@@ -26,7 +26,10 @@ export async function generateMetadata({ params }) {
 
 export default async function ContactPage({ params }) {
   const { locale } = await params;
-  const forms = await getDictionary(locale, "forms");
+  const [forms, contact] = await Promise.all([
+    getDictionary(locale, "forms"),
+    getDictionary(locale, "content-contact"),
+  ]);
 
   return (
     <main>
@@ -39,8 +42,8 @@ export default async function ContactPage({ params }) {
         crumbs={[{ name: "Home", path: "/" }, { name: "Contact Us" }]}
         mainEntityId={`${SITE_URL}/#organization`}
       />
-      <ContactHero />
-      <GetInTouch />
+      <ContactHero content={contact.hero} />
+      <GetInTouch content={contact.getInTouch} />
       <MessageForm dict={forms.contact} common={forms.common} />
     </main>
   );

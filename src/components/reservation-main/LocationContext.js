@@ -1,4 +1,4 @@
-import Link from "next/link";
+import LocalizedLink from "@/components/LocalizedLink";
 
 /**
  * Deliberately just an h2 + one paragraph — no hotel/attraction list, no
@@ -10,24 +10,20 @@ import Link from "next/link";
  * Navbar and Footer already cover those on every page, and repeating them
  * here read as redundant.
  */
-export default function LocationContext() {
+export default function LocationContext({ content }) {
   return (
     <section className="max-w-2xl mx-auto text-center border-t border-gray-200 py-16 px-6">
-      <h2 className="text-2xl font-serif mb-4">Perfectly Located in Nusa Dua</h2>
+      <h2 className="text-2xl font-serif mb-4">{content.heading}</h2>
       <p className="text-sm text-gray-600 leading-relaxed">
-        Raja Bali Nusa Dua (Main Restaurant) is located in Nusa Dua, close to Bali&apos;s leading luxury resorts, cultural attractions, shopping destinations, and pristine beaches. Whether you&apos;re joining our{" "}
-        <Link href="/cooking-class" className="u-link text-raja-red">
-          Balinese Cooking Class
-        </Link>
-        , enjoying a traditional{" "}
-        <Link href="/dance" className="u-link text-raja-red">
-          Balinese Dance Dinner
-        </Link>
-        , attending a{" "}
-        <Link href="/private-events" className="u-link text-raja-red">
-          private event
-        </Link>
-        , or simply dining with family and friends, every experience takes place at this convenient location.
+        {content.descParts.map((part, i) =>
+          part.link ? (
+            <LocalizedLink key={i} href={part.link} className="u-link text-raja-red">
+              {part.text}
+            </LocalizedLink>
+          ) : (
+            <span key={i}>{part.text}</span>
+          )
+        )}
       </p>
     </section>
   );

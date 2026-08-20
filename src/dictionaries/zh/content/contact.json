@@ -1,1 +1,22 @@
-{}
+{
+  "hero": {
+    "title": "一起规划您的 Raja Bali 体验",
+    "body": "正在筹划私密晚餐、家庭聚会或文化体验?我们的团队随时为您提供协助,也乐意解答任何疑问。"
+  },
+  "getInTouch": {
+    "heading": "联系我们",
+    "intro": "有任何疑问或需要预订协助?请选择您偏好的 Raja Bali 目的地。",
+    "viewOnGoogleMaps": "在 Google 地图上查看",
+    "reserveTable": "预订餐桌",
+    "locations": {
+      "main-restaurant": {
+        "desc": "感受 Raja Bali 的核心所在,正宗巴厘美食与文化表演、沉浸式烹饪体验及温暖岛屿待客之道在此交汇。",
+        "facebookLabel": "Raja Bali Nusa Dua(主餐厅)"
+      },
+      "nusa-dua": {
+        "desc": "在优雅温馨的氛围中享受正宗巴厘美食,是浪漫晚餐、家庭聚会及难忘庆典的完美之选。",
+        "facebookLabel": "Raja Bali Nusa Dua(努沙杜瓦餐厅)"
+      }
+    }
+  }
+}

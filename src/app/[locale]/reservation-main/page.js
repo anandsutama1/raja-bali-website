@@ -66,10 +66,11 @@ export const metadata = {
 
 export default async function ReservationMainPage({ params }) {
   const { locale } = await params;
-  const [forms, faqs, common] = await Promise.all([
+  const [forms, faqs, common, rm] = await Promise.all([
     getDictionary(locale, "forms"),
     getDictionary(locale, "faqs"),
     getDictionary(locale, "common"),
+    getDictionary(locale, "content-reservation-main"),
   ]);
 
   return (
@@ -86,15 +87,15 @@ export default async function ReservationMainPage({ params }) {
         ]}
         mainEntityId={`${SITE_URL}/#main-restaurant`}
       />
-      <ReservationMainHero />
+      <ReservationMainHero content={rm.hero} />
       <div className="flex justify-center px-6 py-8">
         <TripadvisorBadgeMain />
       </div>
-      <GalleryExperience />
+      <GalleryExperience content={rm.gallery} />
       <ReservationForm dict={forms.reservationMain} common={forms.common} />
-      <Experiences />
+      <Experiences content={rm.experiences} />
       <FAQ faqs={faqs.reservationMain} heading={common.faqHeading} subheading={common.faqSubheading} />
-      <LocationContext />
+      <LocationContext content={rm.locationContext} />
     </main>
   );
 }

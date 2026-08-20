@@ -1,4 +1,16 @@
-import Link from "next/link";
+import LocalizedLink from "@/components/LocalizedLink";
+
+function Parts({ parts, className }) {
+  return parts.map((part, i) =>
+    part.link ? (
+      <LocalizedLink key={i} href={part.link} className={className}>
+        {part.text}
+      </LocalizedLink>
+    ) : (
+      <span key={i}>{part.text}</span>
+    )
+  );
+}
 
 /**
  * Deliberately just an h2 + one paragraph — no hotel/attraction list, no
@@ -8,27 +20,15 @@ import Link from "next/link";
  * page itself stays uncluttered while search engines still get the
  * detailed context.
  */
-export default function LocationContext() {
+export default function LocationContext({ content }) {
   return (
     <section className="max-w-2xl mx-auto text-center border-t border-gray-200 py-16 px-6">
-      <h2 className="text-2xl font-serif mb-4">Perfectly Located in Nusa Dua</h2>
+      <h2 className="text-2xl font-serif mb-4">{content.heading}</h2>
       <p className="text-sm text-gray-600 leading-relaxed">
-        Raja Bali Restaurant is ideally located in the heart of{" "}
-        <Link href="/outlets" className="u-link text-raja-red">
-          Nusa Dua
-        </Link>
-        , just moments from Bali&apos;s leading luxury resorts, shopping destinations, cultural attractions, and pristine beaches. Whether you&apos;re staying nearby or exploring the area,{" "}
-        <Link href="/menu/food" className="u-link text-raja-red">
-          authentic Balinese cuisine
-        </Link>{" "}
-        is always within easy reach.
+        <Parts parts={content.para1Parts} className="u-link text-raja-red" />
       </p>
       <p className="mt-4 text-xs text-gray-400">
-        Looking for the Balinese Cooking Class, Bar Class, or Dance Performance? Those are hosted at{" "}
-        <Link href="/outlets" className="u-link">
-          Raja Bali Nusa Dua (Main Restaurant)
-        </Link>
-        .
+        <Parts parts={content.para2Parts} className="u-link" />
       </p>
     </section>
   );

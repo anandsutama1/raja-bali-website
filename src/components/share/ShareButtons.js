@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useSyncExternalStore } from "react";
-import Link from "next/link";
+import LocalizedLink from "@/components/LocalizedLink";
 import { SITE_URL } from "@/lib/site";
 
 // navigator.share support never changes during a session, so it's read as
@@ -23,8 +23,6 @@ function getShareSupportServer() {
 // show up in Vercel's own request logs if anyone ever wants a rough count
 // of guest-share traffic without adding a tracking script.
 const SHARE_URL = `${SITE_URL}/?utm_source=guest-share&utm_medium=social`;
-const SHARE_MESSAGE =
-  "I just had an amazing evening at Raja Bali in Nusa Dua! Authentic Balinese food, live cultural performances, and wonderful hospitality. Highly recommend it if you're in Bali!";
 
 function WhatsAppIcon(props) {
   return (
@@ -82,40 +80,41 @@ function ShareIcon(props) {
   );
 }
 
-const links = [
-  {
-    label: "WhatsApp",
-    Icon: WhatsAppIcon,
-    href: `https://wa.me/?text=${encodeURIComponent(`${SHARE_MESSAGE} ${SHARE_URL}`)}`,
-    bg: "bg-[#25D366]",
-  },
-  {
-    label: "Facebook",
-    Icon: FacebookIcon,
-    href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(SHARE_URL)}&quote=${encodeURIComponent(SHARE_MESSAGE)}`,
-    bg: "bg-[#1877F2]",
-  },
-  {
-    label: "Messenger",
-    Icon: MessengerIcon,
-    // Deep link only — Messenger has no web share URL that accepts a link
-    // without a registered Facebook App ID. Works when the app is
-    // installed (the common case here, scanned from a phone); does
-    // nothing on desktop, which is an acceptable degrade for a QR-code
-    // flow that's mobile by design.
-    href: `fb-messenger://share/?link=${encodeURIComponent(SHARE_URL)}`,
-    bg: "bg-[#0084FF]",
-  },
-];
-
-export default function ShareButtons() {
+export default function ShareButtons({ content }) {
   const canNativeShare = useSyncExternalStore(subscribeNoop, getShareSupport, getShareSupportServer);
   const [copied, setCopied] = useState(false);
   const [igNote, setIgNote] = useState(false);
+  const shareMessage = content.shareMessage;
+
+  const links = [
+    {
+      label: "WhatsApp",
+      Icon: WhatsAppIcon,
+      href: `https://wa.me/?text=${encodeURIComponent(`${shareMessage} ${SHARE_URL}`)}`,
+      bg: "bg-[#25D366]",
+    },
+    {
+      label: "Facebook",
+      Icon: FacebookIcon,
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(SHARE_URL)}&quote=${encodeURIComponent(shareMessage)}`,
+      bg: "bg-[#1877F2]",
+    },
+    {
+      label: "Messenger",
+      Icon: MessengerIcon,
+      // Deep link only — Messenger has no web share URL that accepts a link
+      // without a registered Facebook App ID. Works when the app is
+      // installed (the common case here, scanned from a phone); does
+      // nothing on desktop, which is an acceptable degrade for a QR-code
+      // flow that's mobile by design.
+      href: `fb-messenger://share/?link=${encodeURIComponent(SHARE_URL)}`,
+      bg: "bg-[#0084FF]",
+    },
+  ];
 
   const nativeShare = async () => {
     try {
-      await navigator.share({ title: "Raja Bali", text: SHARE_MESSAGE, url: SHARE_URL });
+      await navigator.share({ title: "Raja Bali", text: shareMessage, url: SHARE_URL });
     } catch {
       // Guest canceled the share sheet — nothing to do.
     }
@@ -139,7 +138,7 @@ export default function ShareButtons() {
     // Instagram has no web share intent at all — copy the message so the
     // guest can paste it straight into a DM, Story, or their bio.
     try {
-      await navigator.clipboard.writeText(`${SHARE_MESSAGE} ${SHARE_URL}`);
+      await navigator.clipboard.writeText(`${shareMessage} ${SHARE_URL}`);
     } catch {
       // ignore — the visible note below still tells them what to do.
     }
@@ -156,7 +155,7 @@ export default function ShareButtons() {
           className="u-press mb-8 inline-flex items-center gap-2 bg-raja-black px-8 py-3 text-sm tracking-widest text-white hover:bg-raja-red"
         >
           <ShareIcon className="h-4 w-4" />
-          Share Now
+          {content.shareNow}
         </button>
       )}
 
@@ -186,7 +185,7 @@ export default function ShareButtons() {
 
       {igNote && (
         <p className="mt-4 max-w-xs text-xs text-gray-500">
-          Message copied — open Instagram and paste it into a DM, Story, or your bio.
+          {content.igNote}
         </p>
       )}
 
@@ -196,12 +195,12 @@ export default function ShareButtons() {
         className="u-press mt-10 inline-flex items-center gap-2 border border-raja-black px-6 py-3 text-sm tracking-widest hover:border-raja-red hover:text-raja-red"
       >
         <CopyIcon className="h-4 w-4" />
-        {copied ? "Link Copied!" : "Copy Link"}
+        {copied ? content.linkCopied : content.copyLink}
       </button>
 
-      <Link href="/" className="u-link mt-12 text-sm text-gray-500">
-        Back to Raja Bali
-      </Link>
+      <LocalizedLink href="/" className="u-link mt-12 text-sm text-gray-500">
+        {content.backToRajaBali}
+      </LocalizedLink>
     </section>
   );
 }

@@ -1,27 +1,19 @@
 import Image from "next/image";
-import Link from "next/link";
+import LocalizedLink from "@/components/LocalizedLink";
 import { LOCATIONS } from "@/lib/site";
 
-// Per-location content that doesn't live in the shared LOCATIONS config
-// (telephone/coords/Instagram URL do — see src/lib/site.js) merged in below.
-const EXTRA = {
-  "main-restaurant": {
-    desc: "Experience the heart of Raja Bali, where authentic Balinese cuisine meets cultural performances, immersive cooking experiences, and warm island hospitality.",
-    instagram: "@rajabalinusaduamainrestaurant",
-    facebookLabel: "Raja Bali Nusa Dua (Main Restaurant)",
-    image: "/images/contact/Main-Restaurant.jpg",
-    reserveHref: "/reservation-main",
-  },
-  "nusa-dua": {
-    desc: "Enjoy authentic Balinese dining in an elegant and welcoming atmosphere, perfect for romantic dinners, family gatherings, and memorable celebrations.",
-    instagram: "@rajabalinusadua",
-    facebookLabel: "Raja Bali Nusa Dua (Dine-in Restaurant)",
-    image: "/images/contact/Nusadua-Restaurant.jpg",
-    reserveHref: "/reservation-nusadua",
-  },
+const IMAGES = {
+  "main-restaurant": "/images/contact/Main-Restaurant.jpg",
+  "nusa-dua": "/images/contact/Nusadua-Restaurant.jpg",
 };
-
-const locations = LOCATIONS.map((loc) => ({ ...loc, ...EXTRA[loc.id] }));
+const INSTAGRAM = {
+  "main-restaurant": "@rajabalinusaduamainrestaurant",
+  "nusa-dua": "@rajabalinusadua",
+};
+const RESERVE_HREF = {
+  "main-restaurant": "/reservation-main",
+  "nusa-dua": "/reservation-nusadua",
+};
 
 function InstagramIcon(props) {
   return (
@@ -58,12 +50,17 @@ function MapPinIcon(props) {
   );
 }
 
-export default function GetInTouch() {
+export default function GetInTouch({ content }) {
+  // Per-location display copy (desc/facebookLabel) comes from the dict, so
+  // it's locale-aware — telephone/coords/Instagram URL stay sourced from
+  // the shared LOCATIONS config (factual, not translatable).
+  const locations = LOCATIONS.map((loc) => ({ ...loc, ...content.locations[loc.id] }));
+
   return (
     <section className="border-t border-gray-200 py-24 px-6 max-w-5xl mx-auto bg-white">
-      <h2 className="text-4xl font-serif text-center mb-6">Get in Touch</h2>
+      <h2 className="text-4xl font-serif text-center mb-6">{content.heading}</h2>
       <p className="text-center text-gray-600 max-w-2xl mx-auto mb-14">
-        Have a question or need assistance with your reservation? Choose your preferred Raja Bali destination below.
+        {content.intro}
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
         {locations.map((loc) => {
@@ -74,7 +71,7 @@ export default function GetInTouch() {
             <div key={loc.id} className="border border-gray-200 rounded-lg overflow-hidden">
               <div className="relative h-48">
                 <Image
-                  src={loc.image}
+                  src={IMAGES[loc.id]}
                   alt={loc.name}
                   fill
                   sizes="(min-width: 640px) 50vw, 100vw"
@@ -92,7 +89,7 @@ export default function GetInTouch() {
                     className="flex items-center gap-2 hover:text-raja-red"
                   >
                     <InstagramIcon className="h-4 w-4 shrink-0" />
-                    <span className="u-link">{loc.instagram}</span>
+                    <span className="u-link">{INSTAGRAM[loc.id]}</span>
                   </a>
                   <a
                     href={loc.facebook}
@@ -119,15 +116,15 @@ export default function GetInTouch() {
                     className="flex items-center gap-2 text-raja-red"
                   >
                     <MapPinIcon className="h-4 w-4 shrink-0" />
-                    <span className="u-link">View on Google Maps</span>
+                    <span className="u-link">{content.viewOnGoogleMaps}</span>
                   </a>
                 </div>
-                <Link
-                  href={loc.reserveHref}
+                <LocalizedLink
+                  href={RESERVE_HREF[loc.id]}
                   className="u-press mt-5 inline-flex w-full items-center justify-center bg-raja-black px-6 py-3 text-sm tracking-widest text-white hover:bg-raja-red"
                 >
-                  Reserve Table
-                </Link>
+                  {content.reserveTable}
+                </LocalizedLink>
               </div>
             </div>
           );

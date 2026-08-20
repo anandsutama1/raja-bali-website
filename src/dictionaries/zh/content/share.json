@@ -1,1 +1,15 @@
-{}
+{
+  "hero": {
+    "eyebrow": "用餐愉快吗?",
+    "title": "与朋友分享 Raja Bali",
+    "body": "口碑推荐对我们意义非凡。点击下方平台即可分享 Raja Bali,我们已为您准备好分享文案。"
+  },
+  "shareButtons": {
+    "shareMessage": "我刚在努沙杜瓦的 Raja Bali 度过了美妙的一晚!正宗的巴厘岛美食、现场文化表演,还有超棒的服务。如果你在巴厘岛,强烈推荐!",
+    "shareNow": "立即分享",
+    "igNote": "文案已复制——打开 Instagram,粘贴到私信、限时动态或个人简介中即可。",
+    "copyLink": "复制链接",
+    "linkCopied": "链接已复制!",
+    "backToRajaBali": "返回 Raja Bali"
+  }
+}
