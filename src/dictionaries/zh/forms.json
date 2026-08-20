@@ -1,1 +1,73 @@
-{}
+{
+  "common": {
+    "titlePlaceholder": "称谓",
+    "firstNamePlaceholder": "名",
+    "lastNamePlaceholder": "姓",
+    "dateLabel": "日期",
+    "timeLabel": "时间",
+    "selectTime": "选择时间",
+    "adultsPlaceholder": "成人人数",
+    "childrenPlaceholder": "儿童人数",
+    "emailPlaceholder": "电子邮箱",
+    "pickupLabel": "我需要努沙杜瓦周边的免费接送服务(至少2位成人)",
+    "hotelNamePlaceholder": "酒店名称",
+    "roomNumberPlaceholder": "房间号",
+    "dietaryPlaceholder": "有饮食需求或特殊要求吗?",
+    "useList": "使用列表",
+    "otherManual": "其他(手动输入)",
+    "whatsappNumberPlaceholder": "WhatsApp 号码",
+    "countryCodePlaceholder": "+66",
+    "countryCodeError": "国家区号必须以 + 开头,后面仅跟数字(例如 +66)。",
+    "submittingMessages": ["正在发送您的请求…", "正在确认详情…", "马上就好…"],
+    "emailError": "请输入有效的电子邮箱地址。",
+    "phoneError": "请输入有效的 WhatsApp 号码(仅限数字,至少8位)。",
+    "errorFallback": "出了点问题,请重试。",
+    "noShowNotice": "温馨提示:室内座位禁烟,室外座位可吸烟。您的餐桌将在预订时间后为您保留30分钟,逾时未到店,预订可能被释放并视为取消。"
+  },
+  "reservationMain": {
+    "heading": "开启您的用餐之旅",
+    "intro": "请填写以下表单,我们的团队将尽快为您确认预订。如有任何特殊要求或饮食需求,请告诉我们,我们将竭诚为您安排。",
+    "submitLabel": "提交",
+    "successMessage": "谢谢!您的餐桌已确认预订,期待您的光临。"
+  },
+  "reservationNusadua": {
+    "heading": "开启您的用餐之旅",
+    "intro": "请填写以下表单,我们的团队将尽快为您确认预订。如有任何特殊要求或饮食需求,请告诉我们,我们将竭诚为您安排。",
+    "submitLabel": "提交",
+    "successMessage": "谢谢!您的餐桌已确认预订,期待您的光临。"
+  },
+  "cookingClass": {
+    "heading": "预订",
+    "subheading": "通过亲手制作的巴厘岛烹饪课程,开启您深入了解巴厘岛美食的旅程。",
+    "submitLabel": "立即预订",
+    "successMessage": "谢谢!您的预订请求已发送,我们会尽快与您联系。"
+  },
+  "barClass": {
+    "heading": "预订",
+    "subheading": "仅限每周四下午3点场次。立即预订您的巴厘岛调酒课程名额。",
+    "thursdayOnlyNote": "(仅限周四)",
+    "dateError": "调酒课程仅在每周四开放预订。",
+    "submitLabel": "立即预订",
+    "successMessage": "谢谢!您的预订请求已发送,我们会尽快与您联系。"
+  },
+  "groupReservation": {
+    "heading": "规划您的团体预订",
+    "subheading": "请告诉我们您的商务聚餐或团体庆祝活动详情,我们的活动团队将为您确认可预订情况。",
+    "messagePlaceholder": "期望的自助餐套餐、饮食需求或特殊要求?",
+    "submitLabel": "提交申请",
+    "successMessage": "谢谢!您的申请已发送,我们会尽快与您联系。"
+  },
+  "privateEvents": {
+    "heading": "咨询您的活动",
+    "subheading": "请告诉我们您的私人活动详情,我们的活动团队将与您联系,商讨具体安排。",
+    "submitLabel": "立即预订",
+    "successMessage": "谢谢!您的咨询已发送,我们会尽快与您联系。"
+  },
+  "contact": {
+    "heading": "给我们留言",
+    "subheading": "如有任何疑问、特殊要求或想了解更多信息,请填写以下表单。",
+    "messagePlaceholder": "请输入您的咨询内容",
+    "submitLabel": "发送",
+    "successMessage": "谢谢!您的留言已发送,我们会尽快回复您。"
+  }
+}

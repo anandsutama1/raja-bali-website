@@ -8,6 +8,7 @@ import ContactCTA from "@/components/group-reservation/ContactCTA";
 import StickyReserveButton from "@/components/StickyReserveButton";
 import PageSchema from "@/components/PageSchema";
 import dynamic from "next/dynamic";
+import { getDictionary } from "@/lib/i18n/getDictionary";
 
 // Below the fold — its form-state/validation JS ships in its own chunk
 // instead of the initial bundle. Still server-rendered (no ssr:false), so
@@ -24,11 +25,15 @@ export const metadata = {
   alternates: { canonical: "/group-reservation" },
 };
 
-export default function GroupReservationPage() {
+export default async function GroupReservationPage({ params }) {
+  const { locale } = await params;
+  const forms = await getDictionary(locale, "forms");
+
   return (
     <main>
       <PageSchema
         path="/group-reservation"
+        locale={locale}
         name={title}
         description={description}
         crumbs={[{ name: "Home", path: "/" }, { name: "Corporate & Group Dining" }]}
@@ -39,7 +44,7 @@ export default function GroupReservationPage() {
       <BuffetPackages />
       <GalleryExperience />
       <FAQ />
-      <ReservationForm />
+      <ReservationForm dict={forms.groupReservation} common={forms.common} />
       <ContactCTA />
       <StickyReserveButton href="#reservation" label="RESERVE FOR GROUP" />
     </main>

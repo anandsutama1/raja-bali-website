@@ -12,6 +12,7 @@ import BarClassStructuredData from "@/components/bar-class/StructuredData";
 import PageSchema from "@/components/PageSchema";
 import dynamic from "next/dynamic";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { getDictionary } from "@/lib/i18n/getDictionary";
 
 // Below the fold — its form-state/validation JS ships in its own chunk
 // instead of the initial bundle. Still server-rendered (no ssr:false), so
@@ -63,11 +64,15 @@ export const metadata = {
   },
 };
 
-export default function BarClassPage() {
+export default async function BarClassPage({ params }) {
+  const { locale } = await params;
+  const forms = await getDictionary(locale, "forms");
+
   return (
     <main>
       <PageSchema
         path="/bar-class"
+        locale={locale}
         name={title}
         description={description}
         crumbs={[{ name: "Home", path: "/" }, { name: "Balinese Cocktail Class" }]}
@@ -83,7 +88,7 @@ export default function BarClassPage() {
       <GalleryExperience />
       <Pricing />
       <FAQ />
-      <ReservationForm />
+      <ReservationForm dict={forms.barClass} common={forms.common} />
       <StickyReserveButton href="#reservation" label="RESERVE COCKTAIL & HEALTHY DRINK CLASS" />
     </main>
   );

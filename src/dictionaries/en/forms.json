@@ -1,1 +1,73 @@
-{}
+{
+  "common": {
+    "titlePlaceholder": "Title",
+    "firstNamePlaceholder": "First Name",
+    "lastNamePlaceholder": "Last Name",
+    "dateLabel": "Date",
+    "timeLabel": "Time",
+    "selectTime": "Select a time",
+    "adultsPlaceholder": "Number of Adults",
+    "childrenPlaceholder": "Number of Children",
+    "emailPlaceholder": "Email Address",
+    "pickupLabel": "I'd like complimentary pickup around Nusa Dua (minimum 2 adults)",
+    "hotelNamePlaceholder": "Hotel Name",
+    "roomNumberPlaceholder": "Room Number",
+    "dietaryPlaceholder": "Any dietary requirements or special requests?",
+    "useList": "Use list",
+    "otherManual": "Other (type manually)",
+    "whatsappNumberPlaceholder": "Whatsapp Number",
+    "countryCodePlaceholder": "+66",
+    "countryCodeError": "Country code must start with + followed by digits only (e.g. +66).",
+    "submittingMessages": ["Sending your request…", "Confirming the details…", "Almost there…"],
+    "emailError": "Please enter a valid email address.",
+    "phoneError": "Please enter a valid WhatsApp number (numbers only, at least 8 digits).",
+    "errorFallback": "Something went wrong. Please try again.",
+    "noShowNotice": "Please note: indoor seating is non-smoking, while our outdoor tables welcome smoking guests. Your table will be held for 30 minutes past the reservation time, after which the booking may be released and treated as cancelled."
+  },
+  "reservationMain": {
+    "heading": "Begin Your Experience",
+    "intro": "Complete the form below and our team will confirm your reservation as soon as possible. If you have any special requests or dietary requirements, simply let us know, we'll be delighted to assist you.",
+    "submitLabel": "Submit",
+    "successMessage": "Thank you! Your table is confirmed. We're looking forward to welcoming you."
+  },
+  "reservationNusadua": {
+    "heading": "Begin Your Experience",
+    "intro": "Complete the form below and our team will confirm your reservation as soon as possible. If you have any special requests or dietary requirements, simply let us know, we'll be delighted to assist you.",
+    "submitLabel": "Submit",
+    "successMessage": "Thank you! Your table is confirmed. We're looking forward to welcoming you."
+  },
+  "cookingClass": {
+    "heading": "Reservation",
+    "subheading": "Begin your journey into the heart of Balinese cuisine with a hands-on cooking class.",
+    "submitLabel": "Reserve Now",
+    "successMessage": "Thank you! Your reservation request has been sent. We'll be in touch shortly."
+  },
+  "barClass": {
+    "heading": "Reservation",
+    "subheading": "Available Thursdays only, 3:00 PM session. Reserve your place in the Balinese cocktail class.",
+    "thursdayOnlyNote": "(Thu only)",
+    "dateError": "Bar class sessions run on Thursdays only.",
+    "submitLabel": "Reserve Now",
+    "successMessage": "Thank you! Your reservation request has been sent. We'll be in touch shortly."
+  },
+  "groupReservation": {
+    "heading": "Plan Your Group Reservation",
+    "subheading": "Tell us about your corporate dinner or group celebration, and our events team will confirm availability.",
+    "messagePlaceholder": "Preferred buffet package, dietary requirements, or special requests?",
+    "submitLabel": "Submit Request",
+    "successMessage": "Thank you! Your request has been sent. We'll be in touch shortly."
+  },
+  "privateEvents": {
+    "heading": "Enquire About Your Event",
+    "subheading": "Tell us about your private event, and our events team will get back to you to discuss the details.",
+    "submitLabel": "Reserve Now",
+    "successMessage": "Thank you! Your enquiry has been sent. We'll be in touch shortly."
+  },
+  "contact": {
+    "heading": "Send Us a Message",
+    "subheading": "If you have any questions, special requests, or would like more information, complete the form below.",
+    "messagePlaceholder": "Add your Enquiries",
+    "submitLabel": "Send",
+    "successMessage": "Thank you! Your message has been sent. We'll get back to you shortly."
+  }
+}

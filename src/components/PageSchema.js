@@ -1,4 +1,5 @@
 import { SITE_URL } from "@/lib/site";
+import { localePath } from "@/lib/i18n/alternates";
 
 /**
  * Per-page WebPage + BreadcrumbList pair. isPartOf links back to the
@@ -9,10 +10,11 @@ import { SITE_URL } from "@/lib/site";
  *
  * `crumbs` is the breadcrumb trail from Home to the current page, e.g.
  * [{ name: "Home", path: "/" }, { name: "Balinese Cooking Class" }] — the
- * final entry may omit `path` since it's the current page.
+ * final entry may omit `path` since it's the current page. `locale`
+ * defaults to "en" so any caller not yet passing it doesn't break.
  */
-export default function PageSchema({ path, name, description, type = "WebPage", crumbs, mainEntityId }) {
-  const url = `${SITE_URL}${path}`;
+export default function PageSchema({ path, name, description, type = "WebPage", crumbs, mainEntityId, locale = "en" }) {
+  const url = `${SITE_URL}${localePath(locale, path)}`;
 
   const webPage = {
     "@type": type,
@@ -20,7 +22,7 @@ export default function PageSchema({ path, name, description, type = "WebPage", 
     url,
     name,
     description,
-    inLanguage: "en",
+    inLanguage: locale,
     isPartOf: { "@id": `${SITE_URL}/#website` },
     breadcrumb: { "@id": `${url}#breadcrumb` },
     ...(mainEntityId ? { mainEntity: { "@id": mainEntityId } } : {}),
@@ -33,7 +35,7 @@ export default function PageSchema({ path, name, description, type = "WebPage", 
       "@type": "ListItem",
       position: index + 1,
       name: crumb.name,
-      item: `${SITE_URL}${crumb.path || path}`,
+      item: `${SITE_URL}${localePath(locale, crumb.path || path)}`,
     })),
   };
 

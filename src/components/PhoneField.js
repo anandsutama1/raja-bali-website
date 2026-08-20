@@ -13,9 +13,8 @@ const MANUAL_CODE_PATTERN = /^\+[0-9]+$/;
  * form already uses, so this drops into any of the existing form grids
  * without changing their look.
  *
- * The dropdown/manual toggle is kept local to this component — parents only
- * ever see plain "+<digits>" values through `onCountryCodeChange`, so no
- * changes were needed in the forms that already use this field.
+ * `dict` is the forms.json "common" slice — chrome strings that are the
+ * same across every form that renders this field.
  */
 export default function PhoneField({
   countryCode,
@@ -23,6 +22,7 @@ export default function PhoneField({
   number,
   onNumberChange,
   error,
+  dict,
   className = "border p-3",
   required = true,
 }) {
@@ -54,10 +54,10 @@ export default function PhoneField({
               inputMode="tel"
               value={countryCode}
               onChange={onCountryCodeChange}
-              placeholder="+66"
+              placeholder={dict.countryCodePlaceholder}
               required={required}
               pattern="\+[0-9]+"
-              title="Country code must start with + followed by digits only, e.g. +66"
+              title={dict.countryCodeError}
               aria-label="Country code"
               className={className}
             />
@@ -66,7 +66,7 @@ export default function PhoneField({
               onClick={handleUseList}
               className="text-left text-xs text-gray-500 underline hover:text-raja-red"
             >
-              Use list
+              {dict.useList}
             </button>
           </div>
         ) : (
@@ -81,24 +81,22 @@ export default function PhoneField({
                 {c.label}
               </option>
             ))}
-            <option value={OTHER_VALUE}>Other (type manually)</option>
+            <option value={OTHER_VALUE}>{dict.otherManual}</option>
           </select>
         )}
         <input
           type="tel"
           inputMode="numeric"
-          placeholder="Whatsapp Number"
+          placeholder={dict.whatsappNumberPlaceholder}
           required={required}
           value={number}
           onChange={onNumberChange}
-          aria-label="Whatsapp Number"
+          aria-label={dict.whatsappNumberPlaceholder}
           className={`${className} min-w-0 flex-1`}
         />
       </div>
       {manualInvalid && (
-        <p className="mt-1 text-xs text-red-600">
-          Country code must start with + followed by digits only (e.g. +66).
-        </p>
+        <p className="mt-1 text-xs text-red-600">{dict.countryCodeError}</p>
       )}
       {error && <p className="mt-1 text-xs text-red-600">{error}</p>}
     </div>

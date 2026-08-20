@@ -6,6 +6,7 @@ import GalleryExperience from "@/components/private-events/GalleryExperience";
 import StickyReserveButton from "@/components/StickyReserveButton";
 import PageSchema from "@/components/PageSchema";
 import dynamic from "next/dynamic";
+import { getDictionary } from "@/lib/i18n/getDictionary";
 
 // Below the fold — its form-state/validation JS ships in its own chunk
 // instead of the initial bundle. Still server-rendered (no ssr:false), so
@@ -22,11 +23,15 @@ export const metadata = {
   alternates: { canonical: "/private-events" },
 };
 
-export default function PrivateEventsPage() {
+export default async function PrivateEventsPage({ params }) {
+  const { locale } = await params;
+  const forms = await getDictionary(locale, "forms");
+
   return (
     <main>
       <PageSchema
         path="/private-events"
+        locale={locale}
         name={title}
         description={description}
         crumbs={[{ name: "Home", path: "/" }, { name: "Private Events & Venue Rental" }]}
@@ -36,7 +41,7 @@ export default function PrivateEventsPage() {
       <WhatsIncluded />
       <EventSpaces />
       <GalleryExperience />
-      <ReservationForm />
+      <ReservationForm dict={forms.privateEvents} common={forms.common} />
       <StickyReserveButton href="#reservation" label="RESERVE PRIVATE EVENT" />
     </main>
   );

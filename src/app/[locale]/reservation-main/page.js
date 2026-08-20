@@ -7,6 +7,7 @@ import LocationContext from "@/components/reservation-main/LocationContext";
 import PageSchema from "@/components/PageSchema";
 import TripadvisorBadgeMain from "@/components/TripadvisorBadgeMain";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { getDictionary } from "@/lib/i18n/getDictionary";
 
 // Below the fold — its form-state/validation JS ships in its own chunk
 // instead of the initial bundle. Still server-rendered (no ssr:false), so
@@ -63,11 +64,15 @@ export const metadata = {
   },
 };
 
-export default function ReservationMainPage() {
+export default async function ReservationMainPage({ params }) {
+  const { locale } = await params;
+  const forms = await getDictionary(locale, "forms");
+
   return (
     <main>
       <PageSchema
         path="/reservation-main"
+        locale={locale}
         name={title}
         description={description}
         crumbs={[
@@ -82,7 +87,7 @@ export default function ReservationMainPage() {
         <TripadvisorBadgeMain />
       </div>
       <GalleryExperience />
-      <ReservationForm />
+      <ReservationForm dict={forms.reservationMain} common={forms.common} />
       <Experiences />
       <FAQ />
       <LocationContext />

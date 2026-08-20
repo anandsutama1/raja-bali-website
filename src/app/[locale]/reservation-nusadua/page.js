@@ -6,6 +6,7 @@ import FAQ from "@/components/reservation-nusadua/FAQ";
 import PageSchema from "@/components/PageSchema";
 import TripadvisorBadgeNusaDua from "@/components/TripadvisorBadgeNusaDua";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { getDictionary } from "@/lib/i18n/getDictionary";
 
 // Below the fold — its form-state/validation JS ships in its own chunk
 // instead of the initial bundle. Still server-rendered (no ssr:false), so
@@ -63,11 +64,15 @@ export const metadata = {
   },
 };
 
-export default function ReservationNusaDuaPage() {
+export default async function ReservationNusaDuaPage({ params }) {
+  const { locale } = await params;
+  const forms = await getDictionary(locale, "forms");
+
   return (
     <main>
       <PageSchema
         path="/reservation-nusadua"
+        locale={locale}
         name={title}
         description={description}
         crumbs={[
@@ -82,7 +87,7 @@ export default function ReservationNusaDuaPage() {
         <TripadvisorBadgeNusaDua />
       </div>
       <GalleryExperience />
-      <ReservationForm />
+      <ReservationForm dict={forms.reservationNusadua} common={forms.common} />
       <FAQ />
       <LocationContext />
     </main>

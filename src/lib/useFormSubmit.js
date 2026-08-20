@@ -2,22 +2,15 @@
 
 import { useEffect, useState } from "react";
 
-// Cycled while a submit is in flight so a slow request (Sheets + two email
-// sends running in parallel server-side, occasionally a few seconds) still
-// reads as active progress instead of a stuck button.
-const SUBMITTING_MESSAGES = [
-  "Sending your request…",
-  "Confirming the details…",
-  "Almost there…",
-];
-
 /**
  * Shared submit wiring for every form on the site. Each form keeps its own
  * field state (shapes differ too much to share) — this just owns the
  * request lifecycle so "idle/submitting/success/error" isn't reimplemented
- * seven times.
+ * seven times. `messages` (cycled while submitting) and `errorFallback`
+ * come from the calling form's forms.json "common" slice, so this hook has
+ * no hardcoded English of its own.
  */
-export function useFormSubmit({ formType, branch }) {
+export function useFormSubmit({ formType, branch, messages, errorFallback }) {
   const [status, setStatus] = useState("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [messageIndex, setMessageIndex] = useState(0);
@@ -26,10 +19,10 @@ export function useFormSubmit({ formType, branch }) {
     if (status !== "submitting") return undefined;
     setMessageIndex(0);
     const id = setInterval(() => {
-      setMessageIndex((i) => Math.min(i + 1, SUBMITTING_MESSAGES.length - 1));
+      setMessageIndex((i) => Math.min(i + 1, messages.length - 1));
     }, 1800);
     return () => clearInterval(id);
-  }, [status]);
+  }, [status, messages.length]);
 
   // A guest bailing out mid-submit (thinking it's frozen) is exactly the
   // failure mode this is all for — this catches it on desktop at least,
@@ -58,16 +51,14 @@ export function useFormSubmit({ formType, branch }) {
       const data = await res.json().catch(() => ({}));
 
       if (!res.ok || !data.ok) {
-        throw new Error(data.error || "Something went wrong. Please try again.");
+        throw new Error(data.error || errorFallback);
       }
 
       setStatus("success");
       return true;
     } catch (err) {
       setStatus("error");
-      setErrorMessage(
-        err instanceof Error ? err.message : "Something went wrong. Please try again."
-      );
+      setErrorMessage(err instanceof Error ? err.message : errorFallback);
       return false;
     }
   }
@@ -76,6 +67,6 @@ export function useFormSubmit({ formType, branch }) {
     status,
     errorMessage,
     submitForm,
-    submittingMessage: SUBMITTING_MESSAGES[messageIndex],
+    submittingMessage: messages[messageIndex],
   };
 }
