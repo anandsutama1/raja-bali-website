@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "./motion/Reveal";
 import Marquee from "./motion/Marquee";
+import { LOCATIONS } from "@/lib/site";
 
 const reviews = [
   { name: "Trix39", title: "Don't miss this dining experience", text: "We had a fabulous meal at Raja's Bali. The food was honest to goodness Balinese food. Fresh, delicious.", avatar: "/images/home/Review1.png" },
@@ -30,6 +31,10 @@ function ReviewCard({ review }) {
 }
 
 export default function Testimonials() {
+  // Google Business Profile share link, provided directly by the business
+  // (LOCATIONS[0] = Main Restaurant) — see src/lib/site.js for the source note.
+  const googleReviewUrl = LOCATIONS[0].hasMap;
+
   return (
     <section className="overflow-hidden border-t border-gray-200 py-20 md:py-24">
       <Reveal as="h2" className="mb-2 px-6 text-center font-serif text-3xl">
@@ -67,6 +72,19 @@ export default function Testimonials() {
           <ReviewCard key={review.name} review={review} />
         ))}
       </Marquee>
+
+      {googleReviewUrl && (
+        <Reveal as="p" delay={100} className="mb-6 px-6 text-center">
+          <a
+            href={googleReviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="u-link text-sm text-raja-red"
+          >
+            Leave a Google Review
+          </a>
+        </Reveal>
+      )}
 
       <Reveal
         delay={120}

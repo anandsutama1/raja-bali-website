@@ -37,6 +37,10 @@ export const LOCATIONS = [
     latitude: -8.7746812,
     longitude: 115.22276810000001,
     // Tripadvisor listing confirmed live: 5.0/5 from 63 reviews as of 2026-08-07.
+    // Google Business Profile confirmed live: 4.9/5 from 435 reviews, closes
+    // 10:00 PM, as of 2026-08-18 (client-supplied listing screenshot) — see
+    // Recognition.js/Testimonials.js for where these numbers surface, and
+    // OPENING_HOURS.closes below for the hours correction this triggered.
     sameAs: [
       "https://www.instagram.com/rajabalinusaduamainrestaurant",
       "https://www.facebook.com/share/19JwnjfRDe/",
@@ -85,7 +89,9 @@ export const LOCATIONS = [
   },
 ];
 
-// Both locations keep the same posted hours (see Footer.js).
+// Both locations keep the same posted hours. closes corrected from 21:00 to
+// 22:00 on 2026-08-18 to match the Main Restaurant's live Google Business
+// Profile listing ("Closes 10:00 pm") — see the sameAs comment above.
 export const OPENING_HOURS = {
   dayOfWeek: [
     "Monday",
@@ -97,7 +103,7 @@ export const OPENING_HOURS = {
     "Sunday",
   ],
   opens: "12:00",
-  closes: "21:00",
+  closes: "22:00",
 };
 
 // Shared LocalBusiness facts that don't vary by outlet. priceRange/
