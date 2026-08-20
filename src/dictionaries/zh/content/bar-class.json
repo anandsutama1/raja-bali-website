@@ -1,1 +1,82 @@
-{}
+{
+  "hero": {
+    "title": "正宗巴厘岛调酒课程体验",
+    "bodyPrefix": "摇晃、搅拌、品味,在",
+    "bodyLinkLabel": "Raja Bali Nusa Dua(主餐厅)",
+    "bodySuffix": "展开一场充满巴厘岛缤纷风味的互动调酒体验。每周四下午3点举行,可留下来搭配晚上7点开始的免费巴厘岛舞蹈表演。"
+  },
+  "intro": {
+    "headingPrefix": "一场充满活力的",
+    "headingAccent": "巴厘岛体验",
+    "body": "这堂调酒课程,是您探索巴厘岛活力吧台文化背后创意、工艺与热带风味的绝佳机会。在轻松有趣的互动课程中,了解本地食材背后的故事,无论是新手还是鸡尾酒爱好者都能乐在其中。",
+    "reserveNow": "立即预订",
+    "contactUs": "联系我们"
+  },
+  "featureRows": [
+    { "title": "巴厘岛的精神", "desc": "每一杯出色的鸡尾酒,都始于优质食材与技法的完美平衡。在体验过程中,您将探索热带水果、优质调酒配料、正宗巴厘亚拉克酒及专业调酒技巧。" },
+    { "title": "在吧台后创造回忆", "desc": "这堂课不仅仅是调制饮品。更关乎创意、连结,以及从第一次摇壶到最后一口的难忘时刻。" }
+  ],
+  "dailySessions": {
+    "heading": "场次时间表",
+    "subheadingPrefix": "仅限每周四,于",
+    "subheadingLinkLabel": "Raja Bali Nusa Dua(主餐厅)",
+    "sessionName": "周四场次",
+    "time": "下午3:00",
+    "body": "度过一个充满巴厘岛灵感调酒互动的下午,最终亲手调制属于自己的鸡尾酒。",
+    "notePrefix": "双重体验:留下来享受免费的",
+    "noteLinkLabel": "巴厘岛舞蹈表演",
+    "noteSuffix": ",晚上7点开始,用餐客人免费观赏,同一个周四即可两者兼享。"
+  },
+  "whatsIncluded": {
+    "heading": "服务内容",
+    "items": [
+      { "title": "亲手调酒课程", "desc": "在轻松互动的一小时课程中,学习专业调酒技巧。" },
+      { "title": "巴厘小食", "desc": "课程期间享用传统巴厘小食(Jajan Bali)及轻食茶点。" },
+      { "title": "亚拉克酒品鉴", "desc": "体验正宗巴厘亚拉克酒的独特风味,了解其在本地调酒文化中的地位。" },
+      { "title": "结业证书", "desc": "获得证书,纪念您在 Raja Bali 餐厅的调酒体验。" },
+      { "title": "招牌鸡尾酒", "desc": "在专业调酒师指导下,亲手调制并享用属于自己的鸡尾酒。" },
+      { "title": "巴厘岛舞蹈", "desc": "课程于周四举行,可留下来享受晚上7点开始的免费巴厘岛舞蹈表演,用餐客人免费观赏,一次体验双重享受。" }
+    ],
+    "reserveNow": "立即预订",
+    "contactUs": "联系我们"
+  },
+  "menuSection": {
+    "heading": "您将调制的饮品",
+    "subheading": "您将掌握的招牌饮品",
+    "localHeading": "本地精选",
+    "intlHeading": "国际精选",
+    "local": [
+      { "name": "本地鸡尾酒", "sub": "Arak Madu 或 Arak Oleng", "desc": "通过两款招牌本地鸡尾酒,探索正宗巴厘亚拉克酒的丰富特色。" },
+      { "name": "无酒精特调", "sub": "Melon Fantasi", "desc": "一款充满热带水果风味的缤纷无酒精特调。" }
+    ],
+    "international": [
+      { "name": "国际鸡尾酒", "sub": "长岛冰茶 或 龙舌兰日出", "desc": "在专业指导下,掌握世界最受欢迎的经典鸡尾酒之一。" },
+      { "name": "养生饮品", "sub": "Jamu Sinom 或 Green Detox", "desc": "通过天然清爽的饮品,探索巴厘岛的养生传统。" }
+    ]
+  },
+  "gallery": {
+    "headingPrefix": "画廊",
+    "headingAccent": "剪影",
+    "body": "走进吧台,通过沉浸式亲手体验探索调酒艺术。"
+  },
+  "pricing": {
+    "heading": "价格",
+    "subheading": "一口价,全部包含",
+    "badge": "名额有限",
+    "planTitle": "调酒课程",
+    "price": "IDR 250,000 / 人",
+    "usd": "约合美元14元(预估)",
+    "note": "最少2位客人",
+    "includedLabel": "体验包含:",
+    "included": [
+      "1小时亲手调酒课程",
+      "专业调酒师指导",
+      "传统巴厘小食(Jajan Bali)",
+      "正宗巴厘亚拉克酒品鉴",
+      "优质食材与器具",
+      "结业证书",
+      "亲手调制的招牌饮品"
+    ],
+    "footnote": "价格另加收11%政府税。美元金额为预估换算,实际以印尼盾(IDR)结算。"
+  }
+}

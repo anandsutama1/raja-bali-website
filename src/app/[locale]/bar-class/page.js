@@ -66,10 +66,11 @@ export const metadata = {
 
 export default async function BarClassPage({ params }) {
   const { locale } = await params;
-  const [forms, faqs, common] = await Promise.all([
+  const [forms, faqs, common, bc] = await Promise.all([
     getDictionary(locale, "forms"),
     getDictionary(locale, "faqs"),
     getDictionary(locale, "common"),
+    getDictionary(locale, "content-bar-class"),
   ]);
 
   return (
@@ -83,14 +84,14 @@ export default async function BarClassPage({ params }) {
         mainEntityId={`${SITE_URL}/bar-class#course`}
       />
       <BarClassStructuredData />
-      <BarClassHero />
-      <Intro />
-      <FeatureRows />
-      <DailySessions />
-      <WhatsIncluded />
-      <MenuSection />
-      <GalleryExperience />
-      <Pricing />
+      <BarClassHero content={bc.hero} />
+      <Intro content={bc.intro} />
+      <FeatureRows content={bc.featureRows} />
+      <DailySessions content={bc.dailySessions} />
+      <WhatsIncluded content={bc.whatsIncluded} />
+      <MenuSection content={bc.menuSection} />
+      <GalleryExperience content={bc.gallery} />
+      <Pricing content={bc.pricing} />
       <FAQ faqs={faqs.barClass} heading={common.faqHeading} subheading={common.faqSubheading} />
       <ReservationForm dict={forms.barClass} common={forms.common} />
       <StickyReserveButton href="#reservation" label="RESERVE COCKTAIL & HEALTHY DRINK CLASS" />

@@ -1,1 +1,82 @@
-{}
+{
+  "hero": {
+    "title": "An Authentic Balinese Cocktail Class Experience",
+    "bodyPrefix": "Shake, stir, and sip your way through an interactive cocktail-making experience at ",
+    "bodyLinkLabel": "Raja Bali Nusa Dua (Main Restaurant)",
+    "bodySuffix": ", inspired by the vibrant flavors of Bali. Held Thursdays at 3 PM, stay on and pair it with our complimentary Balinese Dance Performance from 7 PM."
+  },
+  "intro": {
+    "headingPrefix": "A Spirited ",
+    "headingAccent": "Balinese Experience",
+    "body": "This cocktail-making class is your chance to discover the creativity, craftsmanship, and tropical flavors behind Bali's vibrant bar culture. Learn the stories behind local ingredients in a fun, interactive session suited to beginners and cocktail enthusiasts alike.",
+    "reserveNow": "Reserve Now",
+    "contactUs": "Contact Us"
+  },
+  "featureRows": [
+    { "title": "The Spirit of Bali", "desc": "Every exceptional cocktail begins with quality ingredients and the perfect balance of technique. Throughout the experience, you'll explore tropical fruits, premium mixers, authentic Balinese Arak, and professional bartending methods." },
+    { "title": "Create Memories Behind the Bar", "desc": "This class is about more than mixing drinks. It's about creativity, connection, and the moments you'll remember, from your first shake to your final sip." }
+  ],
+  "dailySessions": {
+    "heading": "Session Schedule",
+    "subheadingPrefix": "Available Thursdays only, at ",
+    "subheadingLinkLabel": "Raja Bali Nusa Dua (Main Restaurant)",
+    "sessionName": "Thursday Session",
+    "time": "3:00 PM",
+    "body": "An interactive afternoon of Balinese-inspired mixology, finishing with your own handcrafted cocktail.",
+    "notePrefix": "It's a package: stay on and enjoy the complimentary ",
+    "noteLinkLabel": "Balinese dance performance",
+    "noteSuffix": " from 7 PM, free for dining guests, same Thursday visit."
+  },
+  "whatsIncluded": {
+    "heading": "What's Included",
+    "items": [
+      { "title": "Hands-on Bartender Class", "desc": "Learn professional bartending techniques in a fun and interactive one-hour session." },
+      { "title": "Balinese Refreshment", "desc": "Enjoy traditional Jajan Bali served with light refreshments during your class." },
+      { "title": "Arak Tasting", "desc": "Experience the distinctive character of authentic Balinese Arak and discover its role in local cocktail culture." },
+      { "title": "Certificate of Completion", "desc": "Receive a certificate to commemorate your mixology experience at Raja Bali Restaurant." },
+      { "title": "Signature Cocktail", "desc": "Create and enjoy your own handcrafted cocktail under the guidance of our expert bartender." },
+      { "title": "Balinese Dance", "desc": "Your class runs on Thursday, so stay on and enjoy the complimentary Balinese dance performance from 7 PM, free for dining guests. It's all one package." }
+    ],
+    "reserveNow": "Reserve Now",
+    "contactUs": "Contact Us"
+  },
+  "menuSection": {
+    "heading": "The Drinks You'll Create",
+    "subheading": "Signature Drinks You'll Master",
+    "localHeading": "Local Selection",
+    "intlHeading": "International Selection",
+    "local": [
+      { "name": "Local Cocktail", "sub": "Arak Madu or Arak Oleng", "desc": "Discover the rich character of authentic Balinese Arak through two signature local cocktails." },
+      { "name": "Mocktail", "sub": "Melon Fantasi", "desc": "A vibrant alcohol-free creation bursting with tropical fruit flavors." }
+    ],
+    "international": [
+      { "name": "International Cocktail", "sub": "Long Island Iced Tea or Tequila Sunrise", "desc": "Master one of the world's most beloved cocktails under expert guidance." },
+      { "name": "Healthy Drink", "sub": "Jamu Sinom or Green Detox", "desc": "Discover Bali's wellness traditions through naturally refreshing beverages." }
+    ]
+  },
+  "gallery": {
+    "headingPrefix": "Gallery ",
+    "headingAccent": "Experience",
+    "body": "Step behind the bar and discover the art of mixology through an immersive hands-on experience."
+  },
+  "pricing": {
+    "heading": "Pricing",
+    "subheading": "One Simple Price, Everything Included",
+    "badge": "LIMITED SLOT",
+    "planTitle": "Bartender Class",
+    "price": "IDR 250,000 / person",
+    "usd": "Approx. USD 14 estimated",
+    "note": "Minimum 2 guests",
+    "includedLabel": "Included in Your Experience:",
+    "included": [
+      "1 Hour Hands-on Bartender Class",
+      "Professional Bartender Guidance",
+      "Traditional Balinese Refreshment (Jajan Bali)",
+      "Authentic Balinese Arak Tasting",
+      "Premium Ingredients & Equipment",
+      "Certificate of Completion",
+      "Your Handcrafted Signature Drink"
+    ],
+    "footnote": "Prices are subject to an 11% government tax. USD figure is an estimated equivalent; you are billed in IDR."
+  }
+}
