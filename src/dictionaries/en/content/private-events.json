@@ -1,1 +1,44 @@
-{}
+{
+  "hero": {
+    "title": "Celebrate Life's Special Moments at Raja Bali",
+    "body": "From intimate gatherings to grand celebrations, Raja Bali offers elegant venues, authentic Balinese cuisine, and warm hospitality in Bali's Nusa Dua area."
+  },
+  "intro": {
+    "heading": "A Venue Designed for Every Occasion",
+    "body": "From birthday celebrations and corporate dinners to family reunions, anniversaries, and wedding receptions, Raja Bali provides a beautiful setting where authentic Balinese hospitality meets exceptional cuisine.",
+    "reserveNow": "Reserve Now",
+    "contactUs": "Contact Us"
+  },
+  "whatsIncluded": {
+    "heading": "What's Included",
+    "subheading": "Every detail has been thoughtfully prepared to ensure an enjoyable and memorable experience.",
+    "items": [
+      { "title": "Birthday Celebrations", "desc": "Celebrate another memorable year with family and friends in a warm Balinese setting." },
+      { "title": "Wedding & Engagement", "desc": "Create unforgettable moments surrounded by authentic Balinese charm and exceptional hospitality." },
+      { "title": "Family Gatherings", "desc": "Reconnect over authentic Balinese cuisine in a welcoming atmosphere." },
+      { "title": "Corporate Events", "desc": "Host business dinners, team gatherings, and corporate celebrations with confidence." },
+      { "title": "Tour Groups", "desc": "Comfortable group dining with authentic Balinese cuisine and attentive service." },
+      { "title": "Private Celebrations", "desc": "From anniversaries to reunions, every occasion deserves a memorable setting." }
+    ]
+  },
+  "eventSpaces": {
+    "heading": "Event Spaces",
+    "subheading": "Discover Our Event Spaces",
+    "intro": "Thoughtfully designed for every occasion, our event spaces combine authentic Balinese charm, warm hospitality, and exceptional cuisine.",
+    "spaces": [
+      { "title": "Indoor Dining", "desc": "Elegant indoor space with authentic Balinese interiors." },
+      { "title": "Garden Area", "desc": "A tropical outdoor setting perfect for relaxed celebrations." },
+      { "title": "Group Dining", "desc": "Comfortable seating arrangements for larger parties." },
+      { "title": "Private Event Setup", "desc": "Customized layouts tailored to your occasion." }
+    ],
+    "eventPlanningHeading": "Event Planning",
+    "eventPlanningBody": "From seating arrangements and menu selections to special decorations and entertainment, our team is here to help personalize your event and ensure a smooth, enjoyable experience from beginning to end.",
+    "reserveNow": "Reserve Now",
+    "contactUs": "Contact Us"
+  },
+  "gallery": {
+    "headingPrefix": "Gallery ",
+    "headingAccent": "Experience",
+    "body": "Showcase beautifully captured moments from birthdays, family gatherings, corporate dinners, wedding receptions, and private events."
+  }
+}

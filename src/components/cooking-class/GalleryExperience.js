@@ -11,14 +11,14 @@ const images = [
   "/images/cooking-class/Rectangle 15-1.jpg",
 ];
 
-export default function GalleryExperience() {
+export default function GalleryExperience({ content }) {
   return (
     <section className="border-t border-gray-200 py-24 px-6 bg-white">
       <h2 className="text-3xl font-serif text-center mb-2">
-        Gallery <span className="text-raja-red">Experience</span>
+        {content.headingPrefix}<span className="text-raja-red">{content.headingAccent}</span>
       </h2>
       <p className="text-center text-gray-600 mb-14 max-w-xl mx-auto">
-        Explore moments captured from our Balinese Cooking Class.
+        {content.body}
       </p>
       <div className="max-w-5xl mx-auto">
         <GalleryGrid images={images} altPrefix="Cooking class gallery photo" />

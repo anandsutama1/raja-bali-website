@@ -62,7 +62,10 @@ export const metadata = {
 
 export default async function CookingClassPage({ params }) {
   const { locale } = await params;
-  const forms = await getDictionary(locale, "forms");
+  const [forms, cc] = await Promise.all([
+    getDictionary(locale, "forms"),
+    getDictionary(locale, "content-cooking-class"),
+  ]);
 
   return (
     <main>
@@ -75,14 +78,14 @@ export default async function CookingClassPage({ params }) {
         mainEntityId={`${SITE_URL}/cooking-class#course`}
       />
       <CookingClassStructuredData />
-      <CookingClassHero />
-      <Intro />
-      <FeatureRows />
-      <DailySessions />
-      <WhatsIncluded />
-      <MenuSection />
-      <GalleryExperience />
-      <Pricing />
+      <CookingClassHero content={cc.hero} />
+      <Intro content={cc.intro} />
+      <FeatureRows content={cc.featureRows} />
+      <DailySessions content={cc.dailySessions} />
+      <WhatsIncluded content={cc.whatsIncluded} />
+      <MenuSection content={cc.menuSection} />
+      <GalleryExperience content={cc.gallery} />
+      <Pricing content={cc.pricing} />
       <ReservationForm dict={forms.cookingClass} common={forms.common} />
       <StickyReserveButton href="#reservation" label="RESERVE COOKING CLASS" />
     </main>

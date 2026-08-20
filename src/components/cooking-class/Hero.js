@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
+import LocalizedLink from "@/components/LocalizedLink";
 
-export default function CookingClassHero() {
+export default function CookingClassHero({ content }) {
   return (
     <section className="relative h-[70vh] bg-raja-black flex flex-col items-center justify-center text-center text-white px-6">
       <Image
@@ -14,13 +14,13 @@ export default function CookingClassHero() {
         className="object-cover"
       />
       <div className="relative z-10">
-        <h1 className="text-5xl font-serif mb-4">An Authentic Balinese Cooking Class Experience</h1>
+        <h1 className="text-5xl font-serif mb-4">{content.title}</h1>
         <p className="max-w-xl mx-auto text-sm text-gray-200">
-          This Balinese cooking class at{" "}
-          <Link href="/outlets" className="u-link text-white">
-            Raja Bali Nusa Dua (Main Restaurant)
-          </Link>
-          {" "}is your invitation into the traditions, flavors, and warm hospitality passed down through generations of Balinese families.
+          {content.bodyPrefix}
+          <LocalizedLink href="/outlets" className="u-link text-white">
+            {content.bodyLinkLabel}
+          </LocalizedLink>
+          {content.bodySuffix}
         </p>
       </div>
     </section>

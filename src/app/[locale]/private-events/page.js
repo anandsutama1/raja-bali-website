@@ -25,7 +25,10 @@ export const metadata = {
 
 export default async function PrivateEventsPage({ params }) {
   const { locale } = await params;
-  const forms = await getDictionary(locale, "forms");
+  const [forms, pe] = await Promise.all([
+    getDictionary(locale, "forms"),
+    getDictionary(locale, "content-private-events"),
+  ]);
 
   return (
     <main>
@@ -36,11 +39,11 @@ export default async function PrivateEventsPage({ params }) {
         description={description}
         crumbs={[{ name: "Home", path: "/" }, { name: "Private Events & Venue Rental" }]}
       />
-      <PrivateEventsHero />
-      <Intro />
-      <WhatsIncluded />
-      <EventSpaces />
-      <GalleryExperience />
+      <PrivateEventsHero content={pe.hero} />
+      <Intro content={pe.intro} />
+      <WhatsIncluded content={pe.whatsIncluded} />
+      <EventSpaces content={pe.eventSpaces} />
+      <GalleryExperience content={pe.gallery} />
       <ReservationForm dict={forms.privateEvents} common={forms.common} />
       <StickyReserveButton href="#reservation" label="RESERVE PRIVATE EVENT" />
     </main>

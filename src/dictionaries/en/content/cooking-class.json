@@ -1,1 +1,85 @@
-{}
+{
+  "hero": {
+    "title": "An Authentic Balinese Cooking Class Experience",
+    "bodyPrefix": "This Balinese cooking class at ",
+    "bodyLinkLabel": "Raja Bali Nusa Dua (Main Restaurant)",
+    "bodySuffix": " is your invitation into the traditions, flavors, and warm hospitality passed down through generations of Balinese families."
+  },
+  "intro": {
+    "headingPrefix": "Discover the Art of ",
+    "headingAccent": "Balinese Cooking",
+    "body": "Guided by our experienced local chefs, you'll learn how to prepare authentic Balinese dishes using fresh ingredients, aromatic spices, and traditional cooking techniques. From crafting satay by hand to preparing rich coconut-based sauces, every step is designed to be interactive, educational, and deeply memorable.",
+    "reserveNow": "Reserve Now",
+    "contactUs": "Contact Us"
+  },
+  "featureRows": [
+    {
+      "titlePrefix": "The Flavors of ",
+      "titleAccent": "Bali",
+      "desc": "Every authentic Balinese dish begins with carefully selected local ingredients. Throughout the experience, you'll discover the vibrant herbs, fragrant spices, fresh vegetables, and tropical flavors that have shaped Bali's culinary identity for generations.",
+      "alt": "Preparing fresh ingredients for a Balinese dish"
+    },
+    {
+      "title": "Create Memories Beyond the Kitchen",
+      "desc": "This experience is about more than learning recipes. Share stories around the table, enjoy the dishes you've made, and take in the genuine warmth of Balinese hospitality.",
+      "alt": "Guests enjoying the Balinese cooking class experience"
+    }
+  ],
+  "dailySessions": {
+    "heading": "Daily Sessions",
+    "subheading": "Choose the time that suits your Bali itinerary",
+    "sessions": [
+      { "name": "Session 1", "tag": "Lunch", "time": "11:00 AM – 1:00 PM", "desc": "A relaxed daytime session followed by a freshly prepared Balinese lunch." },
+      { "name": "Session 2", "tag": "Afternoon", "time": "2:00 PM – 4:00 PM", "desc": "Perfect between sightseeing and your evening plans." },
+      { "name": "Session 3", "tag": "Dinner", "time": "5:00 PM – 7:00 PM", "desc": "Experience Balinese cooking as the evening unfolds, followed by dinner." }
+    ],
+    "notePrefix": "Booking the Dinner session on a Thursday? Stay on after 7 PM for our complimentary ",
+    "noteLinkLabel": "Balinese Dance Performance",
+    "noteSuffix": ", the only one in Nusa Dua, free for dining guests."
+  },
+  "whatsIncluded": {
+    "heading": "What's Included",
+    "items": [
+      { "title": "Welcome Refreshment", "desc": "Begin your culinary journey with a refreshing welcome drink inspired by the tropical flavors of Bali." },
+      { "title": "Nursery Tour", "desc": "Stroll through our herb and spice garden to discover the ingredients behind Bali's most treasured recipes." },
+      { "title": "Personalized Name Tag", "desc": "A personalized welcome designed to make your experience feel truly special from the very beginning." },
+      { "title": "Certificate of Completion", "desc": "Receive a beautifully presented certificate as a keepsake of your Balinese culinary adventure." },
+      { "title": "Recipe Booklet", "desc": "Take home our exclusive recipe booklet and recreate authentic Balinese flavors wherever you are." },
+      { "title": "Dining Experience", "desc": "Conclude your journey by enjoying the traditional dishes you've lovingly prepared in a warm and welcoming setting." }
+    ],
+    "reserveNow": "Reserve Now",
+    "contactUs": "Contact Us"
+  },
+  "menuSection": {
+    "heading": "The Menu",
+    "subheading": "The Dishes You'll Master",
+    "traditionalHeading": "Traditional Selection",
+    "vegetarianHeading": "Vegetarian Selection",
+    "traditional": [
+      { "name": "Sate Lilit Ayam", "sub": "Minced Chicken Satay", "desc": "Traditional Balinese minced chicken satay seasoned with aromatic spices and grilled to perfection." },
+      { "name": "Sate Lilit Ikan", "sub": "Minced Fish Satay", "desc": "Fresh fish blended with authentic Balinese herbs and wrapped around lemongrass." },
+      { "name": "Serosob Ayam", "sub": "Balinese Chicken Stew", "desc": "Tender chicken simmered in a rich coconut cream sauce infused with traditional Balinese spices." },
+      { "name": "Dadar Gulung Unti", "sub": "Traditional Balinese Coconut Crepes", "desc": "Soft pandan crepes filled with sweet coconut and palm sugar." }
+    ],
+    "vegetarian": [
+      { "name": "Sate Lilit Vegetarian", "sub": "Balinese Vegetarian Satay", "desc": "A plant-based interpretation of Bali's iconic satay, crafted with fresh vegetables." },
+      { "name": "Vegetable Curry", "sub": "Balinese Vegetable Curry", "desc": "Seasonal vegetables gently cooked in a fragrant coconut curry." },
+      { "name": "Dadar Gulung Unti", "sub": "Traditional Balinese Coconut Crepes", "desc": "Soft pandan crepes filled with sweet coconut and palm sugar, prepared following a traditional Balinese recipe." }
+    ],
+    "dietaryNote": "DIETARY NOTE: Our vegetarian menu contains eggs. Please let us know in advance if you have any dietary restrictions or food allergies."
+  },
+  "gallery": {
+    "headingPrefix": "Gallery ",
+    "headingAccent": "Experience",
+    "body": "Explore moments captured from our Balinese Cooking Class."
+  },
+  "pricing": {
+    "heading": "Pricing",
+    "subheading": "Choose Your Culinary Experience",
+    "plans": [
+      { "title": "Shared Experience", "price": "IDR 550,000 / person", "usd": "Approx. USD 31 estimated", "note": "Minimum 2 guests", "tag": "Best Value", "highlight": "BEST SELLER" },
+      { "title": "Individual Experience", "price": "IDR 600,000 / person", "usd": "Approx. USD 34 estimated", "note": "Perfect for solo travelers", "tag": "All Inclusive" }
+    ],
+    "footnote": "Prices are subject to an 11% government tax. USD figures are an estimated equivalent; you are billed in IDR."
+  }
+}
