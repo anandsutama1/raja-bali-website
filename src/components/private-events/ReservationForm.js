@@ -6,7 +6,7 @@ import { useFormSubmit } from "@/lib/useFormSubmit";
 import { isValidEmail, isValidPhoneDigits, EMAIL_ERROR, PHONE_ERROR } from "@/lib/validation";
 import { DEFAULT_COUNTRY_CODE } from "@/lib/countryCodes";
 import { TITLES } from "@/lib/titles";
-import { OPENING_HOUR_SLOTS } from "@/lib/timeSlots";
+import { OPENING_HOUR_SLOTS, todayLocalDate } from "@/lib/timeSlots";
 import PhoneField from "@/components/PhoneField";
 import GuestCountField from "@/components/GuestCountField";
 import SubmitButton from "@/components/SubmitButton";
@@ -27,7 +27,7 @@ const initialFields = {
 
 export default function ReservationForm() {
   const router = useRouter();
-  const today = new Date().toISOString().split("T")[0];
+  const today = todayLocalDate();
   const [fields, setFields] = useState(initialFields);
   const [fieldErrors, setFieldErrors] = useState({});
   const { status, errorMessage, submitForm, submittingMessage } = useFormSubmit({
@@ -65,9 +65,9 @@ export default function ReservationForm() {
 
   return (
     <section id="reservation" className="border-t border-gray-200 py-20 px-6 max-w-2xl mx-auto">
-      <h2 className="text-3xl font-serif text-center mb-2">Reservation</h2>
+      <h2 className="text-3xl font-serif text-center mb-2">Enquire About Your Event</h2>
       <p className="text-center text-gray-600 mb-10">
-        Begin your journey into the heart of Balinese cuisine with a hands-on cooking class.
+        Tell us about your private event, and our events team will get back to you to discuss the details.
       </p>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <fieldset disabled={status === "submitting"} className="m-0 min-w-0 space-y-4 border-0 p-0">

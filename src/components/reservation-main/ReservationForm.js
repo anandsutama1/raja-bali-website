@@ -6,7 +6,7 @@ import { useFormSubmit } from "@/lib/useFormSubmit";
 import { isValidEmail, isValidPhoneDigits, EMAIL_ERROR, PHONE_ERROR } from "@/lib/validation";
 import { DEFAULT_COUNTRY_CODE } from "@/lib/countryCodes";
 import { TITLES } from "@/lib/titles";
-import { OPENING_HOUR_SLOTS } from "@/lib/timeSlots";
+import { OPENING_HOUR_SLOTS, todayLocalDate } from "@/lib/timeSlots";
 import PhoneField from "@/components/PhoneField";
 import GuestCountField from "@/components/GuestCountField";
 import SubmitButton from "@/components/SubmitButton";
@@ -30,7 +30,7 @@ const initialFields = {
 
 export default function ReservationForm() {
   const router = useRouter();
-  const today = new Date().toISOString().split("T")[0];
+  const today = todayLocalDate();
   const [fields, setFields] = useState(initialFields);
   const [fieldErrors, setFieldErrors] = useState({});
   const { status, errorMessage, submitForm, submittingMessage } = useFormSubmit({
