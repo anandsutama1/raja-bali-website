@@ -1,1 +1,55 @@
-{}
+{
+  "hero": {
+    "title": "Corporate & Group Dining in Bali",
+    "body": "Host corporate dinners, company gatherings, and group celebrations with authentic Balinese cuisine, warm hospitality, and thoughtfully designed buffet packages."
+  },
+  "intro": {
+    "heading": "Corporate Dining in Bali",
+    "descParts": [
+      { "text": "From team dinners and company gatherings to large corporate events, Raja Bali welcomes group dining with a carefully curated selection of authentic Balinese, Western, and Asian cuisine. Corporate dinners are also part of our wider " },
+      { "link": "/private-events", "text": "private events" },
+      { "text": " service, alongside weddings and other celebrations." }
+    ]
+  },
+  "corporateEvents": {
+    "heading": "Corporate Events & Company Gatherings",
+    "body1": "Raja Bali can accommodate dining occasions ranging from individual reservations to corporate and larger group experiences. Business dinners, team gatherings, and corporate celebrations are all part of our regular group dining and private events service, alongside the indoor dining, garden, and group seating settings across our event spaces.",
+    "body2Parts": [
+      { "text": "Whether you're planning a company dinner, a team celebration, or a corporate gathering, our events team can help tailor the details, from buffet selection to dietary requirements, around your occasion, at either of " },
+      { "link": "/outlets", "text": "our Nusa Dua-area locations" },
+      { "text": ". Visit our " },
+      { "link": "/private-events", "text": "Private Events page" },
+      { "text": " for more on event planning at Raja Bali, or use the group reservation form below to check availability." }
+    ]
+  },
+  "buffetPackages": {
+    "heading": "Group Dining Packages",
+    "introParts": [
+      { "text": "Two buffet packages built for group dining, priced per guest. You can also " },
+      { "link": "/menu/food", "text": "explore our menu" },
+      { "text": " for a la carte options." }
+    ],
+    "viewMenu": "View Menu",
+    "packages": [
+      { "title": "Authentic Balinese Buffet", "price": "From IDR 300,000++ per Guest", "desc": "Experience traditional Balinese flavors prepared using authentic recipes and locally sourced ingredients.", "href": "/menu/balinese-buffet" },
+      { "title": "Western & Asian Buffet", "price": "From IDR 350,000++ per Guest", "desc": "A diverse selection of international favorites perfect for groups with different preferences.", "href": "/menu/western-asian-buffet" }
+    ]
+  },
+  "gallery": {
+    "headingPrefix": "Gallery ",
+    "headingAccent": "Experience",
+    "body": "Showcase beautifully captured moments from birthdays, family gatherings, corporate dinners, wedding receptions, and private events hosted at Raja Bali.",
+    "footerParts": [
+      { "text": "Guests joining us for a group or corporate dinner can also explore Raja Bali's other experiences, such as our " },
+      { "link": "/cooking-class", "text": "Balinese Cooking Class" },
+      { "text": " and " },
+      { "link": "/bar-class", "text": "Cocktail Class" },
+      { "text": "." }
+    ]
+  },
+  "contactCTA": {
+    "heading": "Need Something More Personalized?",
+    "body": "If you'd like to customize your buffet selection, dietary requirements, or discuss special requests for a corporate dinner or event, our events team will be delighted to assist you.",
+    "cta": "Contact Us About Your Event"
+  }
+}

@@ -1,1 +1,55 @@
-{}
+{
+  "hero": {
+    "title": "巴厘岛商务与团体用餐",
+    "body": "以正宗巴厘美食、热情款待及精心设计的自助餐套餐,举办商务晚宴、公司聚会及团体庆典。"
+  },
+  "intro": {
+    "heading": "巴厘岛商务用餐",
+    "descParts": [
+      { "text": "从团队晚宴、公司聚会到大型企业活动,Raja Bali 以精心策划的正宗巴厘、西式及亚洲美食,欢迎各类团体用餐。商务晚宴也是我们更广泛的" },
+      { "link": "/private-events", "text": "私人活动" },
+      { "text": "服务的一部分,与婚礼及其他庆典并列。" }
+    ]
+  },
+  "corporateEvents": {
+    "heading": "企业活动与公司聚会",
+    "body1": "Raja Bali 可满足从个人预订到企业及大型团体用餐等各类场合。商务晚宴、团队聚会及企业庆典,都是我们常规团体用餐与私人活动服务的一部分,涵盖室内用餐、花园及团体座位等多种活动场地。",
+    "body2Parts": [
+      { "text": "无论您在筹划公司晚宴、团队庆典还是企业聚会,我们的活动团队都能协助您量身定制细节,从自助餐选择到饮食需求,可选择我们位于" },
+      { "link": "/outlets", "text": "努沙杜瓦地区的任一分店" },
+      { "text": "。请访问我们的" },
+      { "link": "/private-events", "text": "私人活动页面" },
+      { "text": "了解更多 Raja Bali 活动策划详情,或使用下方团体预订表单查询空档。" }
+    ]
+  },
+  "buffetPackages": {
+    "heading": "团体用餐套餐",
+    "introParts": [
+      { "text": "两款专为团体用餐设计的自助餐套餐,按人头计价。您也可以" },
+      { "link": "/menu/food", "text": "浏览我们的菜单" },
+      { "text": "查看单点选项。" }
+    ],
+    "viewMenu": "查看菜单",
+    "packages": [
+      { "title": "正宗巴厘自助餐", "price": "每位起价 IDR 300,000++", "desc": "以正宗食谱与本地食材,体验传统巴厘风味。", "href": "/menu/balinese-buffet" },
+      { "title": "西式亚洲自助餐", "price": "每位起价 IDR 350,000++", "desc": "多样化国际美食精选,完美满足不同口味的团体需求。", "href": "/menu/western-asian-buffet" }
+    ]
+  },
+  "gallery": {
+    "headingPrefix": "画廊",
+    "headingAccent": "剪影",
+    "body": "展示 Raja Bali 举办的生日、家庭聚会、商务晚宴、婚礼喜宴及私人活动中精彩捕捉的瞬间。",
+    "footerParts": [
+      { "text": "参加团体或商务晚宴的宾客,也可探索 Raja Bali 的其他体验,例如我们的" },
+      { "link": "/cooking-class", "text": "巴厘岛烹饪课程" },
+      { "text": "及" },
+      { "link": "/bar-class", "text": "调酒课程" },
+      { "text": "。" }
+    ]
+  },
+  "contactCTA": {
+    "heading": "需要更个性化的安排?",
+    "body": "如果您想定制自助餐选择、饮食需求,或商讨商务晚宴及活动的特殊要求,我们的活动团队将乐意为您提供协助。",
+    "cta": "联系我们讨论您的活动"
+  }
+}

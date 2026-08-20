@@ -27,10 +27,11 @@ export const metadata = {
 
 export default async function GroupReservationPage({ params }) {
   const { locale } = await params;
-  const [forms, faqs, common] = await Promise.all([
+  const [forms, faqs, common, gr] = await Promise.all([
     getDictionary(locale, "forms"),
     getDictionary(locale, "faqs"),
     getDictionary(locale, "common"),
+    getDictionary(locale, "content-group-reservation"),
   ]);
 
   return (
@@ -42,14 +43,14 @@ export default async function GroupReservationPage({ params }) {
         description={description}
         crumbs={[{ name: "Home", path: "/" }, { name: "Corporate & Group Dining" }]}
       />
-      <GroupReservationHero />
-      <Intro />
-      <CorporateEvents />
-      <BuffetPackages />
-      <GalleryExperience />
+      <GroupReservationHero content={gr.hero} />
+      <Intro content={gr.intro} />
+      <CorporateEvents content={gr.corporateEvents} />
+      <BuffetPackages content={gr.buffetPackages} />
+      <GalleryExperience content={gr.gallery} />
       <FAQ faqs={faqs.groupReservation} heading={common.faqHeading} subheading={common.faqSubheading} />
       <ReservationForm dict={forms.groupReservation} common={forms.common} />
-      <ContactCTA />
+      <ContactCTA content={gr.contactCTA} />
       <StickyReserveButton href="#reservation" label="RESERVE FOR GROUP" />
     </main>
   );
