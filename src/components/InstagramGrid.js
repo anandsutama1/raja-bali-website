@@ -1,24 +1,55 @@
-import Script from "next/script";
+import SmartImage from "./SmartImage";
 import Reveal from "./motion/Reveal";
+import { LOCATIONS } from "@/lib/site";
 
-// A prior embed here (embedista.com) hijacked the entire page via
-// document.write after a delay, causing the site to intermittently go
-// blank — see git history. This is Elfsight instead: the platform.js
-// bundle was inspected before adding (no document.write/eval/top-level
-// redirects, just a scoped widget renderer), and it's loaded lazily so it
-// can't block or delay the rest of the page. If it ever misbehaves, revert
-// to a static "View on Instagram" link like before.
+// Static grid of photos already shot for other pages, not a live embed —
+// matches the sister site's (Mr Bob Bar and Grill) InstagramPreview.js
+// pattern. The prior Elfsight embed was replaced: no third-party script to
+// load/misbehave, and no dependency on the Instagram API staying connected.
+const tiles = [
+  { src: "/images/reservation-main/gallery-1.jpg", alt: "Dining at Raja Bali Nusa Dua (Main Restaurant)" },
+  { src: "/images/cooking-class/Rectangle 12.jpg", alt: "Raja Bali's hands-on Balinese cooking class" },
+  { src: "/images/bar-class/Rectangle 12.jpg", alt: "Raja Bali's Balinese cocktail class" },
+  { src: "/images/dance/gallery-1.jpg", alt: "Balinese dance performance at Raja Bali" },
+  { src: "/images/private-events/gallery-1.jpg", alt: "Private event hosted at Raja Bali" },
+  { src: "/images/group-reservation/gallery-1.jpg", alt: "Group celebration at Raja Bali" },
+];
+
 export default function InstagramGrid({ content }) {
+  const instagramHref = LOCATIONS[0].sameAs.find((url) => url.includes("instagram.com"));
+
   return (
     <section className="border-t border-gray-200 px-6 py-20">
-      <Reveal as="h2" className="mb-10 text-center font-serif text-3xl">
+      <Reveal as="p" className="mb-3 text-center text-xs uppercase tracking-[0.35em] text-raja-red">
+        {content.eyebrow}
+      </Reveal>
+      <Reveal as="h2" delay={90} className="mb-2 text-center font-serif text-3xl">
         {content.heading}
       </Reveal>
+      <Reveal as="p" delay={130} className="mb-10 text-center text-sm text-gray-500">
+        <a href={instagramHref} target="_blank" rel="noopener noreferrer" className="hover:text-raja-red">
+          @rajabalinusaduamainrestaurant
+        </a>
+      </Reveal>
 
-      <div className="mx-auto max-w-5xl">
-        <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
-        <div className="elfsight-app-af29d11f-dde5-4d63-8ab0-7a8388923a8b" data-elfsight-app-lazy />
-      </div>
+      <Reveal delay={170} className="mx-auto grid max-w-3xl grid-cols-3 gap-2 sm:gap-3">
+        {tiles.map((tile) => (
+          <a
+            key={tile.src}
+            href={instagramHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative block aspect-square overflow-hidden"
+          >
+            <SmartImage
+              src={tile.src}
+              alt={tile.alt}
+              sizes="(min-width: 640px) 30vw, 33vw"
+              className="transition-transform duration-500 group-hover:scale-110"
+            />
+          </a>
+        ))}
+      </Reveal>
     </section>
   );
 }
