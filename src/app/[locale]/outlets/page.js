@@ -4,6 +4,7 @@ import Location from "@/components/outlets/Location";
 import FAQ from "@/components/outlets/FAQ";
 import ContactCTA from "@/components/outlets/ContactCTA";
 import PageSchema from "@/components/PageSchema";
+import { getDictionary } from "@/lib/i18n/getDictionary";
 
 const title = "Our Locations";
 const description =
@@ -15,11 +16,18 @@ export const metadata = {
   alternates: { canonical: "/outlets" },
 };
 
-export default function OutletsPage() {
+export default async function OutletsPage({ params }) {
+  const { locale } = await params;
+  const [faqs, common] = await Promise.all([
+    getDictionary(locale, "faqs"),
+    getDictionary(locale, "common"),
+  ]);
+
   return (
     <main>
       <PageSchema
         path="/outlets"
+        locale={locale}
         name={title}
         description={description}
         type="CollectionPage"
@@ -28,7 +36,7 @@ export default function OutletsPage() {
       <OutletsHero />
       <Destinations />
       <Location />
-      <FAQ />
+      <FAQ faqs={faqs.outlets} heading={common.faqHeading} subheading={common.outletsFaqSubheading} />
       <ContactCTA />
     </main>
   );

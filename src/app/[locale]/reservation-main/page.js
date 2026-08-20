@@ -66,7 +66,11 @@ export const metadata = {
 
 export default async function ReservationMainPage({ params }) {
   const { locale } = await params;
-  const forms = await getDictionary(locale, "forms");
+  const [forms, faqs, common] = await Promise.all([
+    getDictionary(locale, "forms"),
+    getDictionary(locale, "faqs"),
+    getDictionary(locale, "common"),
+  ]);
 
   return (
     <main>
@@ -89,7 +93,7 @@ export default async function ReservationMainPage({ params }) {
       <GalleryExperience />
       <ReservationForm dict={forms.reservationMain} common={forms.common} />
       <Experiences />
-      <FAQ />
+      <FAQ faqs={faqs.reservationMain} heading={common.faqHeading} subheading={common.faqSubheading} />
       <LocationContext />
     </main>
   );

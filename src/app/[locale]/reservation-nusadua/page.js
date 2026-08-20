@@ -66,7 +66,11 @@ export const metadata = {
 
 export default async function ReservationNusaDuaPage({ params }) {
   const { locale } = await params;
-  const forms = await getDictionary(locale, "forms");
+  const [forms, faqs, common] = await Promise.all([
+    getDictionary(locale, "forms"),
+    getDictionary(locale, "faqs"),
+    getDictionary(locale, "common"),
+  ]);
 
   return (
     <main>
@@ -88,7 +92,7 @@ export default async function ReservationNusaDuaPage({ params }) {
       </div>
       <GalleryExperience />
       <ReservationForm dict={forms.reservationNusadua} common={forms.common} />
-      <FAQ />
+      <FAQ faqs={faqs.reservationNusadua} heading={common.faqHeading} subheading={common.faqSubheading} />
       <LocationContext />
     </main>
   );

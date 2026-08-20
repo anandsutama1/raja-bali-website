@@ -27,7 +27,11 @@ export const metadata = {
 
 export default async function GroupReservationPage({ params }) {
   const { locale } = await params;
-  const forms = await getDictionary(locale, "forms");
+  const [forms, faqs, common] = await Promise.all([
+    getDictionary(locale, "forms"),
+    getDictionary(locale, "faqs"),
+    getDictionary(locale, "common"),
+  ]);
 
   return (
     <main>
@@ -43,7 +47,7 @@ export default async function GroupReservationPage({ params }) {
       <CorporateEvents />
       <BuffetPackages />
       <GalleryExperience />
-      <FAQ />
+      <FAQ faqs={faqs.groupReservation} heading={common.faqHeading} subheading={common.faqSubheading} />
       <ReservationForm dict={forms.groupReservation} common={forms.common} />
       <ContactCTA />
       <StickyReserveButton href="#reservation" label="RESERVE FOR GROUP" />

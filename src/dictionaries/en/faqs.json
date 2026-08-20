@@ -1,1 +1,58 @@
-{}
+{
+  "home": [
+    { "id": "hotelPickup", "q": "Do you offer complimentary hotel pick-up and drop-off?", "a": "Yes. We provide complimentary return transfers for guests staying in selected areas around Nusa Dua." },
+    { "id": "danceLocation", "q": "Where can I watch the Balinese Dance Performance?", "a": "The Balinese Dance Performance is complimentary for dining guests and held exclusively at Raja Bali Nusa Dua (Main Restaurant), every Thursday evening. It isn't held at Raja Bali Nusa Dua (Dine-in Restaurant), the other outlet." },
+    { "id": "reservationNeeded", "q": "Do I need to make a reservation?", "a": "Reservations are recommended, especially during dinner hours and peak holiday seasons." },
+    { "id": "creditCards", "q": "Do you accept credit cards?", "a": "Yes. We accept major credit and debit cards, as well as cash payments." },
+    { "id": "halalFood", "q": "Do you serve halal food?", "a": "Yes. We offer a variety of halal-friendly dishes." },
+    { "id": "vegetarianOptions", "q": "Do you offer vegetarian options?", "a": "Yes. We have vegetarian selections." },
+    { "id": "wheelchairAccess", "q": "Is the restaurant wheelchair accessible?", "a": "Absolutely. Raja Bali Restaurant welcomes all guests and offers wheelchair-accessible access." },
+    { "id": "childrenMenu", "q": "Do you have a children's menu?", "a": "Yes. We offer child-friendly menu options." },
+    { "id": "largeGroups", "q": "Can you accommodate large groups or private events?", "a": "Certainly. Please contact us in advance so we can arrange the best dining experience." },
+    { "id": "parking", "q": "Is parking available?", "a": "Yes. Raja Bali Nusa Dua (Main Restaurant) offers a large on-site parking area for guests." }
+  ],
+  "dance": [
+    { "id": "whenPerformance", "q": "When is the Balinese Dance performance?", "a": "Every Thursday evening from 7:00 PM to 9:00 PM." },
+    { "id": "isFree", "q": "Is the Balinese Dance performance free?", "a": "Yes. It's complimentary for dining guests." },
+    { "id": "whereHeld", "q": "Where is the Balinese Dance performance held?", "a": "At Raja Bali Nusa Dua (Main Restaurant). It is not held at Raja Bali Nusa Dua (Dine-in Restaurant), the other outlet." },
+    { "id": "whatDances", "q": "What dances are performed?", "a": "Four performances are selected each week from our repertoire of sacred and traditional stories, with Tari Joged Bumbung, our signature dance, featured every Thursday." }
+  ],
+  "barClass": [
+    { "id": "whereHeld", "q": "Where is the Balinese Cocktail Class held?", "a": "At Raja Bali Nusa Dua (Main Restaurant)." },
+    { "id": "whenHeld", "q": "When does the Bar Class take place?", "a": "Every Thursday at 3:00 PM." },
+    { "id": "cost", "q": "How much does the Bar Class cost?", "a": "IDR 250,000 per person, with a minimum of 2 guests." },
+    { "id": "sameDayDance", "q": "Can I also watch the Balinese Dance on the same day?", "a": "Yes. Since the class runs on Thursday, guests can stay on and enjoy the complimentary Balinese Dance Performance from 7 PM, free for dining guests." },
+    { "id": "availableAtNusaDua", "q": "Is the Balinese Cocktail Class available at Raja Bali Nusa Dua (Dine-in Restaurant)?", "a": "No. It's only offered at Raja Bali Nusa Dua (Main Restaurant)." }
+  ],
+  "groupReservation": [
+    { "id": "corporateDinner", "q": "Can I make a corporate dinner reservation at Raja Bali?", "a": "Yes. Corporate dinners are one of the occasions Raja Bali regularly hosts as part of its private events and group dining service. Share your date, guest count, and any special requests through the group reservation form on this page, or contact our events team directly to discuss your corporate dinner." },
+    { "id": "acceptGroupReservations", "q": "Does Raja Bali accept group reservations?", "a": "Yes. We offer curated buffet packages: an Authentic Balinese Buffet and a Western & Asian Buffet, designed for group celebrations of every size, from family gatherings to corporate events." },
+    { "id": "companyDinner", "q": "Can I organize a company dinner at Raja Bali?", "a": "Yes. Raja Bali's event spaces and buffet packages are well suited to company dinners, team gatherings, and corporate celebrations, combining authentic Balinese cuisine with warm hospitality. Contact our events team to discuss your requirements." },
+    { "id": "corporateEvents", "q": "Is Raja Bali suitable for corporate events?", "aPrefix": "Yes. Raja Bali hosts a range of corporate occasions, including business dinners, team gatherings, and corporate celebrations, alongside its regular group dining service. Our ", "aLinkLabel": "Private Events page", "aLinkHref": "/private-events", "aSuffix": " has more detail on planning an event with us." },
+    { "id": "groupDinnerBali", "q": "Can I arrange a group dinner in Bali?", "aPrefix": "Yes. Raja Bali offers group dining in the Nusa Dua area of Bali, across ", "aLinkLabel": "our two locations", "aLinkHref": "/outlets", "aSuffix": ", with buffet packages suited to groups of every size." },
+    { "id": "howToReserve", "q": "How do I make a group reservation?", "a": "Complete the group reservation form on this page with your preferred date, time, number of guests, and any special requests, such as dietary requirements or your preferred buffet package. Our events team will confirm availability and follow up directly." },
+    { "id": "specialArrangement", "q": "Can I request a special arrangement for a corporate dinner?", "a": "Yes. Let us know your requirements, such as menu preferences, dietary needs, or event details, in the special request field of the reservation form, or contact us directly and our events team will help personalize your corporate dinner." }
+  ],
+  "reservationMain": [
+    { "id": "whereLocated", "q": "Where is Raja Bali Nusa Dua (Main Restaurant) located?", "a": "Raja Bali Nusa Dua (Main Restaurant) is located in Nusa Dua, close to Bali's leading luxury resorts and attractions." },
+    { "id": "reservationNeeded", "q": "Do I need a reservation?", "a": "Reservations are recommended, especially during dinner hours and peak holiday seasons. You can reserve a table directly on this page." },
+    { "id": "cookingClass", "q": "Can I join the Balinese Cooking Class?", "aPrefix": "Yes. Our hands-on Balinese Cooking Class runs in three daily sessions at this location, learning authentic recipes from local chefs before enjoying what you cook. Reservations are required in advance. Visit our ", "aLinkLabel": "Cooking Class page", "aLinkHref": "/cooking-class", "aSuffix": " to book." },
+    { "id": "dancePerformance", "q": "Do you offer traditional Balinese dance performances?", "a": "Yes. We host a complimentary Balinese Dance Performance every Thursday evening, exclusively at Raja Bali Nusa Dua (Main Restaurant)." },
+    { "id": "privateEvents", "q": "Can I book private events?", "a": "Absolutely. We offer private event spaces for weddings, corporate dinners, and other celebrations at this location." },
+    { "id": "groupReservations", "q": "Do you accept group reservations?", "aPrefix": "Yes. We offer curated buffet packages for group celebrations of every size at this location. Visit our ", "aLinkLabel": "Group Reservation page", "aLinkHref": "/group-reservation", "aSuffix": " to view packages and book." }
+  ],
+  "reservationNusadua": [
+    { "id": "whatKind", "q": "What kind of restaurant is Raja Bali Nusa Dua (Dine-in Restaurant)?", "a": "Raja Bali Nusa Dua (Dine-in Restaurant) is an authentic Balinese restaurant, serving traditional Balinese cuisine in an elegant dining setting for lunch, dinner, and events." },
+    { "id": "whereLocated", "q": "Where is Raja Bali Nusa Dua (Dine-in Restaurant) located?", "a": "Raja Bali Nusa Dua (Dine-in Restaurant) is located directly within Nusa Dua on Bali's southern peninsula, in a walk-friendly setting close to the area's resorts, shopping, and beaches." },
+    { "id": "nearBaliCollection", "q": "Is Raja Bali Nusa Dua (Dine-in Restaurant) near Bali Collection?", "a": "Yes. Raja Bali Nusa Dua (Dine-in Restaurant) is within walking distance of Bali Collection, the area's central shopping and dining precinct." },
+    { "id": "nearWestin", "q": "Is Raja Bali Nusa Dua (Dine-in Restaurant) near The Westin Resort Nusa Dua?", "a": "Yes. Raja Bali Nusa Dua (Dine-in Restaurant) is conveniently located near The Westin Resort Nusa Dua and several of the area's other leading hotels and resorts." },
+    { "id": "nearItdc", "q": "Is Raja Bali Nusa Dua (Dine-in Restaurant) within walking distance of the ITDC Nusa Dua area?", "a": "Yes. Raja Bali Nusa Dua (Dine-in Restaurant) sits in a walk-friendly part of the ITDC Nusa Dua tourism area, making it an easy stroll from many nearby hotels and attractions." },
+    { "id": "reservationNeeded", "q": "Do I need a reservation?", "a": "Reservations are recommended, especially during dinner hours and peak holiday seasons. You can reserve a table directly on this page." }
+  ],
+  "outlets": [
+    { "id": "mainLocated", "q": "Where is Raja Bali Nusa Dua (Main Restaurant) located?", "a": "Raja Bali Nusa Dua (Main Restaurant) is located in Nusa Dua, Bali." },
+    { "id": "nusaDuaLocated", "q": "Where is Raja Bali Nusa Dua (Dine-in Restaurant) located?", "a": "Raja Bali Nusa Dua (Dine-in Restaurant) is located directly within Nusa Dua, on Bali's southern peninsula." },
+    { "id": "nusaDuaExperiences", "q": "Does Raja Bali Nusa Dua (Dine-in Restaurant) offer the Cooking Class, Bar Class, or Balinese Dance?", "a": "No. The Balinese Cooking Class, Balinese Bar Class, and Balinese Dance Performance are only available at Raja Bali Nusa Dua (Main Restaurant)." },
+    { "id": "whereWatchDance", "q": "Where can I watch the Balinese Dance Performance?", "a": "The Balinese Dance Performance is held every Thursday evening, complimentary for dining guests, exclusively at Raja Bali Nusa Dua (Main Restaurant)." }
+  ]
+}

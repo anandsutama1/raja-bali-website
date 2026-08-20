@@ -1,1 +1,58 @@
-{}
+{
+  "home": [
+    { "id": "hotelPickup", "q": "是否提供酒店免费接送服务?", "a": "是的。我们为入住努沙杜瓦周边指定区域的客人提供免费往返接送服务。" },
+    { "id": "danceLocation", "q": "在哪里可以观看巴厘岛舞蹈表演?", "a": "巴厘岛舞蹈表演免费提供给用餐客人观看,仅在 Raja Bali Nusa Dua(主餐厅)举行,每周四晚上。另一家分店 Raja Bali Nusa Dua(努沙杜瓦餐厅)不举办此表演。" },
+    { "id": "reservationNeeded", "q": "需要提前预订吗?", "a": "建议提前预订,尤其是在晚餐时段和旅游旺季。" },
+    { "id": "creditCards", "q": "可以使用信用卡吗?", "a": "可以。我们接受主要信用卡和借记卡,也接受现金付款。" },
+    { "id": "halalFood", "q": "提供清真食品吗?", "a": "是的。我们提供多种清真友好菜品。" },
+    { "id": "vegetarianOptions", "q": "有素食选择吗?", "a": "是的。我们提供素食菜品。" },
+    { "id": "wheelchairAccess", "q": "餐厅是否方便轮椅出入?", "a": "当然可以。Raja Bali 餐厅欢迎所有客人,并提供无障碍通道。" },
+    { "id": "childrenMenu", "q": "有儿童餐吗?", "a": "是的。我们提供适合儿童的菜品。" },
+    { "id": "largeGroups", "q": "可以接待大型团体或私人活动吗?", "a": "当然可以。请提前与我们联系,以便我们为您安排最佳的用餐体验。" },
+    { "id": "parking", "q": "有停车位吗?", "a": "有的。Raja Bali Nusa Dua(主餐厅)为客人提供宽敞的现场停车区。" }
+  ],
+  "dance": [
+    { "id": "whenPerformance", "q": "巴厘岛舞蹈表演什么时候举行?", "a": "每周四晚上7点至9点。" },
+    { "id": "isFree", "q": "巴厘岛舞蹈表演是免费的吗?", "a": "是的。用餐客人可以免费观看。" },
+    { "id": "whereHeld", "q": "巴厘岛舞蹈表演在哪里举行?", "a": "在 Raja Bali Nusa Dua(主餐厅)举行。另一家分店 Raja Bali Nusa Dua(努沙杜瓦餐厅)不举办此表演。" },
+    { "id": "whatDances", "q": "表演哪些舞蹈?", "a": "每周从我们神圣而传统的舞蹈故事曲目中精选四场表演,其中我们的招牌舞蹈 Tari Joged Bumbung 每周四都会呈现。" }
+  ],
+  "barClass": [
+    { "id": "whereHeld", "q": "巴厘岛调酒课程在哪里举行?", "a": "在 Raja Bali Nusa Dua(主餐厅)举行。" },
+    { "id": "whenHeld", "q": "调酒课程什么时候举行?", "a": "每周四下午3点。" },
+    { "id": "cost", "q": "调酒课程的费用是多少?", "a": "每人 IDR 250,000,最少2位客人起订。" },
+    { "id": "sameDayDance", "q": "同一天可以观看巴厘岛舞蹈表演吗?", "a": "可以。由于课程在周四举行,客人可以留下来欣赏晚上7点开始的免费巴厘岛舞蹈表演,用餐客人免费观看。" },
+    { "id": "availableAtNusaDua", "q": "Raja Bali Nusa Dua(努沙杜瓦餐厅)是否提供巴厘岛调酒课程?", "a": "不提供。此课程仅在 Raja Bali Nusa Dua(主餐厅)开设。" }
+  ],
+  "groupReservation": [
+    { "id": "corporateDinner", "q": "我可以在 Raja Bali 预订商务聚餐吗?", "a": "可以。商务聚餐是 Raja Bali 私人活动与团体用餐服务中经常承办的场合之一。请通过本页面的团体预订表单告诉我们您的日期、人数及任何特殊要求,或直接联系我们的活动团队商讨您的商务聚餐安排。" },
+    { "id": "acceptGroupReservations", "q": "Raja Bali 接受团体预订吗?", "a": "接受。我们提供精心设计的自助餐套餐:正宗巴厘岛自助餐和西式亚洲自助餐,适合从家庭聚会到商务活动等各种规模的团体庆祝活动。" },
+    { "id": "companyDinner", "q": "我可以在 Raja Bali 组织公司聚餐吗?", "a": "可以。Raja Bali 的活动场地和自助餐套餐非常适合公司聚餐、团队聚会和企业庆典,将正宗巴厘岛美食与热情好客相结合。请联系我们的活动团队商讨您的需求。" },
+    { "id": "corporateEvents", "q": "Raja Bali 适合举办企业活动吗?", "aPrefix": "适合。Raja Bali 承办各类企业活动场合,包括商务聚餐、团队聚会和企业庆典,同时提供常规团体用餐服务。我们的", "aLinkLabel": "私人活动页面", "aLinkHref": "/private-events", "aSuffix": "有更多关于策划活动的详情。" },
+    { "id": "groupDinnerBali", "q": "我可以在巴厘岛安排团体聚餐吗?", "aPrefix": "可以。Raja Bali 在巴厘岛努沙杜瓦地区提供团体用餐服务,遍布我们的", "aLinkLabel": "两家分店", "aLinkHref": "/outlets", "aSuffix": ",并提供适合各种规模团体的自助餐套餐。" },
+    { "id": "howToReserve", "q": "如何进行团体预订?", "a": "请在本页面填写团体预订表单,注明您期望的日期、时间、人数以及任何特殊要求,例如饮食需求或您偏好的自助餐套餐。我们的活动团队将确认可预订情况并直接与您联系。" },
+    { "id": "specialArrangement", "q": "我可以为商务聚餐申请特殊安排吗?", "a": "可以。请在预订表单的特殊要求栏中告诉我们您的需求,例如菜单偏好、饮食需求或活动细节,或直接联系我们,我们的活动团队将协助您定制专属的商务聚餐。" }
+  ],
+  "reservationMain": [
+    { "id": "whereLocated", "q": "Raja Bali Nusa Dua(主餐厅)位于哪里?", "a": "Raja Bali Nusa Dua(主餐厅)位于努沙杜瓦,靠近巴厘岛顶级豪华度假村和景点。" },
+    { "id": "reservationNeeded", "q": "需要预订吗?", "a": "建议提前预订,尤其是在晚餐时段和旅游旺季。您可以直接在本页面预订餐桌。" },
+    { "id": "cookingClass", "q": "我可以参加巴厘岛烹饪课程吗?", "aPrefix": "可以。我们的巴厘岛烹饪课程在本店每天开设三场,由当地厨师亲授正宗食谱,课后即可品尝自己制作的美食。需提前预订。请访问我们的", "aLinkLabel": "烹饪课程页面", "aLinkHref": "/cooking-class", "aSuffix": "进行预订。" },
+    { "id": "dancePerformance", "q": "是否有传统巴厘岛舞蹈表演?", "a": "有的。我们每周四晚上举办免费的巴厘岛舞蹈表演,仅在 Raja Bali Nusa Dua(主餐厅)举行。" },
+    { "id": "privateEvents", "q": "可以预订私人活动吗?", "a": "当然可以。我们在本店提供私人活动场地,适合婚礼、商务聚餐及其他庆祝活动。" },
+    { "id": "groupReservations", "q": "接受团体预订吗?", "aPrefix": "接受。我们在本店为各种规模的团体庆祝活动提供精心设计的自助餐套餐。请访问我们的", "aLinkLabel": "团体预订页面", "aLinkHref": "/group-reservation", "aSuffix": "查看套餐并预订。" }
+  ],
+  "reservationNusadua": [
+    { "id": "whatKind", "q": "Raja Bali Nusa Dua(努沙杜瓦餐厅)是什么类型的餐厅?", "a": "Raja Bali Nusa Dua(努沙杜瓦餐厅)是一家正宗巴厘岛餐厅,在优雅的用餐环境中供应传统巴厘岛美食,适合午餐、晚餐及各类活动。" },
+    { "id": "whereLocated", "q": "Raja Bali Nusa Dua(努沙杜瓦餐厅)位于哪里?", "a": "Raja Bali Nusa Dua(努沙杜瓦餐厅)直接坐落于巴厘岛南部半岛的努沙杜瓦区域内,步行便利,靠近该地区的度假村、购物中心和海滩。" },
+    { "id": "nearBaliCollection", "q": "Raja Bali Nusa Dua(努沙杜瓦餐厅)靠近 Bali Collection 吗?", "a": "是的。Raja Bali Nusa Dua(努沙杜瓦餐厅)步行即可到达 Bali Collection,该区域的中心购物餐饮区。" },
+    { "id": "nearWestin", "q": "Raja Bali Nusa Dua(努沙杜瓦餐厅)靠近威斯汀努沙杜瓦度假村吗?", "a": "是的。Raja Bali Nusa Dua(努沙杜瓦餐厅)地理位置便利,靠近威斯汀努沙杜瓦度假村及该地区其他多家顶级酒店与度假村。" },
+    { "id": "nearItdc", "q": "Raja Bali Nusa Dua(努沙杜瓦餐厅)是否步行可达 ITDC 努沙杜瓦区域?", "a": "是的。Raja Bali Nusa Dua(努沙杜瓦餐厅)位于步行便利的 ITDC 努沙杜瓦旅游区内,从周边众多酒店和景点步行即可轻松抵达。" },
+    { "id": "reservationNeeded", "q": "需要预订吗?", "a": "建议提前预订,尤其是在晚餐时段和旅游旺季。您可以直接在本页面预订餐桌。" }
+  ],
+  "outlets": [
+    { "id": "mainLocated", "q": "Raja Bali Nusa Dua(主餐厅)位于哪里?", "a": "Raja Bali Nusa Dua(主餐厅)位于巴厘岛努沙杜瓦。" },
+    { "id": "nusaDuaLocated", "q": "Raja Bali Nusa Dua(努沙杜瓦餐厅)位于哪里?", "a": "Raja Bali Nusa Dua(努沙杜瓦餐厅)直接坐落于巴厘岛南部半岛的努沙杜瓦区域内。" },
+    { "id": "nusaDuaExperiences", "q": "Raja Bali Nusa Dua(努沙杜瓦餐厅)是否提供烹饪课程、调酒课程或巴厘岛舞蹈表演?", "a": "不提供。巴厘岛烹饪课程、巴厘岛调酒课程及巴厘岛舞蹈表演仅在 Raja Bali Nusa Dua(主餐厅)提供。" },
+    { "id": "whereWatchDance", "q": "在哪里可以观看巴厘岛舞蹈表演?", "a": "巴厘岛舞蹈表演每周四晚上举行,用餐客人可免费观看,仅在 Raja Bali Nusa Dua(主餐厅)举行。" }
+  ]
+}

@@ -9,6 +9,7 @@ import StickyReserveButton from "@/components/StickyReserveButton";
 import PageSchema from "@/components/PageSchema";
 import DanceStructuredData from "@/components/dance/StructuredData";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { getDictionary } from "@/lib/i18n/getDictionary";
 
 const title = "Balinese Dance Performance";
 const description =
@@ -45,11 +46,18 @@ export const metadata = {
   },
 };
 
-export default function DancePage() {
+export default async function DancePage({ params }) {
+  const { locale } = await params;
+  const [faqs, common] = await Promise.all([
+    getDictionary(locale, "faqs"),
+    getDictionary(locale, "common"),
+  ]);
+
   return (
     <main>
       <PageSchema
         path="/dance"
+        locale={locale}
         name={title}
         description={description}
         crumbs={[{ name: "Home", path: "/" }, { name: "Balinese Dance Performance" }]}
@@ -61,7 +69,7 @@ export default function DancePage() {
       <Schedule />
       <DanceRepertoire />
       <DanceGallery />
-      <FAQ />
+      <FAQ faqs={faqs.dance} heading={common.faqHeading} subheading={common.faqSubheading} />
       <ClosingCTA />
       <StickyReserveButton href="/reservation-main" label="RESERVE TABLE" />
     </main>
