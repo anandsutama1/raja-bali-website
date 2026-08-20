@@ -30,5 +30,19 @@
   "breadcrumbHome": "Home",
   "expandAll": "Expand All",
   "collapseAll": "Collapse All",
-  "thankYouMayAlsoLike": "You May Also Like"
+  "thankYouMayAlsoLike": "You May Also Like",
+  "thankYouLinks": {
+    "viewFoodMenu": "View Food Menu",
+    "viewBeverageMenu": "View Beverage Menu",
+    "cookingClass": "Balinese Cooking Class",
+    "barClass": "Balinese Bar Class",
+    "dance": "Balinese Dance",
+    "contactUs": "Contact Us",
+    "reserveTable": "Reserve a Table",
+    "privateEvents": "Private Events",
+    "groupReservation": "Group Reservation",
+    "mostPopular": "Most Popular",
+    "limitedSlot": "Limited Slot",
+    "freeEveryThursday": "Free Every Thursday"
+  }
 }

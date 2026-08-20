@@ -30,5 +30,19 @@
   "breadcrumbHome": "首页",
   "expandAll": "全部展开",
   "collapseAll": "全部收起",
-  "thankYouMayAlsoLike": "您可能还喜欢"
+  "thankYouMayAlsoLike": "您可能还喜欢",
+  "thankYouLinks": {
+    "viewFoodMenu": "查看餐食菜单",
+    "viewBeverageMenu": "查看饮品菜单",
+    "cookingClass": "巴厘岛烹饪课程",
+    "barClass": "巴厘岛调酒课程",
+    "dance": "巴厘岛舞蹈表演",
+    "contactUs": "联系我们",
+    "reserveTable": "预订餐桌",
+    "privateEvents": "私人活动",
+    "groupReservation": "团体预订",
+    "mostPopular": "最受欢迎",
+    "limitedSlot": "名额有限",
+    "freeEveryThursday": "每周四免费"
+  }
 }

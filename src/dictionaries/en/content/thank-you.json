@@ -1,1 +1,30 @@
-{}
+{
+  "contact": {
+    "heading": "Thank You for Writing to Us",
+    "body": "Your message has reached us safely, and a member of our team will respond to you personally very soon."
+  },
+  "cookingClass": {
+    "heading": "Your Cooking Class Booking Has Been Received",
+    "body": "Thank you for booking a place in our Balinese Cooking Class. We've received your request, and our team will get back to you shortly to confirm your session."
+  },
+  "barClass": {
+    "heading": "Your Cocktail Class Booking Has Been Received",
+    "body": "Thank you for booking a place in our Balinese Cocktail Class. We've received your request, and our team will get back to you shortly to confirm your session."
+  },
+  "groupReservation": {
+    "heading": "Your Group Reservation Request Has Been Received",
+    "body": "Thank you for your group reservation request. We've received your details, and our team will get back to you shortly to confirm availability and your buffet package."
+  },
+  "reservationMain": {
+    "heading": "Your Table Is Confirmed",
+    "body": "Thank you for reserving a table with Raja Bali Nusa Dua (Main Restaurant). Your reservation is confirmed, and we're looking forward to welcoming you."
+  },
+  "reservationNusadua": {
+    "heading": "Your Table Is Confirmed",
+    "body": "Thank you for reserving a table with Raja Bali Nusa Dua (Dine-in Restaurant). Your reservation is confirmed, and we're looking forward to welcoming you."
+  },
+  "privateEvents": {
+    "heading": "Your Private Event Enquiry Has Been Received",
+    "body": "Thank you for reaching out about hosting your event with us. We've received your enquiry, and our events team will get back to you shortly to discuss the details."
+  }
+}

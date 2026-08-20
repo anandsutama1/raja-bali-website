@@ -1,27 +1,38 @@
 import ThankYou from "@/components/ThankYou";
-import { THANK_YOU_LINKS } from "@/lib/thankYouLinks";
+import { getThankYouLinks } from "@/lib/thankYouLinks";
+import { getDictionary } from "@/lib/i18n/getDictionary";
+import { localeAlternates } from "@/lib/i18n/alternates";
 
 // Confirmation page reached only after a successful Cooking Class form
 // submission (see components/cooking-class/ReservationForm.js). Deliberately
 // not wired into PageSchema/sitemap/navigation — transient per-guest
 // confirmation, not indexable marketing content.
-const title = "Your Cooking Class Booking Has Been Received";
-const description =
-  "Thank you for booking a place in our Balinese Cooking Class at Raja Bali.";
+const description = "Thank you for booking a place in our Balinese Cooking Class at Raja Bali.";
 
-export const metadata = {
-  title,
-  description,
-  alternates: { canonical: "/cooking-class/thank-you" },
-  robots: { index: false, follow: false },
-};
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const content = await getDictionary(locale, "content-thank-you");
+  return {
+    title: content.cookingClass.heading,
+    description,
+    alternates: localeAlternates(locale, "/cooking-class/thank-you"),
+    robots: { index: false, follow: false },
+  };
+}
 
-export default function ThankYouPage() {
+export default async function ThankYouPage({ params }) {
+  const { locale } = await params;
+  const [content, common] = await Promise.all([
+    getDictionary(locale, "content-thank-you"),
+    getDictionary(locale, "common"),
+  ]);
+
   return (
     <ThankYou
-      heading={title}
-      body="Thank you for booking a place in our Balinese Cooking Class. We've received your request, and our team will get back to you shortly to confirm your session."
-      links={THANK_YOU_LINKS["cooking-class"]}
+      heading={content.cookingClass.heading}
+      body={content.cookingClass.body}
+      links={getThankYouLinks(common.thankYouLinks)["cooking-class"]}
+      mayAlsoLikeLabel={common.thankYouMayAlsoLike}
     />
   );
 }

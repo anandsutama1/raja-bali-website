@@ -1,1 +1,60 @@
-{}
+{
+  "common": {
+    "dearGuest": "尊敬的 {guestName}:",
+    "signOff": "此致",
+    "teamName": "Raja Bali 团队",
+    "visitUs": "欢迎光临",
+    "whatsapp": "WhatsApp",
+    "yourNote": "您给我们的留言:",
+    "automatedNotice": "这是一封自动通知邮件。如有紧急事宜,请直接与我们联系。",
+    "planningVisit": "为您的行程锦上添花",
+    "pickupNote": "我们为入住努沙杜瓦周边的客人提供免费接送服务(每次预约至少2位成人),视具体情况而定。",
+    "noShowNote": "请注意:您的餐桌将在预订时间后为您保留30分钟。如逾时未到店,预订可能被释放并视为取消。",
+    "subjectReservationConfirmed": "您的预订已确认({locationName})",
+    "subjectBookingReceived": "我们已收到您的预订({locationName})",
+    "subjectMessageReceived": "我们已收到您的留言({locationName})"
+  },
+  "reservationMain": {
+    "eyebrow": "预订已确认",
+    "headline": "您的餐桌已确认预订",
+    "intro": "感谢您在 <strong>{locationName}</strong> 预订餐桌。您的预订已确认,我们期待您的光临。",
+    "closing": "如您的计划有变或有任何特殊要求,请通过 {whatsappLink} 与我们联系——此邮箱无人查看,回复此邮件将无法送达我们。我们很乐意为您提供协助。"
+  },
+  "reservationNusadua": {
+    "eyebrow": "预订已确认",
+    "headline": "您的餐桌已确认预订",
+    "intro": "感谢您在 <strong>{locationName}</strong> 预订餐桌。您的预订已确认,我们期待您的光临。",
+    "closing": "如您的计划有变或有任何特殊要求,请通过 {whatsappLink} 与我们联系——此邮箱无人查看,回复此邮件将无法送达我们。我们很乐意为您提供协助。"
+  },
+  "cookingClass": {
+    "eyebrow": "预订已收到",
+    "headline": "您的烹饪课程预订已收到",
+    "intro": "谢谢您预订我们的巴厘岛烹饪课程。我们已收到您的请求,团队将尽快与您联系确认场次。",
+    "closing": "我们期待有机会欢迎您的到来,并将尽快与您联系确认所有细节。"
+  },
+  "barClass": {
+    "eyebrow": "预订已收到",
+    "headline": "您的调酒课程预订已收到",
+    "intro": "谢谢您预订我们的巴厘岛调酒课程。我们已收到您的请求,团队将尽快与您联系确认场次。",
+    "note": "此体验课程仅在每周四下午3点举行。如您预约的日期不是周四,我们的团队将与您联系重新安排时间。",
+    "closing": "我们期待有机会欢迎您的到来,并将尽快与您联系确认所有细节。"
+  },
+  "privateEvents": {
+    "eyebrow": "咨询已收到",
+    "headline": "您的私人活动咨询已收到",
+    "intro": "感谢您联系我们商讨活动举办事宜。我们已收到您的咨询,活动团队将尽快与您联系,商讨具体安排。",
+    "closing": "我们期待有机会欢迎您的到来,并将尽快与您联系确认所有细节。"
+  },
+  "groupReservation": {
+    "eyebrow": "申请已收到",
+    "headline": "您的团体预订申请已收到",
+    "intro": "谢谢您的团体预订申请。我们已收到您的详细信息,团队将尽快与您联系,确认可预订情况及自助餐套餐。",
+    "closing": "我们期待有机会欢迎您的到来,并将尽快与您联系确认所有细节。"
+  },
+  "contact": {
+    "eyebrow": "留言已收到",
+    "headline": "感谢您与我们联系",
+    "intro": "感谢您给 <strong>{locationName}</strong> 留言。您的留言已安全送达,我们的团队成员将很快亲自回复您。",
+    "closing": "感谢您对 Raja Bali 的关注,期待不久后有机会欢迎您的光临。"
+  }
+}

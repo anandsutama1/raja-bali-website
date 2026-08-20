@@ -1,1 +1,60 @@
-{}
+{
+  "common": {
+    "dearGuest": "Dear {guestName},",
+    "signOff": "Warmly,",
+    "teamName": "The Raja Bali Team",
+    "visitUs": "Visit Us",
+    "whatsapp": "WhatsApp",
+    "yourNote": "Your note to us:",
+    "automatedNotice": "This is an automated notice. For urgent enquiries, please contact us directly.",
+    "planningVisit": "While You're Planning Your Visit",
+    "pickupNote": "Complimentary pickup service for guests staying around the Nusa Dua area is available (minimum 2 adults per request), subject to availability.",
+    "noShowNote": "Please note: your table will be held for 30 minutes past the reservation time. If you haven't arrived by then, the booking may be released and treated as cancelled.",
+    "subjectReservationConfirmed": "Your Reservation Is Confirmed ({locationName})",
+    "subjectBookingReceived": "We've Received Your Booking ({locationName})",
+    "subjectMessageReceived": "We've Received Your Message ({locationName})"
+  },
+  "reservationMain": {
+    "eyebrow": "Reservation Confirmed",
+    "headline": "Your Table Is Confirmed",
+    "intro": "Thank you for reserving a table with <strong>{locationName}</strong>. Your reservation is confirmed, and we're looking forward to welcoming you.",
+    "closing": "If your plans change or you have any special requests, please reach out to us on {whatsappLink} — this inbox is unattended, so replying here won't reach us. We're happy to help."
+  },
+  "reservationNusadua": {
+    "eyebrow": "Reservation Confirmed",
+    "headline": "Your Table Is Confirmed",
+    "intro": "Thank you for reserving a table with <strong>{locationName}</strong>. Your reservation is confirmed, and we're looking forward to welcoming you.",
+    "closing": "If your plans change or you have any special requests, please reach out to us on {whatsappLink} — this inbox is unattended, so replying here won't reach us. We're happy to help."
+  },
+  "cookingClass": {
+    "eyebrow": "Booking Received",
+    "headline": "Your Cooking Class Booking Has Been Received",
+    "intro": "Thank you for booking a place in our Balinese Cooking Class. We've received your request, and our team will get back to you shortly to confirm your session.",
+    "closing": "We're looking forward to the opportunity to welcome you, and will follow up shortly to confirm every detail."
+  },
+  "barClass": {
+    "eyebrow": "Booking Received",
+    "headline": "Your Cocktail Class Booking Has Been Received",
+    "intro": "Thank you for booking a place in our Balinese Cocktail Class. We've received your request, and our team will get back to you shortly to confirm your session.",
+    "note": "This experience runs exclusively on Thursdays at 3:00 PM. If the date you requested isn't a Thursday, our team will reach out to reschedule.",
+    "closing": "We're looking forward to the opportunity to welcome you, and will follow up shortly to confirm every detail."
+  },
+  "privateEvents": {
+    "eyebrow": "Enquiry Received",
+    "headline": "Your Private Event Enquiry Has Been Received",
+    "intro": "Thank you for reaching out about hosting your event with us. We've received your enquiry, and our events team will get back to you shortly to discuss the details.",
+    "closing": "We're looking forward to the opportunity to welcome you, and will follow up shortly to confirm every detail."
+  },
+  "groupReservation": {
+    "eyebrow": "Request Received",
+    "headline": "Your Group Reservation Request Has Been Received",
+    "intro": "Thank you for your group reservation request. We've received your details, and our team will get back to you shortly to confirm availability and your buffet package.",
+    "closing": "We're looking forward to the opportunity to welcome you, and will follow up shortly to confirm every detail."
+  },
+  "contact": {
+    "eyebrow": "Message Received",
+    "headline": "Thank You for Writing to Us",
+    "intro": "Thank you for writing to <strong>{locationName}</strong>. Your message has reached us safely, and a member of our team will respond to you personally very soon.",
+    "closing": "We are grateful for your interest in Raja Bali, and look forward to the opportunity of welcoming you soon."
+  }
+}

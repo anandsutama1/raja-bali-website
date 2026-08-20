@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import LocalizedLink from "./LocalizedLink";
 
 /**
  * Shared confirmation-page shell for every successful form submission (see
@@ -17,7 +17,7 @@ import Link from "next/link";
  * language. Every card is the same fixed height regardless of whether it
  * has a badge, so the grid stays visually even.
  */
-export default function ThankYou({ heading, body, links = [] }) {
+export default function ThankYou({ heading, body, links = [], mayAlsoLikeLabel = "You May Also Like" }) {
   return (
     <main className="flex min-h-[60vh] flex-col items-center justify-center px-6 py-24 text-center">
       <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500 sm:h-24 sm:w-24">
@@ -40,10 +40,10 @@ export default function ThankYou({ heading, body, links = [] }) {
 
       {links.length > 0 && (
         <div className="mt-12 w-full max-w-xl">
-          <p className="mb-4 text-xs font-semibold tracking-widest text-raja-red uppercase">You May Also Like</p>
+          <p className="mb-4 text-xs font-semibold tracking-widest text-raja-red uppercase">{mayAlsoLikeLabel}</p>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {links.map((link) => (
-              <Link
+              <LocalizedLink
                 key={link.path}
                 href={link.path}
                 className="group u-lift flex h-24 items-center gap-4 overflow-hidden rounded-lg border border-gray-200 bg-white p-3 text-left transition hover:border-raja-red"
@@ -61,7 +61,7 @@ export default function ThankYou({ heading, body, links = [] }) {
                     {link.label}
                   </span>
                 </div>
-              </Link>
+              </LocalizedLink>
             ))}
           </div>
         </div>
