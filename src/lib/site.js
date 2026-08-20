@@ -36,7 +36,10 @@ export const LOCATIONS = [
     postalCode: "80361",
     latitude: -8.7746812,
     longitude: 115.22276810000001,
-    // Tripadvisor listing confirmed live: 5.0/5 from 63 reviews as of 2026-08-07.
+    // Tripadvisor listing confirmed live: 4.8/5 ("Excellent"), 1,381 reviews,
+    // as of 2026-08-20 (client-supplied listing screenshot) — supersedes an
+    // earlier 5.0/63 reading from 2026-08-07, which was checking a much
+    // smaller/stale count.
     // Google Business Profile confirmed live: 4.9/5 from 435 reviews, closes
     // 10:00 PM, as of 2026-08-18 (client-supplied listing screenshot) — see
     // Recognition.js/Testimonials.js for where these numbers surface, and

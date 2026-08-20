@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <PromoTicker />
+      <PromoTicker className="mt-10 md:mt-14" />
       <Welcome />
       <Recognition />
       <Menus />

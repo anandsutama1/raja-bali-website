@@ -60,8 +60,8 @@ export default function Recognition() {
         </p>
         <span className="hidden h-6 w-px bg-gray-200 sm:block" aria-hidden="true" />
         <p className="text-2xl font-serif text-raja-red">
-          5.0 <span aria-hidden="true">★</span>{" "}
-          <span className="text-base font-sans text-gray-500">from 63 Tripadvisor Reviews</span>
+          4.8 <span aria-hidden="true">★</span>{" "}
+          <span className="text-base font-sans text-gray-500">Excellent, 1,381 Tripadvisor Reviews</span>
         </p>
       </Reveal>
 
