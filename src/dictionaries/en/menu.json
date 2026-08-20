@@ -103,5 +103,389 @@
         ]
       }
     ]
+  },
+  "beverage": {
+    "heroTitle": "Beverage Menu",
+    "priceNote": "Prices are quoted in IDR and subject to 11% government tax.",
+    "specialCocktailsHeading": "Special Cocktails",
+    "classicCocktailHeading": "Classic Cocktail",
+    "spiritsHeading": "Spirits",
+    "wineListHeading": "Wine List",
+    "localHouseWineHeading": "Local House Wine",
+    "importedWineHeading": "Imported Wine",
+    "wineListNote": "Priced by glass and/or bottle; ask your server for current pricing.",
+    "sectionTitles": {
+      "signature": "Signature",
+      "balineseCocktail": "Balinese Cocktail",
+      "classicCocktail": "Classic Cocktail",
+      "refreshing": "Raja Bali's Refreshing",
+      "wellness": "Wellness Drink",
+      "juice": "Juice",
+      "beer": "Beer's",
+      "teaCoffee": "Tea's & Coffee",
+      "softDrinks": "Soft Drink's & Water",
+      "milkshakes": "Milkshake & Smoothies",
+      "premiumSpirit": "Premium Spirit",
+      "localSpirit": "Local Spirit",
+      "whiskeyPremium": "Whiskey Premium",
+      "whiskeyLocal": "Whiskey Local",
+      "whiteWine": "White Wine",
+      "redWine": "Red Wine",
+      "roseWine": "Rose Wine",
+      "sparklingWine": "Sparkling Wine"
+    },
+    "notes": {
+      "premiumLocalSpirit": "Premium Spirit 130K / Local Spirit 95K",
+      "allPrice80K": "All price 80K",
+      "premiumSpiritShot": "100K, by shot (45ml)",
+      "localSpiritShot": "By shot (45ml)",
+      "whiskeyPremiumShot": "125K, by shot (45ml)",
+      "whiskeyLocalShot": "80K, by shot (45ml)"
+    },
+    "sections": {
+      "signatureCocktails": [
+        { "name": "Green Tokyo", "desc": "Vodka, rum, tequila, gin, melon liqueur, top with sprite" },
+        { "name": "Pink Flaminggo", "desc": "Gold rum, pineapple juice, grenadine, lime juice" },
+        { "name": "Sky Purple", "desc": "Gin, blue curacao, lemon juice, grenadine, sprite" },
+        { "name": "Bailey's Comet", "desc": "Vodka, coffee liqueur, baileys, banana, whipped cream" },
+        { "name": "Strawberry Smash", "desc": "Gin, orange liqueur, lemon juice, strawberry, simple syrup" },
+        { "name": "Melon Illusion", "desc": "Vodka, melon liqueur, orange liqueur, lemon juice, pineapple juice" },
+        { "name": "Spicy Basil", "desc": "Gold rum, ginger syrup, honey, basil leaf" },
+        { "name": "Sangria Raja", "desc": "Spiced arak, red or white wine, tropical fruits" }
+      ],
+      "balineseCocktails": [
+        { "name": "Arak Madu", "desc": "Arak, honey, fresh lime" },
+        { "name": "Arak Pelung", "desc": "Arak, blue curacao, lemon juice, grenadine, top with sprite" },
+        { "name": "Arak Lagoon", "desc": "Arak, blue curacao, sprite" },
+        { "name": "Arak Oleng", "desc": "Arak, pineapple liqueur, pineapple juice" },
+        { "name": "Arak Berry", "desc": "Arak, strawberry, orange liqueur, mint leaf, tonic water" },
+        { "name": "Arak Purnama", "desc": "Arak, orange juice, grenadine" }
+      ],
+      "classicCocktails": [
+        { "name": "Margarita", "desc": "Tequila, orange liqueur, fresh lime" },
+        { "name": "Mojito's", "desc": "Rum, orange liqueur, mint leaf" },
+        { "name": "Daiquiry's", "desc": "Rum, orange liqueur, fresh lime" },
+        { "name": "Espresso Martini", "desc": "Vodka, coffee liqueur, espresso" },
+        { "name": "Lychee Martini", "desc": "Vodka, lychee liqueur, lychee fruit" },
+        { "name": "Caipirinha & Caproska", "desc": "Rum/Vodka, fresh lime, sweetener" },
+        { "name": "Lemon Drop", "desc": "Vodka, orange liqueur, lemon juice, simple syrup" },
+        { "name": "Long Island Ice Tea", "desc": "Vodka, rum, gin, tequila, orange liqueur, coke" },
+        { "name": "Pinacolada", "desc": "Rum, pineapple juice, coconut milk, coconut liqueur" },
+        { "name": "Whiskey Sour", "desc": "Whiskey, lime juice, sugar" },
+        { "name": "Japanese Slipper", "desc": "Vodka, lime juice, triple sec, melon liqueur" },
+        { "name": "Pink/Blue/White Lady", "desc": "Gin, orange liqueur, lime juice, grenadine" },
+        { "name": "Tequila Sunrise", "desc": "Tequila, orange juice, grenadine" }
+      ],
+      "refreshing": [
+        { "name": "Calipso", "desc": "Mango juice, pineapple juice, passion syrup", "price": "60K" },
+        { "name": "Basil Spritzer", "desc": "Basil leaf, lemon grass juice, fresh lime, soda water", "price": "60K" },
+        { "name": "Shirley Temple", "desc": "Strawberry, mint leaf, fresh lime, tonic water, cherry water", "price": "60K" },
+        { "name": "Lemon Nana", "desc": "Lemon juice, mint leaf, mint green syrup, soda water", "price": "60K" },
+        { "name": "Melon Fantasy", "desc": "Diced fresh fruit, orange juice, melon syrup, fanta red", "price": "60K" },
+        { "name": "Virgin Mojito", "desc": "Mint leaf, fresh lime, soda water", "price": "60K" },
+        { "name": "Virgin Colada", "desc": "Pineapple juice, coconut cream, simple syrup", "price": "60K" },
+        { "name": "Queencheer's", "desc": "Fresh lemon juice, lemonade and refresh drink w/ your own favorite fruit puree: strawberry/mango", "price": "55K" },
+        { "name": "Lemon Up", "desc": "Fresh lemon juice, lemonade and pink/blue/yellow", "price": "55K" },
+        { "name": "Squash", "desc": "Lemon/lime/orange", "price": "35K" }
+      ],
+      "wellness": [
+        { "name": "Green Detox", "desc": "Caisim, pineapple, lime juice, honey", "price": "65K" },
+        { "name": "Red Booster", "desc": "Tomato, orange juice, lime juice, honey", "price": "65K" },
+        { "name": "Yellow Antioxidant", "desc": "Cucumber, orange juice, pineapple juice, lime juice, honey", "price": "65K" },
+        { "name": "Healthy Orange", "desc": "Carrot juice, orange juice, lime juice, honey", "price": "65K" },
+        { "name": "Jamu Sinom", "desc": "Turmeric, brown sugar, tamarind", "price": "65K" }
+      ],
+      "juice": [
+        { "name": "Watermelon", "price": "50K" },
+        { "name": "Pineapple", "price": "50K" },
+        { "name": "Banana", "price": "50K" },
+        { "name": "Papaya", "price": "50K" },
+        { "name": "Orange", "price": "50K" },
+        { "name": "Mixed Juice", "price": "50K" }
+      ],
+      "beers": [
+        { "name": "Singaraja", "price": "30K" },
+        { "name": "Prost Pilsner", "price": "35K" },
+        { "name": "Prost Lager", "price": "35K" },
+        { "name": "Albens Apple Cider", "price": "60K" },
+        { "name": "Large Bintang", "price": "65K" },
+        { "name": "Small Bintang", "price": "40K" },
+        { "name": "Large Heineken", "price": "70K" },
+        { "name": "Small Heineken", "price": "45K" },
+        { "name": "Tower Bintang", "price": "195K" },
+        { "name": "Tower Heineken", "price": "210K" }
+      ],
+      "teaCoffee": [
+        { "name": "Balinese Coffee", "price": "25K" },
+        { "name": "Hot/Ice Tea", "price": "25K" },
+        { "name": "Lychee Tea", "price": "35K" },
+        { "name": "Passion Tea", "price": "35K" },
+        { "name": "Lemon Grass Tea", "price": "35K" },
+        { "name": "Mint Ginger Tea", "price": "30K" }
+      ],
+      "softDrinks": [
+        { "name": "Coke", "price": "20K" },
+        { "name": "Coke Zero", "price": "20K" },
+        { "name": "Sprite", "price": "20K" },
+        { "name": "Fanta", "price": "20K" },
+        { "name": "Tonic Water", "price": "20K" },
+        { "name": "Soda Water", "price": "20K" },
+        { "name": "Natural Water", "price": "25K" },
+        { "name": "Sparkling Water", "price": "35K" }
+      ],
+      "milkshakes": [
+        { "name": "Vanilla", "price": "55K" },
+        { "name": "Chocolate", "price": "55K" },
+        { "name": "Strawberry", "price": "55K" },
+        { "name": "Banana", "price": "55K" }
+      ],
+      "premiumSpirit": [
+        { "name": "Gin", "desc": "Gordon London Dry Gin" },
+        { "name": "Vodka", "desc": "Smirnoff" },
+        { "name": "Rum", "desc": "Bacardi, Saint James White" },
+        { "name": "Tequila", "desc": "Jose Quervo" }
+      ],
+      "localSpirit": [
+        { "name": "Spiced Arak", "desc": "Sajeng Patala", "price": "70K" },
+        { "name": "Spiced Premium Arak", "desc": "Arak Bumbung", "price": "80K" },
+        { "name": "Arak Dewi", "price": "50K" }
+      ],
+      "whiskeyPremium": [
+        { "name": "Scotch Whiskey", "desc": "Red Label, Label 5" },
+        { "name": "American Whiskey", "desc": "Jack Daniel, Jim Beam" },
+        { "name": "Irish Whiskey" }
+      ],
+      "whiskeyLocal": [
+        { "name": "Gilbeys Whiskey" },
+        { "name": "Omrach Whiskey" },
+        { "name": "Vibe Whiskey" }
+      ]
+    },
+    "wine": {
+      "localWhiteWine": [
+        { "name": "Hatten Aga White", "glass": "65K", "bottle": "240K" },
+        { "name": "Two Island Sauvignon Blanc", "glass": "85K", "bottle": "350K" },
+        { "name": "Two Island Chardonnay", "glass": "85K", "bottle": "350K" },
+        { "name": "Two Island Pinot Grigio", "glass": "85K", "bottle": "350K" },
+        { "name": "Plaga Sauvignon Blanc", "glass": "80K", "bottle": "330K" },
+        { "name": "Sababay White Velvet", "glass": "75K", "bottle": "270K" },
+        { "name": "Cape Discovery Sauvignon Blanc", "glass": "65K", "bottle": "270K" }
+      ],
+      "localRedWine": [
+        { "name": "Hatten Aga Red", "glass": "75K", "bottle": "240K" },
+        { "name": "Two Island Cabernet Merlot", "glass": "85K", "bottle": "350K" },
+        { "name": "Two Island Shiraz", "glass": "85K", "bottle": "350K" },
+        { "name": "Plaga Cabernet Merlot", "glass": "80K", "bottle": "330K" },
+        { "name": "Plaga Cabernet Sauvignon", "glass": "80K", "bottle": "330K" },
+        { "name": "Sababay Black Velvet", "glass": "75K", "bottle": "270K" },
+        { "name": "Cape Discovery Shiraz/Cabernet Merlot", "glass": "75K", "bottle": "270K" }
+      ],
+      "localRoseWine": [
+        { "name": "Hatten Aga Rose", "glass": "65K", "bottle": "240K" },
+        { "name": "Two Island Rose", "glass": "85K", "bottle": "350K" },
+        { "name": "Plaga Rose", "glass": "80K", "bottle": "330K" },
+        { "name": "Sababay Pink Blossom", "glass": "75K", "bottle": "270K" },
+        { "name": "Cape Discovery Rose", "glass": "65K", "bottle": "270K" }
+      ],
+      "localSparklingWine": [
+        { "name": "Hatten Tunjung", "bottle": "350K" },
+        { "name": "Two Island Pinot Noir Chardonnay", "bottle": "490K" },
+        { "name": "Cape Discovery Cuvee Bruth", "bottle": "450K" }
+      ],
+      "importedWhiteWine": [
+        { "name": "Tall Horse (South Africa)", "bottle": "385K" },
+        { "name": "Douglas Green (South Africa)", "bottle": "415K" },
+        { "name": "Conosur (Chile)", "bottle": "385K" },
+        { "name": "McPherson (Australia)", "bottle": "450K" },
+        { "name": "Milton Park (Australia)", "bottle": "405K" },
+        { "name": "Mi Terruno (Argentina)", "bottle": "435K" },
+        { "name": "Estimulo (Argentina)", "bottle": "400K" },
+        { "name": "Il Fumo (Italy)", "bottle": "490K" }
+      ],
+      "importedRedWine": [
+        { "name": "Tall Horse (South Africa)", "bottle": "385K" },
+        { "name": "Douglas Green (South Africa)", "bottle": "415K" },
+        { "name": "Conosur (Chile)", "bottle": "385K" },
+        { "name": "McPherson (Australia)", "bottle": "450K" },
+        { "name": "Milton Park (Australia)", "bottle": "405K" },
+        { "name": "McGuigan (Australia)", "bottle": "425K" },
+        { "name": "Mi Terruno (Argentina)", "bottle": "435K" },
+        { "name": "Estimulo (Argentina)", "bottle": "400K" },
+        { "name": "Il Fumo (Italy)", "bottle": "490K" }
+      ],
+      "importedRoseWine": [
+        { "name": "Tall Horse (South Africa)", "bottle": "385K" },
+        { "name": "La La Land Rose (Australia)", "bottle": "450K" },
+        { "name": "Mi Terruno Rose (Argentina)", "bottle": "435K" }
+      ],
+      "importedSparklingWine": [
+        { "name": "Batasiolo (Italy)", "bottle": "550K" },
+        { "name": "Corte Giara (Italy)", "bottle": "505K" }
+      ]
+    }
+  },
+  "balineseBuffet": {
+    "heroTitle": "Balinese Group Dinner Buffet Menu",
+    "priceLine": "Balinese Buffet | Start from IDR 300K/pax",
+    "mainCoursesHeading": "Main Courses",
+    "starters": [
+      {
+        "title": "Appetizers",
+        "instruction": "Please select 2 menus below:",
+        "options": [
+          "Lawar Bungkak (Balinese young coconut salad)",
+          "Urab Pakis (Balinese fern salad)",
+          "Urab Sayur (Mixed vegetables with grated coconut dressing)",
+          "Ayam Pelalah (Shredded chicken breast with chili sambal)",
+          "Lawar Kacang Panjang (Long bean and minced chicken salad)",
+          "Plecing Gonda"
+        ]
+      },
+      {
+        "title": "Soup",
+        "instruction": "Please select 1 menu below:",
+        "options": ["Cramcam Ayam (Minced Balinese chicken soup)", "Soup Kacang Merah (Red bean soup)"]
+      }
+    ],
+    "mainCourses": [
+      {
+        "title": "Seafood",
+        "instruction": "Please select 1 menu below:",
+        "options": [
+          "Seafood Bumbu Merah (Stir fried prawns, squid and fish with Balinese tomato chili sauce)",
+          "Ikan Sambal Matah (Grilled mahi-mahi fillet with sambal matah)",
+          "Sate Lilit Ikan"
+        ]
+      },
+      {
+        "title": "Chicken",
+        "instruction": "Please select 2 menus below:",
+        "options": [
+          "Ayam Bakar Bumbu Kuning (Grilled chicken leg boneless with Balinese spicy)",
+          "Ayam Betutu",
+          "Serosob Ayam (Braised chicken leg boneless with coconut cream)",
+          "Sate Lilit Ayam",
+          "Sate Tusuk Ayam"
+        ]
+      },
+      {
+        "title": "Vegetables and Noodles",
+        "instruction": "Please select 1 menu below:",
+        "options": ["Vegetables Curry", "Mie Goreng Sayur", "Bihun Goreng"]
+      },
+      {
+        "title": "Rice",
+        "instruction": "Please select 1 menu below:",
+        "options": [
+          "Nasi Goreng Raja Bali (Fried rice with chicken and vegetables)",
+          "Nasi Goreng Ayam (Fried rice with chicken and vegetables)",
+          "Nasi Putih (Steamed rice)",
+          "Nasi Kuning (Fragrant yellow rice)"
+        ]
+      },
+      {
+        "title": "Dessert",
+        "instruction": "Please select 2 menus below:",
+        "options": [
+          "Aneka Jajan Pasar (Mixed Balinese cake)",
+          "Sliced Fruit (Watermelon and papaya)",
+          "Es Buah",
+          "Pisang Goreng",
+          "Chocolate Pudding"
+        ]
+      },
+      { "title": "Drinks", "options": ["Infused Water", "Ice Tea"] }
+    ]
+  },
+  "westernAsianBuffet": {
+    "heroTitle": "Western & Asian Group Dinner Buffet Menu",
+    "priceLine": "Western Asian | Start from IDR 350K/pax",
+    "mainCoursesHeading": "Main Courses",
+    "starters": [
+      {
+        "title": "Appetizers",
+        "instruction": "Please select 2 menus below:",
+        "options": [
+          "Garden Salad with vinaigrette dressing",
+          "Thai Beef Salad",
+          "Caesar Salad",
+          "Classic Potato Salad",
+          "Mixed Fruit Salad with Yoghurt"
+        ]
+      },
+      {
+        "title": "Soup",
+        "instruction": "Please select 1 menu below:",
+        "options": [
+          "Tom Yum Soup (Thailand spicy seafood soup)",
+          "Chicken and Vegetables Soup",
+          "Potato and Leek Soup",
+          "Pumpkin Soup",
+          "Red Bean Soup"
+        ]
+      }
+    ],
+    "mainCourses": [
+      {
+        "title": "Seafood",
+        "instruction": "Please select 1 menu below:",
+        "options": [
+          "Seafood Curry (Stir fried prawn, squid, and fish with curry sauce)",
+          "Grilled Fish Fillet with Chili Sauce",
+          "Fried Fish Fillet with Sweet and Sour Sauce",
+          "Pan Seared Mahi-Mahi Fillet with Sambal Matah"
+        ]
+      },
+      {
+        "title": "Chicken",
+        "instruction": "Please select 1 menu below:",
+        "options": [
+          "Grilled Chicken Leg Boneless with Honey Chili Sauce",
+          "Serosob Ayam (Braised chicken leg boneless with Balinese style)",
+          "Chicken Meatball with Tomato Basil Sauce"
+        ]
+      },
+      {
+        "title": "Beef",
+        "instruction": "Please select 1 menu below:",
+        "options": ["Beef Rendang", "Beef Black Pepper", "Beef Meatball with Tomato Basil Sauce"]
+      },
+      {
+        "title": "Vegetables",
+        "instruction": "Please select 1 menu below:",
+        "options": [
+          "Baby Bok-Choy Braised with Oyster Sauce",
+          "Sauteed Mix Vegetables with Butter Garlic",
+          "Terong Balado (Sauteed eggplant with chili sauce)",
+          "Stir-Fried Assorted Vegetables with Oyster Sauce",
+          "Tofu Cah Sayuran (Sauteed tofu in mix vegetables)"
+        ]
+      },
+      {
+        "title": "Noodles & Pasta",
+        "instruction": "Please select 1 menu below:",
+        "options": [
+          "Mie Goreng Seafood (Fried noodles with seafood and vegetables)",
+          "Mie Goreng Sayur Vegetarian",
+          "Bihun Goreng (Stir fried rice noodles with chicken and vegetables)",
+          "Spaghetti Tomato Sauce"
+        ]
+      },
+      {
+        "title": "Rice",
+        "instruction": "Please select 1 menu below:",
+        "options": ["Nasi Goreng (Fried rice with chicken and vegetables)", "Steamed Rice", "Fragrant Yellow Rice"]
+      },
+      {
+        "title": "Dessert",
+        "instruction": "Please select 2 menus below:",
+        "options": ["Assorted Balinese Cake", "Seasonal Fruit", "Chocolate Brownies"]
+      },
+      {
+        "title": "Drinks",
+        "instruction": "Please select 1 menu below:",
+        "options": ["Ice Kelapa Muda", "Infused Water", "Ice Tea", "Orange Juice"]
+      }
+    ]
   }
 }

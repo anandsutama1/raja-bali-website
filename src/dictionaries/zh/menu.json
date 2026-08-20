@@ -103,5 +103,389 @@
         ]
       }
     ]
+  },
+  "beverage": {
+    "heroTitle": "饮品菜单",
+    "priceNote": "价格以印尼盾(IDR)标示,另加收11%政府税。",
+    "specialCocktailsHeading": "特调鸡尾酒",
+    "classicCocktailHeading": "经典鸡尾酒",
+    "spiritsHeading": "烈酒",
+    "wineListHeading": "酒单",
+    "localHouseWineHeading": "本地精选葡萄酒",
+    "importedWineHeading": "进口葡萄酒",
+    "wineListNote": "按杯或按瓶计价,具体价格请询问服务员。",
+    "sectionTitles": {
+      "signature": "招牌特调",
+      "balineseCocktail": "巴厘特调",
+      "classicCocktail": "经典鸡尾酒",
+      "refreshing": "Raja Bali 特色饮品",
+      "wellness": "养生饮品",
+      "juice": "鲜榨果汁",
+      "beer": "啤酒",
+      "teaCoffee": "茶与咖啡",
+      "softDrinks": "汽水与水",
+      "milkshakes": "奶昔与思慕雪",
+      "premiumSpirit": "高级烈酒",
+      "localSpirit": "本地烈酒",
+      "whiskeyPremium": "高级威士忌",
+      "whiskeyLocal": "本地威士忌",
+      "whiteWine": "白葡萄酒",
+      "redWine": "红葡萄酒",
+      "roseWine": "桃红葡萄酒",
+      "sparklingWine": "起泡酒"
+    },
+    "notes": {
+      "premiumLocalSpirit": "高级烈酒 130K / 本地烈酒 95K",
+      "allPrice80K": "统一价格 80K",
+      "premiumSpiritShot": "100K/杯(45毫升)",
+      "localSpiritShot": "按杯计价(45毫升)",
+      "whiskeyPremiumShot": "125K/杯(45毫升)",
+      "whiskeyLocalShot": "80K/杯(45毫升)"
+    },
+    "sections": {
+      "signatureCocktails": [
+        { "name": "Green Tokyo", "desc": "伏特加、朗姆酒、龙舌兰、金酒、蜜瓜利口酒,雪碧调制" },
+        { "name": "Pink Flaminggo", "desc": "金朗姆酒、菠萝汁、红石榴糖浆、青柠汁" },
+        { "name": "Sky Purple", "desc": "金酒、蓝橙皮甜酒、柠檬汁、红石榴糖浆、雪碧" },
+        { "name": "Bailey's Comet", "desc": "伏特加、咖啡利口酒、百利甜酒、香蕉、鲜奶油" },
+        { "name": "Strawberry Smash", "desc": "金酒、橙皮甜酒、柠檬汁、草莓、糖浆" },
+        { "name": "Melon Illusion", "desc": "伏特加、蜜瓜利口酒、橙皮甜酒、柠檬汁、菠萝汁" },
+        { "name": "Spicy Basil", "desc": "金朗姆酒、姜汁糖浆、蜂蜜、罗勒叶" },
+        { "name": "Sangria Raja", "desc": "香料亚拉克酒、红/白葡萄酒、热带水果" }
+      ],
+      "balineseCocktails": [
+        { "name": "Arak Madu", "desc": "亚拉克酒、蜂蜜、鲜青柠" },
+        { "name": "Arak Pelung", "desc": "亚拉克酒、蓝橙皮甜酒、柠檬汁、红石榴糖浆,雪碧调制" },
+        { "name": "Arak Lagoon", "desc": "亚拉克酒、蓝橙皮甜酒、雪碧" },
+        { "name": "Arak Oleng", "desc": "亚拉克酒、菠萝利口酒、菠萝汁" },
+        { "name": "Arak Berry", "desc": "亚拉克酒、草莓、橙皮甜酒、薄荷叶、通宁水" },
+        { "name": "Arak Purnama", "desc": "亚拉克酒、橙汁、红石榴糖浆" }
+      ],
+      "classicCocktails": [
+        { "name": "Margarita", "desc": "龙舌兰、橙皮甜酒、鲜青柠" },
+        { "name": "Mojito's", "desc": "朗姆酒、橙皮甜酒、薄荷叶" },
+        { "name": "Daiquiry's", "desc": "朗姆酒、橙皮甜酒、鲜青柠" },
+        { "name": "Espresso Martini", "desc": "伏特加、咖啡利口酒、意式浓缩咖啡" },
+        { "name": "Lychee Martini", "desc": "伏特加、荔枝利口酒、荔枝果肉" },
+        { "name": "Caipirinha & Caproska", "desc": "朗姆酒/伏特加、鲜青柠、糖" },
+        { "name": "Lemon Drop", "desc": "伏特加、橙皮甜酒、柠檬汁、糖浆" },
+        { "name": "Long Island Ice Tea", "desc": "伏特加、朗姆酒、金酒、龙舌兰、橙皮甜酒、可乐" },
+        { "name": "Pinacolada", "desc": "朗姆酒、菠萝汁、椰浆、椰子利口酒" },
+        { "name": "Whiskey Sour", "desc": "威士忌、青柠汁、糖" },
+        { "name": "Japanese Slipper", "desc": "伏特加、青柠汁、橙皮甜酒、蜜瓜利口酒" },
+        { "name": "Pink/Blue/White Lady", "desc": "金酒、橙皮甜酒、青柠汁、红石榴糖浆" },
+        { "name": "Tequila Sunrise", "desc": "龙舌兰、橙汁、红石榴糖浆" }
+      ],
+      "refreshing": [
+        { "name": "Calipso", "desc": "芒果汁、菠萝汁、百香果糖浆", "price": "60K" },
+        { "name": "Basil Spritzer", "desc": "罗勒叶、香茅汁、鲜青柠、苏打水", "price": "60K" },
+        { "name": "Shirley Temple", "desc": "草莓、薄荷叶、鲜青柠、通宁水、樱桃水", "price": "60K" },
+        { "name": "Lemon Nana", "desc": "柠檬汁、薄荷叶、薄荷绿糖浆、苏打水", "price": "60K" },
+        { "name": "Melon Fantasy", "desc": "新鲜水果丁、橙汁、蜜瓜糖浆、芬达红", "price": "60K" },
+        { "name": "Virgin Mojito", "desc": "薄荷叶、鲜青柠、苏打水", "price": "60K" },
+        { "name": "Virgin Colada", "desc": "菠萝汁、椰浆、糖浆", "price": "60K" },
+        { "name": "Queencheer's", "desc": "鲜柠檬汁、柠檬水,可搭配您喜爱的果泥:草莓或芒果", "price": "55K" },
+        { "name": "Lemon Up", "desc": "鲜柠檬汁、柠檬水,粉色/蓝色/黄色可选", "price": "55K" },
+        { "name": "Squash", "desc": "柠檬/青柠/橙汁", "price": "35K" }
+      ],
+      "wellness": [
+        { "name": "Green Detox", "desc": "芥菜、菠萝、青柠汁、蜂蜜", "price": "65K" },
+        { "name": "Red Booster", "desc": "番茄、橙汁、青柠汁、蜂蜜", "price": "65K" },
+        { "name": "Yellow Antioxidant", "desc": "黄瓜、橙汁、菠萝汁、青柠汁、蜂蜜", "price": "65K" },
+        { "name": "Healthy Orange", "desc": "胡萝卜汁、橙汁、青柠汁、蜂蜜", "price": "65K" },
+        { "name": "Jamu Sinom", "desc": "姜黄、红糖、罗望子", "price": "65K" }
+      ],
+      "juice": [
+        { "name": "西瓜汁", "price": "50K" },
+        { "name": "菠萝汁", "price": "50K" },
+        { "name": "香蕉汁", "price": "50K" },
+        { "name": "木瓜汁", "price": "50K" },
+        { "name": "橙汁", "price": "50K" },
+        { "name": "什锦果汁", "price": "50K" }
+      ],
+      "beers": [
+        { "name": "Singaraja", "price": "30K" },
+        { "name": "Prost Pilsner", "price": "35K" },
+        { "name": "Prost Lager", "price": "35K" },
+        { "name": "Albens Apple Cider", "price": "60K" },
+        { "name": "Large Bintang", "price": "65K" },
+        { "name": "Small Bintang", "price": "40K" },
+        { "name": "Large Heineken", "price": "70K" },
+        { "name": "Small Heineken", "price": "45K" },
+        { "name": "Tower Bintang", "price": "195K" },
+        { "name": "Tower Heineken", "price": "210K" }
+      ],
+      "teaCoffee": [
+        { "name": "巴厘咖啡", "price": "25K" },
+        { "name": "热/冰红茶", "price": "25K" },
+        { "name": "荔枝茶", "price": "35K" },
+        { "name": "百香果茶", "price": "35K" },
+        { "name": "香茅茶", "price": "35K" },
+        { "name": "薄荷姜茶", "price": "30K" }
+      ],
+      "softDrinks": [
+        { "name": "可乐", "price": "20K" },
+        { "name": "无糖可乐", "price": "20K" },
+        { "name": "雪碧", "price": "20K" },
+        { "name": "芬达", "price": "20K" },
+        { "name": "汤力水", "price": "20K" },
+        { "name": "苏打水", "price": "20K" },
+        { "name": "矿泉水", "price": "25K" },
+        { "name": "气泡水", "price": "35K" }
+      ],
+      "milkshakes": [
+        { "name": "香草奶昔", "price": "55K" },
+        { "name": "巧克力奶昔", "price": "55K" },
+        { "name": "草莓奶昔", "price": "55K" },
+        { "name": "香蕉奶昔", "price": "55K" }
+      ],
+      "premiumSpirit": [
+        { "name": "Gin", "desc": "Gordon London Dry Gin" },
+        { "name": "Vodka", "desc": "Smirnoff" },
+        { "name": "Rum", "desc": "Bacardi, Saint James White" },
+        { "name": "Tequila", "desc": "Jose Quervo" }
+      ],
+      "localSpirit": [
+        { "name": "Spiced Arak", "desc": "Sajeng Patala", "price": "70K" },
+        { "name": "Spiced Premium Arak", "desc": "Arak Bumbung", "price": "80K" },
+        { "name": "Arak Dewi", "price": "50K" }
+      ],
+      "whiskeyPremium": [
+        { "name": "Scotch Whiskey", "desc": "Red Label, Label 5" },
+        { "name": "American Whiskey", "desc": "Jack Daniel, Jim Beam" },
+        { "name": "Irish Whiskey" }
+      ],
+      "whiskeyLocal": [
+        { "name": "Gilbeys Whiskey" },
+        { "name": "Omrach Whiskey" },
+        { "name": "Vibe Whiskey" }
+      ]
+    },
+    "wine": {
+      "localWhiteWine": [
+        { "name": "Hatten Aga White", "glass": "65K", "bottle": "240K" },
+        { "name": "Two Island Sauvignon Blanc", "glass": "85K", "bottle": "350K" },
+        { "name": "Two Island Chardonnay", "glass": "85K", "bottle": "350K" },
+        { "name": "Two Island Pinot Grigio", "glass": "85K", "bottle": "350K" },
+        { "name": "Plaga Sauvignon Blanc", "glass": "80K", "bottle": "330K" },
+        { "name": "Sababay White Velvet", "glass": "75K", "bottle": "270K" },
+        { "name": "Cape Discovery Sauvignon Blanc", "glass": "65K", "bottle": "270K" }
+      ],
+      "localRedWine": [
+        { "name": "Hatten Aga Red", "glass": "75K", "bottle": "240K" },
+        { "name": "Two Island Cabernet Merlot", "glass": "85K", "bottle": "350K" },
+        { "name": "Two Island Shiraz", "glass": "85K", "bottle": "350K" },
+        { "name": "Plaga Cabernet Merlot", "glass": "80K", "bottle": "330K" },
+        { "name": "Plaga Cabernet Sauvignon", "glass": "80K", "bottle": "330K" },
+        { "name": "Sababay Black Velvet", "glass": "75K", "bottle": "270K" },
+        { "name": "Cape Discovery Shiraz/Cabernet Merlot", "glass": "75K", "bottle": "270K" }
+      ],
+      "localRoseWine": [
+        { "name": "Hatten Aga Rose", "glass": "65K", "bottle": "240K" },
+        { "name": "Two Island Rose", "glass": "85K", "bottle": "350K" },
+        { "name": "Plaga Rose", "glass": "80K", "bottle": "330K" },
+        { "name": "Sababay Pink Blossom", "glass": "75K", "bottle": "270K" },
+        { "name": "Cape Discovery Rose", "glass": "65K", "bottle": "270K" }
+      ],
+      "localSparklingWine": [
+        { "name": "Hatten Tunjung", "bottle": "350K" },
+        { "name": "Two Island Pinot Noir Chardonnay", "bottle": "490K" },
+        { "name": "Cape Discovery Cuvee Bruth", "bottle": "450K" }
+      ],
+      "importedWhiteWine": [
+        { "name": "Tall Horse (South Africa)", "bottle": "385K" },
+        { "name": "Douglas Green (South Africa)", "bottle": "415K" },
+        { "name": "Conosur (Chile)", "bottle": "385K" },
+        { "name": "McPherson (Australia)", "bottle": "450K" },
+        { "name": "Milton Park (Australia)", "bottle": "405K" },
+        { "name": "Mi Terruno (Argentina)", "bottle": "435K" },
+        { "name": "Estimulo (Argentina)", "bottle": "400K" },
+        { "name": "Il Fumo (Italy)", "bottle": "490K" }
+      ],
+      "importedRedWine": [
+        { "name": "Tall Horse (South Africa)", "bottle": "385K" },
+        { "name": "Douglas Green (South Africa)", "bottle": "415K" },
+        { "name": "Conosur (Chile)", "bottle": "385K" },
+        { "name": "McPherson (Australia)", "bottle": "450K" },
+        { "name": "Milton Park (Australia)", "bottle": "405K" },
+        { "name": "McGuigan (Australia)", "bottle": "425K" },
+        { "name": "Mi Terruno (Argentina)", "bottle": "435K" },
+        { "name": "Estimulo (Argentina)", "bottle": "400K" },
+        { "name": "Il Fumo (Italy)", "bottle": "490K" }
+      ],
+      "importedRoseWine": [
+        { "name": "Tall Horse (South Africa)", "bottle": "385K" },
+        { "name": "La La Land Rose (Australia)", "bottle": "450K" },
+        { "name": "Mi Terruno Rose (Argentina)", "bottle": "435K" }
+      ],
+      "importedSparklingWine": [
+        { "name": "Batasiolo (Italy)", "bottle": "550K" },
+        { "name": "Corte Giara (Italy)", "bottle": "505K" }
+      ]
+    }
+  },
+  "balineseBuffet": {
+    "heroTitle": "巴厘岛团体自助晚餐菜单",
+    "priceLine": "巴厘自助餐 | 每位起价 IDR 300K",
+    "mainCoursesHeading": "主菜",
+    "starters": [
+      {
+        "title": "开胃菜",
+        "instruction": "请从以下选择2道菜:",
+        "options": [
+          "Lawar Bungkak(巴厘岛嫩椰沙拉)",
+          "Urab Pakis(巴厘蕨菜沙拉)",
+          "Urab Sayur(什锦蔬菜配椰丝酱)",
+          "Ayam Pelalah(手撕鸡胸配参巴辣酱)",
+          "Lawar Kacang Panjang(长豆鸡肉末沙拉)",
+          "Plecing Gonda"
+        ]
+      },
+      {
+        "title": "汤品",
+        "instruction": "请从以下选择1道菜:",
+        "options": ["Cramcam Ayam(巴厘鸡肉末汤)", "Soup Kacang Merah(红豆汤)"]
+      }
+    ],
+    "mainCourses": [
+      {
+        "title": "海鲜",
+        "instruction": "请从以下选择1道菜:",
+        "options": [
+          "Seafood Bumbu Merah(虾、鱿鱼及鱼肉炒巴厘番茄辣酱)",
+          "Ikan Sambal Matah(烤鬼头刀鱼柳配参巴酱)",
+          "Sate Lilit Ikan(鱼肉沙嗲)"
+        ]
+      },
+      {
+        "title": "鸡肉",
+        "instruction": "请从以下选择2道菜:",
+        "options": [
+          "Ayam Bakar Bumbu Kuning(黄姜香料烤去骨鸡腿)",
+          "Ayam Betutu(巴度香料鸡)",
+          "Serosob Ayam(椰浆炖去骨鸡腿)",
+          "Sate Lilit Ayam(鸡肉沙嗲)",
+          "Sate Tusuk Ayam(鸡肉串烧)"
+        ]
+      },
+      {
+        "title": "蔬菜与面条",
+        "instruction": "请从以下选择1道菜:",
+        "options": ["咖喱蔬菜", "Mie Goreng Sayur(蔬菜炒面)", "Bihun Goreng(炒米粉)"]
+      },
+      {
+        "title": "米饭",
+        "instruction": "请从以下选择1道菜:",
+        "options": [
+          "Nasi Goreng Raja Bali(鸡肉蔬菜炒饭)",
+          "Nasi Goreng Ayam(鸡肉蔬菜炒饭)",
+          "Nasi Putih(白饭)",
+          "Nasi Kuning(黄姜香米饭)"
+        ]
+      },
+      {
+        "title": "甜点",
+        "instruction": "请从以下选择2道菜:",
+        "options": [
+          "Aneka Jajan Pasar(巴厘特色糕点拼盘)",
+          "水果拼盘(西瓜及木瓜)",
+          "Es Buah(印尼水果冰)",
+          "Pisang Goreng(炸香蕉)",
+          "巧克力布丁"
+        ]
+      },
+      { "title": "饮料", "options": ["果味水", "冰红茶"] }
+    ]
+  },
+  "westernAsianBuffet": {
+    "heroTitle": "西式亚洲团体自助晚餐菜单",
+    "priceLine": "西式亚洲自助餐 | 每位起价 IDR 350K",
+    "mainCoursesHeading": "主菜",
+    "starters": [
+      {
+        "title": "开胃菜",
+        "instruction": "请从以下选择2道菜:",
+        "options": [
+          "田园沙拉配油醋汁",
+          "泰式牛肉沙拉",
+          "凯撒沙拉",
+          "经典土豆沙拉",
+          "什锦水果沙拉配酸奶"
+        ]
+      },
+      {
+        "title": "汤品",
+        "instruction": "请从以下选择1道菜:",
+        "options": [
+          "冬阴功汤(泰式酸辣海鲜汤)",
+          "鸡肉蔬菜汤",
+          "土豆韭葱汤",
+          "南瓜浓汤",
+          "红豆汤"
+        ]
+      }
+    ],
+    "mainCourses": [
+      {
+        "title": "海鲜",
+        "instruction": "请从以下选择1道菜:",
+        "options": [
+          "海鲜咖喱(虾、鱿鱼及鱼肉炒咖喱酱)",
+          "烤鱼柳配辣椒酱",
+          "炸鱼柳配糖醋酱",
+          "香煎鬼头刀鱼柳配参巴酱"
+        ]
+      },
+      {
+        "title": "鸡肉",
+        "instruction": "请从以下选择1道菜:",
+        "options": [
+          "烤去骨鸡腿配蜂蜜辣椒酱",
+          "Serosob Ayam(巴厘风味炖去骨鸡腿)",
+          "鸡肉丸配番茄罗勒酱"
+        ]
+      },
+      {
+        "title": "牛肉",
+        "instruction": "请从以下选择1道菜:",
+        "options": ["仁当牛肉", "黑椒牛肉", "牛肉丸配番茄罗勒酱"]
+      },
+      {
+        "title": "蔬菜",
+        "instruction": "请从以下选择1道菜:",
+        "options": [
+          "蚝油小白菜",
+          "黄油蒜香炒时蔬",
+          "Terong Balado(辣椒酱炒茄子)",
+          "蚝油炒什锦蔬菜",
+          "Tofu Cah Sayuran(什锦蔬菜炒豆腐)"
+        ]
+      },
+      {
+        "title": "面条与意面",
+        "instruction": "请从以下选择1道菜:",
+        "options": [
+          "Mie Goreng Seafood(海鲜蔬菜炒面)",
+          "Mie Goreng Sayur(素食蔬菜炒面)",
+          "Bihun Goreng(鸡肉蔬菜炒米粉)",
+          "番茄酱意大利面"
+        ]
+      },
+      {
+        "title": "米饭",
+        "instruction": "请从以下选择1道菜:",
+        "options": ["Nasi Goreng(鸡肉蔬菜炒饭)", "白饭", "黄姜香米饭"]
+      },
+      {
+        "title": "甜点",
+        "instruction": "请从以下选择2道菜:",
+        "options": ["巴厘特色糕点拼盘", "时令水果", "巧克力布朗尼"]
+      },
+      {
+        "title": "饮料",
+        "instruction": "请从以下选择1道菜:",
+        "options": ["Ice Kelapa Muda(冰镇椰子水)", "果味水", "冰红茶", "橙汁"]
+      }
+    ]
   }
 }
