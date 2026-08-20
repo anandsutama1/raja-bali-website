@@ -8,11 +8,11 @@ import Reveal from "./motion/Reveal";
 // redirects, just a scoped widget renderer), and it's loaded lazily so it
 // can't block or delay the rest of the page. If it ever misbehaves, revert
 // to a static "View on Instagram" link like before.
-export default function InstagramGrid() {
+export default function InstagramGrid({ content }) {
   return (
     <section className="border-t border-gray-200 px-6 py-20">
       <Reveal as="h2" className="mb-10 text-center font-serif text-3xl">
-        Instagram
+        {content.heading}
       </Reveal>
 
       <div className="mx-auto max-w-5xl">

@@ -1,19 +1,19 @@
 import Image from "next/image";
-import Link from "next/link";
 import Reveal from "./motion/Reveal";
 import Stagger from "./motion/Stagger";
+import LocalizedLink from "./LocalizedLink";
 
-const menus = [
-  { title: "Beverage Menu", href: "/menu/beverage", image: "/images/home/Beverage-Menu.jpg" },
-  { title: "Food Menu", href: "/menu/food", image: "/images/home/Food-Menu.jpg" },
-  { title: "Group Menu", href: "/group-reservation", image: "/images/home/Group-Menu.jpg" },
-];
+export default function Menus({ content }) {
+  const menus = [
+    { title: content.items.beverage, href: "/menu/beverage", image: "/images/home/Beverage-Menu.jpg" },
+    { title: content.items.food, href: "/menu/food", image: "/images/home/Food-Menu.jpg" },
+    { title: content.items.group, href: "/group-reservation", image: "/images/home/Group-Menu.jpg" },
+  ];
 
-export default function Menus() {
   return (
     <section className="border-t border-gray-200 px-6 py-20 md:py-24">
       <Reveal as="h2" className="mb-12 text-center font-serif text-3xl">
-        Explore the menus.
+        {content.heading}
       </Reveal>
 
       <Stagger
@@ -22,7 +22,7 @@ export default function Menus() {
         itemClassName="h-full"
       >
         {menus.map((menu) => (
-          <Link
+          <LocalizedLink
             key={menu.href}
             href={menu.href}
             className="group u-lift flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
@@ -44,7 +44,7 @@ export default function Menus() {
                 →
               </span>
             </span>
-          </Link>
+          </LocalizedLink>
         ))}
       </Stagger>
     </section>

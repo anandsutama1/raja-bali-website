@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import Parallax from "./motion/Parallax";
+import LocalizedLink from "./LocalizedLink";
 
-export default function Hero() {
+export default function Hero({ content }) {
   return (
     <section className="relative h-[100svh] min-h-[560px] overflow-hidden bg-raja-black text-white">
       {/* Backdrop drifts slower than the page, which is what sells the depth. */}
@@ -26,7 +26,7 @@ export default function Hero() {
             instead of fading in after a delay. Everything below it still
             gets the usual animate-rise treatment. */}
         <p className="mb-6 text-[0.7rem] uppercase tracking-[0.35em] text-raja-red sm:text-xs">
-          A premier destination for authentic Balinese cuisine
+          {content.eyebrow}
         </p>
 
         <h1>
@@ -35,9 +35,7 @@ export default function Hero() {
               understand what this page (and site) is about — an image alt
               attribute alone is a weaker signal for the page's single
               highest-weight heading. */}
-          <span className="sr-only">
-            Raja Bali, Authentic Balinese Restaurant in Nusa Dua, Bali
-          </span>
+          <span className="sr-only">{content.srHeading}</span>
           <Image
             src="/images/home/Hero-RajaBali.png"
             alt="Raja Bali"
@@ -53,43 +51,39 @@ export default function Hero() {
           className="animate-rise mt-6 max-w-2xl text-sm leading-relaxed text-gray-200 sm:text-base"
           style={{ animationDelay: "120ms" }}
         >
-          A premier destination for authentic Balinese cuisine in the heart
-          of Nusa Dua, where time-honored recipes meet heartfelt hospitality.
-          Celebrated globally for culinary excellence, we invite you to
-          savor the rich traditions and vibrant flavors that have made Bali
-          a beloved destination for travelers around the world.
+          {content.body}
         </p>
 
         <div
           className="animate-rise mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4"
           style={{ animationDelay: "240ms" }}
         >
-          <Link
+          <LocalizedLink
             href="/outlets"
             className="u-press bg-white px-8 py-3 text-sm tracking-widest text-raja-black hover:bg-raja-red hover:text-white"
           >
-            RESERVE TABLE
-          </Link>
-          <Link
+            {content.reserveTable}
+          </LocalizedLink>
+          <LocalizedLink
             href="/menu/food"
             className="u-press border border-white/40 px-8 py-3 text-sm tracking-widest hover:border-white hover:bg-white/10"
           >
-            VIEW MENU
-          </Link>
+            {content.viewMenu}
+          </LocalizedLink>
         </div>
       </div>
 
       {/* Positioning lives on the wrapper so the entrance and idle animations
           each own a transform without fighting the centring. */}
       <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
-        <Link
+        <a
           href="#welcome"
-          aria-label="Scroll to content"
+          aria-label={content.scrollAria}
           className="animate-rise block p-2"
           style={{ animationDelay: "700ms" }}
         >
           <span className="animate-cue block h-10 w-px bg-gradient-to-b from-white/0 via-white/70 to-white/0" />
-        </Link>
+        </a>
       </div>
     </section>
   );

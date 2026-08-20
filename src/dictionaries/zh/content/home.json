@@ -1,1 +1,95 @@
-{}
+{
+  "hero": {
+    "srHeading": "Raja Bali,努沙杜瓦正宗巴厘岛餐厅",
+    "eyebrow": "巴厘岛正宗美食的首选目的地",
+    "body": "坐落于努沙杜瓦中心地带的巴厘岛正宗美食殿堂,传承食谱与真诚待客之道完美融合。凭借卓越的美食享誉全球,我们诚邀您品味让巴厘岛成为世界旅人挚爱之地的丰富传统与浓郁风味。",
+    "reserveTable": "预订餐桌",
+    "viewMenu": "查看菜单",
+    "scrollAria": "向下滚动"
+  },
+  "welcome": {
+    "headingPrefix": "欢迎光临 ",
+    "headingAccent": "Raja Bali",
+    "body": "Raja Bali 凭借真正出色的巴厘岛美食建立了良好口碑,多年来获得世界各地旅客的一致好评。我们将巴厘岛的文化传承与真诚温暖的待客之道相融合,每一道菜都承载着世代相传的食谱。",
+    "reserveTable": "预订餐桌",
+    "planEvent": "策划活动"
+  },
+  "menus": {
+    "heading": "探索我们的菜单",
+    "items": {
+      "beverage": "饮品菜单",
+      "food": "餐食菜单",
+      "group": "团体菜单"
+    }
+  },
+  "activities": {
+    "headingPrefix": "我们的",
+    "headingAccent": "特色活动",
+    "items": [
+      {
+        "badge": "最受欢迎",
+        "title": "巴厘岛烹饪课程",
+        "desc": "跟随经验丰富的本地厨师亲手学习正宗巴厘岛烹饪,从我们每日使用的香料到世代相传的食谱。",
+        "cta": "立即预订",
+        "href": "/cooking-class"
+      },
+      {
+        "badge": "每周四免费",
+        "title": "巴厘岛舞蹈表演",
+        "desc": "每周四晚上在 Raja Bali Nusa Dua(主餐厅)观赏免费的传统巴厘岛舞蹈表演,音乐、舞姿与百年传统完美交融。",
+        "cta": "查看详情",
+        "href": "/dance"
+      },
+      {
+        "badge": "名额有限",
+        "title": "巴厘岛调酒课程",
+        "desc": "走进吧台,跟随我们的调酒师学习使用新鲜热带食材调制鸡尾酒,从经典岛屿风味到我们的招牌特调。",
+        "cta": "立即预订",
+        "href": "/bar-class"
+      }
+    ]
+  },
+  "hotelTransfer": {
+    "heading": "免费酒店接送",
+    "body": "从踏出酒店的那一刻起,便开启您的 Raja Bali 之旅。我们很高兴为入住努沙杜瓦地区的客人提供免费往返接送服务。",
+    "cta": "立即预订"
+  },
+  "venueRental": {
+    "heading": "场地租赁与私人活动",
+    "body": "正在筹划一场亲密聚会、商务晚宴或婚礼喜宴?Raja Bali 餐厅在巴厘岛中心地带,为人生中最重要的时刻提供绝美场地。",
+    "cta": "联系我们"
+  },
+  "recognition": {
+    "headingPrefix": "Raja Bali ",
+    "headingAccent": "荣誉认证",
+    "ratingGoogleSuffix": "435条Google评论",
+    "ratingTripadvisorSuffix": "优秀,1,381条Tripadvisor评论",
+    "intro": "Raja Bali 餐厅连续五年荣获 Tripadvisor 旅行者之选大奖,跻身全球前10%的优秀餐厅之列。加上我们的携程认证证书,这些荣誉是我们由衷自豪的肯定,也是我们对每一道菜、每一位客人用心以待的真实写照。",
+    "viewOnTripadvisor": "在Tripadvisor上查看",
+    "businessName": "Raja Bali 餐厅",
+    "awards": [
+      { "theme": "ctrip", "title": "携程美食林 2018", "desc": "携程认证:始终如一的美味佳肴与真诚待客之道。" },
+      { "theme": "ctrip", "title": "携程美食林 2019", "desc": "携程认证:始终如一的美味佳肴与真诚待客之道。" },
+      { "theme": "tripadvisor", "title": "Tripadvisor 旅行者之选大奖 2024", "desc": "数百万Tripadvisor旅行者的评价,使该奖项获得者跻身全球前10%。" },
+      { "theme": "tripadvisor", "title": "Tripadvisor 旅行者之选大奖 2025", "desc": "数百万Tripadvisor旅行者的评价,使该奖项获得者跻身全球前10%。" },
+      { "theme": "tripadvisor", "title": "Tripadvisor 旅行者之选大奖 2026", "desc": "数百万Tripadvisor旅行者的评价,使该奖项获得者跻身全球前10%。" }
+    ]
+  },
+  "testimonials": {
+    "heading": "值得分享的用餐体验",
+    "subheading": "宾客评价",
+    "intro": "多年来,Raja Bali 餐厅以正宗巴厘岛美食、真诚待客之道和难忘的用餐体验,迎接来自世界各地的旅客。数千条宾客评价见证了我们传统风味的丰富、服务的温暖,以及捕捉巴厘岛真正精神的宁静氛围。每一次光临都经过精心打造,只为留下持久的美好回忆,让 Raja Bali 成为卓越美食与真诚巴厘待客之道完美交融的目的地。",
+    "leaveGoogleReview": "撰写Google评论",
+    "reserveTable": "预订餐桌",
+    "planEvent": "策划活动"
+  },
+  "instagram": {
+    "heading": "Instagram"
+  },
+  "promoTicker": [
+    "连续5年荣获Tripadvisor旅行者之选大奖",
+    "每周四免费巴厘岛舞蹈表演(仅限主餐厅)",
+    "免费酒店接送服务",
+    "携程美食林认证"
+  ]
+}

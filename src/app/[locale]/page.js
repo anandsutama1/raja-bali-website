@@ -20,23 +20,24 @@ export async function generateMetadata({ params }) {
 
 export default async function Home({ params }) {
   const { locale } = await params;
-  const [faqs, common] = await Promise.all([
+  const [faqs, common, home] = await Promise.all([
     getDictionary(locale, "faqs"),
     getDictionary(locale, "common"),
+    getDictionary(locale, "content-home"),
   ]);
 
   return (
     <main>
-      <Hero />
-      <PromoTicker className="mt-10 md:mt-14" />
-      <Welcome />
-      <Recognition />
-      <Menus />
-      <Activities />
-      <HotelTransfer />
-      <VenueRental />
-      <InstagramGrid />
-      <Testimonials />
+      <Hero content={home.hero} />
+      <PromoTicker items={home.promoTicker} className="mt-10 md:mt-14" />
+      <Welcome content={home.welcome} />
+      <Recognition content={home.recognition} />
+      <Menus content={home.menus} />
+      <Activities content={home.activities} />
+      <HotelTransfer content={home.hotelTransfer} />
+      <VenueRental content={home.venueRental} />
+      <InstagramGrid content={home.instagram} />
+      <Testimonials content={home.testimonials} />
       <FAQ faqs={faqs.home} heading={common.homeFaqHeading} subheading={common.faqSubheading} />
       <StickyReserveButton />
     </main>

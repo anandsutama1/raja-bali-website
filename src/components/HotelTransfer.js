@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import Reveal from "./motion/Reveal";
 import Parallax from "./motion/Parallax";
+import LocalizedLink from "./LocalizedLink";
 
-export default function HotelTransfer() {
+export default function HotelTransfer({ content }) {
   return (
     <section className="mx-auto flex max-w-5xl flex-col items-center gap-10 border-t border-gray-200 px-6 py-16 md:flex-row md:py-20">
       <Reveal x={-36} y={12} className="group w-full md:w-1/2">
@@ -22,20 +22,18 @@ export default function HotelTransfer() {
 
       <Reveal x={36} y={12} delay={120} className="w-full border-l-4 border-raja-red pl-6 md:w-1/2">
         <h2 className="mb-4 font-serif text-2xl md:text-3xl">
-          Complimentary Hotel Transfer
+          {content.heading}
         </h2>
         <p className="mb-6 leading-relaxed text-gray-600">
-          Begin your Raja Bali experience the moment you leave your hotel. We
-          are delighted to offer complimentary round-trip transfers for guests
-          staying within the Nusa Dua area.
+          {content.body}
         </p>
-        <Link
+        <LocalizedLink
           href="/contact"
           className="u-press group inline-flex items-center gap-2 rounded bg-raja-black px-6 py-3 text-sm tracking-widest text-white hover:bg-raja-red"
         >
-          RESERVE NOW
+          {content.cta}
           <span className="u-nudge">→</span>
-        </Link>
+        </LocalizedLink>
       </Reveal>
     </section>
   );

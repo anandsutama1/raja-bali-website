@@ -1,9 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
 import Reveal from "./motion/Reveal";
 import Marquee from "./motion/Marquee";
+import LocalizedLink from "./LocalizedLink";
 import { LOCATIONS } from "@/lib/site";
 
+// Real guest reviews, quoted verbatim — kept in their original English
+// regardless of site locale (translating someone's direct quote would
+// misrepresent what they actually wrote).
 const reviews = [
   { name: "Trix39", title: "Don't miss this dining experience", text: "We had a fabulous meal at Raja's Bali. The food was honest to goodness Balinese food. Fresh, delicious.", avatar: "/images/home/Review1.png" },
   { name: "E B", title: "Delicious and interactive", text: "We participated in a Balinese cooking class in this restaurant. We loved the teaching, the accompaniment, and the final tasting.", avatar: "/images/home/Review2.png" },
@@ -30,7 +33,7 @@ function ReviewCard({ review }) {
   );
 }
 
-export default function Testimonials() {
+export default function Testimonials({ content }) {
   // Google Business Profile share link, provided directly by the business
   // (LOCATIONS[0] = Main Restaurant) — see src/lib/site.js for the source note.
   const googleReviewUrl = LOCATIONS[0].hasMap;
@@ -38,10 +41,10 @@ export default function Testimonials() {
   return (
     <section className="overflow-hidden border-t border-gray-200 py-20 md:py-24">
       <Reveal as="h2" className="mb-2 px-6 text-center font-serif text-3xl">
-        An Experience Worth Sharing
+        {content.heading}
       </Reveal>
       <Reveal as="p" delay={90} className="mb-6 px-6 text-center text-raja-red">
-        What Our Guests Say
+        {content.subheading}
       </Reveal>
 
       <div className="px-6">
@@ -50,14 +53,7 @@ export default function Testimonials() {
           delay={130}
           className="mx-auto mb-12 max-w-2xl border-l-4 border-raja-red pl-6 text-left text-sm leading-relaxed text-gray-600"
         >
-          For years, Raja Bali Restaurant has welcomed travelers from around
-          the globe with authentic Balinese cuisine, heartfelt hospitality,
-          and unforgettable dining experiences. Thousands of guest reviews
-          celebrate the richness of our traditional flavors, the warmth of
-          our service, and the tranquil atmosphere that captures the true
-          spirit of Bali. Every visit is thoughtfully crafted to leave
-          lasting memories, making Raja Bali a destination where exceptional
-          dining and genuine Balinese hospitality come together.
+          {content.intro}
         </Reveal>
       </div>
 
@@ -81,7 +77,7 @@ export default function Testimonials() {
             rel="noopener noreferrer"
             className="u-link text-sm text-raja-red"
           >
-            Leave a Google Review
+            {content.leaveGoogleReview}
           </a>
         </Reveal>
       )}
@@ -90,18 +86,18 @@ export default function Testimonials() {
         delay={120}
         className="flex flex-col justify-center gap-3 px-6 sm:flex-row sm:gap-4"
       >
-        <Link
+        <LocalizedLink
           href="/outlets"
           className="u-press bg-raja-black px-8 py-3 text-center text-sm tracking-widest text-white hover:bg-raja-red"
         >
-          RESERVE TABLE
-        </Link>
-        <Link
+          {content.reserveTable}
+        </LocalizedLink>
+        <LocalizedLink
           href="/private-events"
           className="u-press border border-raja-black px-8 py-3 text-center text-sm tracking-widest hover:border-raja-red hover:text-raja-red"
         >
-          PLAN AN EVENT
-        </Link>
+          {content.planEvent}
+        </LocalizedLink>
       </Reveal>
     </section>
   );

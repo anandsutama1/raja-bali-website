@@ -1,1 +1,95 @@
-{}
+{
+  "hero": {
+    "srHeading": "Raja Bali, Authentic Balinese Restaurant in Nusa Dua, Bali",
+    "eyebrow": "A premier destination for authentic Balinese cuisine",
+    "body": "A premier destination for authentic Balinese cuisine in the heart of Nusa Dua, where time-honored recipes meet heartfelt hospitality. Celebrated globally for culinary excellence, we invite you to savor the rich traditions and vibrant flavors that have made Bali a beloved destination for travelers around the world.",
+    "reserveTable": "RESERVE TABLE",
+    "viewMenu": "VIEW MENU",
+    "scrollAria": "Scroll to content"
+  },
+  "welcome": {
+    "headingPrefix": "Welcome to ",
+    "headingAccent": "Raja Bali",
+    "body": "Raja Bali has built its reputation on genuinely great Balinese food, backed by years of strong reviews from travelers around the world. We bring together Bali's cultural heritage and warm, personal hospitality, with every dish drawing on recipes passed down through generations.",
+    "reserveTable": "RESERVE TABLE",
+    "planEvent": "PLAN AN EVENT"
+  },
+  "menus": {
+    "heading": "Explore the menus.",
+    "items": {
+      "beverage": "Beverage Menu",
+      "food": "Food Menu",
+      "group": "Group Menu"
+    }
+  },
+  "activities": {
+    "headingPrefix": "Our ",
+    "headingAccent": "Activities",
+    "items": [
+      {
+        "badge": "Most Popular",
+        "title": "Balinese Cooking Class",
+        "desc": "Learn authentic Balinese cooking hands-on with our experienced local chefs, from the spices we use every day to recipes passed down through generations.",
+        "cta": "Book Now",
+        "href": "/cooking-class"
+      },
+      {
+        "badge": "Free Every Thursday",
+        "title": "Balinese Dance Performance",
+        "desc": "Watch a complimentary traditional Balinese dance performance every Thursday evening at Raja Bali Nusa Dua (Main Restaurant), a beautiful mix of music, movement, and centuries-old tradition.",
+        "cta": "View Details",
+        "href": "/dance"
+      },
+      {
+        "badge": "Limited Slot",
+        "title": "Balinese Cocktail Class",
+        "desc": "Step behind the bar with our bartenders and learn to mix cocktails using fresh tropical ingredients, from island classics to our own signature creations.",
+        "cta": "Book Now",
+        "href": "/bar-class"
+      }
+    ]
+  },
+  "hotelTransfer": {
+    "heading": "Complimentary Hotel Transfer",
+    "body": "Begin your Raja Bali experience the moment you leave your hotel. We are delighted to offer complimentary round-trip transfers for guests staying within the Nusa Dua area.",
+    "cta": "RESERVE NOW"
+  },
+  "venueRental": {
+    "heading": "Venue Rental & Private Events",
+    "body": "Planning an intimate gathering, a corporate dinner, or a wedding reception? Raja Bali Restaurant offers a beautiful setting in the heart of Bali for life's most meaningful moments.",
+    "cta": "CONTACT US"
+  },
+  "recognition": {
+    "headingPrefix": "Raja Bali ",
+    "headingAccent": "Recognition",
+    "ratingGoogleSuffix": "from 435 Google Reviews",
+    "ratingTripadvisorSuffix": "Excellent, 1,381 Tripadvisor Reviews",
+    "intro": "Raja Bali Restaurant has won the Tripadvisor Travelers' Choice Award five years running, placing us among the top 10% of restaurants worldwide. Along with our Ctrip Certificate of Excellence, it's recognition we're genuinely proud of, and a reflection of the care we put into every dish and every guest's visit.",
+    "viewOnTripadvisor": "View on Tripadvisor",
+    "businessName": "Raja Bali Restaurant",
+    "awards": [
+      { "theme": "ctrip", "title": "Ctrip Gourmet List 2018", "desc": "Recognized by Ctrip for consistently great food and genuine hospitality." },
+      { "theme": "ctrip", "title": "Ctrip Gourmet List 2019", "desc": "Recognized by Ctrip for consistently great food and genuine hospitality." },
+      { "theme": "tripadvisor", "title": "Tripadvisor Travellers' Choice Awards 2024", "desc": "Reviews from millions of Tripadvisor travelers place this winner in the top 10% worldwide." },
+      { "theme": "tripadvisor", "title": "Tripadvisor Travellers' Choice Awards 2025", "desc": "Reviews from millions of Tripadvisor travelers place this winner in the top 10% worldwide." },
+      { "theme": "tripadvisor", "title": "Tripadvisor Travellers' Choice Awards 2026", "desc": "Reviews from millions of Tripadvisor travelers place this winner in the top 10% worldwide." }
+    ]
+  },
+  "testimonials": {
+    "heading": "An Experience Worth Sharing",
+    "subheading": "What Our Guests Say",
+    "intro": "For years, Raja Bali Restaurant has welcomed travelers from around the globe with authentic Balinese cuisine, heartfelt hospitality, and unforgettable dining experiences. Thousands of guest reviews celebrate the richness of our traditional flavors, the warmth of our service, and the tranquil atmosphere that captures the true spirit of Bali. Every visit is thoughtfully crafted to leave lasting memories, making Raja Bali a destination where exceptional dining and genuine Balinese hospitality come together.",
+    "leaveGoogleReview": "Leave a Google Review",
+    "reserveTable": "RESERVE TABLE",
+    "planEvent": "PLAN AN EVENT"
+  },
+  "instagram": {
+    "heading": "Instagram"
+  },
+  "promoTicker": [
+    "5x Tripadvisor Travelers' Choice Award",
+    "Free Balinese Dance Every Thursday (Main Restaurant)",
+    "Complimentary Hotel Transfer",
+    "Ctrip Gourmet List Certificate"
+  ]
+}
