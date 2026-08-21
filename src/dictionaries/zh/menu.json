@@ -83,6 +83,7 @@
     },
     "setMenus": [
       {
+        "id": "balinese-rijsttafel",
         "name": "巴厘岛盛宴套餐",
         "price": "IDR 550K(2人份)",
         "sections": [
@@ -93,7 +94,8 @@
         ]
       },
       {
-        "name": "皇家盛宴套餐",
+        "id": "raja-yasa",
+        "name": "Raja Yasa(皇家盛宴套餐)",
         "price": "IDR 1,100K(2人份)",
         "sections": [
           { "label": "开胃菜", "items": ["沙嗲鱼肉串", "参巴金枪鱼(配红葱头和香茅)"] },

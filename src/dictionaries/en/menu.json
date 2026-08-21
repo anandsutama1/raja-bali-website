@@ -83,6 +83,7 @@
     },
     "setMenus": [
       {
+        "id": "balinese-rijsttafel",
         "name": "Balinese Rijsttafel",
         "price": "IDR 550K (for two persons)",
         "sections": [
@@ -93,6 +94,7 @@
         ]
       },
       {
+        "id": "raja-yasa",
         "name": "Raja Yasa",
         "price": "IDR 1,100K (for two persons)",
         "sections": [

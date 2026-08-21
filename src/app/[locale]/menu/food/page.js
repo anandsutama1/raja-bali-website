@@ -97,8 +97,8 @@ export default async function FoodMenuPage({ params }) {
           <span className="text-raja-red">{food.setMenuHeadingAccent}</span>
           {food.setMenuHeadingSuffix}
         </h2>
-        {setMenus.map((set, index) => (
-          <SetMenuCard key={index} name={set.name} price={set.price} sections={set.sections} />
+        {setMenus.map((set) => (
+          <SetMenuCard key={set.id} id={set.id} name={set.name} price={set.price} sections={set.sections} />
         ))}
       </div>
 

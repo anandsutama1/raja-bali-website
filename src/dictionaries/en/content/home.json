@@ -14,6 +14,15 @@
     "reserveTable": "RESERVE TABLE",
     "planEvent": "PLAN AN EVENT"
   },
+  "signatureDish": {
+    "eyebrow": "Our Top-Tier Set Menu",
+    "heading": "Raja Yasa",
+    "tagline": "A Feast Fit for a King",
+    "story": "In Balinese tradition, Yasa is a sacred offering presented by a high priest at the close of a ritual procession — the moment his people gather to share a feast together. Raja, meaning king, gives this set menu its name: a feast prepared and served as if for royalty.",
+    "description": "Raja Yasa brings together the boldest flavors of the sea — grilled lobster, mahi-mahi, prawn, and squid — alongside chicken, beef, and lamb, each dish crafted from carefully selected ingredients and finished with Balinese herbs. Served with vegetables and a duet of yellow and white rice, it's our richest, most abundant set menu, made for two to share.",
+    "price": "IDR 1,100K for two persons",
+    "cta": "View Full Set Menu"
+  },
   "menus": {
     "heading": "Explore the menus.",
     "items": {

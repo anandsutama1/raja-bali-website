@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import PromoTicker from "@/components/PromoTicker";
 import Welcome from "@/components/Welcome";
+import SignatureDish from "@/components/SignatureDish";
 import Recognition from "@/components/Recognition";
 import Menus from "@/components/Menus";
 import Activities from "@/components/Activities";
@@ -31,6 +32,7 @@ export default async function Home({ params }) {
       <Hero content={home.hero} />
       <PromoTicker items={home.promoTicker} className="mt-10 md:mt-14" />
       <Welcome content={home.welcome} />
+      <SignatureDish content={home.signatureDish} />
       <Recognition content={home.recognition} />
       <Menus content={home.menus} />
       <Activities content={home.activities} />
