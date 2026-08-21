@@ -63,7 +63,7 @@ export default function MessageForm({ dict, common }) {
       <form className="space-y-4" onSubmit={handleSubmit}>
         <fieldset disabled={status === "submitting"} className="m-0 min-w-0 space-y-4 border-0 p-0">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <select value={fields.title} onChange={update("title")} aria-label={common.titlePlaceholder} className="border p-3 bg-white text-gray-700">
+            <select required value={fields.title} onChange={update("title")} aria-label={common.titlePlaceholder} className="border p-3 bg-white text-gray-700">
               <option value="">{common.titlePlaceholder}</option>
               {TITLES.map((t) => (
                 <option key={t} value={t}>
