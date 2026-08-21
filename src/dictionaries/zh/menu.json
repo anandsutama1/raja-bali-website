@@ -86,6 +86,9 @@
         "id": "raja-yasa",
         "name": "Raja Yasa(皇家盛宴套餐)",
         "price": "IDR 1,100K(2人份)",
+        "image": "/images/home/Raja-Yasa.jpg",
+        "imageAlt": "Raja Yasa,Raja Bali 的招牌海鲜套餐",
+        "description": "在巴厘传统中,\"Yasa\"意为祭司在庄严仪式尾声献上的神圣供品。那一刻,众人齐聚一堂,共享盛宴。\"Raja\"意为国王,因此这套餐得名\"Raja Yasa\",如同为国王精心准备呈现的盛宴。",
         "sections": [
           { "label": "开胃菜", "items": ["沙嗲鱼肉串", "参巴金枪鱼(配红葱头和香茅)"] },
           { "label": "汤品", "items": ["鱼汤(巴厘香草清鱼汤)"] },
@@ -97,6 +100,9 @@
         "id": "balinese-rijsttafel",
         "name": "巴厘岛盛宴套餐",
         "price": "IDR 550K(2人份)",
+        "image": "/images/menu/food-hero.jpg",
+        "imageAlt": "巴厘岛盛宴套餐,传统共享式套餐",
+        "description": "\"Rijsttafel\"(荷兰语意为\"米饭桌\")源自巴厘岛殖民时期多道菜肴同桌共享的饮食传统。我们的版本汇集了巴厘经典菜肴,从浓郁仁当牛肉到炭烤鲜虾,丰盛澎湃,专为两位宾客共享而设计。",
         "sections": [
           { "label": "开胃菜", "items": ["沙嗲鸡肉串(印尼香茅鸡肉沙嗲)", "参巴金枪鱼(配红葱头和香茅)"] },
           { "label": "汤品", "items": ["巴厘鸡汤"] },

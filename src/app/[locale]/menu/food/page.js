@@ -83,23 +83,34 @@ export default async function FoodMenuPage({ params }) {
       </section>
 
       <div className="max-w-5xl mx-auto border-t border-gray-200 py-16 px-6">
-        <MenuSection title={t.appetizer} items={appetizer} />
-        <MenuSection title={t.soup} items={soup} />
-        <MenuSection title={t.vegetarian} items={vegetarian} />
-        <MenuSection title={t.riceNoodles} items={riceNoodles} />
-        <MenuSection title={t.mainCourse} items={mainCourse} />
-        <MenuSection title={t.betutu} items={betutu} />
-        <MenuSection title={t.kidsMenu} items={kidsMenu} />
-        <MenuSection title={t.dessert} items={dessert} />
-
-        <h2 className="text-3xl font-serif text-center mb-10 mt-20">
+        <h2 className="text-3xl font-serif text-center mb-10">
           {food.setMenuHeadingPrefix}
           <span className="text-raja-red">{food.setMenuHeadingAccent}</span>
           {food.setMenuHeadingSuffix}
         </h2>
         {setMenus.map((set) => (
-          <SetMenuCard key={set.id} id={set.id} name={set.name} price={set.price} sections={set.sections} />
+          <SetMenuCard
+            key={set.id}
+            id={set.id}
+            name={set.name}
+            price={set.price}
+            image={set.image}
+            imageAlt={set.imageAlt}
+            description={set.description}
+            sections={set.sections}
+          />
         ))}
+
+        <div className="mt-16">
+          <MenuSection title={t.appetizer} items={appetizer} />
+          <MenuSection title={t.soup} items={soup} />
+          <MenuSection title={t.vegetarian} items={vegetarian} />
+          <MenuSection title={t.riceNoodles} items={riceNoodles} />
+          <MenuSection title={t.mainCourse} items={mainCourse} />
+          <MenuSection title={t.betutu} items={betutu} />
+          <MenuSection title={t.kidsMenu} items={kidsMenu} />
+          <MenuSection title={t.dessert} items={dessert} />
+        </div>
       </div>
 
       <StickyReserveButton href="/outlets" label={common.stickyReserve.table} />

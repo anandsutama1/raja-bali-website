@@ -86,6 +86,9 @@
         "id": "raja-yasa",
         "name": "Raja Yasa",
         "price": "IDR 1,100K (for two persons)",
+        "image": "/images/home/Raja-Yasa.jpg",
+        "imageAlt": "Raja Yasa, Raja Bali's signature seafood set menu",
+        "description": "In Balinese tradition, Yasa is a sacred offering presented by a high priest at the close of a ritual procession, the moment people gather to share a feast together. Raja, meaning king, gives this set menu its name, a feast of the sea's boldest flavors prepared and served as if for royalty.",
         "sections": [
           { "label": "Appetizer", "items": ["Sate Lilit Ikan (Minced fish satay)", "Tuna Sambal Matah (Tuna with shallot and lemongrass)"] },
           { "label": "Soup", "items": ["Fish Soup (Clear fish soup with Balinese herb)"] },
@@ -97,6 +100,9 @@
         "id": "balinese-rijsttafel",
         "name": "Balinese Rijsttafel",
         "price": "IDR 550K (for two persons)",
+        "image": "/images/menu/food-hero.jpg",
+        "imageAlt": "Balinese Rijsttafel, a traditional shared set menu",
+        "description": "Rijsttafel is Dutch for \"rice table,\" a tradition born from Bali's colonial-era custom of sharing many dishes at once. Our version brings together Balinese classics in one generous spread, from rich beef rendang to grilled prawn, made for two to share.",
         "sections": [
           { "label": "Appetizer", "items": ["Sate Lilit Ayam (Minced Chicken Satay)", "Tuna Sambal Matah (Tuna with shallot and lemongrass)"] },
           { "label": "Soup", "items": ["Soup Ayam (Balinese chicken soup)"] },
