@@ -172,11 +172,38 @@ function buildEmailHtml(formType, fields) {
       ? `<p style="margin:0 0 16px;padding:12px 14px;background:#fff4e5;border-left:3px solid #d97706;color:#7a4a00;font-size:14px;font-weight:700;">⚠ GUEST NEEDS PICKUP &mdash; see Hotel Name / Room Number below.</p>`
       : `<p style="margin:0 0 16px;padding:12px 14px;background:#f0f7f0;border-left:3px solid #4a8f4a;color:#2f5c2f;font-size:14px;font-weight:700;">✓ No pickup needed for this booking.</p>`;
 
+  // One-tap contact buttons — the actionable follow-up to the "don't reply"
+  // banner above: it says where NOT to respond, this is where TO respond.
+  // wa.me needs digits only, so the guest's stored "+62 812-..." gets the
+  // same treatment as the restaurant's own number in
+  // buildGuestConfirmationHtml. Either button is omitted if that field
+  // wasn't provided rather than linking to a broken destination.
+  const guestWhatsappDigits = fields.whatsapp ? fields.whatsapp.replace(/\D/g, "") : "";
+  const contactButtonsHtml =
+    guestWhatsappDigits || fields.email
+      ? `
+    <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 16px;">
+      <tr>
+        ${
+          guestWhatsappDigits
+            ? `<td style="padding-right:10px;"><a href="https://wa.me/${guestWhatsappDigits}" style="display:inline-block;padding:10px 18px;background:#25D366;color:#ffffff;font-size:13px;font-weight:700;text-decoration:none;border-radius:6px;">💬 WhatsApp Guest</a></td>`
+            : ""
+        }
+        ${
+          fields.email
+            ? `<td><a href="mailto:${fields.email}" style="display:inline-block;padding:10px 18px;background:#A31C1C;color:#ffffff;font-size:13px;font-weight:700;text-decoration:none;border-radius:6px;">✉️ Email Guest</a></td>`
+            : ""
+        }
+      </tr>
+    </table>`
+      : "";
+
   return `
     <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;">
       <h2 style="color:#A31C1C;margin-bottom:16px;">New ${label} Submission</h2>
       ${pickupNoteHtml}
       ${NO_REPLY_BANNER_HTML}
+      ${contactButtonsHtml}
       <table style="width:100%;border-collapse:collapse;border:1px solid #eee;">${rowsHtml}</table>
       <p style="color:#999;font-size:12px;margin-top:24px;">Sent automatically from the Raja Bali website.</p>
     </div>
