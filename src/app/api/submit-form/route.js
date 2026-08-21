@@ -94,7 +94,7 @@ const EMAIL_LOCATION_NAMES = {
 // data table so it's still seen before any reply, not buried under a later
 // "show quoted text" fold once this thread has a few messages in it.
 const NO_REPLY_BANNER_HTML =
-  '<p style="margin:0 0 16px;padding:12px 14px;background:#fdecea;border-left:4px solid #A31C1C;color:#7a1f1f;font-size:14px;font-weight:700;">⚠️ Do not reply to this email.<br />Replying will NOT reach the guest.<br />To contact the guest, use their email or WhatsApp number below.</p>';
+  '<p style="margin:0 0 16px;padding:12px 14px;background:#fdecea;border-left:4px solid #A31C1C;color:#7a1f1f;font-size:14px;font-weight:700;">⚠️ Tap the WhatsApp or Email button below to confirm with the guest.<br />Do not reply to this email &mdash; it will NOT reach them.</p>';
 
 function escapeHtml(value) {
   return String(value)
