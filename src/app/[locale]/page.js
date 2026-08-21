@@ -32,8 +32,8 @@ export default async function Home({ params }) {
     <main>
       <Hero content={home.hero} />
       <PromoTicker items={home.promoTicker} className="mt-10 md:mt-14" />
-      <ReelsShowcase content={home.reels} />
       <Welcome content={home.welcome} />
+      <ReelsShowcase content={home.reels} />
       <SignatureDish content={home.signatureDish} />
       <Recognition content={home.recognition} />
       <Menus content={home.menus} />
