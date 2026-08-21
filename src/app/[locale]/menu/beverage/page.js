@@ -1,4 +1,5 @@
 import SmartImage from "@/components/SmartImage";
+import LocalizedLink from "@/components/LocalizedLink";
 import MenuSection from "@/components/menu/MenuSection";
 import WineTable from "@/components/menu/WineTable";
 import StickyReserveButton from "@/components/StickyReserveButton";
@@ -98,6 +99,12 @@ export default async function BeverageMenuPage({ params }) {
         <div className="relative z-10 max-w-2xl mx-auto">
           <h1 className="text-5xl font-serif mb-2">{bev.heroTitle}</h1>
           <p className="text-sm text-gray-300">{bev.priceNote}</p>
+          <LocalizedLink
+            href="/menu/food"
+            className="u-press mt-6 inline-block border border-white/40 px-8 py-3 text-sm tracking-widest hover:border-white hover:bg-white/10"
+          >
+            {bev.crossLinkLabel}
+          </LocalizedLink>
         </div>
       </section>
 

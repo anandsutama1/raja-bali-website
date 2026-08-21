@@ -2,6 +2,7 @@
   "food": {
     "heroTitle": "Food Menu",
     "priceNote": "Prices are quoted in IDR and subject to 11% government tax.",
+    "crossLinkLabel": "View Beverage Menu",
     "sectionTitles": {
       "appetizer": "Appetizer",
       "soup": "Soup",
@@ -115,6 +116,7 @@
   "beverage": {
     "heroTitle": "Beverage Menu",
     "priceNote": "Prices are quoted in IDR and subject to 11% government tax.",
+    "crossLinkLabel": "View Food Menu",
     "specialCocktailsHeading": "Special Cocktails",
     "classicCocktailHeading": "Classic Cocktail",
     "spiritsHeading": "Spirits",

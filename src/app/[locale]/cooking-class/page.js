@@ -10,6 +10,7 @@ import Pricing from "@/components/cooking-class/Pricing";
 import StickyReserveButton from "@/components/StickyReserveButton";
 import CookingClassStructuredData from "@/components/cooking-class/StructuredData";
 import PageSchema from "@/components/PageSchema";
+import TripadvisorBadgeMain from "@/components/TripadvisorBadgeMain";
 import dynamic from "next/dynamic";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getDictionary } from "@/lib/i18n/getDictionary";
@@ -96,6 +97,12 @@ export default async function CookingClassPage({ params }) {
       <MenuSection content={cc.menuSection} />
       <GalleryExperience content={cc.gallery} />
       <Pricing content={cc.pricing} />
+      {/* Real Tripadvisor rating for the Main Restaurant, where this class
+          is held — right above the form, the same trust-signal placement
+          used on reservation-main/reservation-nusadua. */}
+      <div className="flex justify-center px-6 py-8">
+        <TripadvisorBadgeMain />
+      </div>
       <ReservationForm dict={forms.cookingClass} common={forms.common} />
       <StickyReserveButton href="#reservation" label={common.stickyReserve.cookingClass} />
     </main>

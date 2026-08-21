@@ -10,6 +10,7 @@ import FAQ from "@/components/bar-class/FAQ";
 import StickyReserveButton from "@/components/StickyReserveButton";
 import BarClassStructuredData from "@/components/bar-class/StructuredData";
 import PageSchema from "@/components/PageSchema";
+import TripadvisorBadgeMain from "@/components/TripadvisorBadgeMain";
 import dynamic from "next/dynamic";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getDictionary } from "@/lib/i18n/getDictionary";
@@ -95,6 +96,12 @@ export default async function BarClassPage({ params }) {
       <GalleryExperience content={bc.gallery} />
       <Pricing content={bc.pricing} />
       <FAQ faqs={faqs.barClass} heading={common.faqHeading} subheading={common.faqSubheading} />
+      {/* Real Tripadvisor rating for the Main Restaurant, where this class
+          is held — right above the form, same placement as the two
+          location reservation pages. */}
+      <div className="flex justify-center px-6 py-8">
+        <TripadvisorBadgeMain />
+      </div>
       <ReservationForm dict={forms.barClass} common={forms.common} />
       <StickyReserveButton href="#reservation" label={common.stickyReserve.cocktailClass} />
     </main>

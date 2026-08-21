@@ -5,6 +5,7 @@ import EventSpaces from "@/components/private-events/EventSpaces";
 import GalleryExperience from "@/components/private-events/GalleryExperience";
 import StickyReserveButton from "@/components/StickyReserveButton";
 import PageSchema from "@/components/PageSchema";
+import TripadvisorBadgeMain from "@/components/TripadvisorBadgeMain";
 import dynamic from "next/dynamic";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { localeAlternates } from "@/lib/i18n/alternates";
@@ -47,6 +48,11 @@ export default async function PrivateEventsPage({ params }) {
       <WhatsIncluded content={pe.whatsIncluded} />
       <EventSpaces content={pe.eventSpaces} />
       <GalleryExperience content={pe.gallery} />
+      {/* Real Tripadvisor rating for the Main Restaurant, where private
+          events are hosted — right above the form. */}
+      <div className="flex justify-center px-6 py-8">
+        <TripadvisorBadgeMain />
+      </div>
       <ReservationForm dict={forms.privateEvents} common={forms.common} />
       <StickyReserveButton href="#reservation" label={common.stickyReserve.privateEvent} />
     </main>

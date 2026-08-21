@@ -1,4 +1,5 @@
 import SmartImage from "@/components/SmartImage";
+import LocalizedLink from "@/components/LocalizedLink";
 import MenuSection from "@/components/menu/MenuSection";
 import SetMenuCard from "@/components/menu/SetMenuCard";
 import StickyReserveButton from "@/components/StickyReserveButton";
@@ -79,6 +80,12 @@ export default async function FoodMenuPage({ params }) {
         <div className="relative z-10 max-w-2xl mx-auto">
           <h1 className="text-5xl font-serif mb-2">{food.heroTitle}</h1>
           <p className="text-sm text-gray-300">{food.priceNote}</p>
+          <LocalizedLink
+            href="/menu/beverage"
+            className="u-press mt-6 inline-block border border-white/40 px-8 py-3 text-sm tracking-widest hover:border-white hover:bg-white/10"
+          >
+            {food.crossLinkLabel}
+          </LocalizedLink>
         </div>
       </section>
 

@@ -7,6 +7,7 @@ import FAQ from "@/components/group-reservation/FAQ";
 import ContactCTA from "@/components/group-reservation/ContactCTA";
 import StickyReserveButton from "@/components/StickyReserveButton";
 import PageSchema from "@/components/PageSchema";
+import TripadvisorBadgeMain from "@/components/TripadvisorBadgeMain";
 import dynamic from "next/dynamic";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { localeAlternates } from "@/lib/i18n/alternates";
@@ -51,6 +52,11 @@ export default async function GroupReservationPage({ params }) {
       <BuffetPackages content={gr.buffetPackages} />
       <GalleryExperience content={gr.gallery} />
       <FAQ faqs={faqs.groupReservation} heading={common.faqHeading} subheading={common.faqSubheading} />
+      {/* Real Tripadvisor rating for the Main Restaurant, where group
+          bookings are hosted — right above the form. */}
+      <div className="flex justify-center px-6 py-8">
+        <TripadvisorBadgeMain />
+      </div>
       <ReservationForm dict={forms.groupReservation} common={forms.common} />
       <ContactCTA content={gr.contactCTA} />
       <StickyReserveButton href="#reservation" label={common.stickyReserve.groupBooking} />

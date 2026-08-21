@@ -91,10 +91,13 @@ export default async function ReservationNusaDuaPage({ params }) {
         mainEntityId={`${SITE_URL}/#nusa-dua`}
       />
       <ReservationNusaDuaHero content={rn.hero} />
+      <GalleryExperience content={rn.gallery} />
+      {/* Placed directly above the form (not up by the hero) so the
+          rating is the last thing a guest sees before deciding to book —
+          moved here 2026-08-21 for exactly that reason. */}
       <div className="flex justify-center py-8">
         <TripadvisorBadgeNusaDua />
       </div>
-      <GalleryExperience content={rn.gallery} />
       <ReservationForm dict={forms.reservationNusadua} common={forms.common} />
       <FAQ faqs={faqs.reservationNusadua} heading={common.faqHeading} subheading={common.faqSubheading} />
       <LocationContext content={rn.locationContext} />

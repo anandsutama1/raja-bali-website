@@ -2,6 +2,7 @@
   "food": {
     "heroTitle": "餐食菜单",
     "priceNote": "价格以印尼盾(IDR)标示,另加收11%政府税。",
+    "crossLinkLabel": "查看饮品菜单",
     "sectionTitles": {
       "appetizer": "开胃菜",
       "soup": "汤品",
@@ -115,6 +116,7 @@
   "beverage": {
     "heroTitle": "饮品菜单",
     "priceNote": "价格以印尼盾(IDR)标示,另加收11%政府税。",
+    "crossLinkLabel": "查看餐食菜单",
     "specialCocktailsHeading": "特调鸡尾酒",
     "classicCocktailHeading": "经典鸡尾酒",
     "spiritsHeading": "烈酒",

@@ -91,10 +91,13 @@ export default async function ReservationMainPage({ params }) {
         mainEntityId={`${SITE_URL}/#main-restaurant`}
       />
       <ReservationMainHero content={rm.hero} />
+      <GalleryExperience content={rm.gallery} />
+      {/* Placed directly above the form (not up by the hero) so the
+          rating is the last thing a guest sees before deciding to book —
+          moved here 2026-08-21 for exactly that reason. */}
       <div className="flex justify-center px-6 py-8">
         <TripadvisorBadgeMain />
       </div>
-      <GalleryExperience content={rm.gallery} />
       <ReservationForm dict={forms.reservationMain} common={forms.common} />
       <Experiences content={rm.experiences} />
       <FAQ faqs={faqs.reservationMain} heading={common.faqHeading} subheading={common.faqSubheading} />
