@@ -15,6 +15,11 @@ import StickyReserveButton from "@/components/StickyReserveButton";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { localeAlternates } from "@/lib/i18n/alternates";
 
+const REELS_VIDEOS = [
+  "https://res.cloudinary.com/ywurpndn/video/upload/v1787282826/Raja_Yasa.mp4",
+  "https://res.cloudinary.com/ywurpndn/video/upload/v1787282998/influencer.mp4",
+];
+
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return { alternates: localeAlternates(locale, "/") };
@@ -33,7 +38,7 @@ export default async function Home({ params }) {
       <Hero content={home.hero} />
       <PromoTicker items={home.promoTicker} className="mt-10 md:mt-14" />
       <Welcome content={home.welcome} />
-      <ReelsShowcase content={home.reels} />
+      <ReelsShowcase content={home.reels} videos={REELS_VIDEOS} />
       <SignatureDish content={home.signatureDish} />
       <Recognition content={home.recognition} />
       <Menus content={home.menus} />

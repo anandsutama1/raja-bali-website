@@ -4,20 +4,17 @@ import Stagger from "./motion/Stagger";
 // Vertical video clips (Instagram Reels-style) — muted/looped/autoplay, no
 // captions or attribution baked in since we don't have per-clip creator
 // handles to credit yet. Hosted on Cloudinary rather than Vercel's own
-// /public on purpose: these are expected to grow to "many" clips over time,
-// and video bandwidth at that scale belongs on a CDN built for it, not
-// riding on the app's own hosting bill. If a clip ever needs to come down
-// (e.g. a creator objects), removing its entry here is enough — the file
-// stays wherever it was uploaded, this just stops linking to it.
+// /public on purpose: expected to grow to "many" clips over time, and video
+// bandwidth at that scale belongs on a CDN built for it, not riding on the
+// app's own hosting bill. If a clip ever needs to come down (e.g. a creator
+// objects), removing its URL from the calling page's `videos` array is
+// enough — the file stays wherever it was uploaded, this just stops linking
+// to it. `videos` is a prop (not hardcoded here) so this section can be
+// reused per page with its own clip set — first used on the homepage, then
+// cooking-class.
 //
 // Static 2-up grid (not a scroller) so both clips are visible at once even
-// on a mobile screen without swiping — with only two clips, a carousel/
-// marquee had nothing to reveal by scrolling anyway.
-const videos = [
-  { src: "https://res.cloudinary.com/ywurpndn/video/upload/v1787282826/Raja_Yasa.mp4" },
-  { src: "https://res.cloudinary.com/ywurpndn/video/upload/v1787282998/influencer.mp4" },
-];
-
+// on a mobile screen without swiping.
 function ReelCard({ src }) {
   return (
     <div className="overflow-hidden rounded-lg bg-raja-black">
@@ -33,7 +30,7 @@ function ReelCard({ src }) {
   );
 }
 
-export default function ReelsShowcase({ content }) {
+export default function ReelsShowcase({ content, videos }) {
   return (
     <section className="border-t border-gray-200 px-6 py-16 md:py-20">
       <Reveal as="h2" className="mb-2 text-center font-serif text-3xl">
@@ -44,8 +41,8 @@ export default function ReelsShowcase({ content }) {
       </Reveal>
 
       <Stagger className="mx-auto grid max-w-md grid-cols-2 gap-4 sm:max-w-lg sm:gap-6">
-        {videos.map((video) => (
-          <ReelCard key={video.src} src={video.src} />
+        {videos.map((src) => (
+          <ReelCard key={src} src={src} />
         ))}
       </Stagger>
     </section>

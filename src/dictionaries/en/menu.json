@@ -83,17 +83,6 @@
     },
     "setMenus": [
       {
-        "id": "balinese-rijsttafel",
-        "name": "Balinese Rijsttafel",
-        "price": "IDR 550K (for two persons)",
-        "sections": [
-          { "label": "Appetizer", "items": ["Sate Lilit Ayam (Minced Chicken Satay)", "Tuna Sambal Matah (Tuna with shallot and lemongrass)"] },
-          { "label": "Soup", "items": ["Soup Ayam (Balinese chicken soup)"] },
-          { "label": "Main Dishes", "items": ["Be Sampi Menyatnyat (Balinese beef rendang)", "Lamb Curry (Braised lamb with curry sauce)", "Serosob Ayam (Balinese chicken curry with coconut milk)", "Fish Fillet (Boneless grill mahi-mahi fish)", "Udang Panggang (Grill Prawn)", "Tum Ayam (Minced chicken with banana leaf)", "Lawar Ayam (Minced chicken with long bean and coconut)", "Daily Vegetables", "Two Kind of Rice (Yellow and white rice)"] },
-          { "label": "Dessert", "items": ["Buah-Buahan (Fresh seasonal fruit)", "Bubur Injin (Black rice pudding with coconut milk)", "Assorted Balinese Cake"] }
-        ]
-      },
-      {
         "id": "raja-yasa",
         "name": "Raja Yasa",
         "price": "IDR 1,100K (for two persons)",
@@ -102,6 +91,17 @@
           { "label": "Soup", "items": ["Fish Soup (Clear fish soup with Balinese herb)"] },
           { "label": "Main Course", "items": ["Grill Lobster (Grill lobster with special sauce)", "Grill Mahi-Mahi Fillet", "Balinese Seafood Kebab (Prawn, mahi-mahi fish, squid, capsicum, onion, zucchini)", "Seafood Curry (Prawn, mahi-mahi fish, and squid in curry sauce)", "Stews (Lamb, beef, chicken and fish stew)", "Sayur Urab and Lawar Ayam (Mixed Balinese vegetables)", "Two Kind of Rice (Yellow and white rice)"] },
           { "label": "Dessert", "items": ["Assorted Balinese Cake and Mixed Fruits served with Vanilla Ice Cream"] }
+        ]
+      },
+      {
+        "id": "balinese-rijsttafel",
+        "name": "Balinese Rijsttafel",
+        "price": "IDR 550K (for two persons)",
+        "sections": [
+          { "label": "Appetizer", "items": ["Sate Lilit Ayam (Minced Chicken Satay)", "Tuna Sambal Matah (Tuna with shallot and lemongrass)"] },
+          { "label": "Soup", "items": ["Soup Ayam (Balinese chicken soup)"] },
+          { "label": "Main Dishes", "items": ["Be Sampi Menyatnyat (Balinese beef rendang)", "Lamb Curry (Braised lamb with curry sauce)", "Serosob Ayam (Balinese chicken curry with coconut milk)", "Fish Fillet (Boneless grill mahi-mahi fish)", "Udang Panggang (Grill Prawn)", "Tum Ayam (Minced chicken with banana leaf)", "Lawar Ayam (Minced chicken with long bean and coconut)", "Daily Vegetables", "Two Kind of Rice (Yellow and white rice)"] },
+          { "label": "Dessert", "items": ["Buah-Buahan (Fresh seasonal fruit)", "Bubur Injin (Black rice pudding with coconut milk)", "Assorted Balinese Cake"] }
         ]
       }
     ]

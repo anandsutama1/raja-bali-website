@@ -12,6 +12,10 @@
     "reserveNow": "立即预订",
     "contactUs": "联系我们"
   },
+  "reels": {
+    "heading": "精彩瞬间",
+    "subheading": "来自巴厘岛烹饪课程的真实体验"
+  },
   "featureRows": [
     {
       "titlePrefix": "巴厘岛的",

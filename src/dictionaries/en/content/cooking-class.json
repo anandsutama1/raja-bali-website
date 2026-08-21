@@ -12,6 +12,10 @@
     "reserveNow": "Reserve Now",
     "contactUs": "Contact Us"
   },
+  "reels": {
+    "heading": "See It in Action",
+    "subheading": "Real moments from our Balinese cooking class"
+  },
   "featureRows": [
     {
       "titlePrefix": "The Flavors of ",
