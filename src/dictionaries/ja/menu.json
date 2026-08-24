@@ -1,0 +1,501 @@
+{
+  "food": {
+    "heroTitle": "フードメニュー",
+    "priceNote": "価格はIDR表示で、11%の政府税が別途加算されます。",
+    "crossLinkLabel": "ビバレッジメニューを見る",
+    "sectionTitles": {
+      "appetizer": "前菜",
+      "soup": "スープ",
+      "vegetarian": "ベジタリアン",
+      "riceNoodles": "ライス&ヌードル",
+      "mainCourse": "メインコース",
+      "betutu": "ブトゥトゥ(2日前までにご予約ください)",
+      "kidsMenu": "キッズメニュー",
+      "dessert": "デザート"
+    },
+    "setMenuHeadingPrefix": "当店自慢の",
+    "setMenuHeadingAccent": "セットメニュー",
+    "setMenuHeadingSuffix": "体験",
+    "sections": {
+      "appetizer": [
+        { "name": "アヤム・プララ", "desc": "スパイシーサンバル添え鶏肉のシュレッド", "price": "85K" },
+        { "name": "ツナ・サンバルマタ", "desc": "エシャロットとレモングラス添えツナ", "price": "85K" },
+        { "name": "シーフードサラダ", "desc": "エビ、ツナ、魚、イカのエシャロット・トマト・レモングラス和え", "price": "120K" },
+        { "name": "サユール・プチェル", "desc": "ピーナッツソース、豆腐、ゆで卵添え蒸し野菜盛り合わせ", "price": "65K" },
+        { "name": "サテ・リリット・アヤム", "desc": "鶏肉のミンチサテ6本、甘辛醤油とチリ添え", "price": "90K" },
+        { "name": "サテ・リリット・イカン", "desc": "魚のミンチサテ6本、甘辛醤油とチリ添え", "price": "100K" }
+      ],
+      "soup": [
+        { "name": "スープ・イカン", "desc": "バリ風フィッシュスープ", "price": "75K" },
+        { "name": "スープ・アヤム", "desc": "野菜入りバリ風チキンスープ", "price": "75K" }
+      ],
+      "vegetarian": [
+        { "name": "サユール・プチェル", "desc": "ピーナッツソース、豆腐、テンペ添え蒸し野菜盛り合わせ", "price": "65K" },
+        { "name": "カレ・サユール", "desc": "カレーソースで煮込んだ野菜盛り合わせ、ライス添え", "price": "70K" },
+        { "name": "ミー・ゴレン", "desc": "野菜入り焼きそば、豆腐とテンペ添え", "price": "70K" },
+        { "name": "ナシ・ゴレン", "desc": "野菜入りチャーハン、豆腐とテンペ添え", "price": "70K" },
+        { "name": "カレ・トゥフ・テンペ", "desc": "カレーソースで煮込んだ豆腐とテンペ、ライス添え", "price": "70K" }
+      ],
+      "riceNoodles": [
+        { "name": "ナシ・ゴレン・アヤム・パンガン", "desc": "卵入りチャーハンとグリルベビーチキン(半羽)", "price": "115K" },
+        { "name": "ミー・ゴレン・アヤム・パンガン", "desc": "卵入り焼きそばとグリルベビーチキン(半羽)", "price": "115K" },
+        { "name": "ナシ・ゴレン・ラムカレー", "desc": "卵入りチャーハンとラムカレー添え", "price": "140K" },
+        { "name": "ミー・ゴレン・ラムカレー", "desc": "卵入り焼きそばとラムカレー添え", "price": "140K" },
+        { "name": "ナシ・ゴレン・ビーフルンダン", "desc": "卵入りチャーハンとバリ風ビーフルンダン添え", "price": "140K" },
+        { "name": "ミー・ゴレン・ビーフルンダン", "desc": "卵入り焼きそばとバリ風ビーフルンダン添え", "price": "140K" }
+      ],
+      "mainCourse": [
+        { "name": "バリ風ビーフルンダン", "desc": "スパイシーに煮込んだ牛肉、本日の野菜・ライス・薬味添え", "price": "150K" },
+        { "name": "アヤム・パンガン", "desc": "マリネしたグリルベビーチキン(半羽)、本日の野菜・ライス・薬味添え", "price": "115K" },
+        { "name": "フィッシュフィレ", "desc": "グリルマヒマヒ200g、本日の野菜・ライス・薬味添え", "price": "135K" },
+        { "name": "シーフードケバブ", "desc": "魚・エビ・イカ・野菜の串焼き、野菜・ライス・薬味添え", "price": "200K" },
+        { "name": "ラムカレー", "desc": "カレーソースで煮込んだラム肉、本日の野菜・ライス・薬味添え", "price": "160K" },
+        { "name": "ウダン・ムサンテン", "desc": "バリ風エビカレー、本日の野菜とライス添え", "price": "180K" },
+        { "name": "ウダン・パンガン", "desc": "グリルキングエビ、本日の野菜とライス添え", "price": "180K" },
+        { "name": "イカン・パンガン", "desc": "白身魚(スナッパー)丸ごとグリル350g、本日の野菜とライス添え", "price": "160K" },
+        { "name": "シーフードカレー", "desc": "バリ風シーフードカレー(エビ・イカ・マヒマヒ)、野菜とライス添え", "price": "190K" },
+        { "name": "スロソブ・アヤム", "desc": "バリ風チキンカレー、本日の野菜とライス添え", "price": "115K" },
+        { "name": "サテ・チャンプル", "desc": "鶏肉・魚・ラム肉のサテ9本、野菜・ライス・薬味添え", "price": "135K" },
+        { "name": "アヤム・ブトゥトゥ", "desc": "ブトゥトゥスパイスで煮込んだベビーチキン(半羽)、野菜・ライス・薬味添え", "price": "135K" },
+        { "name": "クリスピーダック", "desc": "揚げたアヒル(半羽)、本日の野菜・ライス・薬味添え", "price": "135K" }
+      ],
+      "betutu": [
+        { "name": "アヤム・ブトゥトゥ", "desc": "ブンブ・ブトゥトゥで煮込んだ丸鶏、バリ風チキンスープ、野菜2種、黄・白ライス、バリ風デザート添え(2日前までにご予約ください)", "price": "350K" },
+        { "name": "ベベック・ブトゥトゥ", "desc": "ブンブ・ブトゥトゥで煮込んだ丸鴨、バリ風チキンスープ、野菜2種、黄・白ライス、バリ風デザート添え(2日前までにご予約ください)", "price": "400K" }
+      ],
+      "kidsMenu": [
+        { "name": "フィッシュ&チップス", "desc": "フライドポテトとマヨネーズ添え", "price": "50K" },
+        { "name": "チキンナゲット", "desc": "フライドポテトとマヨネーズ添え", "price": "50K" },
+        { "name": "ナシ・ゴレン(ソーセージ or チキン)", "desc": "卵とチキンソーセージまたはチキンサテ入りチャーハン", "price": "70K" },
+        { "name": "ミー・ゴレン(ソーセージ or チキン)", "desc": "卵とチキンソーセージまたはチキンサテ入り焼きそば", "price": "70K" },
+        { "name": "フライドポテト", "desc": "", "price": "40K" },
+        { "name": "ミニバーガー", "desc": "白パン、ビーフパティ、卵、チーズ、レタス", "price": "70K" },
+        { "name": "スパゲッティ・ナポリタン", "desc": "トマトソースとパルメザンチーズのスパゲッティ", "price": "60K" },
+        { "name": "スパゲッティ・アーリオオーリオ", "desc": "オリーブオイルとパルメザンチーズのスパゲッティ", "price": "60K" }
+      ],
+      "dessert": [
+        { "name": "ブア・ブアハン・スガル", "desc": "季節のフルーツ盛り合わせ", "price": "50K" },
+        { "name": "ブブール・インジン", "desc": "ココナッツミルク入り黒米プディング", "price": "50K" },
+        { "name": "アイスクリーム(1スクープ)", "desc": "バニラ、ストロベリー、またはチョコレート", "price": "20K" },
+        { "name": "バリ島スイーツ盛り合わせ", "desc": "", "price": "50K" },
+        { "name": "ピサン・ゴレン", "desc": "パームシュガーソース添え揚げバナナ", "price": "50K" },
+        { "name": "バナナスプリット", "desc": "バナナとバニラ・チョコレート・ストロベリーアイスクリーム", "price": "65K" }
+      ]
+    },
+    "setMenus": [
+      {
+        "id": "raja-yasa",
+        "name": "Raja Yasa",
+        "price": "IDR 1,100K(2名様)",
+        "image": "/images/home/Raja-Yasa.jpg",
+        "imageAlt": "Raja Yasa、Raja Bali自慢のシーフードセットメニュー",
+        "description": "バリの伝統において、Yasa(ヤサ)とは、儀式の締めくくりに高僧が捧げる神聖な供物であり、人々が集い共に食を分かち合う瞬間を意味します。Raja(ラジャ、王)の名を冠したこのセットメニューは、まるで王のために用意されたかのような、海の恵みを堪能する饗宴です。",
+        "sections": [
+          { "label": "前菜", "items": ["サテ・リリット・イカン(魚のミンチサテ)", "ツナ・サンバルマタ(エシャロットとレモングラス添えツナ)"] },
+          { "label": "スープ", "items": ["フィッシュスープ(バリ風ハーブの澄まし魚スープ)"] },
+          { "label": "メインコース", "items": ["グリルロブスター(特製ソース添え)", "グリルマヒマヒフィレ", "バリ風シーフードケバブ(エビ、マヒマヒ、イカ、パプリカ、玉ねぎ、ズッキーニ)", "シーフードカレー(エビ、マヒマヒ、イカのカレー)", "シチュー盛り合わせ(ラム、牛肉、鶏肉、魚のシチュー)", "サユール・ウラブ&ラワール・アヤム(バリ風野菜ミックス)", "ライス2種(黄・白)"] },
+          { "label": "デザート", "items": ["バリ島スイーツ盛り合わせとフルーツ、バニラアイスクリーム添え"] }
+        ]
+      },
+      {
+        "id": "balinese-rijsttafel",
+        "name": "バリニーズ・ライスタフェル",
+        "price": "IDR 550K(2名様)",
+        "image": "/images/menu/food-hero.jpg",
+        "imageAlt": "バリニーズ・ライスタフェル、伝統的なシェアスタイルのセットメニュー",
+        "description": "「ライスタフェル」はオランダ語で「ライス・テーブル」を意味し、バリ島の植民地時代に多くの料理を一度に分かち合う習慣から生まれた伝統です。当店では、濃厚なビーフルンダンからグリルエビまで、バリ島の名物料理を1つの豊かな食卓に集めました。お二人でシェアしていただけます。",
+        "sections": [
+          { "label": "前菜", "items": ["サテ・リリット・アヤム(鶏肉のミンチサテ)", "ツナ・サンバルマタ(エシャロットとレモングラス添えツナ)"] },
+          { "label": "スープ", "items": ["スープ・アヤム(バリ風チキンスープ)"] },
+          { "label": "メインディッシュ", "items": ["ベ・サンピ・ムニャッニャッ(バリ風ビーフルンダン)", "ラムカレー(カレーソースで煮込んだラム肉)", "スロソブ・アヤム(ココナッツミルク入りバリ風チキンカレー)", "フィッシュフィレ(骨なしグリルマヒマヒ)", "ウダン・パンガン(グリルエビ)", "トゥム・アヤム(バナナの葉包み鶏肉ミンチ蒸し)", "ラワール・アヤム(鶏肉ミンチと長豆・ココナッツの和え物)", "本日の野菜", "ライス2種(黄・白)"] },
+          { "label": "デザート", "items": ["ブア・ブアハン(季節のフレッシュフルーツ)", "ブブール・インジン(ココナッツミルク入り黒米プディング)", "バリ島スイーツ盛り合わせ"] }
+        ]
+      }
+    ]
+  },
+  "beverage": {
+    "heroTitle": "ビバレッジメニュー",
+    "priceNote": "価格はIDR表示で、11%の政府税が別途加算されます。",
+    "crossLinkLabel": "フードメニューを見る",
+    "specialCocktailsHeading": "スペシャルカクテル",
+    "classicCocktailHeading": "クラシックカクテル",
+    "spiritsHeading": "スピリッツ",
+    "wineListHeading": "ワインリスト",
+    "localHouseWineHeading": "ローカルハウスワイン",
+    "importedWineHeading": "輸入ワイン",
+    "wineListNote": "グラス・ボトル単位で価格が異なります。現在の価格はスタッフまでお尋ねください。",
+    "sectionTitles": {
+      "signature": "シグネチャー",
+      "balineseCocktail": "バリ島カクテル",
+      "classicCocktail": "クラシックカクテル",
+      "refreshing": "Raja Bali のリフレッシングドリンク",
+      "wellness": "ウェルネスドリンク",
+      "juice": "ジュース",
+      "beer": "ビール",
+      "teaCoffee": "紅茶&コーヒー",
+      "softDrinks": "ソフトドリンク&水",
+      "milkshakes": "ミルクシェイク&スムージー",
+      "premiumSpirit": "プレミアムスピリッツ",
+      "localSpirit": "ローカルスピリッツ",
+      "whiskeyPremium": "プレミアムウイスキー",
+      "whiskeyLocal": "ローカルウイスキー",
+      "whiteWine": "白ワイン",
+      "redWine": "赤ワイン",
+      "roseWine": "ロゼワイン",
+      "sparklingWine": "スパークリングワイン"
+    },
+    "notes": {
+      "premiumLocalSpirit": "プレミアムスピリッツ 130K / ローカルスピリッツ 95K",
+      "allPrice80K": "すべて80K",
+      "premiumSpiritShot": "100K、ショット単位(45ml)",
+      "localSpiritShot": "ショット単位(45ml)",
+      "whiskeyPremiumShot": "125K、ショット単位(45ml)",
+      "whiskeyLocalShot": "80K、ショット単位(45ml)"
+    },
+    "sections": {
+      "signatureCocktails": [
+        { "name": "Green Tokyo", "desc": "ウォッカ、ラム、テキーラ、ジン、メロンリキュール、スプライトで仕上げ" },
+        { "name": "Pink Flaminggo", "desc": "ゴールドラム、パイナップルジュース、グレナデン、ライムジュース" },
+        { "name": "Sky Purple", "desc": "ジン、ブルーキュラソー、レモンジュース、グレナデン、スプライト" },
+        { "name": "Bailey's Comet", "desc": "ウォッカ、コーヒーリキュール、ベイリーズ、バナナ、ホイップクリーム" },
+        { "name": "Strawberry Smash", "desc": "ジン、オレンジリキュール、レモンジュース、ストロベリー、シンプルシロップ" },
+        { "name": "Melon Illusion", "desc": "ウォッカ、メロンリキュール、オレンジリキュール、レモンジュース、パイナップルジュース" },
+        { "name": "Spicy Basil", "desc": "ゴールドラム、ジンジャーシロップ、はちみつ、バジルの葉" },
+        { "name": "Sangria Raja", "desc": "スパイスアラック、赤または白ワイン、南国フルーツ" }
+      ],
+      "balineseCocktails": [
+        { "name": "Arak Madu", "desc": "アラック、はちみつ、フレッシュライム" },
+        { "name": "Arak Pelung", "desc": "アラック、ブルーキュラソー、レモンジュース、グレナデン、スプライトで仕上げ" },
+        { "name": "Arak Lagoon", "desc": "アラック、ブルーキュラソー、スプライト" },
+        { "name": "Arak Oleng", "desc": "アラック、パイナップルリキュール、パイナップルジュース" },
+        { "name": "Arak Berry", "desc": "アラック、ストロベリー、オレンジリキュール、ミントの葉、トニックウォーター" },
+        { "name": "Arak Purnama", "desc": "アラック、オレンジジュース、グレナデン" }
+      ],
+      "classicCocktails": [
+        { "name": "Margarita", "desc": "テキーラ、オレンジリキュール、フレッシュライム" },
+        { "name": "Mojito's", "desc": "ラム、オレンジリキュール、ミントの葉" },
+        { "name": "Daiquiry's", "desc": "ラム、オレンジリキュール、フレッシュライム" },
+        { "name": "Espresso Martini", "desc": "ウォッカ、コーヒーリキュール、エスプレッソ" },
+        { "name": "Lychee Martini", "desc": "ウォッカ、ライチリキュール、ライチ" },
+        { "name": "Caipirinha & Caproska", "desc": "ラム/ウォッカ、フレッシュライム、シロップ" },
+        { "name": "Lemon Drop", "desc": "ウォッカ、オレンジリキュール、レモンジュース、シンプルシロップ" },
+        { "name": "Long Island Ice Tea", "desc": "ウォッカ、ラム、ジン、テキーラ、オレンジリキュール、コーラ" },
+        { "name": "Pinacolada", "desc": "ラム、パイナップルジュース、ココナッツミルク、ココナッツリキュール" },
+        { "name": "Whiskey Sour", "desc": "ウイスキー、ライムジュース、砂糖" },
+        { "name": "Japanese Slipper", "desc": "ウォッカ、ライムジュース、トリプルセック、メロンリキュール" },
+        { "name": "Pink/Blue/White Lady", "desc": "ジン、オレンジリキュール、ライムジュース、グレナデン" },
+        { "name": "Tequila Sunrise", "desc": "テキーラ、オレンジジュース、グレナデン" }
+      ],
+      "refreshing": [
+        { "name": "Calipso", "desc": "マンゴージュース、パイナップルジュース、パッションシロップ", "price": "60K" },
+        { "name": "Basil Spritzer", "desc": "バジルの葉、レモングラスジュース、フレッシュライム、ソーダ水", "price": "60K" },
+        { "name": "Shirley Temple", "desc": "ストロベリー、ミントの葉、フレッシュライム、トニックウォーター、チェリーウォーター", "price": "60K" },
+        { "name": "Lemon Nana", "desc": "レモンジュース、ミントの葉、ミントグリーンシロップ、ソーダ水", "price": "60K" },
+        { "name": "Melon Fantasy", "desc": "フレッシュフルーツダイス、オレンジジュース、メロンシロップ、ファンタレッド", "price": "60K" },
+        { "name": "Virgin Mojito", "desc": "ミントの葉、フレッシュライム、ソーダ水", "price": "60K" },
+        { "name": "Virgin Colada", "desc": "パイナップルジュース、ココナッツクリーム、シンプルシロップ", "price": "60K" },
+        { "name": "Queencheer's", "desc": "フレッシュレモンジュース、レモネードとお好みのフルーツピューレ(ストロベリー/マンゴー)のリフレッシュドリンク", "price": "55K" },
+        { "name": "Lemon Up", "desc": "フレッシュレモンジュース、レモネードとピンク/ブルー/イエロー", "price": "55K" },
+        { "name": "Squash", "desc": "レモン/ライム/オレンジ", "price": "35K" }
+      ],
+      "wellness": [
+        { "name": "Green Detox", "desc": "高菜、パイナップル、ライムジュース、はちみつ", "price": "65K" },
+        { "name": "Red Booster", "desc": "トマト、オレンジジュース、ライムジュース、はちみつ", "price": "65K" },
+        { "name": "Yellow Antioxidant", "desc": "きゅうり、オレンジジュース、パイナップルジュース、ライムジュース、はちみつ", "price": "65K" },
+        { "name": "Healthy Orange", "desc": "にんじんジュース、オレンジジュース、ライムジュース、はちみつ", "price": "65K" },
+        { "name": "Jamu Sinom", "desc": "ウコン、黒糖、タマリンド", "price": "65K" }
+      ],
+      "juice": [
+        { "name": "ウォーターメロン", "price": "50K" },
+        { "name": "パイナップル", "price": "50K" },
+        { "name": "バナナ", "price": "50K" },
+        { "name": "パパイヤ", "price": "50K" },
+        { "name": "オレンジ", "price": "50K" },
+        { "name": "ミックスジュース", "price": "50K" }
+      ],
+      "beers": [
+        { "name": "Singaraja", "price": "30K" },
+        { "name": "Prost Pilsner", "price": "35K" },
+        { "name": "Prost Lager", "price": "35K" },
+        { "name": "Albens Apple Cider", "price": "60K" },
+        { "name": "Bintang(ラージ)", "price": "65K" },
+        { "name": "Bintang(スモール)", "price": "40K" },
+        { "name": "Heineken(ラージ)", "price": "70K" },
+        { "name": "Heineken(スモール)", "price": "45K" },
+        { "name": "Bintang タワー", "price": "195K" },
+        { "name": "Heineken タワー", "price": "210K" }
+      ],
+      "teaCoffee": [
+        { "name": "バリニーズコーヒー", "price": "25K" },
+        { "name": "ホット/アイスティー", "price": "25K" },
+        { "name": "ライチティー", "price": "35K" },
+        { "name": "パッションティー", "price": "35K" },
+        { "name": "レモングラスティー", "price": "35K" },
+        { "name": "ミントジンジャーティー", "price": "30K" }
+      ],
+      "softDrinks": [
+        { "name": "コカ・コーラ", "price": "20K" },
+        { "name": "コカ・コーラ ゼロ", "price": "20K" },
+        { "name": "スプライト", "price": "20K" },
+        { "name": "ファンタ", "price": "20K" },
+        { "name": "トニックウォーター", "price": "20K" },
+        { "name": "ソーダ水", "price": "20K" },
+        { "name": "ナチュラルウォーター", "price": "25K" },
+        { "name": "スパークリングウォーター", "price": "35K" }
+      ],
+      "milkshakes": [
+        { "name": "バニラ", "price": "55K" },
+        { "name": "チョコレート", "price": "55K" },
+        { "name": "ストロベリー", "price": "55K" },
+        { "name": "バナナ", "price": "55K" }
+      ],
+      "premiumSpirit": [
+        { "name": "ジン", "desc": "Gordon London Dry Gin" },
+        { "name": "ウォッカ", "desc": "Smirnoff" },
+        { "name": "ラム", "desc": "Bacardi, Saint James White" },
+        { "name": "テキーラ", "desc": "Jose Quervo" }
+      ],
+      "localSpirit": [
+        { "name": "スパイスアラック", "desc": "サジェン・パタラ", "price": "70K" },
+        { "name": "プレミアムスパイスアラック", "desc": "アラック・ブンブン", "price": "80K" },
+        { "name": "アラック・デヴィ", "price": "50K" }
+      ],
+      "whiskeyPremium": [
+        { "name": "スコッチウイスキー", "desc": "Red Label, Label 5" },
+        { "name": "アメリカンウイスキー", "desc": "Jack Daniel, Jim Beam" },
+        { "name": "アイリッシュウイスキー" }
+      ],
+      "whiskeyLocal": [
+        { "name": "Gilbeys Whiskey" },
+        { "name": "Omrach Whiskey" },
+        { "name": "Vibe Whiskey" }
+      ]
+    },
+    "wine": {
+      "localWhiteWine": [
+        { "name": "Hatten Aga White", "glass": "65K", "bottle": "240K" },
+        { "name": "Two Island Sauvignon Blanc", "glass": "85K", "bottle": "350K" },
+        { "name": "Two Island Chardonnay", "glass": "85K", "bottle": "350K" },
+        { "name": "Two Island Pinot Grigio", "glass": "85K", "bottle": "350K" },
+        { "name": "Plaga Sauvignon Blanc", "glass": "80K", "bottle": "330K" },
+        { "name": "Sababay White Velvet", "glass": "75K", "bottle": "270K" },
+        { "name": "Cape Discovery Sauvignon Blanc", "glass": "65K", "bottle": "270K" }
+      ],
+      "localRedWine": [
+        { "name": "Hatten Aga Red", "glass": "75K", "bottle": "240K" },
+        { "name": "Two Island Cabernet Merlot", "glass": "85K", "bottle": "350K" },
+        { "name": "Two Island Shiraz", "glass": "85K", "bottle": "350K" },
+        { "name": "Plaga Cabernet Merlot", "glass": "80K", "bottle": "330K" },
+        { "name": "Plaga Cabernet Sauvignon", "glass": "80K", "bottle": "330K" },
+        { "name": "Sababay Black Velvet", "glass": "75K", "bottle": "270K" },
+        { "name": "Cape Discovery Shiraz/Cabernet Merlot", "glass": "75K", "bottle": "270K" }
+      ],
+      "localRoseWine": [
+        { "name": "Hatten Aga Rose", "glass": "65K", "bottle": "240K" },
+        { "name": "Two Island Rose", "glass": "85K", "bottle": "350K" },
+        { "name": "Plaga Rose", "glass": "80K", "bottle": "330K" },
+        { "name": "Sababay Pink Blossom", "glass": "75K", "bottle": "270K" },
+        { "name": "Cape Discovery Rose", "glass": "65K", "bottle": "270K" }
+      ],
+      "localSparklingWine": [
+        { "name": "Hatten Tunjung", "bottle": "350K" },
+        { "name": "Two Island Pinot Noir Chardonnay", "bottle": "490K" },
+        { "name": "Cape Discovery Cuvee Bruth", "bottle": "450K" }
+      ],
+      "importedWhiteWine": [
+        { "name": "Tall Horse(南アフリカ)", "bottle": "385K" },
+        { "name": "Douglas Green(南アフリカ)", "bottle": "415K" },
+        { "name": "Conosur(チリ)", "bottle": "385K" },
+        { "name": "McPherson(オーストラリア)", "bottle": "450K" },
+        { "name": "Milton Park(オーストラリア)", "bottle": "405K" },
+        { "name": "Mi Terruno(アルゼンチン)", "bottle": "435K" },
+        { "name": "Estimulo(アルゼンチン)", "bottle": "400K" },
+        { "name": "Il Fumo(イタリア)", "bottle": "490K" }
+      ],
+      "importedRedWine": [
+        { "name": "Tall Horse(南アフリカ)", "bottle": "385K" },
+        { "name": "Douglas Green(南アフリカ)", "bottle": "415K" },
+        { "name": "Conosur(チリ)", "bottle": "385K" },
+        { "name": "McPherson(オーストラリア)", "bottle": "450K" },
+        { "name": "Milton Park(オーストラリア)", "bottle": "405K" },
+        { "name": "McGuigan(オーストラリア)", "bottle": "425K" },
+        { "name": "Mi Terruno(アルゼンチン)", "bottle": "435K" },
+        { "name": "Estimulo(アルゼンチン)", "bottle": "400K" },
+        { "name": "Il Fumo(イタリア)", "bottle": "490K" }
+      ],
+      "importedRoseWine": [
+        { "name": "Tall Horse(南アフリカ)", "bottle": "385K" },
+        { "name": "La La Land Rose(オーストラリア)", "bottle": "450K" },
+        { "name": "Mi Terruno Rose(アルゼンチン)", "bottle": "435K" }
+      ],
+      "importedSparklingWine": [
+        { "name": "Batasiolo(イタリア)", "bottle": "550K" },
+        { "name": "Corte Giara(イタリア)", "bottle": "505K" }
+      ]
+    }
+  },
+  "balineseBuffet": {
+    "heroTitle": "バリ風団体ディナービュッフェメニュー",
+    "priceLine": "バリ風ビュッフェ | おひとり様 IDR 300K〜",
+    "mainCoursesHeading": "メインコース",
+    "starters": [
+      {
+        "title": "前菜",
+        "instruction": "以下より2品お選びください:",
+        "options": [
+          "ラワール・ブンカック(バリ風若いココナッツサラダ)",
+          "ウラブ・パクス(バリ風シダサラダ)",
+          "ウラブ・サユール(すりおろしココナッツドレッシングの野菜ミックス)",
+          "アヤム・プララ(スパイシーサンバル添え鶏むね肉のシュレッド)",
+          "ラワール・カチャンパンジャン(長豆と鶏肉ミンチのサラダ)",
+          "プレチン・ゴンダ"
+        ]
+      },
+      {
+        "title": "スープ",
+        "instruction": "以下より1品お選びください:",
+        "options": ["チャムチャム・アヤム(バリ風鶏肉ミンチスープ)", "スープ・カチャンメラ(レッドビーンズスープ)"]
+      }
+    ],
+    "mainCourses": [
+      {
+        "title": "シーフード",
+        "instruction": "以下より1品お選びください:",
+        "options": [
+          "シーフード・ブンブメラ(エビ・イカ・魚のバリ風トマトチリソース炒め)",
+          "イカン・サンバルマタ(グリルマヒマヒフィレのサンバルマタ添え)",
+          "サテ・リリット・イカン"
+        ]
+      },
+      {
+        "title": "チキン",
+        "instruction": "以下より2品お選びください:",
+        "options": [
+          "アヤム・バカール・ブンブクニン(骨なし鶏もも肉のバリ風スパイシーグリル)",
+          "アヤム・ブトゥトゥ",
+          "スロソブ・アヤム(骨なし鶏もも肉のココナッツクリーム煮)",
+          "サテ・リリット・アヤム",
+          "サテ・トゥスック・アヤム"
+        ]
+      },
+      {
+        "title": "野菜&麺類",
+        "instruction": "以下より1品お選びください:",
+        "options": ["野菜カレー", "ミー・ゴレン・サユール", "ビフン・ゴレン"]
+      },
+      {
+        "title": "ライス",
+        "instruction": "以下より1品お選びください:",
+        "options": [
+          "ナシ・ゴレン・ラジャバリ(鶏肉と野菜のチャーハン)",
+          "ナシ・ゴレン・アヤム(鶏肉と野菜のチャーハン)",
+          "ナシ・プティ(白飯)",
+          "ナシ・クニン(香り高い黄色いご飯)"
+        ]
+      },
+      {
+        "title": "デザート",
+        "instruction": "以下より2品お選びください:",
+        "options": [
+          "アネカ・ジャジャンパサール(バリ島スイーツ盛り合わせ)",
+          "スライスフルーツ(スイカとパパイヤ)",
+          "エス・ブア",
+          "ピサン・ゴレン",
+          "チョコレートプディング"
+        ]
+      },
+      { "title": "ドリンク", "options": ["インフューズドウォーター", "アイスティー"] }
+    ]
+  },
+  "westernAsianBuffet": {
+    "heroTitle": "洋食&アジア料理団体ディナービュッフェメニュー",
+    "priceLine": "洋食&アジア料理 | おひとり様 IDR 350K〜",
+    "mainCoursesHeading": "メインコース",
+    "starters": [
+      {
+        "title": "前菜",
+        "instruction": "以下より2品お選びください:",
+        "options": [
+          "ガーデンサラダ(ビネグレットドレッシング)",
+          "タイ風ビーフサラダ",
+          "シーザーサラダ",
+          "クラシックポテトサラダ",
+          "ミックスフルーツヨーグルトサラダ"
+        ]
+      },
+      {
+        "title": "スープ",
+        "instruction": "以下より1品お選びください:",
+        "options": [
+          "トムヤムスープ(タイ風スパイシーシーフードスープ)",
+          "チキン&ベジタブルスープ",
+          "ポテト&リークスープ",
+          "パンプキンスープ",
+          "レッドビーンズスープ"
+        ]
+      }
+    ],
+    "mainCourses": [
+      {
+        "title": "シーフード",
+        "instruction": "以下より1品お選びください:",
+        "options": [
+          "シーフードカレー(エビ・イカ・魚のカレーソース炒め)",
+          "グリルフィッシュフィレ(チリソース)",
+          "フライドフィッシュフィレ(甘酢ソース)",
+          "パンシアード・マヒマヒフィレ(サンバルマタ添え)"
+        ]
+      },
+      {
+        "title": "チキン",
+        "instruction": "以下より1品お選びください:",
+        "options": [
+          "グリルチキンレッグ(骨なし、ハニーチリソース)",
+          "スロソブ・アヤム(骨なし鶏もも肉のバリ風煮込み)",
+          "チキンミートボール(トマトバジルソース)"
+        ]
+      },
+      {
+        "title": "ビーフ",
+        "instruction": "以下より1品お選びください:",
+        "options": ["ビーフルンダン", "ビーフブラックペッパー", "ビーフミートボール(トマトバジルソース)"]
+      },
+      {
+        "title": "野菜",
+        "instruction": "以下より1品お選びください:",
+        "options": [
+          "青梗菜のオイスターソース煮",
+          "野菜炒めバターガーリック風味",
+          "トゥロン・バラド(なすのチリソース炒め)",
+          "野菜炒めオイスターソース",
+          "トゥフ・チャ・サユラン(豆腐と野菜の炒め物)"
+        ]
+      },
+      {
+        "title": "麺類&パスタ",
+        "instruction": "以下より1品お選びください:",
+        "options": [
+          "ミー・ゴレン・シーフード(シーフードと野菜の焼きそば)",
+          "ミー・ゴレン・サユール(ベジタリアン)",
+          "ビフン・ゴレン(鶏肉と野菜のビーフン炒め)",
+          "スパゲッティ・トマトソース"
+        ]
+      },
+      {
+        "title": "ライス",
+        "instruction": "以下より1品お選びください:",
+        "options": ["ナシ・ゴレン(鶏肉と野菜のチャーハン)", "白飯", "香り高い黄色いご飯"]
+      },
+      {
+        "title": "デザート",
+        "instruction": "以下より2品お選びください:",
+        "options": ["バリ島スイーツ盛り合わせ", "季節のフルーツ", "チョコレートブラウニー"]
+      },
+      {
+        "title": "ドリンク",
+        "instruction": "以下より1品お選びください:",
+        "options": ["アイス・クラパムダ(ヤングココナッツ)", "インフューズドウォーター", "アイスティー", "オレンジジュース"]
+      }
+    ]
+  }
+}
