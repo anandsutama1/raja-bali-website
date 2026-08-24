@@ -1,0 +1,51 @@
+{
+  "hero": {
+    "title": "私たちの店舗をご紹介",
+    "body": "各 Raja Bali の店舗にはそれぞれ独自の雰囲気があり、文化を体感できるダイニングから、本格バリ料理を楽しむ落ち着いた夜のひとときまでお楽しみいただけます。"
+  },
+  "destinations": {
+    "heading": "2つの店舗、ひとつのバリ流おもてなし",
+    "intro": "文化公演やインタラクティブな体験から、ヌサドゥアの中心地での上品なダイニングまで、Raja Bali の各店舗はそれぞれ独自の魅力でバリ島をご紹介できるよう丁寧にデザインされています。",
+    "bookNow": "今すぐ予約 →",
+    "items": [
+      {
+        "tag": "フラッグシップ文化拠点",
+        "name": "Raja Bali Nusa Dua(メインレストラン)",
+        "descParts": [
+          { "text": "ヌサドゥアにあるフラッグシップ店舗で、" },
+          { "link": "/cooking-class", "text": "バリ島クッキングクラス" },
+          { "text": "やバリ島式" },
+          { "link": "/bar-class", "text": "バークラス" },
+          { "text": "、そして毎週木曜日開催の無料" },
+          { "link": "/dance", "text": "バリ舞踊公演" },
+          { "text": "をお楽しみいただけます。" }
+        ],
+        "features": "レストラン・文化・体験",
+        "href": "/reservation-main"
+      },
+      {
+        "tag": "シグネチャーダイニング拠点",
+        "name": "Raja Bali Nusa Dua(ダイニングレストラン)",
+        "descParts": [
+          { "text": "上品な空間で本格バリ料理をお楽しみいただけます。ヌサドゥアでのロマンチックなディナー、ご家族の集まり、思い出に残る夜に最適です。" }
+        ],
+        "features": "ランチ・ディナー・イベント",
+        "href": "/reservation-nusadua"
+      }
+    ]
+  },
+  "location": {
+    "heading": "アクセス",
+    "subheading": "最寄りの Raja Bali を見つける",
+    "intro": "両店舗ともアクセスしやすく、文化体験からエレガントなダイニングまで、それぞれ独自のヌサドゥアの魅力をお楽しみいただけます。",
+    "titles": {
+      "main": "Raja Bali Nusa Dua(メインレストラン)",
+      "nusadua": "Raja Bali Nusa Dua(ダイニングレストラン)"
+    }
+  },
+  "contactCTA": {
+    "heading": "どちらの店舗が良いかお悩みですか?",
+    "body": "スタッフが、ご来店の目的に最も合った Raja Bali の体験をお選びするお手伝いをいたします。",
+    "contactUs": "お問い合わせ"
+  }
+}
