@@ -1,0 +1,22 @@
+{
+  "hero": {
+    "title": "Raja Bali での体験をご一緒に計画しましょう",
+    "body": "アットホームなディナー、ご家族の集まり、文化体験のご計画はお決まりですか?スタッフがサポートいたします。どんなご質問にも喜んでお答えします。"
+  },
+  "getInTouch": {
+    "heading": "お問い合わせ",
+    "intro": "ご質問やご予約に関するサポートが必要な場合は、以下からご希望の Raja Bali 店舗をお選びください。",
+    "viewOnGoogleMaps": "Googleマップで見る",
+    "reserveTable": "テーブルを予約する",
+    "locations": {
+      "main-restaurant": {
+        "desc": "本格バリ料理と文化公演、体験型クッキング、そして温かい島のおもてなしが融合した、Raja Bali の中心地をご体験ください。",
+        "facebookLabel": "Raja Bali Nusa Dua(メインレストラン)"
+      },
+      "nusa-dua": {
+        "desc": "上品で心地よい雰囲気の中、本格バリ料理をお楽しみいただけます。ロマンチックなディナー、ご家族の集まり、思い出に残るお祝いに最適です。",
+        "facebookLabel": "Raja Bali Nusa Dua(ダイニングレストラン)"
+      }
+    }
+  }
+}
