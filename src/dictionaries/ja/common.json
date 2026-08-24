@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "gallery": "ギャラリー",
+    "contact": "お問い合わせ",
+    "aboutUs": "私たちについて",
+    "home": "ホーム",
+    "menu": "メニュー",
+    "cookingClass": "クッキングクラス",
+    "barClass": "バリ島式バークラス",
+    "dance": "バリ舞踊公演",
+    "privateEvents": "プライベートイベント",
+    "groupReservation": "団体予約",
+    "reserveTable": "テーブル予約",
+    "openMenu": "メニューを開く",
+    "closeMenu": "メニューを閉じる"
+  },
+  "footer": {
+    "tagline": "バリ島の本格的な味わい、豊かな伝統、そして温かいおもてなしをご堪能ください。",
+    "contactUs": "お問い合わせ",
+    "exploreHeading": "探索",
+    "experiencesHeading": "体験",
+    "home": "ホーム",
+    "about": "私たちについて",
+    "menu": "メニュー",
+    "outlets": "店舗",
+    "copyright": "© 2026 Raja Bali. All rights reserved.",
+    "hours": "営業時間:毎日 12:00〜22:00"
+  },
+  "faqHeading": "よくあるご質問",
+  "faqSubheading": "知っておきたいすべてのこと",
+  "homeFaqHeading": "ご来店の計画",
+  "outletsFaqSubheading": "あなたに合う店舗はどちら",
+  "breadcrumbHome": "ホーム",
+  "expandAll": "すべて開く",
+  "collapseAll": "すべて閉じる",
+  "thankYouMayAlsoLike": "こちらもおすすめです",
+  "thankYouLinks": {
+    "viewFoodMenu": "フードメニューを見る",
+    "viewBeverageMenu": "ビバレッジメニューを見る",
+    "cookingClass": "バリ島クッキングクラス",
+    "barClass": "バリ島式バークラス",
+    "dance": "バリ舞踊",
+    "contactUs": "お問い合わせ",
+    "reserveTable": "テーブルを予約する",
+    "privateEvents": "プライベートイベント",
+    "groupReservation": "団体予約",
+    "mostPopular": "一番人気",
+    "limitedSlot": "残りわずか",
+    "freeEveryThursday": "毎週木曜日無料"
+  },
+  "stickyReserve": {
+    "table": "テーブルを予約する",
+    "cookingClass": "クッキングクラスを予約する",
+    "groupBooking": "団体予約をする",
+    "cocktailClass": "カクテル&ヘルシードリンククラスを予約する",
+    "privateEvent": "プライベートイベントを予約する"
+  }
+}

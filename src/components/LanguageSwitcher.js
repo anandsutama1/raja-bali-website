@@ -3,7 +3,7 @@
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { LOCALES, LOCALE_COOKIE } from "@/lib/i18n/config";
 
-const LOCALE_LABELS = { en: "EN", zh: "中文" };
+const LOCALE_LABELS = { en: "EN", zh: "中文", ja: "日本語" };
 
 // Manual override for the auto-detected locale — writes the same cookie
 // proxy.js reads, so once a visitor picks a language here, the proxy never

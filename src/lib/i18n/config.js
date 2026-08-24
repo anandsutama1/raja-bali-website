@@ -1,7 +1,7 @@
 // Single source of truth for supported locales — imported by the proxy, the
 // [locale] layout's generateStaticParams, the API route's guest-email locale
 // validation, and sitemap.js, so none of them can drift out of sync.
-export const LOCALES = ["en", "zh"];
+export const LOCALES = ["en", "zh", "ja"];
 export const DEFAULT_LOCALE = "en";
 
 // Only ever written by the manual LanguageSwitcher (explicit override) —

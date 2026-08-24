@@ -1,0 +1,73 @@
+{
+  "common": {
+    "titlePlaceholder": "敬称",
+    "firstNamePlaceholder": "名",
+    "lastNamePlaceholder": "姓",
+    "dateLabel": "日付",
+    "timeLabel": "時間",
+    "selectTime": "時間を選択してください",
+    "adultsPlaceholder": "大人の人数",
+    "childrenPlaceholder": "子供の人数",
+    "emailPlaceholder": "メールアドレス",
+    "pickupLabel": "ヌサドゥア周辺での無料送迎を希望します(大人2名様以上)",
+    "hotelNamePlaceholder": "ホテル名",
+    "roomNumberPlaceholder": "部屋番号",
+    "dietaryPlaceholder": "食事制限やご要望はございますか?",
+    "useList": "リストから選択",
+    "otherManual": "その他(直接入力)",
+    "whatsappNumberPlaceholder": "WhatsApp番号",
+    "countryCodePlaceholder": "+66",
+    "countryCodeError": "国番号は+の後に数字のみを入力してください(例:+66)。",
+    "submittingMessages": ["リクエストを送信中…", "詳細を確認中…", "もう少しで完了です…"],
+    "emailError": "有効なメールアドレスを入力してください。",
+    "phoneError": "有効なWhatsApp番号を入力してください(数字のみ、8桁以上)。",
+    "errorFallback": "エラーが発生しました。もう一度お試しください。",
+    "noShowNotice": "ご注意:屋内席は禁煙、屋外席は喫煙可能です。ご予約時間より30分を過ぎますとお席をご用意できない場合があり、その場合キャンセル扱いとなることがございます。"
+  },
+  "reservationMain": {
+    "heading": "ご予約はこちらから",
+    "intro": "以下のフォームにご記入いただければ、スタッフができるだけ早くご予約を確認いたします。特別なご要望や食事制限がございましたら、お気軽にお知らせください。",
+    "submitLabel": "送信する",
+    "successMessage": "ありがとうございます!ご予約が確定しました。皆様のご来店を心よりお待ちしております。"
+  },
+  "reservationNusadua": {
+    "heading": "ご予約はこちらから",
+    "intro": "以下のフォームにご記入いただければ、スタッフができるだけ早くご予約を確認いたします。特別なご要望や食事制限がございましたら、お気軽にお知らせください。",
+    "submitLabel": "送信する",
+    "successMessage": "ありがとうございます!ご予約が確定しました。皆様のご来店を心よりお待ちしております。"
+  },
+  "cookingClass": {
+    "heading": "ご予約",
+    "subheading": "体験型クッキングクラスで、バリ料理の真髄への旅を始めましょう。",
+    "submitLabel": "今すぐ予約する",
+    "successMessage": "ありがとうございます!ご予約リクエストを送信しました。担当より近日中にご連絡いたします。"
+  },
+  "barClass": {
+    "heading": "ご予約",
+    "subheading": "木曜日午後3時のセッションのみ開催。バリ島式カクテルクラスの席をご予約ください。",
+    "thursdayOnlyNote": "(木曜日のみ)",
+    "dateError": "バークラスは木曜日のみ開催しております。",
+    "submitLabel": "今すぐ予約する",
+    "successMessage": "ありがとうございます!ご予約リクエストを送信しました。担当より近日中にご連絡いたします。"
+  },
+  "groupReservation": {
+    "heading": "団体予約のお申し込み",
+    "subheading": "企業ディナーや団体でのお祝いについてお聞かせください。イベント担当が空き状況を確認いたします。",
+    "messagePlaceholder": "ご希望のビュッフェプラン、食事制限、その他ご要望はございますか?",
+    "submitLabel": "リクエストを送信する",
+    "successMessage": "ありがとうございます!リクエストを送信しました。担当より近日中にご連絡いたします。"
+  },
+  "privateEvents": {
+    "heading": "イベントについてお問い合わせ",
+    "subheading": "プライベートイベントについてお聞かせください。イベント担当より詳細のご連絡をいたします。",
+    "submitLabel": "今すぐ予約する",
+    "successMessage": "ありがとうございます!お問い合わせを送信しました。担当より近日中にご連絡いたします。"
+  },
+  "contact": {
+    "heading": "メッセージを送る",
+    "subheading": "ご質問、特別なご要望、詳しい情報をご希望の場合は、以下のフォームにご記入ください。",
+    "messagePlaceholder": "お問い合わせ内容をご記入ください",
+    "submitLabel": "送信する",
+    "successMessage": "ありがとうございます!メッセージを送信しました。近日中にご返信いたします。"
+  }
+}

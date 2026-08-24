@@ -1,0 +1,71 @@
+{
+  "home": {
+    "titleDefault": "Raja Bali | バリ島最高峰のレストランのひとつ",
+    "titleOg": "Raja Bali | 本格バリ島料理レストラン",
+    "description": "Raja Bali はバリ島最高峰のレストランのひとつで、Tripadvisor トラベラーズチョイス賞を5年連続で受賞。ヌサドゥアで本格的なバリ料理、伝統舞踊公演、そして体験型のクッキング&カクテルクラスをご提供しています。"
+  },
+  "about": {
+    "title": "私たちについて",
+    "description": "バリの伝統、本格レシピ、新鮮な地元食材、そしてヌサドゥアの温かい島のおもてなしに根ざしたレストラン、Raja Bali の物語。"
+  },
+  "outlets": {
+    "title": "店舗のご案内",
+    "description": "ヌサドゥアにある Raja Bali の2つの店舗、Raja Bali Nusa Dua(メインレストラン)と Raja Bali Nusa Dua(ダイニングレストラン)をご紹介。地図・営業時間・ご予約リンクを掲載。"
+  },
+  "contact": {
+    "title": "お問い合わせ",
+    "description": "ご予約・お問い合わせ・ヌサドゥアにある2店舗への行き方については、Raja Bali Nusa Dua(メインレストラン)または Raja Bali Nusa Dua(ダイニングレストラン)までお気軽にご連絡ください。"
+  },
+  "gallery": {
+    "title": "ギャラリー",
+    "description": "お食事、クッキング&バークラス、舞踊公演、プライベートイベントなど、Raja Bali のあらゆる体験を彩る味わい、祝祭、温かいおもてなしの数々。"
+  },
+  "menuFood": {
+    "title": "フードメニュー",
+    "description": "前菜、スープ、ベジタリアン料理、ライス&ヌードル、メインコース、ブトゥトゥ、バリ島セットメニューなど、すべて本格レシピで作られた Raja Bali のフードメニューをご覧ください。"
+  },
+  "menuBeverage": {
+    "title": "ビバレッジメニュー",
+    "description": "Raja Bali のビバレッジメニューは、南国らしい風味を生かしたシグネチャーカクテル、ワイン、各種ドリンクを取り揃えています。"
+  },
+  "menuBalineseBuffet": {
+    "title": "バリ島ビュッフェメニュー",
+    "description": "本格バリ料理を取り揃えた Raja Bali の団体ディナービュッフェメニュー。おひとり IDR 300K〜、団体でのお祝いに最適です。"
+  },
+  "menuWesternAsianBuffet": {
+    "title": "洋食&アジア料理ビュッフェメニュー",
+    "description": "洋食&アジア料理の人気メニューを取り揃えた Raja Bali の団体ディナービュッフェメニュー。おひとり IDR 350K〜、好みの異なる団体様にも最適です。"
+  },
+  "cookingClass": {
+    "title": "バリ島クッキングクラス",
+    "description": "ヌサドゥアで体験する本格バリ島クッキングクラス。本格レシピを学び、スパイスガーデンを見学し、自分で作った料理を味わえます。おひとり IDR 550K〜。"
+  },
+  "barClass": {
+    "title": "バリ島式カクテルクラス",
+    "description": "毎週木曜日午後3時、ヌサドゥアで開催される Raja Bali のバリ島式カクテルクラスにご参加のうえ、午後7時からの無料バリ舞踊公演もぜひお楽しみください。木曜日1日で2つの体験を。"
+  },
+  "dance": {
+    "title": "バリ舞踊公演",
+    "description": "ヌサドゥアで唯一のバリ舞踊公演。毎週木曜日の夕方、Raja Bali Nusa Dua(メインレストラン)にて無料開催、お食事のお客様はどなたでも無料でご覧いただけます。"
+  },
+  "privateEvents": {
+    "title": "プライベートイベント&会場レンタル",
+    "description": "ヌサドゥアエリアの Raja Bali で、人生の特別な瞬間をお祝いください。結婚式、企業ディナー、各種お祝い事に対応するプライベート会場、会場レンタル、オーダーメイドのイベントプランニングをご提供します。"
+  },
+  "groupReservation": {
+    "title": "バリ島での企業&団体ダイニング",
+    "description": "ヌサドゥアエリアの Raja Bali で企業ディナー、会社の懇親会、団体でのお祝いを。団体ダイニング体験を今すぐご予約ください。"
+  },
+  "reservationMain": {
+    "title": "ヌサドゥアの本格バリ料理レストラン | Raja Bali Nusa Dua(メインレストラン)",
+    "description": "Raja Bali Nusa Dua(メインレストラン)のテーブルをご予約ください。本格バリ料理、クッキングクラス、伝統文化公演がお待ちしています。"
+  },
+  "reservationNusadua": {
+    "title": "ヌサドゥアのバリ料理レストラン | Raja Bali Nusa Dua(ダイニングレストラン)",
+    "description": "上品な雰囲気の中で本格バリ料理を楽しめる Raja Bali Nusa Dua(ダイニングレストラン)のテーブルをご予約ください。ロマンチックなディナーや特別な夜にぴったりです。"
+  },
+  "share": {
+    "title": "Raja Bali をシェアする",
+    "description": "Raja Bali での体験を、ご家族やご友人とシェアしましょう。"
+  }
+}
