@@ -52,6 +52,10 @@ export const LOCATIONS = [
     facebook: "https://www.facebook.com/share/19JwnjfRDe/",
     // Official Google share link, provided directly by the business.
     hasMap: "https://share.google/8gzSWdB217YXjQqfc",
+    // Google's "write a review" deep link for this listing, provided
+    // directly by the business — distinct from hasMap above, which is the
+    // general share/directions link, not the review-writing flow.
+    googleReviewUrl: "https://share.google/PVaQ32DZIH2YtppoO",
     url: `${SITE_URL}/reservation-main`,
     image: `${SITE_URL}/images/contact/Main-Restaurant.jpg`,
   },

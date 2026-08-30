@@ -2,7 +2,7 @@
 
 import { useState, useSyncExternalStore } from "react";
 import LocalizedLink from "@/components/LocalizedLink";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, LOCATIONS } from "@/lib/site";
 
 // navigator.share support never changes during a session, so it's read as
 // external (non-React) state via useSyncExternalStore rather than an
@@ -80,11 +80,29 @@ function ShareIcon(props) {
   );
 }
 
+function MenuIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M6 3v8M4 3v5a2 2 0 0 0 4 0V3M18 3c-2 0-3 2-3 5s1 4 3 4M18 3v18" />
+    </svg>
+  );
+}
+
+function StarIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M12 2.5l2.9 6.3 6.9.7-5.2 4.7 1.5 6.8L12 17.7 5.9 21l1.5-6.8-5.2-4.7 6.9-.7L12 2.5z" />
+    </svg>
+  );
+}
+
 export default function ShareButtons({ content }) {
   const canNativeShare = useSyncExternalStore(subscribeNoop, getShareSupport, getShareSupportServer);
   const [copied, setCopied] = useState(false);
   const [igNote, setIgNote] = useState(false);
   const shareMessage = content.shareMessage;
+  const googleReviewUrl = LOCATIONS[0].googleReviewUrl;
+  const tripadvisorUrl = LOCATIONS[0].sameAs.find((url) => url.includes("tripadvisor.com"));
 
   const links = [
     {
@@ -148,6 +166,14 @@ export default function ShareButtons({ content }) {
 
   return (
     <section className="flex flex-col items-center justify-center border-t border-gray-200 bg-raja-cream px-6 py-24 text-center">
+      <LocalizedLink
+        href="/menu/food"
+        className="u-press mb-8 inline-flex items-center gap-2 bg-raja-black px-8 py-3 text-sm tracking-widest text-white hover:bg-raja-red"
+      >
+        <MenuIcon className="h-4 w-4" />
+        {content.viewMenu}
+      </LocalizedLink>
+
       {canNativeShare && (
         <button
           type="button"
@@ -197,6 +223,31 @@ export default function ShareButtons({ content }) {
         <CopyIcon className="h-4 w-4" />
         {copied ? content.linkCopied : content.copyLink}
       </button>
+
+      <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
+        {googleReviewUrl && (
+          <a
+            href={googleReviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="u-press inline-flex items-center justify-center gap-2 bg-[#4285F4] px-6 py-3 text-sm tracking-widest text-white hover:opacity-90"
+          >
+            <StarIcon className="h-4 w-4" />
+            {content.reviewOnGoogle}
+          </a>
+        )}
+        {tripadvisorUrl && (
+          <a
+            href={tripadvisorUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="u-press inline-flex items-center justify-center gap-2 bg-[#00AA6C] px-6 py-3 text-sm tracking-widest text-white hover:opacity-90"
+          >
+            <StarIcon className="h-4 w-4" />
+            {content.reviewOnTripadvisor}
+          </a>
+        )}
+      </div>
 
       <LocalizedLink href="/" className="u-link mt-12 text-sm text-gray-500">
         {content.backToRajaBali}

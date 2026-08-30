@@ -5,10 +5,13 @@
     "body": "Word of mouth means the world to us. Tap a platform below to share Raja Bali, a short message is already written for you."
   },
   "shareButtons": {
+    "viewMenu": "View Menu",
     "shareMessage": "I just had an amazing evening at Raja Bali in Nusa Dua! Authentic Balinese food, live cultural performances, and wonderful hospitality. Highly recommend it if you're in Bali!",
     "shareNow": "Share Now",
     "igNote": "Message copied — open Instagram and paste it into a DM, Story, or your bio.",
     "copyLink": "Copy Link",
+    "reviewOnGoogle": "Review on Google",
+    "reviewOnTripadvisor": "Review on Tripadvisor",
     "linkCopied": "Link Copied!",
     "backToRajaBali": "Back to Raja Bali"
   }
