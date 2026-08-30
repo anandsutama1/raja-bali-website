@@ -3,6 +3,7 @@ import LocalizedLink from "@/components/LocalizedLink";
 import MenuSection from "@/components/menu/MenuSection";
 import WineTable from "@/components/menu/WineTable";
 import StickyReserveButton from "@/components/StickyReserveButton";
+import StickyMenuCrossLink from "@/components/StickyMenuCrossLink";
 import PageSchema from "@/components/PageSchema";
 import { buildMenuJsonLd, buildWineMenuSection } from "@/lib/menuSchema";
 import { SITE_URL } from "@/lib/site";
@@ -144,6 +145,7 @@ export default async function BeverageMenuPage({ params }) {
         <WineTable title={t.sparklingWine} items={importedSparklingWine} />
       </div>
 
+      <StickyMenuCrossLink href="/menu/food" label={bev.crossLinkLabel} />
       <StickyReserveButton href="/outlets" label={common.stickyReserve.table} />
     </main>
   );

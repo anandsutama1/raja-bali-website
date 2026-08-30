@@ -3,6 +3,7 @@ import LocalizedLink from "@/components/LocalizedLink";
 import MenuSection from "@/components/menu/MenuSection";
 import SetMenuCard from "@/components/menu/SetMenuCard";
 import StickyReserveButton from "@/components/StickyReserveButton";
+import StickyMenuCrossLink from "@/components/StickyMenuCrossLink";
 import PageSchema from "@/components/PageSchema";
 import { buildMenuJsonLd } from "@/lib/menuSchema";
 import { SITE_URL } from "@/lib/site";
@@ -120,6 +121,7 @@ export default async function FoodMenuPage({ params }) {
         </div>
       </div>
 
+      <StickyMenuCrossLink href="/menu/beverage" label={food.crossLinkLabel} />
       <StickyReserveButton href="/outlets" label={common.stickyReserve.table} />
     </main>
   );
