@@ -130,6 +130,16 @@ export default function ShareButtons({ content }) {
     },
   ];
 
+  // Opens via JS instead of a plain <a href>. Ad blockers with a social/
+  // tracker filter list (Brave Shields, uBlock's Fanboy list, etc.) match
+  // and hide elements by their static href — wa.me, facebook.com/sharer,
+  // fb-messenger:// are common targets — so a share button whose real
+  // destination only exists inside an onClick handler, exactly like the
+  // Instagram button below, is invisible to that kind of pattern match.
+  const openInNewTab = (href) => {
+    window.open(href, "_blank", "noopener,noreferrer");
+  };
+
   const nativeShare = async () => {
     try {
       await navigator.share({ title: "Raja Bali", text: shareMessage, url: SHARE_URL });
@@ -187,18 +197,17 @@ export default function ShareButtons({ content }) {
 
       <div className="grid w-full max-w-sm grid-cols-4 gap-4">
         {links.map(({ label, Icon, href, bg }) => (
-          <a
+          <button
             key={label}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
+            type="button"
+            onClick={() => openInNewTab(href)}
             className="u-press flex flex-col items-center gap-2"
           >
             <span className={`flex h-14 w-14 items-center justify-center rounded-full text-white ${bg}`}>
               <Icon className="h-6 w-6" />
             </span>
             <span className="text-xs text-gray-600">{label}</span>
-          </a>
+          </button>
         ))}
 
         <button type="button" onClick={shareToInstagram} className="u-press flex flex-col items-center gap-2">
@@ -226,26 +235,24 @@ export default function ShareButtons({ content }) {
 
       <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
         {googleReviewUrl && (
-          <a
-            href={googleReviewUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={() => openInNewTab(googleReviewUrl)}
             className="u-press inline-flex items-center justify-center gap-2 bg-[#4285F4] px-6 py-3 text-sm tracking-widest text-white hover:opacity-90"
           >
             <StarIcon className="h-4 w-4" />
             {content.reviewOnGoogle}
-          </a>
+          </button>
         )}
         {tripadvisorUrl && (
-          <a
-            href={tripadvisorUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={() => openInNewTab(tripadvisorUrl)}
             className="u-press inline-flex items-center justify-center gap-2 bg-[#00AA6C] px-6 py-3 text-sm tracking-widest text-white hover:opacity-90"
           >
             <StarIcon className="h-4 w-4" />
             {content.reviewOnTripadvisor}
-          </a>
+          </button>
         )}
       </div>
 
