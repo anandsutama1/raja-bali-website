@@ -44,9 +44,7 @@
   },
   "barClass": {
     "heading": "预订",
-    "subheading": "仅限每周四下午3点场次。立即预订您的巴厘岛调酒课程名额。",
-    "thursdayOnlyNote": "(仅限周四)",
-    "dateError": "调酒课程仅在每周四开放预订。",
+    "subheading": "立即预订您的巴厘岛调酒课程名额。",
     "submitLabel": "立即预订",
     "successMessage": "谢谢!您的预订请求已发送,我们会尽快与您联系。"
   },
@@ -62,6 +60,27 @@
     "subheading": "请告诉我们您的私人活动详情,我们的活动团队将与您联系,商讨具体安排。",
     "submitLabel": "立即预订",
     "successMessage": "谢谢!您的咨询已发送,我们会尽快与您联系。"
+  },
+  "venueRental": {
+    "heading": "咨询场地租赁",
+    "subheading": "请告诉我们您的课程、拍摄或活动详情,我们将回复空档与价格信息。",
+    "spaceNeededLabel": "所需场地",
+    "spaceGarden": "花园",
+    "spacePrivateRoom": "私人房间",
+    "spaceBoth": "两者皆需",
+    "purposeLabel": "用途",
+    "purposeYogaWellness": "瑜伽/养生课程",
+    "purposePhotoshoot": "拍摄",
+    "purposeFitnessClass": "健身课程",
+    "purposeStandUpComedy": "单口喜剧",
+    "purposeCorporateMeeting": "企业会议",
+    "purposeTrainingWorkshop": "培训/工作坊",
+    "purposeCommunityEvent": "社区活动",
+    "purposeOther": "其他",
+    "attendeesPlaceholder": "参加人数",
+    "messagePlaceholder": "请告诉我们更多活动详情、偏好时间及具体需求",
+    "submitLabel": "发送咨询",
+    "successMessage": "谢谢!您的场地租赁咨询已发送,我们会尽快与您联系。"
   },
   "contact": {
     "heading": "给我们留言",

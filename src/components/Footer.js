@@ -23,6 +23,7 @@ export default function Footer({ dict }) {
         { href: "/dance", label: dict.nav.dance },
         { href: "/private-events", label: dict.nav.privateEvents },
         { href: "/group-reservation", label: dict.nav.groupReservation },
+        { href: "/venue-rental", label: dict.nav.venueRental },
       ],
     },
   ];

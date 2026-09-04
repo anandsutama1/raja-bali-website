@@ -24,6 +24,7 @@ export default function Navbar({ dict }) {
     { href: "/dance", label: nav.dance },
     { href: "/private-events", label: nav.privateEvents },
     { href: "/group-reservation", label: nav.groupReservation },
+    { href: "/venue-rental", label: nav.venueRental },
   ];
 
   const [scrolled, setScrolled] = useState(false);

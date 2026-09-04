@@ -15,7 +15,7 @@ export default function BarClassStructuredData() {
   const url = `${SITE_URL}/bar-class`;
   const image = `${SITE_URL}/images/shared/og-bar-class.jpg`;
   const description =
-    "Hands-on Balinese cocktail class at Raja Bali in Nusa Dua. Learn mixology from expert bartenders, taste authentic Balinese Arak, and craft your own signature drink. Thursdays only, followed by a complimentary Balinese dance performance the same evening, free for dining guests.";
+    "Hands-on Balinese cocktail class at Raja Bali in Nusa Dua. Learn mixology from expert bartenders, taste authentic Balinese Arak, and craft your own signature drink. Three sessions daily; visit on a Thursday to also enjoy a complimentary Balinese dance performance the same evening, free for dining guests.";
 
   const offers = [
     {
@@ -49,6 +49,14 @@ export default function BarClassStructuredData() {
     offers,
   };
 
+  // Mirrors components/bar-class/DailySessions.js — three 1-hour sessions
+  // run daily, same start times as the cooking class.
+  const sessionTimes = [
+    { name: "Session 1", startTime: "11:00", endTime: "12:00" },
+    { name: "Session 2", startTime: "14:00", endTime: "15:00" },
+    { name: "Session 3", startTime: "17:00", endTime: "18:00" },
+  ];
+
   const course = {
     "@type": "Course",
     "@id": `${url}#course`,
@@ -57,21 +65,20 @@ export default function BarClassStructuredData() {
     image,
     url,
     provider: { "@id": `${SITE_URL}/#organization` },
-    hasCourseInstance: {
+    hasCourseInstance: sessionTimes.map((session) => ({
       "@type": "CourseInstance",
-      name: "Thursday Session",
+      name: session.name,
       courseMode: "Onsite",
       courseWorkload: "PT1H",
       courseSchedule: {
         "@type": "Schedule",
-        repeatFrequency: "P1W",
-        byDay: "https://schema.org/Thursday",
-        startTime: "15:00",
-        endTime: "16:00",
+        repeatFrequency: "P1D",
+        startTime: session.startTime,
+        endTime: session.endTime,
       },
       location: { "@id": `${SITE_URL}/#main-restaurant` },
       offers,
-    },
+    })),
   };
 
   const jsonLd = {

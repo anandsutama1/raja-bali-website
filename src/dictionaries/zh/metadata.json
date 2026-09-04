@@ -42,15 +42,19 @@
   },
   "barClass": {
     "title": "巴厘调酒课程",
-    "description": "每周四下午 3 点参加 Raja Bali 的巴厘调酒课程,随后可留下欣赏晚上 7 点的免费巴厘舞蹈表演——一个周四,两种精彩体验。"
+    "description": "参加 Raja Bali 位于努沙杜瓦的亲手巴厘调酒课程,每日提供三个场次可供选择。周四前来,还可留下欣赏晚上 7 点开始的免费巴厘舞蹈表演。"
   },
   "dance": {
     "title": "巴厘舞蹈表演",
     "description": "努沙杜瓦(Nusa Dua)独有的巴厘舞蹈表演。每周四傍晚在 Raja Bali Nusa Dua(主餐厅)免费呈现,用餐宾客均可免费观赏。"
   },
   "privateEvents": {
-    "title": "私人活动与场地租赁",
-    "description": "在巴厘岛努沙杜瓦(Nusa Dua)的 Raja Bali 庆祝人生中的重要时刻,提供私人活动场地、场地租赁及婚礼、企业晚宴与各类庆典的专属活动策划服务。"
+    "title": "私人活动",
+    "description": "在巴厘岛努沙杜瓦(Nusa Dua)的 Raja Bali 庆祝人生中的重要时刻,提供私人活动场地及婚礼、企业晚宴与各类庆典的专属活动策划服务。"
+  },
+  "venueRental": {
+    "title": "努沙杜瓦花园与会议室租赁",
+    "description": "按小时租用 Raja Bali 位于努沙杜瓦的花园或私人会议室,自行举办瑜伽课程、拍摄、健身课程、单口喜剧之夜、企业会议、培训或工作坊。"
   },
   "groupReservation": {
     "title": "巴厘岛企业与团体聚餐",

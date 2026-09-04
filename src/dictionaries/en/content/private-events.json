@@ -40,5 +40,10 @@
     "headingPrefix": "Gallery ",
     "headingAccent": "Experience",
     "body": "Showcase beautifully captured moments from birthdays, family gatherings, corporate dinners, wedding receptions, and private events."
+  },
+  "venueRentalCrossLink": {
+    "prefix": "Looking to rent the empty space for your own event instead? See our ",
+    "linkLabel": "Venue Rental",
+    "suffix": " page."
   }
 }

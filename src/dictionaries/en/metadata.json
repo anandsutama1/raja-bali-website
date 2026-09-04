@@ -42,15 +42,19 @@
   },
   "barClass": {
     "title": "Balinese Cocktail Class",
-    "description": "Join Raja Bali's Balinese cocktail class every Thursday at 3 PM in Nusa Dua, then stay for the complimentary Balinese dance from 7 PM. One Thursday, two experiences."
+    "description": "Join Raja Bali's hands-on Balinese cocktail class in Nusa Dua, with three daily sessions to choose from. Visit on a Thursday to also enjoy our complimentary Balinese dance performance from 7 PM."
   },
   "dance": {
     "title": "Balinese Dance Performance",
     "description": "The only Balinese Dance performance in Nusa Dua. Watch it complimentary every Thursday evening at Raja Bali Nusa Dua (Main Restaurant), free for dining guests."
   },
   "privateEvents": {
-    "title": "Private Events & Venue Rental",
-    "description": "Celebrate life's special moments at Raja Bali in Bali's Nusa Dua area, with private event spaces, venue rental, and personalized event planning for weddings, corporate dinners, and celebrations."
+    "title": "Private Events",
+    "description": "Celebrate life's special moments at Raja Bali in Bali's Nusa Dua area, with private event spaces and personalized event planning for weddings, corporate dinners, and celebrations."
+  },
+  "venueRental": {
+    "title": "Garden & Meeting Room Rental in Nusa Dua",
+    "description": "Rent Raja Bali's garden or private meeting room in Nusa Dua by the hour, for your own yoga class, photoshoot, fitness class, stand-up comedy night, corporate meeting, training, or workshop."
   },
   "groupReservation": {
     "title": "Corporate & Group Dining in Bali",

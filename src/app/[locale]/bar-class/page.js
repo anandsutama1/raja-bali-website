@@ -35,7 +35,7 @@ export async function generateMetadata({ params }) {
     keywords: [
       "Balinese cocktail class",
       "cocktail class Bali",
-      "Thursday cocktail class Bali",
+      "cocktail making class Bali",
       "bar class Bali",
       "Balinese dance performance",
       "free Balinese dance Thursday",

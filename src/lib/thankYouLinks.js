@@ -59,6 +59,11 @@ const LINK_META = {
     { labelKey: "viewFoodMenu", path: "/menu/food", image: "/images/home/Food-Menu.jpg" },
     { labelKey: "cookingClass", path: "/cooking-class", image: "/images/cooking-class/CookingClass-Card.jpg", badgeKey: "mostPopular" },
   ],
+  "venue-rental": [
+    { labelKey: "contactUs", path: "/contact", image: "/images/contact/Hero.jpg" },
+    { labelKey: "privateEvents", path: "/private-events", image: "/images/private-events/Hero.jpg" },
+    { labelKey: "viewFoodMenu", path: "/menu/food", image: "/images/home/Food-Menu.jpg" },
+  ],
 };
 
 // `labels` is common.json's `thankYouLinks` slice for the caller's locale.

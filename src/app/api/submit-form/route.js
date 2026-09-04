@@ -38,6 +38,7 @@ const FORM_LABELS = {
   "bar-class": "Bar Class Reservation",
   "private-events": "Private Events Enquiry",
   "group-reservation": "Group Reservation Enquiry",
+  "venue-rental": "Venue Rental Enquiry",
 };
 
 // Maps a form's `formType` (hyphenated, matches THANK_YOU_LINKS/Sheets
@@ -50,6 +51,7 @@ const EMAIL_DICT_KEYS = {
   "bar-class": "barClass",
   "private-events": "privateEvents",
   "group-reservation": "groupReservation",
+  "venue-rental": "venueRental",
   contact: "contact",
 };
 
@@ -61,6 +63,7 @@ const RESERVATION_FORM_TYPES = new Set([
   "bar-class",
   "private-events",
   "group-reservation",
+  "venue-rental",
 ]);
 
 // Plain table reservations at either outlet are auto-confirmed on submit —
@@ -140,6 +143,9 @@ function buildEmailHtml(formType, fields) {
     ["WhatsApp", fields.whatsapp],
     ["Date", fields.date],
     ["Time", fields.time],
+    ["Space Needed", fields.spaceNeeded],
+    ["Purpose", fields.purpose],
+    ["Attendees", fields.attendees],
     ["Adults", fields.guests],
     ["Children", fields.children],
     ["Hotel Name", fields.hotelName],
@@ -266,6 +272,9 @@ function buildGuestConfirmationHtml(formType, branch, fields, emailDict, thankYo
     ? [
         ["Date", fields.date],
         ["Time", fields.time],
+        ["Space Needed", fields.spaceNeeded],
+        ["Purpose", fields.purpose],
+        ["Number of Attendees", fields.attendees],
         ["Number of Adults", fields.guests],
         ["Number of Children", fields.children],
         ["Hotel Name", fields.hotelName],

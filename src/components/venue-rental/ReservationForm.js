@@ -11,9 +11,7 @@ import PhoneField from "@/components/PhoneField";
 import GuestCountField from "@/components/GuestCountField";
 import SubmitButton from "@/components/SubmitButton";
 
-// Three daily sessions, same start times as cooking-class — mirrors
-// components/bar-class/DailySessions.js's `sessions` list.
-const timeSlots = ["11:00 AM", "2:00 PM", "5:00 PM"];
+const ATTENDEE_OPTIONS = [5, 10, 15, 20, 30];
 
 const initialFields = {
   title: "",
@@ -21,15 +19,13 @@ const initialFields = {
   lastName: "",
   date: "",
   time: "",
-  guests: "",
-  children: "",
+  spaceNeeded: "",
+  purpose: "",
+  attendees: "",
   email: "",
   whatsappCountry: DEFAULT_COUNTRY_CODE,
   whatsappNumber: "",
   message: "",
-  pickupNeeded: false,
-  hotelName: "",
-  roomNumber: "",
 };
 
 export default function ReservationForm({ dict, common }) {
@@ -39,14 +35,13 @@ export default function ReservationForm({ dict, common }) {
   const [fields, setFields] = useState(initialFields);
   const [fieldErrors, setFieldErrors] = useState({});
   const { status, errorMessage, submitForm, submittingMessage } = useFormSubmit({
-    formType: "bar-class",
+    formType: "venue-rental",
     branch: "general",
     messages: common.submittingMessages,
     errorFallback: common.errorFallback,
   });
 
   const update = (key) => (e) => setFields((f) => ({ ...f, [key]: e.target.value }));
-  const toggle = (key) => (e) => setFields((f) => ({ ...f, [key]: e.target.checked }));
 
   const validate = () => {
     const errors = {};
@@ -60,27 +55,22 @@ export default function ReservationForm({ dict, common }) {
     e.preventDefault();
     if (!validate()) return;
 
-    const { whatsappCountry, whatsappNumber, pickupNeeded, hotelName, roomNumber, ...rest } = fields;
-    const payload = {
-      ...rest,
-      whatsapp: `${whatsappCountry} ${whatsappNumber}`,
-      ...(pickupNeeded ? { hotelName, roomNumber } : {}),
-      locale,
-    };
+    const { whatsappCountry, whatsappNumber, ...rest } = fields;
+    const payload = { ...rest, whatsapp: `${whatsappCountry} ${whatsappNumber}`, locale };
 
     const ok = await submitForm(payload);
     if (ok) {
       setFields(initialFields);
       setFieldErrors({});
-      // Only reached once the API has confirmed the booking actually went
+      // Only reached once the API has confirmed the enquiry actually went
       // through (see useFormSubmit: `ok` is true only when res.ok &&
       // data.ok). Validation/API failures never reach here.
-      router.push(`/${locale}/bar-class/thank-you`);
+      router.push(`/${locale}/venue-rental/thank-you`);
     }
   };
 
   return (
-    <section id="reservation" className="border-t border-gray-200 py-20 px-6 max-w-2xl mx-auto">
+    <section id="reservation" className="border-t border-gray-200 py-20 px-6 max-w-2xl mx-auto bg-white">
       <h2 className="text-3xl font-serif text-center mb-2">{dict.heading}</h2>
       <p className="text-center text-gray-600 mb-10">{dict.subheading}</p>
       <form className="space-y-4" onSubmit={handleSubmit}>
@@ -97,35 +87,49 @@ export default function ReservationForm({ dict, common }) {
             <input placeholder={common.firstNamePlaceholder} aria-label={common.firstNamePlaceholder} required value={fields.firstName} onChange={update("firstName")} className="border p-3 rounded" />
             <input placeholder={common.lastNamePlaceholder} aria-label={common.lastNamePlaceholder} required value={fields.lastName} onChange={update("lastName")} className="border p-3 rounded" />
           </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="reservation-date" className="mb-1 block text-xs text-gray-500">{common.dateLabel}</label>
-              <input id="reservation-date" type="date" min={today} required value={fields.date} onChange={update("date")} className="border p-3 rounded w-full" />
+              <label htmlFor="venue-date" className="mb-1 block text-xs text-gray-500">{common.dateLabel}</label>
+              <input id="venue-date" type="date" min={today} required value={fields.date} onChange={update("date")} className="border p-3 rounded w-full" />
             </div>
             <div>
-              <label htmlFor="reservation-time" className="mb-1 block text-xs text-gray-500">{common.timeLabel}</label>
-              <select
-                id="reservation-time"
-                required
-                value={fields.time}
-                onChange={update("time")}
-                className="border p-3 rounded text-gray-700 w-full"
-              >
-                <option value="" disabled>
-                  {common.selectTime}
-                </option>
-                {timeSlots.map((slot) => (
-                  <option key={slot} value={slot}>
-                    {slot}
-                  </option>
-                ))}
-              </select>
+              <label htmlFor="venue-time" className="mb-1 block text-xs text-gray-500">{common.timeLabel}</label>
+              <input id="venue-time" type="time" required value={fields.time} onChange={update("time")} className="border p-3 rounded w-full" />
             </div>
           </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <GuestCountField value={fields.guests} onChange={update("guests")} placeholder={common.adultsPlaceholder} required className="border p-3 rounded" useListLabel={common.useList} otherManualLabel={common.otherManual} />
-            <GuestCountField value={fields.children} onChange={update("children")} options={[0, 1, 2, 3, 4, 5]} placeholder={common.childrenPlaceholder} className="border p-3 rounded" useListLabel={common.useList} otherManualLabel={common.otherManual} />
+            <select required value={fields.spaceNeeded} onChange={update("spaceNeeded")} aria-label={dict.spaceNeededLabel} className="border p-3 rounded text-gray-700">
+              <option value="" disabled>{dict.spaceNeededLabel}</option>
+              <option value={dict.spaceGarden}>{dict.spaceGarden}</option>
+              <option value={dict.spacePrivateRoom}>{dict.spacePrivateRoom}</option>
+              <option value={dict.spaceBoth}>{dict.spaceBoth}</option>
+            </select>
+            <select required value={fields.purpose} onChange={update("purpose")} aria-label={dict.purposeLabel} className="border p-3 rounded text-gray-700">
+              <option value="" disabled>{dict.purposeLabel}</option>
+              <option value={dict.purposeYogaWellness}>{dict.purposeYogaWellness}</option>
+              <option value={dict.purposePhotoshoot}>{dict.purposePhotoshoot}</option>
+              <option value={dict.purposeFitnessClass}>{dict.purposeFitnessClass}</option>
+              <option value={dict.purposeStandUpComedy}>{dict.purposeStandUpComedy}</option>
+              <option value={dict.purposeCorporateMeeting}>{dict.purposeCorporateMeeting}</option>
+              <option value={dict.purposeTrainingWorkshop}>{dict.purposeTrainingWorkshop}</option>
+              <option value={dict.purposeCommunityEvent}>{dict.purposeCommunityEvent}</option>
+              <option value={dict.purposeOther}>{dict.purposeOther}</option>
+            </select>
           </div>
+
+          <GuestCountField
+            value={fields.attendees}
+            onChange={update("attendees")}
+            options={ATTENDEE_OPTIONS}
+            placeholder={dict.attendeesPlaceholder}
+            required
+            className="border p-3 rounded w-full"
+            useListLabel={common.useList}
+            otherManualLabel={common.otherManual}
+          />
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <input
@@ -149,38 +153,8 @@ export default function ReservationForm({ dict, common }) {
               className="border p-3 rounded"
             />
           </div>
-          <div>
-            <label className="flex items-center gap-2 text-sm text-gray-700">
-              <input
-                type="checkbox"
-                checked={fields.pickupNeeded}
-                onChange={toggle("pickupNeeded")}
-                className="h-4 w-4 border-gray-300"
-              />
-              {common.pickupLabel}
-            </label>
-            {fields.pickupNeeded && (
-              <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input
-                  placeholder={common.hotelNamePlaceholder}
-                  aria-label={common.hotelNamePlaceholder}
-                  required
-                  value={fields.hotelName}
-                  onChange={update("hotelName")}
-                  className="border p-3 rounded"
-                />
-                <input
-                  placeholder={common.roomNumberPlaceholder}
-                  aria-label={common.roomNumberPlaceholder}
-                  required
-                  value={fields.roomNumber}
-                  onChange={update("roomNumber")}
-                  className="border p-3 rounded"
-                />
-              </div>
-            )}
-          </div>
-          <textarea placeholder={common.dietaryPlaceholder} aria-label={common.dietaryPlaceholder} required value={fields.message} onChange={update("message")} className="border p-3 rounded w-full h-24"></textarea>
+
+          <textarea placeholder={dict.messagePlaceholder} aria-label={dict.messagePlaceholder} required value={fields.message} onChange={update("message")} className="border p-3 rounded w-full h-24"></textarea>
           <SubmitButton status={status} label={dict.submitLabel} submittingMessage={submittingMessage} />
         </fieldset>
         {status === "success" && (

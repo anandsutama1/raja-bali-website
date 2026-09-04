@@ -44,9 +44,7 @@
   },
   "barClass": {
     "heading": "ご予約",
-    "subheading": "木曜日午後3時のセッションのみ開催。バリ島式カクテルクラスの席をご予約ください。",
-    "thursdayOnlyNote": "(木曜日のみ)",
-    "dateError": "バークラスは木曜日のみ開催しております。",
+    "subheading": "バリ島式カクテルクラスの席をご予約ください。",
     "submitLabel": "今すぐ予約する",
     "successMessage": "ありがとうございます!ご予約リクエストを送信しました。担当より近日中にご連絡いたします。"
   },
@@ -62,6 +60,27 @@
     "subheading": "プライベートイベントについてお聞かせください。イベント担当より詳細のご連絡をいたします。",
     "submitLabel": "今すぐ予約する",
     "successMessage": "ありがとうございます!お問い合わせを送信しました。担当より近日中にご連絡いたします。"
+  },
+  "venueRental": {
+    "heading": "会場レンタルについてお問い合わせ",
+    "subheading": "クラス、撮影、イベントについてお聞かせください。空き状況と料金をご案内いたします。",
+    "spaceNeededLabel": "ご希望の会場",
+    "spaceGarden": "ガーデン",
+    "spacePrivateRoom": "プライベートルーム",
+    "spaceBoth": "両方",
+    "purposeLabel": "ご利用目的",
+    "purposeYogaWellness": "ヨガ/ウェルネスクラス",
+    "purposePhotoshoot": "撮影",
+    "purposeFitnessClass": "フィットネスクラス",
+    "purposeStandUpComedy": "スタンドアップコメディ",
+    "purposeCorporateMeeting": "企業ミーティング",
+    "purposeTrainingWorkshop": "研修/ワークショップ",
+    "purposeCommunityEvent": "コミュニティイベント",
+    "purposeOther": "その他",
+    "attendeesPlaceholder": "参加人数",
+    "messagePlaceholder": "イベントの詳細、ご希望の時間帯、その他ご要望をお聞かせください",
+    "submitLabel": "お問い合わせを送信する",
+    "successMessage": "ありがとうございます!会場レンタルのお問い合わせを送信しました。担当より近日中にご連絡いたします。"
   },
   "contact": {
     "heading": "メッセージを送る",

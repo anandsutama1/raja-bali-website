@@ -3,7 +3,7 @@
     "title": "An Authentic Balinese Cocktail Class Experience",
     "bodyPrefix": "Shake, stir, and sip your way through an interactive cocktail-making experience at ",
     "bodyLinkLabel": "Raja Bali Nusa Dua (Main Restaurant)",
-    "bodySuffix": ", inspired by the vibrant flavors of Bali. Held Thursdays at 3 PM, stay on and pair it with our complimentary Balinese Dance Performance from 7 PM."
+    "bodySuffix": ", inspired by the vibrant flavors of Bali. Available daily, and if you visit on a Thursday, stay on and pair it with our complimentary Balinese Dance Performance from 7 PM."
   },
   "intro": {
     "headingPrefix": "A Spirited ",
@@ -17,15 +17,16 @@
     { "title": "Create Memories Behind the Bar", "desc": "This class is about more than mixing drinks. It's about creativity, connection, and the moments you'll remember, from your first shake to your final sip." }
   ],
   "dailySessions": {
-    "heading": "Session Schedule",
-    "subheadingPrefix": "Available Thursdays only, at ",
-    "subheadingLinkLabel": "Raja Bali Nusa Dua (Main Restaurant)",
-    "sessionName": "Thursday Session",
-    "time": "3:00 PM",
-    "body": "An interactive afternoon of Balinese-inspired mixology, finishing with your own handcrafted cocktail.",
-    "notePrefix": "It's a package: stay on and enjoy the complimentary ",
-    "noteLinkLabel": "Balinese dance performance",
-    "noteSuffix": " from 7 PM, free for dining guests, same Thursday visit."
+    "heading": "Daily Sessions",
+    "subheading": "Choose the time that suits your Bali itinerary",
+    "sessions": [
+      { "name": "Session 1", "tag": "Late Morning", "time": "11:00 AM – 12:00 PM", "desc": "A relaxed late-morning session to kick off your day with a hands-on cocktail lesson." },
+      { "name": "Session 2", "tag": "Afternoon", "time": "2:00 PM – 3:00 PM", "desc": "Perfect between sightseeing and your evening plans." },
+      { "name": "Session 3", "tag": "Early Evening", "time": "5:00 PM – 6:00 PM", "desc": "Wind down as the evening begins, finishing with your own handcrafted cocktail." }
+    ],
+    "notePrefix": "Booking the 5 PM session on a Thursday? Stay on after 7 PM for our complimentary ",
+    "noteLinkLabel": "Balinese Dance Performance",
+    "noteSuffix": ", the only one in Nusa Dua, free for dining guests."
   },
   "whatsIncluded": {
     "heading": "What's Included",
@@ -35,7 +36,7 @@
       { "title": "Arak Tasting", "desc": "Experience the distinctive character of authentic Balinese Arak and discover its role in local cocktail culture." },
       { "title": "Certificate of Completion", "desc": "Receive a certificate to commemorate your mixology experience at Raja Bali Restaurant." },
       { "title": "Signature Cocktail", "desc": "Create and enjoy your own handcrafted cocktail under the guidance of our expert bartender." },
-      { "title": "Balinese Dance", "desc": "Your class runs on Thursday, so stay on and enjoy the complimentary Balinese dance performance from 7 PM, free for dining guests. It's all one package." }
+      { "title": "Balinese Dance (Thursdays)", "desc": "If your session falls on a Thursday, stay on and enjoy the complimentary Balinese dance performance from 7 PM, free for dining guests." }
     ],
     "reserveNow": "Reserve Now",
     "contactUs": "Contact Us"

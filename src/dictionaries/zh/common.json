@@ -10,6 +10,7 @@
     "dance": "巴厘岛舞蹈表演",
     "privateEvents": "私人活动",
     "groupReservation": "团体预订",
+    "venueRental": "场地租赁",
     "reserveTable": "预订餐桌",
     "openMenu": "打开菜单",
     "closeMenu": "关闭菜单"
@@ -44,6 +45,7 @@
     "reserveTable": "预订餐桌",
     "privateEvents": "私人活动",
     "groupReservation": "团体预订",
+    "venueRental": "场地租赁",
     "mostPopular": "最受欢迎",
     "limitedSlot": "名额有限",
     "freeEveryThursday": "每周四免费"
@@ -53,6 +55,7 @@
     "cookingClass": "预订烹饪课程",
     "groupBooking": "预订团体用餐",
     "cocktailClass": "预订调酒课程",
-    "privateEvent": "预订私人活动"
+    "privateEvent": "预订私人活动",
+    "venueRental": "咨询场地租赁"
   }
 }

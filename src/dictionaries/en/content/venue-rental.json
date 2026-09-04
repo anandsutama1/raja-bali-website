@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "title": "Rent Our Space for Your Own Event",
+    "body": "Looking for a versatile space in Nusa Dua to run your own class, shoot, or event? Raja Bali's garden and private room are available to rent by the hour, for you to use exactly as you need, no restaurant event required."
+  },
+  "garden": {
+    "heading": "The Garden",
+    "subheading": "An open-air space for movement, gatherings, and pop-ups",
+    "imageAlt": "Raja Bali's outdoor garden space, available for rent",
+    "body": "Our garden is an open-air setting with natural shade and room to move, well suited to activities that need space to breathe, whether that's a sunrise yoga session, a styled photoshoot, or an evening of live entertainment under the stars.",
+    "useCasesHeading": "Perfect For",
+    "useCases": [
+      { "label": "Yoga & Wellness Class", "note": "mornings" },
+      { "label": "Photoshoot & Pre-Wedding" },
+      { "label": "Fitness Class", "note": "Zumba, HIIT, Tai Chi" },
+      { "label": "Stand-up Comedy Night", "note": "evenings" },
+      { "label": "Community Event & Workshop" },
+      { "label": "Farmers Market & Pop-up Vendor" }
+    ]
+  },
+  "privateRoom": {
+    "heading": "The Private Room",
+    "subheading": "An indoor space for meetings, training, and focused work",
+    "imageAlt": "Raja Bali's private indoor room, available for rent",
+    "body": "A quiet, air-conditioned indoor space set apart from the main restaurant, suited to work that needs a closed door and a table, from a client presentation to a full-day workshop.",
+    "capacityLabel": "Capacity",
+    "capacity": "Up to 20 guests, seated",
+    "amenitiesLabel": "Amenities",
+    "amenities": ["Wi-Fi", "Projector & Screen", "Air Conditioning", "Whiteboard"],
+    "useCasesHeading": "Perfect For",
+    "useCases": [
+      { "label": "Corporate Meeting" },
+      { "label": "Training & Workshop Session" },
+      { "label": "Co-Working Day Pass" }
+    ]
+  }
+}

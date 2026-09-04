@@ -10,6 +10,7 @@
     "dance": "バリ舞踊公演",
     "privateEvents": "プライベートイベント",
     "groupReservation": "団体予約",
+    "venueRental": "会場レンタル",
     "reserveTable": "テーブル予約",
     "openMenu": "メニューを開く",
     "closeMenu": "メニューを閉じる"
@@ -44,6 +45,7 @@
     "reserveTable": "テーブルを予約する",
     "privateEvents": "プライベートイベント",
     "groupReservation": "団体予約",
+    "venueRental": "会場レンタル",
     "mostPopular": "一番人気",
     "limitedSlot": "残りわずか",
     "freeEveryThursday": "毎週木曜日無料"
@@ -53,6 +55,7 @@
     "cookingClass": "クッキングクラスを予約する",
     "groupBooking": "団体予約をする",
     "cocktailClass": "カクテル&ヘルシードリンククラスを予約する",
-    "privateEvent": "プライベートイベントを予約する"
+    "privateEvent": "プライベートイベントを予約する",
+    "venueRental": "会場レンタルについて問い合わせる"
   }
 }

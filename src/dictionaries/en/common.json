@@ -10,6 +10,7 @@
     "dance": "Balinese Dance Performance",
     "privateEvents": "Private Events",
     "groupReservation": "Group Reservation",
+    "venueRental": "Venue Rental",
     "reserveTable": "Reserve Table",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
@@ -44,6 +45,7 @@
     "reserveTable": "Reserve a Table",
     "privateEvents": "Private Events",
     "groupReservation": "Group Reservation",
+    "venueRental": "Venue Rental",
     "mostPopular": "Most Popular",
     "limitedSlot": "Limited Slot",
     "freeEveryThursday": "Free Every Thursday"
@@ -53,6 +55,7 @@
     "cookingClass": "RESERVE COOKING CLASS",
     "groupBooking": "RESERVE FOR GROUP",
     "cocktailClass": "RESERVE COCKTAIL & HEALTHY DRINK CLASS",
-    "privateEvent": "RESERVE PRIVATE EVENT"
+    "privateEvent": "RESERVE PRIVATE EVENT",
+    "venueRental": "ENQUIRE ABOUT VENUE RENTAL"
   }
 }

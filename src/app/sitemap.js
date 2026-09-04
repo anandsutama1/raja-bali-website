@@ -16,6 +16,7 @@ const routes = [
   { path: "/bar-class", priority: 0.8 },
   { path: "/dance", priority: 0.7 },
   { path: "/private-events", priority: 0.7 },
+  { path: "/venue-rental", priority: 0.7 },
   { path: "/group-reservation", priority: 0.6 },
   { path: "/reservation-main", priority: 0.8 },
   { path: "/reservation-nusadua", priority: 0.8 },

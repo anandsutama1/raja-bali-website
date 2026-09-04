@@ -23,6 +23,7 @@ const loaders = {
   "content-bar-class": (l) => import(`@/dictionaries/${l}/content/bar-class.json`).then((m) => m.default),
   "content-dance": (l) => import(`@/dictionaries/${l}/content/dance.json`).then((m) => m.default),
   "content-private-events": (l) => import(`@/dictionaries/${l}/content/private-events.json`).then((m) => m.default),
+  "content-venue-rental": (l) => import(`@/dictionaries/${l}/content/venue-rental.json`).then((m) => m.default),
   "content-group-reservation": (l) => import(`@/dictionaries/${l}/content/group-reservation.json`).then((m) => m.default),
   "content-reservation-main": (l) => import(`@/dictionaries/${l}/content/reservation-main.json`).then((m) => m.default),
   "content-reservation-nusadua": (l) => import(`@/dictionaries/${l}/content/reservation-nusadua.json`).then((m) => m.default),

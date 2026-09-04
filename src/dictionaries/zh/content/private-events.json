@@ -40,5 +40,10 @@
     "headingPrefix": "画廊",
     "headingAccent": "剪影",
     "body": "展示生日、家庭聚会、商务晚宴、婚礼喜宴及私人活动中精彩捕捉的瞬间。"
+  },
+  "venueRentalCrossLink": {
+    "prefix": "想租用空场地自行举办活动吗?请查看我们的",
+    "linkLabel": "场地租赁",
+    "suffix": "页面。"
   }
 }

@@ -19,9 +19,9 @@
   ],
   "barClass": [
     { "id": "whereHeld", "q": "Where is the Balinese Cocktail Class held?", "a": "At Raja Bali Nusa Dua (Main Restaurant)." },
-    { "id": "whenHeld", "q": "When does the Bar Class take place?", "a": "Every Thursday at 3:00 PM." },
+    { "id": "whenHeld", "q": "When does the Bar Class take place?", "a": "Daily, with three sessions to choose from: 11:00 AM, 2:00 PM, and 5:00 PM." },
     { "id": "cost", "q": "How much does the Bar Class cost?", "a": "IDR 250,000 per person, with a minimum of 2 guests." },
-    { "id": "sameDayDance", "q": "Can I also watch the Balinese Dance on the same day?", "a": "Yes. Since the class runs on Thursday, guests can stay on and enjoy the complimentary Balinese Dance Performance from 7 PM, free for dining guests." },
+    { "id": "sameDayDance", "q": "Can I also watch the Balinese Dance on the same day?", "a": "Yes, if you join us on a Thursday. Book the 5:00 PM session and stay on to enjoy the complimentary Balinese Dance Performance from 7 PM, free for dining guests." },
     { "id": "availableAtNusaDua", "q": "Is the Balinese Cocktail Class available at Raja Bali Nusa Dua (Dine-in Restaurant)?", "a": "No. It's only offered at Raja Bali Nusa Dua (Main Restaurant)." }
   ],
   "groupReservation": [

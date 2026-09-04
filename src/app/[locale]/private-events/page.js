@@ -6,6 +6,7 @@ import GalleryExperience from "@/components/private-events/GalleryExperience";
 import StickyReserveButton from "@/components/StickyReserveButton";
 import PageSchema from "@/components/PageSchema";
 import TripadvisorBadgeMain from "@/components/TripadvisorBadgeMain";
+import LocalizedLink from "@/components/LocalizedLink";
 import dynamic from "next/dynamic";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { localeAlternates } from "@/lib/i18n/alternates";
@@ -41,13 +42,23 @@ export default async function PrivateEventsPage({ params }) {
         locale={locale}
         name={meta.privateEvents.title}
         description={meta.privateEvents.description}
-        crumbs={[{ name: "Home", path: "/" }, { name: "Private Events & Venue Rental" }]}
+        crumbs={[{ name: "Home", path: "/" }, { name: "Private Events" }]}
       />
       <PrivateEventsHero content={pe.hero} />
       <Intro content={pe.intro} />
       <WhatsIncluded content={pe.whatsIncluded} />
       <EventSpaces content={pe.eventSpaces} />
       <GalleryExperience content={pe.gallery} />
+      {/* This page is the restaurant hosting an event FOR the guest — for
+          the reverse (renting the empty space to run their own event), a
+          small pointer to /venue-rental so that guest isn't stuck here. */}
+      <p className="px-6 pt-8 text-center text-sm text-gray-500">
+        {pe.venueRentalCrossLink.prefix}
+        <LocalizedLink href="/venue-rental" className="u-link text-raja-red">
+          {pe.venueRentalCrossLink.linkLabel}
+        </LocalizedLink>
+        {pe.venueRentalCrossLink.suffix}
+      </p>
       {/* Real Tripadvisor rating for the Main Restaurant, where private
           events are hosted — right above the form. */}
       <div className="flex justify-center px-6 py-8">
