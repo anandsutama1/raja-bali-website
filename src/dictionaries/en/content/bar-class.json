@@ -13,7 +13,7 @@
     "contactUs": "Contact Us"
   },
   "featureRows": [
-    { "title": "The Spirit of Bali", "desc": "Every exceptional cocktail begins with quality ingredients and the perfect balance of technique. Throughout the experience, you'll explore tropical fruits, premium mixers, authentic Balinese Arak, and professional bartending methods." },
+    { "title": "The Spirit of Bali", "desc": "Every exceptional cocktail begins with quality ingredients and the perfect balance of technique. Throughout the experience, you'll explore tropical fruits, premium mixers, authentic Balinese Arak, and Balinese-style bartending methods." },
     { "title": "Create Memories Behind the Bar", "desc": "This class is about more than mixing drinks. It's about creativity, connection, and the moments you'll remember, from your first shake to your final sip." }
   ],
   "dailySessions": {
@@ -31,11 +31,11 @@
   "whatsIncluded": {
     "heading": "What's Included",
     "items": [
-      { "title": "Hands-on Bartender Class", "desc": "Learn professional bartending techniques in a fun and interactive one-hour session." },
+      { "title": "Hands-on Bartender Class", "desc": "Learn Balinese-style bartending techniques in a fun and interactive one-hour session." },
       { "title": "Balinese Refreshment", "desc": "Enjoy traditional Jajan Bali served with light refreshments during your class." },
       { "title": "Arak Tasting", "desc": "Experience the distinctive character of authentic Balinese Arak and discover its role in local cocktail culture." },
       { "title": "Certificate of Completion", "desc": "Receive a certificate to commemorate your mixology experience at Raja Bali Restaurant." },
-      { "title": "Signature Cocktail", "desc": "Create and enjoy your own handcrafted cocktail under the guidance of our expert bartender." },
+      { "title": "Signature Cocktail", "desc": "Create and enjoy your own handcrafted cocktail under the guidance of our bartender." },
       { "title": "Balinese Dance (Thursdays)", "desc": "If your session falls on a Thursday, stay on and enjoy the complimentary Balinese dance performance from 7 PM, free for dining guests." }
     ],
     "reserveNow": "Reserve Now",
@@ -51,7 +51,7 @@
       { "name": "Mocktail", "sub": "Melon Fantasi", "desc": "A vibrant alcohol-free creation bursting with tropical fruit flavors." }
     ],
     "international": [
-      { "name": "International Cocktail", "sub": "Long Island Iced Tea or Tequila Sunrise", "desc": "Master one of the world's most beloved cocktails under expert guidance." },
+      { "name": "International Cocktail", "sub": "Long Island Iced Tea or Tequila Sunrise", "desc": "Master one of the world's most beloved cocktails under our bartender's guidance." },
       { "name": "Healthy Drink", "sub": "Jamu Sinom or Green Detox", "desc": "Discover Bali's wellness traditions through naturally refreshing beverages." }
     ]
   },
@@ -71,7 +71,7 @@
     "includedLabel": "Included in Your Experience:",
     "included": [
       "1 Hour Hands-on Bartender Class",
-      "Professional Bartender Guidance",
+      "Balinese-Style Bartender Guidance",
       "Traditional Balinese Refreshment (Jajan Bali)",
       "Authentic Balinese Arak Tasting",
       "Premium Ingredients & Equipment",
