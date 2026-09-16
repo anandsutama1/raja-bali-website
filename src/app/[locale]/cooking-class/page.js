@@ -103,7 +103,7 @@ export default async function CookingClassPage({ params }) {
       <div className="flex justify-center px-6 py-8">
         <TripadvisorBadgeMain />
       </div>
-      <ReservationForm dict={forms.cookingClass} common={forms.common} />
+      <ReservationForm dict={forms.cookingClass} common={forms.common} paypalClientId={process.env.PAYPAL_CLIENT_ID} />
       <StickyReserveButton href="#reservation" label={common.stickyReserve.cookingClass} />
     </main>
   );

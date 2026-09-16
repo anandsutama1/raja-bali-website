@@ -22,7 +22,14 @@
     "emailError": "Please enter a valid email address.",
     "phoneError": "Please enter a valid WhatsApp number (numbers only, at least 8 digits).",
     "errorFallback": "Something went wrong. Please try again.",
-    "noShowNotice": "Please note: indoor seating is non-smoking, while our outdoor tables welcome smoking guests. Your table will be held for 30 minutes past the reservation time, after which the booking may be released and treated as cancelled."
+    "noShowNotice": "Please note: indoor seating is non-smoking, while our outdoor tables welcome smoking guests. Your table will be held for 30 minutes past the reservation time, after which the booking may be released and treated as cancelled.",
+    "orderSummaryHeading": "Order Summary",
+    "totalLabel": "Total",
+    "taxIncludedNote": "Includes 11% tax & service charge",
+    "cancellationPolicy": "Cancellations are eligible for a 50% refund.",
+    "paymentLoading": "Loading payment options…",
+    "paymentError": "Something went wrong with the payment. Please try again, or contact us directly if the issue continues.",
+    "editDetails": "Edit Details"
   },
   "reservationMain": {
     "heading": "Begin Your Experience",
@@ -40,7 +47,10 @@
     "heading": "Reservation",
     "subheading": "Begin your journey into the heart of Balinese cuisine with a hands-on cooking class.",
     "submitLabel": "Reserve Now",
-    "successMessage": "Thank you! Your reservation request has been sent. We'll be in touch shortly."
+    "successMessage": "Thank you! Your reservation request has been sent. We'll be in touch shortly.",
+    "planLabel": "Plan",
+    "planShared": "Shared Experience (IDR 550K / person)",
+    "planIndividual": "Individual Experience (IDR 600K / person)"
   },
   "barClass": {
     "heading": "Reservation",

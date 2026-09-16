@@ -151,7 +151,9 @@ function buildEmailHtml(formType, fields) {
     ["Hotel Name", fields.hotelName],
     ["Room Number", fields.roomNumber],
     ["Message", fields.message],
-    ["Language", fields.locale === "zh" ? "Chinese (zh)" : "English (en)"],
+    ["Language", fields.locale === "zh" ? "Chinese (zh)" : fields.locale === "ja" ? "Japanese (ja)" : "English (en)"],
+    ["Payment", fields.paymentStatus === "Paid" ? `Paid via PayPal (${fields.paymentAmount || "amount unknown"})` : undefined],
+    ["PayPal Order ID", fields.paypalOrderId],
   ].filter(([, value]) => value);
 
   const rowsHtml = rows
@@ -177,6 +179,15 @@ function buildEmailHtml(formType, fields) {
     : hasPickup
       ? `<p style="margin:0 0 16px;padding:12px 14px;background:#fff4e5;border-left:3px solid #d97706;color:#7a4a00;font-size:14px;font-weight:700;">⚠ GUEST NEEDS PICKUP &mdash; see Hotel Name / Room Number below.</p>`
       : `<p style="margin:0 0 16px;padding:12px 14px;background:#f0f7f0;border-left:3px solid #4a8f4a;color:#2f5c2f;font-size:14px;font-weight:700;">✓ No pickup needed for this booking.</p>`;
+
+  // Cooking class and bar class only, for now — a booking that's already
+  // been paid via PayPal (see PayPalCheckoutButton.js) doesn't need staff
+  // to chase payment on arrival, which is worth surfacing before anything
+  // else in the email, same priority as the pickup note above.
+  const paidNoteHtml =
+    fields.paymentStatus === "Paid"
+      ? `<p style="margin:0 0 16px;padding:12px 14px;background:#f0f7f0;border-left:3px solid #4a8f4a;color:#2f5c2f;font-size:14px;font-weight:700;">✓ PAID via PayPal${fields.paymentAmount ? ` — ${escapeHtml(fields.paymentAmount)}` : ""}. No payment collection needed on arrival.</p>`
+      : "";
 
   // One-tap contact buttons — the actionable follow-up to the "don't reply"
   // banner above: it says where NOT to respond, this is where TO respond.
@@ -207,6 +218,7 @@ function buildEmailHtml(formType, fields) {
   return `
     <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;">
       <h2 style="color:#A31C1C;margin-bottom:16px;">New ${label} Submission</h2>
+      ${paidNoteHtml}
       ${pickupNoteHtml}
       ${NO_REPLY_BANNER_HTML}
       ${contactButtonsHtml}
@@ -279,6 +291,7 @@ function buildGuestConfirmationHtml(formType, branch, fields, emailDict, thankYo
         ["Number of Children", fields.children],
         ["Hotel Name", fields.hotelName],
         ["Room Number", fields.roomNumber],
+        ["Payment", fields.paymentStatus === "Paid" ? `Paid (${fields.paymentAmount || ""})` : undefined],
       ].filter(([, value]) => value)
     : [];
 

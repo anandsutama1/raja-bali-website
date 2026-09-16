@@ -22,7 +22,14 @@
     "emailError": "有効なメールアドレスを入力してください。",
     "phoneError": "有効なWhatsApp番号を入力してください(数字のみ、8桁以上)。",
     "errorFallback": "エラーが発生しました。もう一度お試しください。",
-    "noShowNotice": "ご注意:屋内席は禁煙、屋外席は喫煙可能です。ご予約時間より30分を過ぎますとお席をご用意できない場合があり、その場合キャンセル扱いとなることがございます。"
+    "noShowNotice": "ご注意:屋内席は禁煙、屋外席は喫煙可能です。ご予約時間より30分を過ぎますとお席をご用意できない場合があり、その場合キャンセル扱いとなることがございます。",
+    "orderSummaryHeading": "注文内容",
+    "totalLabel": "合計",
+    "taxIncludedNote": "税金・サービス料11%込み",
+    "cancellationPolicy": "キャンセルの場合、50%の返金対象となります。",
+    "paymentLoading": "お支払いオプションを読み込み中…",
+    "paymentError": "お支払い処理中に問題が発生しました。もう一度お試しいただくか、解決しない場合は直接お問い合わせください。",
+    "editDetails": "内容を編集する"
   },
   "reservationMain": {
     "heading": "ご予約はこちらから",
@@ -40,7 +47,10 @@
     "heading": "ご予約",
     "subheading": "体験型クッキングクラスで、バリ料理の真髄への旅を始めましょう。",
     "submitLabel": "今すぐ予約する",
-    "successMessage": "ありがとうございます!ご予約リクエストを送信しました。担当より近日中にご連絡いたします。"
+    "successMessage": "ありがとうございます!ご予約リクエストを送信しました。担当より近日中にご連絡いたします。",
+    "planLabel": "プラン",
+    "planShared": "シェアプラン(IDR 550K / 名)",
+    "planIndividual": "個人プラン(IDR 600K / 名)"
   },
   "barClass": {
     "heading": "ご予約",

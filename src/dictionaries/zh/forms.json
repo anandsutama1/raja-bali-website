@@ -22,7 +22,14 @@
     "emailError": "请输入有效的电子邮箱地址。",
     "phoneError": "请输入有效的 WhatsApp 号码(仅限数字,至少8位)。",
     "errorFallback": "出了点问题,请重试。",
-    "noShowNotice": "温馨提示:室内座位禁烟,室外座位可吸烟。您的餐桌将在预订时间后为您保留30分钟,逾时未到店,预订可能被释放并视为取消。"
+    "noShowNotice": "温馨提示:室内座位禁烟,室外座位可吸烟。您的餐桌将在预订时间后为您保留30分钟,逾时未到店,预订可能被释放并视为取消。",
+    "orderSummaryHeading": "订单摘要",
+    "totalLabel": "总计",
+    "taxIncludedNote": "已含11%税费及服务费",
+    "cancellationPolicy": "如取消预订,可获得50%退款。",
+    "paymentLoading": "正在加载付款选项…",
+    "paymentError": "付款过程中出现问题。请重试,如仍无法解决,请直接与我们联系。",
+    "editDetails": "修改信息"
   },
   "reservationMain": {
     "heading": "开启您的用餐之旅",
@@ -40,7 +47,10 @@
     "heading": "预订",
     "subheading": "通过亲手制作的巴厘岛烹饪课程,开启您深入了解巴厘岛美食的旅程。",
     "submitLabel": "立即预订",
-    "successMessage": "谢谢!您的预订请求已发送,我们会尽快与您联系。"
+    "successMessage": "谢谢!您的预订请求已发送,我们会尽快与您联系。",
+    "planLabel": "套餐",
+    "planShared": "共享体验(IDR 550K / 人)",
+    "planIndividual": "单人体验(IDR 600K / 人)"
   },
   "barClass": {
     "heading": "预订",
