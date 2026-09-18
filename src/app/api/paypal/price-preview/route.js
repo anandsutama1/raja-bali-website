@@ -40,6 +40,6 @@ export async function POST(request) {
     return NextResponse.json({ error: "Invalid guest count." }, { status: 400 });
   }
 
-  const { totalIdr, totalUsd, rate } = await computeOrderPricing(formType, guestCount);
-  return NextResponse.json({ totalIdr, totalUsd, rate });
+  const { totalIdr, totalUsd, subtotalUsd, taxUsd, rate } = await computeOrderPricing(formType, guestCount);
+  return NextResponse.json({ totalIdr, totalUsd, subtotalUsd, taxUsd, rate });
 }

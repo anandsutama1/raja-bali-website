@@ -5,7 +5,7 @@ import { getThankYouLinks } from "@/lib/thankYouLinks";
 import { LOCALES, DEFAULT_LOCALE } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { verifyPayPalOrder } from "@/lib/paypal/verify";
-import { resolveBasePrice, calculateTotalWithTax } from "@/lib/paypal/pricing";
+import { computeOrderPricing } from "@/lib/paypal/orderPricing";
 import { generateInvoicePdf } from "@/lib/pdf/invoice";
 import { checkRateLimit } from "@/lib/paypal/rateLimit";
 
@@ -174,8 +174,12 @@ async function resolveVerifiedPayment(formType, fields) {
   };
 
   const guestCount = parseInt(verified.guestCount, 10) || 1;
-  const basePrice = resolveBasePrice(formType, guestCount);
-  const { subtotal, tax, total } = calculateTotalWithTax(basePrice, guestCount);
+  // Same shared calculation the checkout page and create-order use (see
+  // orderPricing.js) — the invoice's USD figures can never disagree with
+  // what was actually charged, and its IDR figures are clearly labeled as
+  // an estimate rather than presented as if PayPal itself reported them
+  // (it never does; PayPal only ever settles in USD for this merchant).
+  const { basePrice, subtotal, tax, total, subtotalUsd, taxUsd } = await computeOrderPricing(formType, guestCount);
 
   const invoiceData = {
     guestName: [fields.title, fields.firstName, fields.lastName].filter(Boolean).join(" ") || "Guest",
@@ -188,6 +192,8 @@ async function resolveVerifiedPayment(formType, fields) {
     subtotal,
     tax,
     total,
+    subtotalUsd,
+    taxUsd,
     paypalOrderId: verified.orderId,
     captureId: verified.captureId,
     chargedAmount: verified.amount,

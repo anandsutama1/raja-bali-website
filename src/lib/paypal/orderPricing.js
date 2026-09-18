@@ -17,5 +17,10 @@ export async function computeOrderPricing(formType, guestCount) {
   // step in this whole calculation, done here once so both callers round
   // identically.
   const totalUsd = Number((totalIdr * rate).toFixed(2));
-  return { basePrice, subtotal, tax, totalIdr, totalUsd, rate };
+  const subtotalUsd = Number((subtotal * rate).toFixed(2));
+  // Derived as the remainder rather than independently rounded, so
+  // subtotalUsd + taxUsd always sums to exactly totalUsd to the cent —
+  // two separately-rounded figures can be a cent off from their own total.
+  const taxUsd = Number((totalUsd - subtotalUsd).toFixed(2));
+  return { basePrice, subtotal, tax, totalIdr, totalUsd, subtotalUsd, taxUsd, rate };
 }

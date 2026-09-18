@@ -7,7 +7,7 @@ import { isValidEmail, isValidPhoneDigits } from "@/lib/validation";
 import { DEFAULT_COUNTRY_CODE } from "@/lib/countryCodes";
 import { TITLES } from "@/lib/titles";
 import { todayLocalDate } from "@/lib/timeSlots";
-import { calculateTotalWithTax, resolveBasePrice, TAX_RATE, EXPERIENCE_LABELS } from "@/lib/paypal/pricing";
+import { TAX_RATE, EXPERIENCE_LABELS } from "@/lib/paypal/pricing";
 import PhoneField from "@/components/PhoneField";
 import GuestCountField from "@/components/GuestCountField";
 import SubmitButton from "@/components/SubmitButton";
@@ -149,18 +149,17 @@ export default function ReservationForm({ dict, common, paypalClientId, experien
   };
 
   const guestCount = parseInt(fields.guests, 10);
-  const hasValidGuestCount = Number.isInteger(guestCount) && guestCount > 0;
-  const basePrice = resolveBasePrice("bar-class", hasValidGuestCount ? guestCount : 1);
-  const { subtotal: subtotalIdr, tax: taxIdr, total: totalIdr } = hasValidGuestCount
-    ? calculateTotalWithTax(basePrice, guestCount)
-    : { subtotal: 0, tax: 0, total: 0 };
-  // PayPal can't charge in IDR (see lib/paypal/exchangeRate.js) — every
-  // guest is actually charged this USD amount, so it's shown right next to
-  // the IDR total rather than only appearing after they've already clicked
-  // through to PayPal's own checkout. Only ever the live-fetched figure
-  // (see livePricing above) — never computed with a locally-guessed rate,
-  // so it can't disagree with what create-order is about to charge.
+  // IDR is deliberately not shown at checkout anymore — PayPal only ever
+  // charges in USD (see lib/paypal/exchangeRate.js), and a guest comparing
+  // an IDR figure we compute against whatever their bank/PayPal shows them
+  // in their own local-currency estimate (a different, unrelated
+  // conversion) was a source of "these don't match" confusion. USD here is
+  // always the live-fetched figure (see livePricing above) — the exact
+  // same number create-order is about to charge, never a locally-guessed
+  // one.
   const totalUsd = livePricing ? livePricing.totalUsd.toFixed(2) : null;
+  const subtotalUsd = livePricing ? livePricing.subtotalUsd.toFixed(2) : null;
+  const taxUsd = livePricing ? livePricing.taxUsd.toFixed(2) : null;
 
   return (
     <section id="reservation" className="border-t border-gray-200 py-20 px-6 max-w-2xl mx-auto">
@@ -289,10 +288,25 @@ export default function ReservationForm({ dict, common, paypalClientId, experien
             <div className="order-2 lg:order-1 space-y-4">
               <div>
                 <h3 className="text-lg font-serif mb-1">{common.selectPaymentMethodLabel}</h3>
-                <p className="flex items-center gap-1.5 text-xs text-emerald-700">
+                <p className="flex items-center gap-1.5 text-xs text-emerald-700 mb-2">
                   <LockIcon className="h-3.5 w-3.5" />
                   {common.securePaymentNote}
                 </p>
+                {/* eslint-disable-next-line @next/next/no-img-element -- a
+                    small, non-LCP trust badge; next/image's fixed
+                    object-cover (via SmartImage) would crop a wide logo
+                    strip, so a plain <img> that sizes to its natural aspect
+                    ratio is the right tool here. Hidden entirely on error
+                    (e.g. the file hasn't been dropped in yet) rather than
+                    showing a broken-image icon. */}
+                <img
+                  src="/images/shared/payment-methods.png"
+                  alt="We accept Visa, Mastercard, Amex, and PayPal"
+                  className="h-6 w-auto"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
               </div>
 
               <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-xs text-gray-600 space-y-2">
@@ -346,7 +360,7 @@ export default function ReservationForm({ dict, common, paypalClientId, experien
             <div className="order-1 lg:order-2 rounded-xl border border-gray-200 shadow-sm overflow-hidden bg-white">
               <div className="flex gap-3 p-4 border-b border-gray-100">
                 <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg">
-                  <SmartImage src="/images/bar-class/Hero.jpg" alt="" sizes="64px" />
+                  <SmartImage src="/images/bar-class/Rectangle 15.jpg" alt="" sizes="64px" />
                 </div>
                 <div className="min-w-0">
                   <p className="flex items-center gap-1 text-xs text-gray-500">
@@ -409,18 +423,14 @@ export default function ReservationForm({ dict, common, paypalClientId, experien
               <div className="p-4 space-y-1">
                 <div className="flex justify-between text-sm text-gray-700">
                   <span>{common.subtotalLabel}</span>
-                  <span>IDR {subtotalIdr.toLocaleString("id-ID")}</span>
+                  <span>{subtotalUsd ? `USD ${subtotalUsd}` : common.priceLoadingLabel}</span>
                 </div>
                 <div className="flex justify-between text-sm text-gray-700">
                   <span>{common.taxLabel} ({Math.round(TAX_RATE * 100)}%)</span>
-                  <span>IDR {taxIdr.toLocaleString("id-ID")}</span>
+                  <span>{taxUsd ? `USD ${taxUsd}` : common.priceLoadingLabel}</span>
                 </div>
-                <div className="flex justify-between text-base font-semibold border-t border-gray-200 mt-2 pt-2">
+                <div className="flex justify-between text-base font-semibold border-t border-gray-200 mt-2 pt-2 text-raja-red">
                   <span>{common.totalLabel}</span>
-                  <span>IDR {totalIdr.toLocaleString("id-ID")}</span>
-                </div>
-                <div className="flex justify-between text-sm text-raja-red font-medium">
-                  <span>{common.usdChargeNote}</span>
                   <span>{totalUsd ? `USD ${totalUsd}` : common.priceLoadingLabel}</span>
                 </div>
                 <p className="flex items-center gap-1 text-xs text-emerald-700 pt-1">

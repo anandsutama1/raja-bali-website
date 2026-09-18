@@ -20,6 +20,10 @@ function formatIdr(amount) {
   return `IDR ${Math.round(amount).toLocaleString("id-ID")}`;
 }
 
+function formatUsd(amount) {
+  return `USD ${Number(amount).toFixed(2)}`;
+}
+
 /**
  * Builds a simple one-page invoice PDF for a paid cooking-class/bar-class
  * booking — pdf-lib only (no headless browser), so this stays well within
@@ -43,6 +47,8 @@ export async function generateInvoicePdf({
   subtotal,
   tax,
   total,
+  subtotalUsd,
+  taxUsd,
   paypalOrderId,
   captureId,
   chargedAmount, // { currency_code, value } — the real PayPal charge, in USD
@@ -117,39 +123,37 @@ export async function generateInvoicePdf({
     return width - marginX - textWidth;
   };
 
-  const moneyLine = (desc, amount, opts = {}) => {
+  const moneyLine = (desc, amountText, opts = {}) => {
     const size = opts.size || 11;
     const f = opts.f || font;
     page.drawText(desc, { x: marginX, y, size, font: f, color: opts.color || DARK });
-    if (amount != null) {
-      const amtText = formatIdr(amount);
-      page.drawText(amtText, { x: rightAlignedText(amtText, size, f), y, size, font: f, color: opts.color || DARK });
+    if (amountText != null) {
+      page.drawText(amountText, { x: rightAlignedText(amountText, size, f), y, size, font: f, color: opts.color || DARK });
     }
     y -= opts.dy || 18;
   };
 
-  moneyLine(`${label}${planLabel ? ` — ${planLabel}` : ""} x ${guestCount}`, subtotal);
-  moneyLine(`Per person: ${formatIdr(basePrice)}`, null, { size: 9, color: GRAY, dy: 16 });
+  // PayPal only ever settles this merchant's charges in USD (see
+  // lib/paypal/exchangeRate.js) — USD is the actual, authoritative amount,
+  // so it's what every line item shows. IDR only appears as a clearly
+  // labeled reference/estimate (the per-person price is what the site
+  // lists in IDR; exchange rates move daily, so it's never presented as
+  // what was actually charged).
+  moneyLine(`${label}${planLabel ? ` (${planLabel})` : ""} x ${guestCount}`, formatUsd(subtotalUsd));
+  moneyLine(`Per person (reference): ${formatIdr(basePrice)}`, null, { size: 9, color: GRAY, dy: 16 });
   y -= 4;
   page.drawLine({ start: { x: marginX, y: y + 10 }, end: { x: width - marginX, y: y + 10 }, thickness: 0.5, color: GRAY });
-  moneyLine(`Tax & service (${Math.round(TAX_RATE * 100)}%)`, tax);
+  moneyLine(`Tax & service (${Math.round(TAX_RATE * 100)}%)`, formatUsd(taxUsd));
   y -= 4;
   page.drawLine({ start: { x: marginX, y: y + 10 }, end: { x: width - marginX, y: y + 10 }, thickness: 1, color: DARK });
-  moneyLine("Total Paid", total, { size: 13, f: bold, dy: 20 });
+  const totalUsdValue = chargedAmount?.value ? Number(chargedAmount.value) : subtotalUsd + taxUsd;
+  moneyLine("Total Paid", formatUsd(totalUsdValue), { size: 15, f: bold, color: RED, dy: 18 });
 
-  // PayPal doesn't support charging in IDR (see lib/paypal/exchangeRate.js),
-  // so every guest is actually charged in USD — shown directly under the
-  // IDR total, not buried as a small footnote, so the two amounts a guest
-  // sees (the IDR price they booked at vs. the USD PayPal actually charged)
-  // are never more than one line apart.
-  if (chargedAmount?.value) {
-    draw(`= USD ${chargedAmount.value} charged via PayPal`, {
-      size: 11,
-      f: bold,
-      color: RED,
-      dy: 20,
-    });
-  }
+  draw(`Estimated equivalent: ${formatIdr(total)} (exchange rates vary daily)`, {
+    size: 9,
+    color: GRAY,
+    dy: 18,
+  });
   if (captureId) {
     draw(`PayPal Capture ID: ${captureId}`, { size: 9, color: GRAY, dy: 16 });
   }
