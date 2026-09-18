@@ -15,7 +15,6 @@ import dynamic from "next/dynamic";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { localeAlternates } from "@/lib/i18n/alternates";
-import { getIdrToUsdRate } from "@/lib/paypal/exchangeRate";
 
 // Below the fold — its form-state/validation JS ships in its own chunk
 // instead of the initial bundle. Still server-rendered (no ssr:false), so
@@ -71,12 +70,11 @@ export async function generateMetadata({ params }) {
 
 export default async function CookingClassPage({ params }) {
   const { locale } = await params;
-  const [meta, forms, cc, common, exchangeRate] = await Promise.all([
+  const [meta, forms, cc, common] = await Promise.all([
     getDictionary(locale, "metadata"),
     getDictionary(locale, "forms"),
     getDictionary(locale, "content-cooking-class"),
     getDictionary(locale, "common"),
-    getIdrToUsdRate(),
   ]);
 
   return (
@@ -109,7 +107,7 @@ export default async function CookingClassPage({ params }) {
         dict={forms.cookingClass}
         common={forms.common}
         paypalClientId={process.env.PAYPAL_CLIENT_ID}
-        exchangeRate={exchangeRate}
+        experienceTitle={cc.hero.title}
       />
       <StickyReserveButton href="#reservation" label={common.stickyReserve.cookingClass} />
     </main>

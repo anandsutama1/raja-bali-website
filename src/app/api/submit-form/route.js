@@ -15,6 +15,12 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 // ever be trusted to claim a payment happened.
 const PAID_FORM_TYPES = new Set(["cooking-class", "bar-class"]);
 
+// Exact string Google Sheets (the Apps Script webhook) expects in its
+// paymentStatus column for a PayPal-verified booking — kept as one constant
+// so the value set here and every place that later checks for it (staff
+// email, guest email) can never drift out of sync with each other.
+const PAID_STATUS_LABEL = "Paid via PayPal";
+
 const BRANCH_EMAILS = {
   main: process.env.EMAIL_MAIN_RESTAURANT,
   nusadua: process.env.EMAIL_NUSA_DUA,
@@ -162,7 +168,7 @@ async function resolveVerifiedPayment(formType, fields) {
 
   const verifiedFields = {
     ...rest,
-    paymentStatus: "Paid",
+    paymentStatus: PAID_STATUS_LABEL,
     paypalOrderId: verified.orderId,
     paymentAmount: verified.amount ? `${verified.amount.value} ${verified.amount.currency_code}` : undefined,
   };
@@ -213,7 +219,7 @@ function buildEmailHtml(formType, fields) {
     ["Room Number", fields.roomNumber],
     ["Message", fields.message],
     ["Language", fields.locale === "zh" ? "Chinese (zh)" : fields.locale === "ja" ? "Japanese (ja)" : "English (en)"],
-    ["Payment", fields.paymentStatus === "Paid" ? `Paid via PayPal (${fields.paymentAmount || "amount unknown"})` : undefined],
+    ["Payment", fields.paymentStatus === PAID_STATUS_LABEL ? `${PAID_STATUS_LABEL} (${fields.paymentAmount || "amount unknown"})` : undefined],
     ["PayPal Order ID", fields.paypalOrderId],
   ].filter(([, value]) => value);
 
@@ -246,7 +252,7 @@ function buildEmailHtml(formType, fields) {
   // to chase payment on arrival, which is worth surfacing before anything
   // else in the email, same priority as the pickup note above.
   const paidNoteHtml =
-    fields.paymentStatus === "Paid"
+    fields.paymentStatus === PAID_STATUS_LABEL
       ? `<p style="margin:0 0 16px;padding:12px 14px;background:#f0f7f0;border-left:3px solid #4a8f4a;color:#2f5c2f;font-size:14px;font-weight:700;">✓ PAID via PayPal${fields.paymentAmount ? ` — ${escapeHtml(fields.paymentAmount)}` : ""}. No payment collection needed on arrival.</p>`
       : "";
 
@@ -352,7 +358,7 @@ function buildGuestConfirmationHtml(formType, branch, fields, emailDict, thankYo
         ["Number of Children", fields.children],
         ["Hotel Name", fields.hotelName],
         ["Room Number", fields.roomNumber],
-        ["Payment", fields.paymentStatus === "Paid" ? `Paid (${fields.paymentAmount || ""})` : undefined],
+        ["Payment", fields.paymentStatus === PAID_STATUS_LABEL ? `Paid (${fields.paymentAmount || ""})` : undefined],
       ].filter(([, value]) => value)
     : [];
 
@@ -463,10 +469,16 @@ async function submitToGoogleSheets(payload) {
   const url = process.env.GOOGLE_SHEETS_URL;
   if (!url) throw new Error("GOOGLE_SHEETS_URL is not configured.");
 
+  const body = JSON.stringify({ ...payload, submittedAt: new Date().toISOString() });
+  // Logged unconditionally so a support/debugging session can always see
+  // exactly what field names and values Apps Script received for a given
+  // submission, without needing to reproduce the request by hand.
+  console.log("[submit-form] Google Sheets payload:", body);
+
   const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ...payload, submittedAt: new Date().toISOString() }),
+    body,
   });
 
   if (!res.ok) {

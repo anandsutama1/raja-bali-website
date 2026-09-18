@@ -73,14 +73,30 @@ export async function POST(request) {
     return NextResponse.json({ ok: true, verified: false });
   }
 
-  if (event.event_type === "PAYMENT.CAPTURE.COMPLETED" || event.event_type === "CHECKOUT.ORDER.APPROVED") {
-    const resource = event.resource || {};
+  // `resource`'s shape differs by event type — CHECKOUT.ORDER.APPROVED's
+  // resource IS the order itself (resource.id is the order ID, amount lives
+  // under purchase_units), while PAYMENT.CAPTURE.COMPLETED's resource is
+  // the capture (resource.id is the CAPTURE id, and the order id is under
+  // supplementary_data.related_ids.order_id instead). Treating resource.id
+  // as "the capture ID" for both, like an earlier version of this handler
+  // did, mislabels the order ID as a capture ID for ORDER.APPROVED events.
+  if (event.event_type === "CHECKOUT.ORDER.APPROVED") {
+    const order = event.resource || {};
     console.log("[paypal] webhook reconciliation:", {
       eventType: event.event_type,
-      captureId: resource.id,
-      orderId: resource.supplementary_data?.related_ids?.order_id,
-      status: resource.status,
-      amount: resource.amount,
+      orderId: order.id,
+      status: order.status,
+      amount: order.purchase_units?.[0]?.amount,
+      createTime: event.create_time,
+    });
+  } else if (event.event_type === "PAYMENT.CAPTURE.COMPLETED") {
+    const capture = event.resource || {};
+    console.log("[paypal] webhook reconciliation:", {
+      eventType: event.event_type,
+      captureId: capture.id,
+      orderId: capture.supplementary_data?.related_ids?.order_id,
+      status: capture.status,
+      amount: capture.amount,
       createTime: event.create_time,
     });
   }

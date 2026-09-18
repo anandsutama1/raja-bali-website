@@ -1,13 +1,7 @@
 import { NextResponse } from "next/server";
 import { getPayPalAccessToken, paypalApiUrl } from "@/lib/paypal/client";
-import {
-  EXPERIENCE_PRICING,
-  EXPERIENCE_LABELS,
-  calculateTotalWithTax,
-  resolveBasePrice,
-  resolvePlanFromGuestCount,
-} from "@/lib/paypal/pricing";
-import { getIdrToUsdRate } from "@/lib/paypal/exchangeRate";
+import { EXPERIENCE_PRICING, EXPERIENCE_LABELS, resolvePlanFromGuestCount } from "@/lib/paypal/pricing";
+import { computeOrderPricing } from "@/lib/paypal/orderPricing";
 import { checkRateLimit } from "@/lib/paypal/rateLimit";
 
 // The client sends formType/guests — never a plan or a price. Cooking
@@ -39,11 +33,7 @@ export async function POST(request) {
   }
 
   const plan = formType === "cooking-class" ? resolvePlanFromGuestCount(guestCount) : undefined;
-  const basePrice = resolveBasePrice(formType, guestCount);
-  const { total: totalIdr } = calculateTotalWithTax(basePrice, guestCount);
-  const rate = await getIdrToUsdRate();
-  // PayPal requires exactly 2 decimal places for USD.
-  const totalUsd = (totalIdr * rate).toFixed(2);
+  const { totalIdr, totalUsd, rate } = await computeOrderPricing(formType, guestCount);
 
   try {
     const accessToken = await getPayPalAccessToken();
@@ -63,7 +53,11 @@ export async function POST(request) {
             // (for the PDF invoice and reconciliation) without re-trusting
             // anything the client says at capture time.
             custom_id: JSON.stringify({ formType, guestCount, plan }),
-            amount: { currency_code: "USD", value: totalUsd },
+            // PayPal's API requires amount.value as a string with exactly 2
+            // decimal places — computeOrderPricing returns a Number (for
+            // easy display-side arithmetic), so it's formatted back to a
+            // string only here, right at the API boundary.
+            amount: { currency_code: "USD", value: totalUsd.toFixed(2) },
           },
         ],
         // A cooking/bar class is an experience, not a physical product —
@@ -87,7 +81,7 @@ export async function POST(request) {
     return NextResponse.json({
       id: order.id,
       totalIdr,
-      totalUsd: Number(totalUsd),
+      totalUsd,
       rate,
     });
   } catch (err) {

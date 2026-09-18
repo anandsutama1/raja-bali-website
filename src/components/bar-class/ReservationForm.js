@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { useFormSubmit } from "@/lib/useFormSubmit";
 import { isValidEmail, isValidPhoneDigits } from "@/lib/validation";
@@ -12,6 +12,9 @@ import PhoneField from "@/components/PhoneField";
 import GuestCountField from "@/components/GuestCountField";
 import SubmitButton from "@/components/SubmitButton";
 import PayPalCheckoutButton from "@/components/PayPalCheckoutButton";
+import TripadvisorBadgeMain from "@/components/TripadvisorBadgeMain";
+import SmartImage from "@/components/SmartImage";
+import { LockIcon, CalendarIcon, UsersIcon, MapPinIcon, UserIcon, CheckIcon, ChevronRightIcon } from "@/components/ReservationIcons";
 
 // Three daily sessions, same start times as cooking-class — mirrors
 // components/bar-class/DailySessions.js's `sessions` list.
@@ -34,7 +37,7 @@ const initialFields = {
   roomNumber: "",
 };
 
-export default function ReservationForm({ dict, common, paypalClientId, exchangeRate }) {
+export default function ReservationForm({ dict, common, paypalClientId, experienceTitle }) {
   const router = useRouter();
   const { locale } = useParams();
   const today = todayLocalDate();
@@ -45,6 +48,16 @@ export default function ReservationForm({ dict, common, paypalClientId, exchange
   // between "editing details" and "ready to pay", it doesn't touch
   // useFormSubmit's own idle/submitting/success/error status.
   const [showPayment, setShowPayment] = useState(false);
+  // The page itself is statically prerendered (ISR, ~1 day), so a USD
+  // estimate computed at page-render time can silently drift from what
+  // create-order (a per-request dynamic route) charges. livePricing is
+  // fetched fresh from /api/paypal/price-preview — the exact same
+  // computeOrderPricing() function create-order uses — the moment a guest
+  // reaches this step, so the number they see here and the number PayPal
+  // actually charges seconds later come from the same live calculation.
+  const [livePricing, setLivePricing] = useState(null);
+  const [priceLoading, setPriceLoading] = useState(false);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
   const { status, errorMessage, submitForm, submittingMessage } = useFormSubmit({
     formType: "bar-class",
     branch: "general",
@@ -69,8 +82,39 @@ export default function ReservationForm({ dict, common, paypalClientId, exchange
   const handleContinueToPayment = (e) => {
     e.preventDefault();
     if (!validate()) return;
+    setAgreedToTerms(false);
     setShowPayment(true);
   };
+
+  // Fetches the live USD figure the instant the payment step appears — see
+  // the livePricing comment above for why this can't just reuse a value
+  // computed when the page itself was last statically rendered.
+  useEffect(() => {
+    if (!showPayment) return undefined;
+    let cancelled = false;
+    setPriceLoading(true);
+    setLivePricing(null);
+    fetch("/api/paypal/price-preview", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ formType: "bar-class", guests: fields.guests }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!cancelled && typeof data.totalUsd === "number") setLivePricing(data);
+      })
+      .catch(() => {})
+      .finally(() => {
+        if (!cancelled) setPriceLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+    // fields.guests can't change while showPayment is true (the guest count
+    // field only exists in the editing step) — showPayment alone is the
+    // correct re-fetch trigger.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showPayment]);
 
   const handlePaymentSuccess = async (capture) => {
     const { whatsappCountry, whatsappNumber, pickupNeeded, hotelName, roomNumber, ...rest } = fields;
@@ -79,7 +123,11 @@ export default function ReservationForm({ dict, common, paypalClientId, exchange
       whatsapp: `${whatsappCountry} ${whatsappNumber}`,
       ...(pickupNeeded ? { hotelName, roomNumber } : {}),
       locale,
-      paymentStatus: "Paid",
+      // Purely informational — submit-form re-verifies the real payment
+      // status directly against PayPal (see resolveVerifiedPayment) and
+      // never trusts this client-sent value, so it can't be spoofed into a
+      // false "Paid" record by tampering with the request.
+      paymentStatus: "Paid via PayPal",
       paypalOrderId: capture.orderId,
       paypalCaptureId: capture.captureId,
       paymentAmount: capture.amount ? `${capture.amount.value} ${capture.amount.currency_code}` : undefined,
@@ -109,8 +157,10 @@ export default function ReservationForm({ dict, common, paypalClientId, exchange
   // PayPal can't charge in IDR (see lib/paypal/exchangeRate.js) — every
   // guest is actually charged this USD amount, so it's shown right next to
   // the IDR total rather than only appearing after they've already clicked
-  // through to PayPal's own checkout.
-  const totalUsd = (totalIdr * exchangeRate).toFixed(2);
+  // through to PayPal's own checkout. Only ever the live-fetched figure
+  // (see livePricing above) — never computed with a locally-guessed rate,
+  // so it can't disagree with what create-order is about to charge.
+  const totalUsd = livePricing ? livePricing.totalUsd.toFixed(2) : null;
 
   return (
     <section id="reservation" className="border-t border-gray-200 py-20 px-6 max-w-2xl mx-auto">
@@ -219,78 +269,167 @@ export default function ReservationForm({ dict, common, paypalClientId, exchange
           <p className="text-center text-xs text-gray-400">{common.poweredByPaypal}</p>
         </form>
       ) : (
-        <div className="space-y-4">
-          <div className="border border-gray-200 rounded-lg p-4">
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">{common.orderSummaryHeading}</h3>
-            <dl className="space-y-1.5 text-sm text-gray-700">
-              <div className="flex justify-between gap-4">
-                <dt className="text-gray-500">{common.dateLabel}</dt>
-                <dd>{fields.date || "—"}</dd>
+        <div>
+          {/* Step indicator — "Details" is already behind us the moment
+              this renders, "Pay" is the only step left. */}
+          <div className="flex items-center justify-center gap-2 mb-8 text-sm">
+            <span className="flex items-center gap-1.5 text-gray-400">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-200 text-xs font-semibold text-gray-600">1</span>
+              {common.stepDetailsLabel}
+            </span>
+            <ChevronRightIcon className="h-4 w-4 text-gray-300" />
+            <span className="flex items-center gap-1.5 font-semibold text-raja-black">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-raja-black text-xs font-semibold text-white">2</span>
+              {common.stepPayLabel}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            {/* Payment column */}
+            <div className="order-2 lg:order-1 space-y-4">
+              <div>
+                <h3 className="text-lg font-serif mb-1">{common.selectPaymentMethodLabel}</h3>
+                <p className="flex items-center gap-1.5 text-xs text-emerald-700">
+                  <LockIcon className="h-3.5 w-3.5" />
+                  {common.securePaymentNote}
+                </p>
               </div>
-              <div className="flex justify-between gap-4">
-                <dt className="text-gray-500">{common.timeLabel}</dt>
-                <dd>{fields.time || "—"}</dd>
+
+              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-xs text-gray-600 space-y-2">
+                <p>{common.cancellationPolicy}</p>
+                <p>{common.fullyBookedPolicy}</p>
+                <p>{common.noShowPolicy}</p>
               </div>
-              <div className="flex justify-between gap-4">
-                <dt className="text-gray-500">{common.guestsLabel}</dt>
-                <dd>{guestCount || 0} × {EXPERIENCE_LABELS["bar-class"]}</dd>
+
+              {status !== "submitting" && (
+                <label className="flex items-start gap-2 text-sm text-gray-700">
+                  <input
+                    type="checkbox"
+                    checked={agreedToTerms}
+                    onChange={(e) => setAgreedToTerms(e.target.checked)}
+                    className="mt-0.5 h-4 w-4 border-gray-300"
+                  />
+                  {common.agreeToTermsLabel}
+                </label>
+              )}
+
+              {status === "submitting" ? (
+                // Payment already succeeded at this point — this is just the
+                // reservation being saved to Sheets/email before the redirect,
+                // so the guest sees progress instead of a frozen page right
+                // after paying.
+                <p className="text-center text-sm text-gray-500">{submittingMessage}</p>
+              ) : agreedToTerms && !priceLoading && livePricing ? (
+                <PayPalCheckoutButton
+                  clientId={paypalClientId}
+                  formType="bar-class"
+                  guests={fields.guests}
+                  onSuccess={handlePaymentSuccess}
+                  dict={common}
+                />
+              ) : (
+                // Same footprint as the real PayPal Buttons so the layout
+                // doesn't jump once they're swapped in — greyed out until the
+                // live price has loaded and the guest has agreed to the terms
+                // above, since PayPal's own SDK buttons can't be disabled via
+                // a prop once mounted.
+                <div
+                  aria-disabled="true"
+                  className="flex h-11 w-full items-center justify-center rounded bg-gray-200 text-sm font-medium text-gray-400"
+                >
+                  {priceLoading ? common.priceLoadingLabel : common.agreeToTermsPrompt}
+                </div>
+              )}
+            </div>
+
+            {/* Order summary card */}
+            <div className="order-1 lg:order-2 rounded-xl border border-gray-200 shadow-sm overflow-hidden bg-white">
+              <div className="flex gap-3 p-4 border-b border-gray-100">
+                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg">
+                  <SmartImage src="/images/bar-class/Hero.jpg" alt="" sizes="64px" />
+                </div>
+                <div className="min-w-0">
+                  <p className="flex items-center gap-1 text-xs text-gray-500">
+                    <MapPinIcon className="h-3 w-3" />
+                    {common.experienceLocationLabel}
+                  </p>
+                  <p className="font-semibold text-sm leading-snug text-raja-black">{experienceTitle || dict.heading}</p>
+                </div>
               </div>
-              <div className="flex justify-between gap-4">
-                <dt className="text-gray-500">{common.pickupStatusLabel}</dt>
-                <dd>
-                  {fields.pickupNeeded
-                    ? `${common.pickupRequestedLabel}${fields.hotelName ? ` — ${fields.hotelName}` : ""}`
-                    : common.pickupNotRequestedLabel}
-                </dd>
+
+              <div className="px-4 pt-3 pb-1 border-b border-gray-100">
+                <TripadvisorBadgeMain />
               </div>
-            </dl>
-            <div className="border-t border-gray-200 mt-3 pt-3 space-y-1">
-              <div className="flex justify-between text-sm text-gray-700">
-                <span>{common.subtotalLabel}</span>
-                <span>IDR {subtotalIdr.toLocaleString("id-ID")}</span>
+
+              <dl className="p-4 space-y-2 text-sm text-gray-700 border-b border-gray-100">
+                <div className="flex items-center gap-2">
+                  <CalendarIcon className="h-4 w-4 text-gray-400 shrink-0" />
+                  <span>{fields.date || "—"} · {fields.time || "—"}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <UsersIcon className="h-4 w-4 text-gray-400 shrink-0" />
+                  <span>{guestCount || 0} × {EXPERIENCE_LABELS["bar-class"]}</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <dt className="sr-only">{common.pickupStatusLabel}</dt>
+                  <MapPinIcon className="h-4 w-4 text-gray-400 shrink-0 mt-0.5" />
+                  <dd>
+                    {common.pickupStatusLabel}: {fields.pickupNeeded
+                      ? `${common.pickupRequestedLabel}${fields.hotelName ? ` — ${fields.hotelName}` : ""}`
+                      : common.pickupNotRequestedLabel}
+                  </dd>
+                </div>
+              </dl>
+
+              <div className="flex items-start justify-between gap-3 p-4 border-b border-gray-100">
+                <div className="flex items-start gap-2 min-w-0">
+                  <UserIcon className="h-4 w-4 text-gray-400 shrink-0 mt-0.5" />
+                  <div className="min-w-0 text-sm text-gray-700">
+                    <p className="font-medium text-raja-black truncate">
+                      {[fields.title, fields.firstName, fields.lastName].filter(Boolean).join(" ") || "—"}
+                    </p>
+                    <p className="text-gray-500 truncate">{fields.email}</p>
+                    <p className="text-gray-500">{fields.whatsappCountry} {fields.whatsappNumber}</p>
+                  </div>
+                </div>
+                {status !== "submitting" && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowPayment(false);
+                      setAgreedToTerms(false);
+                    }}
+                    className="shrink-0 text-xs font-semibold text-raja-red hover:underline"
+                  >
+                    {common.editLabel}
+                  </button>
+                )}
               </div>
-              <div className="flex justify-between text-sm text-gray-700">
-                <span>{common.taxLabel} ({Math.round(TAX_RATE * 100)}%)</span>
-                <span>IDR {taxIdr.toLocaleString("id-ID")}</span>
-              </div>
-              <div className="flex justify-between text-lg font-serif border-t border-gray-200 mt-2 pt-2">
-                <span>{common.totalLabel}</span>
-                <span>IDR {totalIdr.toLocaleString("id-ID")}</span>
-              </div>
-              <div className="flex justify-between text-sm text-raja-red font-medium">
-                <span>{common.usdChargeNote}</span>
-                <span>USD {totalUsd}</span>
+
+              <div className="p-4 space-y-1">
+                <div className="flex justify-between text-sm text-gray-700">
+                  <span>{common.subtotalLabel}</span>
+                  <span>IDR {subtotalIdr.toLocaleString("id-ID")}</span>
+                </div>
+                <div className="flex justify-between text-sm text-gray-700">
+                  <span>{common.taxLabel} ({Math.round(TAX_RATE * 100)}%)</span>
+                  <span>IDR {taxIdr.toLocaleString("id-ID")}</span>
+                </div>
+                <div className="flex justify-between text-base font-semibold border-t border-gray-200 mt-2 pt-2">
+                  <span>{common.totalLabel}</span>
+                  <span>IDR {totalIdr.toLocaleString("id-ID")}</span>
+                </div>
+                <div className="flex justify-between text-sm text-raja-red font-medium">
+                  <span>{common.usdChargeNote}</span>
+                  <span>{totalUsd ? `USD ${totalUsd}` : common.priceLoadingLabel}</span>
+                </div>
+                <p className="flex items-center gap-1 text-xs text-emerald-700 pt-1">
+                  <CheckIcon className="h-3.5 w-3.5" />
+                  {common.taxesIncludedNote}
+                </p>
               </div>
             </div>
           </div>
-
-          {status === "submitting" ? (
-            // Payment already succeeded at this point — this is just the
-            // reservation being saved to Sheets/email before the redirect,
-            // so the guest sees progress instead of a frozen page right
-            // after paying.
-            <p className="text-center text-sm text-gray-500">{submittingMessage}</p>
-          ) : (
-            <PayPalCheckoutButton
-              clientId={paypalClientId}
-              formType="bar-class"
-              guests={fields.guests}
-              onSuccess={handlePaymentSuccess}
-              dict={common}
-            />
-          )}
-
-          <p className="text-center text-xs text-gray-500">{common.cancellationPolicy}</p>
-
-          {status !== "submitting" && (
-            <button
-              type="button"
-              onClick={() => setShowPayment(false)}
-              className="block w-full border border-raja-black px-6 py-3 text-center text-sm tracking-widest hover:border-raja-red hover:text-raja-red transition"
-            >
-              {common.editDetails}
-            </button>
-          )}
         </div>
       )}
 
