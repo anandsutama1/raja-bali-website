@@ -24,12 +24,19 @@
     "errorFallback": "Something went wrong. Please try again.",
     "noShowNotice": "Please note: indoor seating is non-smoking, while our outdoor tables welcome smoking guests. Your table will be held for 30 minutes past the reservation time, after which the booking may be released and treated as cancelled.",
     "orderSummaryHeading": "Order Summary",
+    "guestsLabel": "Guests",
+    "pickupStatusLabel": "Pickup",
+    "pickupRequestedLabel": "Requested",
+    "pickupNotRequestedLabel": "Not requested",
+    "subtotalLabel": "Subtotal (before tax)",
+    "taxLabel": "Tax & Service",
     "totalLabel": "Total",
-    "taxIncludedNote": "Includes 11% tax & service charge",
     "cancellationPolicy": "Cancellations are eligible for a 50% refund.",
     "paymentLoading": "Loading payment options…",
     "paymentError": "Something went wrong with the payment. Please try again, or contact us directly if the issue continues.",
-    "editDetails": "Edit Details"
+    "editDetails": "Edit Details",
+    "usdChargeNote": "Charged in USD via PayPal:",
+    "poweredByPaypal": "Powered by PayPal"
   },
   "reservationMain": {
     "heading": "Begin Your Experience",
@@ -46,7 +53,7 @@
   "cookingClass": {
     "heading": "Reservation",
     "subheading": "Begin your journey into the heart of Balinese cuisine with a hands-on cooking class.",
-    "submitLabel": "Reserve Now",
+    "submitLabel": "Pay Now",
     "successMessage": "Thank you! Your reservation request has been sent. We'll be in touch shortly.",
     "planLabel": "Plan",
     "planShared": "Shared Experience (IDR 550K / person)",
@@ -55,7 +62,7 @@
   "barClass": {
     "heading": "Reservation",
     "subheading": "Reserve your place in the Balinese cocktail class.",
-    "submitLabel": "Reserve Now",
+    "submitLabel": "Pay Now",
     "successMessage": "Thank you! Your reservation request has been sent. We'll be in touch shortly."
   },
   "groupReservation": {

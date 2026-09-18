@@ -7,7 +7,7 @@ import { isValidEmail, isValidPhoneDigits } from "@/lib/validation";
 import { DEFAULT_COUNTRY_CODE } from "@/lib/countryCodes";
 import { TITLES } from "@/lib/titles";
 import { todayLocalDate } from "@/lib/timeSlots";
-import { calculateTotalWithTax, resolveBasePrice } from "@/lib/paypal/pricing";
+import { calculateTotalWithTax, resolveBasePrice, TAX_RATE, EXPERIENCE_LABELS } from "@/lib/paypal/pricing";
 import PhoneField from "@/components/PhoneField";
 import GuestCountField from "@/components/GuestCountField";
 import SubmitButton from "@/components/SubmitButton";
@@ -34,7 +34,7 @@ const initialFields = {
   roomNumber: "",
 };
 
-export default function ReservationForm({ dict, common, paypalClientId }) {
+export default function ReservationForm({ dict, common, paypalClientId, exchangeRate }) {
   const router = useRouter();
   const { locale } = useParams();
   const today = todayLocalDate();
@@ -101,10 +101,16 @@ export default function ReservationForm({ dict, common, paypalClientId }) {
   };
 
   const guestCount = parseInt(fields.guests, 10);
-  const basePrice = resolveBasePrice("bar-class");
-  const { total: totalIdr } = Number.isInteger(guestCount) && guestCount > 0
+  const hasValidGuestCount = Number.isInteger(guestCount) && guestCount > 0;
+  const basePrice = resolveBasePrice("bar-class", hasValidGuestCount ? guestCount : 1);
+  const { subtotal: subtotalIdr, tax: taxIdr, total: totalIdr } = hasValidGuestCount
     ? calculateTotalWithTax(basePrice, guestCount)
-    : { total: 0 };
+    : { subtotal: 0, tax: 0, total: 0 };
+  // PayPal can't charge in IDR (see lib/paypal/exchangeRate.js) — every
+  // guest is actually charged this USD amount, so it's shown right next to
+  // the IDR total rather than only appearing after they've already clicked
+  // through to PayPal's own checkout.
+  const totalUsd = (totalIdr * exchangeRate).toFixed(2);
 
   return (
     <section id="reservation" className="border-t border-gray-200 py-20 px-6 max-w-2xl mx-auto">
@@ -210,19 +216,52 @@ export default function ReservationForm({ dict, common, paypalClientId }) {
           </div>
           <textarea placeholder={common.dietaryPlaceholder} aria-label={common.dietaryPlaceholder} required value={fields.message} onChange={update("message")} className="border p-3 rounded w-full h-24"></textarea>
           <SubmitButton status="idle" label={dict.submitLabel} submittingMessage="" />
+          <p className="text-center text-xs text-gray-400">{common.poweredByPaypal}</p>
         </form>
       ) : (
         <div className="space-y-4">
           <div className="border border-gray-200 rounded-lg p-4">
             <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">{common.orderSummaryHeading}</h3>
-            <div className="flex justify-between text-sm text-gray-700 mb-1">
-              <span>{dict.heading} × {guestCount || 0}</span>
+            <dl className="space-y-1.5 text-sm text-gray-700">
+              <div className="flex justify-between gap-4">
+                <dt className="text-gray-500">{common.dateLabel}</dt>
+                <dd>{fields.date || "—"}</dd>
+              </div>
+              <div className="flex justify-between gap-4">
+                <dt className="text-gray-500">{common.timeLabel}</dt>
+                <dd>{fields.time || "—"}</dd>
+              </div>
+              <div className="flex justify-between gap-4">
+                <dt className="text-gray-500">{common.guestsLabel}</dt>
+                <dd>{guestCount || 0} × {EXPERIENCE_LABELS["bar-class"]}</dd>
+              </div>
+              <div className="flex justify-between gap-4">
+                <dt className="text-gray-500">{common.pickupStatusLabel}</dt>
+                <dd>
+                  {fields.pickupNeeded
+                    ? `${common.pickupRequestedLabel}${fields.hotelName ? ` — ${fields.hotelName}` : ""}`
+                    : common.pickupNotRequestedLabel}
+                </dd>
+              </div>
+            </dl>
+            <div className="border-t border-gray-200 mt-3 pt-3 space-y-1">
+              <div className="flex justify-between text-sm text-gray-700">
+                <span>{common.subtotalLabel}</span>
+                <span>IDR {subtotalIdr.toLocaleString("id-ID")}</span>
+              </div>
+              <div className="flex justify-between text-sm text-gray-700">
+                <span>{common.taxLabel} ({Math.round(TAX_RATE * 100)}%)</span>
+                <span>IDR {taxIdr.toLocaleString("id-ID")}</span>
+              </div>
+              <div className="flex justify-between text-lg font-serif border-t border-gray-200 mt-2 pt-2">
+                <span>{common.totalLabel}</span>
+                <span>IDR {totalIdr.toLocaleString("id-ID")}</span>
+              </div>
+              <div className="flex justify-between text-sm text-raja-red font-medium">
+                <span>{common.usdChargeNote}</span>
+                <span>USD {totalUsd}</span>
+              </div>
             </div>
-            <div className="flex justify-between text-lg font-serif border-t border-gray-200 mt-2 pt-2">
-              <span>{common.totalLabel}</span>
-              <span>IDR {totalIdr.toLocaleString("id-ID")}</span>
-            </div>
-            <p className="text-xs text-gray-400 mt-1">{common.taxIncludedNote}</p>
           </div>
 
           {status === "submitting" ? (
@@ -247,7 +286,7 @@ export default function ReservationForm({ dict, common, paypalClientId }) {
             <button
               type="button"
               onClick={() => setShowPayment(false)}
-              className="u-link block mx-auto text-sm text-gray-500 hover:text-raja-red"
+              className="block w-full border border-raja-black px-6 py-3 text-center text-sm tracking-widest hover:border-raja-red hover:text-raja-red transition"
             >
               {common.editDetails}
             </button>

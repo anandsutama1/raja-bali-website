@@ -4,8 +4,16 @@ import { LOCATIONS, SITE_URL } from "@/lib/site";
 import { getThankYouLinks } from "@/lib/thankYouLinks";
 import { LOCALES, DEFAULT_LOCALE } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/getDictionary";
+import { verifyPayPalOrder } from "@/lib/paypal/verify";
+import { resolveBasePrice, calculateTotalWithTax } from "@/lib/paypal/pricing";
+import { generateInvoicePdf } from "@/lib/pdf/invoice";
+import { checkRateLimit } from "@/lib/paypal/rateLimit";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Only these two form types ever go through PayPal — no other form should
+// ever be trusted to claim a payment happened.
+const PAID_FORM_TYPES = new Set(["cooking-class", "bar-class"]);
 
 const BRANCH_EMAILS = {
   main: process.env.EMAIL_MAIN_RESTAURANT,
@@ -128,6 +136,59 @@ function interpolate(template, vars) {
 // disagree with whether hotel/room data actually made it into the email.
 function needsPickup(fields) {
   return Boolean(fields.hotelName) || Boolean(fields.roomNumber);
+}
+
+// submit-form is a public, unauthenticated endpoint — `fields.paymentStatus
+// === "Paid"` sent by a browser is just a claim, not proof. For the two
+// form types that go through PayPal, this re-fetches the order directly
+// from PayPal and only trusts what PayPal itself reports as COMPLETED,
+// before anything downstream (staff email, guest email, Sheets, the
+// invoice PDF) is allowed to say "Paid". If verification fails (or the
+// order isn't actually captured), every payment-related field is stripped
+// rather than trusted — better to under-claim than to let a forged request
+// mark itself paid when it wasn't.
+async function resolveVerifiedPayment(formType, fields) {
+  const { paymentStatus, paymentAmount, paypalOrderId, paypalCaptureId, ...rest } = fields;
+
+  if (!PAID_FORM_TYPES.has(formType) || !paypalOrderId) {
+    return { fields: rest, invoiceData: null };
+  }
+
+  const verified = await verifyPayPalOrder(paypalOrderId);
+  if (!verified || verified.formType !== formType) {
+    console.error("[submit-form] PayPal payment verification failed", { formType, paypalOrderId });
+    return { fields: rest, invoiceData: null };
+  }
+
+  const verifiedFields = {
+    ...rest,
+    paymentStatus: "Paid",
+    paypalOrderId: verified.orderId,
+    paymentAmount: verified.amount ? `${verified.amount.value} ${verified.amount.currency_code}` : undefined,
+  };
+
+  const guestCount = parseInt(verified.guestCount, 10) || 1;
+  const basePrice = resolveBasePrice(formType, guestCount);
+  const { subtotal, tax, total } = calculateTotalWithTax(basePrice, guestCount);
+
+  const invoiceData = {
+    guestName: [fields.title, fields.firstName, fields.lastName].filter(Boolean).join(" ") || "Guest",
+    formType,
+    guestCount,
+    plan: verified.plan,
+    date: fields.date,
+    time: fields.time,
+    basePrice,
+    subtotal,
+    tax,
+    total,
+    paypalOrderId: verified.orderId,
+    captureId: verified.captureId,
+    chargedAmount: verified.amount,
+    invoiceDate: new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" }),
+  };
+
+  return { fields: verifiedFields, invoiceData };
 }
 
 // Staff notification email stays hardcoded English on purpose — internal
@@ -452,7 +513,7 @@ async function sendNotificationEmail({ formType, targetEmail, fields }) {
 // failure here never blocks the restaurant from getting the booking.
 // Renders in the guest's own locale (fields.locale, defaulting to English —
 // see resolveLocale).
-async function sendGuestConfirmationEmail({ formType, branch, fields }) {
+async function sendGuestConfirmationEmail({ formType, branch, fields, invoiceData }) {
   if (!fields.email) throw new Error("No guest email address provided.");
 
   const locale = resolveLocale(fields.locale);
@@ -472,11 +533,25 @@ async function sendGuestConfirmationEmail({ formType, branch, fields }) {
     { locationName }
   );
 
+  // Invoice PDF only exists for a PayPal-verified paid booking (see
+  // resolveVerifiedPayment) — everything else gets the same email with no
+  // attachment, unchanged from before payments existed.
+  let attachments;
+  if (invoiceData) {
+    try {
+      const pdfBuffer = await generateInvoicePdf(invoiceData);
+      attachments = [{ filename: `RajaBali-Invoice-${invoiceData.paypalOrderId}.pdf`, content: pdfBuffer }];
+    } catch (err) {
+      console.error("[submit-form] invoice PDF generation failed:", err);
+    }
+  }
+
   const { error } = await resend.emails.send({
     from: "Raja Bali <noreply@rajabalirestaurant.co>",
     to: fields.email,
     subject,
     html: buildGuestConfirmationHtml(formType, branch, fields, emailDict, common.thankYouLinks),
+    ...(attachments ? { attachments } : {}),
   });
 
   if (error) throw new Error(error.message || "Resend failed to send the guest confirmation.");
@@ -498,6 +573,9 @@ function withLogging(promise, label) {
 // async function sendWhatsAppNotification({ formType, branch, fields }) {}
 
 export async function POST(request) {
+  const limited = checkRateLimit(request, "submit-form");
+  if (limited) return limited;
+
   let body;
   try {
     body = await request.json();
@@ -505,11 +583,17 @@ export async function POST(request) {
     return NextResponse.json({ ok: false, error: "Invalid request body." }, { status: 400 });
   }
 
-  const { formType, branch, ...fields } = body ?? {};
+  const { formType, branch, ...rawFields } = body ?? {};
 
   if (!formType) {
     return NextResponse.json({ ok: false, error: "Missing formType." }, { status: 400 });
   }
+
+  // Re-verifies any payment claim against PayPal directly before it's
+  // allowed to reach Sheets or either email — see resolveVerifiedPayment.
+  // Runs before the Sheets/email race below since both need the corrected,
+  // trustworthy fields rather than whatever the client happened to send.
+  const { fields, invoiceData } = await resolveVerifiedPayment(formType, rawFields);
 
   const targetEmail = BRANCH_EMAILS[branch] || BRANCH_EMAILS.general;
 
@@ -518,7 +602,7 @@ export async function POST(request) {
   // response. `after()` runs it once the response is already on its way
   // back to the browser.
   after(() =>
-    sendGuestConfirmationEmail({ formType, branch, fields }).catch((err) =>
+    sendGuestConfirmationEmail({ formType, branch, fields, invoiceData }).catch((err) =>
       console.error("Guest confirmation email failed:", err)
     )
   );

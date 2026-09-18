@@ -1,18 +1,26 @@
 import { NextResponse } from "next/server";
 import { getPayPalAccessToken, paypalApiUrl } from "@/lib/paypal/client";
-import { EXPERIENCE_PRICING, calculateTotalWithTax, resolveBasePrice } from "@/lib/paypal/pricing";
+import {
+  EXPERIENCE_PRICING,
+  EXPERIENCE_LABELS,
+  calculateTotalWithTax,
+  resolveBasePrice,
+  resolvePlanFromGuestCount,
+} from "@/lib/paypal/pricing";
 import { getIdrToUsdRate } from "@/lib/paypal/exchangeRate";
+import { checkRateLimit } from "@/lib/paypal/rateLimit";
 
-const EXPERIENCE_LABELS = {
-  "cooking-class": "Balinese Cooking Class",
-  "bar-class": "Balinese Cocktail Class",
-};
-
-// The client sends formType/plan/guests — never a price. This is the only
-// place the actual charge amount is decided, from our own price table, so
-// a guest can never pay less (or more) than the real price by tampering
-// with a client-side value.
+// The client sends formType/guests — never a plan or a price. Cooking
+// class's Shared/Individual plan is derived from guestCount here, the same
+// rule the order-summary label uses client-side (see
+// resolvePlanFromGuestCount) — a guest can't pay the cheaper Individual
+// rate for 2+ people by sending a tampered "plan" value, because there's
+// no "plan" input to tamper with anymore. This is the only place the
+// actual charge amount is decided, from our own price table.
 export async function POST(request) {
+  const limited = checkRateLimit(request, "create-order");
+  if (limited) return limited;
+
   let body;
   try {
     body = await request.json();
@@ -20,7 +28,7 @@ export async function POST(request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const { formType, plan, guests } = body ?? {};
+  const { formType, guests } = body ?? {};
   const guestCount = parseInt(guests, 10);
 
   if (!EXPERIENCE_PRICING[formType]) {
@@ -30,7 +38,8 @@ export async function POST(request) {
     return NextResponse.json({ error: "Invalid guest count." }, { status: 400 });
   }
 
-  const basePrice = resolveBasePrice(formType, plan);
+  const plan = formType === "cooking-class" ? resolvePlanFromGuestCount(guestCount) : undefined;
+  const basePrice = resolveBasePrice(formType, guestCount);
   const { total: totalIdr } = calculateTotalWithTax(basePrice, guestCount);
   const rate = await getIdrToUsdRate();
   // PayPal requires exactly 2 decimal places for USD.
@@ -49,9 +58,19 @@ export async function POST(request) {
         purchase_units: [
           {
             description: `${EXPERIENCE_LABELS[formType] || formType} — ${guestCount} guest(s)`,
+            // Echoed back on the capture response — lets capture-order and
+            // the webhook handler reconstruct what was actually purchased
+            // (for the PDF invoice and reconciliation) without re-trusting
+            // anything the client says at capture time.
+            custom_id: JSON.stringify({ formType, guestCount, plan }),
             amount: { currency_code: "USD", value: totalUsd },
           },
         ],
+        // A cooking/bar class is an experience, not a physical product —
+        // without this, PayPal's checkout defaults to asking for (or
+        // pulling from the buyer's PayPal profile) a shipping address,
+        // which makes no sense for something nothing gets shipped to.
+        application_context: { shipping_preference: "NO_SHIPPING" },
       }),
       cache: "no-store",
     });

@@ -24,12 +24,19 @@
     "errorFallback": "エラーが発生しました。もう一度お試しください。",
     "noShowNotice": "ご注意:屋内席は禁煙、屋外席は喫煙可能です。ご予約時間より30分を過ぎますとお席をご用意できない場合があり、その場合キャンセル扱いとなることがございます。",
     "orderSummaryHeading": "注文内容",
+    "guestsLabel": "人数",
+    "pickupStatusLabel": "送迎サービス",
+    "pickupRequestedLabel": "希望あり",
+    "pickupNotRequestedLabel": "希望なし",
+    "subtotalLabel": "小計(税抜き)",
+    "taxLabel": "税金・サービス料",
     "totalLabel": "合計",
-    "taxIncludedNote": "税金・サービス料11%込み",
     "cancellationPolicy": "キャンセルの場合、50%の返金対象となります。",
     "paymentLoading": "お支払いオプションを読み込み中…",
     "paymentError": "お支払い処理中に問題が発生しました。もう一度お試しいただくか、解決しない場合は直接お問い合わせください。",
-    "editDetails": "内容を編集する"
+    "editDetails": "内容を編集する",
+    "usdChargeNote": "PayPalを通じて米ドルで請求されます:",
+    "poweredByPaypal": "Powered by PayPal"
   },
   "reservationMain": {
     "heading": "ご予約はこちらから",
@@ -46,7 +53,7 @@
   "cookingClass": {
     "heading": "ご予約",
     "subheading": "体験型クッキングクラスで、バリ料理の真髄への旅を始めましょう。",
-    "submitLabel": "今すぐ予約する",
+    "submitLabel": "今すぐ支払う",
     "successMessage": "ありがとうございます!ご予約リクエストを送信しました。担当より近日中にご連絡いたします。",
     "planLabel": "プラン",
     "planShared": "シェアプラン(IDR 550K / 名)",
@@ -55,7 +62,7 @@
   "barClass": {
     "heading": "ご予約",
     "subheading": "バリ島式カクテルクラスの席をご予約ください。",
-    "submitLabel": "今すぐ予約する",
+    "submitLabel": "今すぐ支払う",
     "successMessage": "ありがとうございます!ご予約リクエストを送信しました。担当より近日中にご連絡いたします。"
   },
   "groupReservation": {

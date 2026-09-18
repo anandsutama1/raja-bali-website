@@ -15,6 +15,7 @@ import dynamic from "next/dynamic";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { localeAlternates } from "@/lib/i18n/alternates";
+import { getIdrToUsdRate } from "@/lib/paypal/exchangeRate";
 
 // Below the fold — its form-state/validation JS ships in its own chunk
 // instead of the initial bundle. Still server-rendered (no ssr:false), so
@@ -68,12 +69,13 @@ export async function generateMetadata({ params }) {
 
 export default async function BarClassPage({ params }) {
   const { locale } = await params;
-  const [meta, forms, faqs, common, bc] = await Promise.all([
+  const [meta, forms, faqs, common, bc, exchangeRate] = await Promise.all([
     getDictionary(locale, "metadata"),
     getDictionary(locale, "forms"),
     getDictionary(locale, "faqs"),
     getDictionary(locale, "common"),
     getDictionary(locale, "content-bar-class"),
+    getIdrToUsdRate(),
   ]);
 
   return (
@@ -102,7 +104,12 @@ export default async function BarClassPage({ params }) {
       <div className="flex justify-center px-6 py-8">
         <TripadvisorBadgeMain />
       </div>
-      <ReservationForm dict={forms.barClass} common={forms.common} paypalClientId={process.env.PAYPAL_CLIENT_ID} />
+      <ReservationForm
+        dict={forms.barClass}
+        common={forms.common}
+        paypalClientId={process.env.PAYPAL_CLIENT_ID}
+        exchangeRate={exchangeRate}
+      />
       <StickyReserveButton href="#reservation" label={common.stickyReserve.cocktailClass} />
     </main>
   );
