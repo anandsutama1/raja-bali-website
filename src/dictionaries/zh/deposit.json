@@ -12,5 +12,8 @@
   "invalidHeading": "此付款链接无效",
   "invalidBody": "请确认您打开的是我们发送的完整链接,或联系我们重新发送。",
   "expiredHeading": "此付款链接已过期",
-  "expiredBody": "请联系我们,我们会为您发送新的链接。"
+  "expiredBody": "请联系我们,我们会为您发送新的链接。",
+  "metaTitle": "支付订金",
+  "metaDescription": "为您的团体预订订金提供安全付款。",
+  "metaDescriptionFull": "为您的团体预订订金提供安全付款。预订编号 {ref},金额 USD {usd}。"
 }

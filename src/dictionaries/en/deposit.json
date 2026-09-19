@@ -12,5 +12,8 @@
   "invalidHeading": "This payment link isn't valid",
   "invalidBody": "Please check that you opened the full link we sent you, or contact us and we'll send a new one.",
   "expiredHeading": "This payment link has expired",
-  "expiredBody": "Please contact us and we'll send you a new one."
+  "expiredBody": "Please contact us and we'll send you a new one.",
+  "metaTitle": "Pay your deposit",
+  "metaDescription": "Secure payment for your group reservation deposit.",
+  "metaDescriptionFull": "Secure payment for your group reservation deposit. Reference {ref}, amount USD {usd}."
 }

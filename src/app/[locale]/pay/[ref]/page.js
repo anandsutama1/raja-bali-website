@@ -2,10 +2,56 @@ import { getDictionary } from "@/lib/i18n/getDictionary";
 import { verifyDepositLink } from "@/lib/deposit/link";
 import DepositPay from "@/components/deposit/DepositPay";
 
-// A payment link is private to one guest and pointless to index.
-export const metadata = { robots: { index: false, follow: false } };
-
 const first = (value) => (Array.isArray(value) ? value[0] : value);
+
+function readLink(ref, query) {
+  return verifyDepositLink({
+    ref,
+    usd: first(query.usd),
+    idr: first(query.idr),
+    exp: first(query.exp),
+    sig: first(query.sig),
+  });
+}
+
+// This is what WhatsApp/iMessage/social apps show when a staff member
+// shares the link, so it has to say "deposit payment" — not inherit the
+// site-wide restaurant description and dance photo from the root layout.
+// Page-level openGraph/twitter replace the root's wholesale (Next doesn't
+// merge them), so every field is spelled out here. The logo is the preview
+// image: a square mark reads correctly in a chat bubble, whereas the
+// restaurant photo would make a payment request look like an advert.
+export async function generateMetadata({ params, searchParams }) {
+  const { locale, ref } = await params;
+  const query = await searchParams;
+  const dict = await getDictionary(locale, "deposit");
+  const link = readLink(ref, query);
+
+  const description = link.valid
+    ? dict.metaDescriptionFull.replace("{ref}", ref).replace("{usd}", link.usd.toFixed(2))
+    : dict.metaDescription;
+  const image = "/images/shared/RajaBali_Navbar.png";
+
+  return {
+    title: dict.metaTitle,
+    description,
+    // A payment link is private to one guest and pointless to index.
+    robots: { index: false, follow: false },
+    openGraph: {
+      type: "website",
+      siteName: "Raja Bali",
+      title: `${dict.metaTitle} | Raja Bali`,
+      description,
+      images: [{ url: image, width: 500, height: 500, alt: "Raja Bali" }],
+    },
+    twitter: {
+      card: "summary",
+      title: `${dict.metaTitle} | Raja Bali`,
+      description,
+      images: [image],
+    },
+  };
+}
 
 export default async function DepositPayPage({ params, searchParams }) {
   const { locale, ref } = await params;
@@ -15,13 +61,7 @@ export default async function DepositPayPage({ params, searchParams }) {
     getDictionary(locale, "forms"),
   ]);
 
-  const link = verifyDepositLink({
-    ref,
-    usd: first(query.usd),
-    idr: first(query.idr),
-    exp: first(query.exp),
-    sig: first(query.sig),
-  });
+  const link = readLink(ref, query);
 
   if (!link.valid) {
     const expired = link.reason === "expired";

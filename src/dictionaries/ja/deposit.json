@@ -12,5 +12,8 @@
   "invalidHeading": "このお支払いリンクは無効です",
   "invalidBody": "お送りしたリンク全体を開いているかご確認いただくか、新しいリンクをご依頼ください。",
   "expiredHeading": "このお支払いリンクは期限切れです",
-  "expiredBody": "新しいリンクをご依頼ください。"
+  "expiredBody": "新しいリンクをご依頼ください。",
+  "metaTitle": "デポジットのお支払い",
+  "metaDescription": "団体ご予約のデポジットを安全にお支払いいただけます。",
+  "metaDescriptionFull": "団体ご予約のデポジットを安全にお支払いいただけます。予約番号 {ref}、金額 USD {usd}。"
 }
