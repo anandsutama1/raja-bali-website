@@ -455,6 +455,7 @@ export default function ReservationForm({ dict, common, paypalClientId, experien
                   <CheckIcon className="h-3.5 w-3.5" />
                   {common.taxesIncludedNote}
                 </p>
+                <p className="text-xs text-gray-400 pt-1">{common.exchangeRateNote}</p>
               </div>
             </div>
           </div>

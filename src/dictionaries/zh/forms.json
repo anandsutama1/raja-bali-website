@@ -47,6 +47,7 @@
     "stepPayLabel": "付款",
     "experienceLocationLabel": "印度尼西亚 努沙杜瓦",
     "taxesIncludedNote": "已包含所有税费及服务费",
+    "exchangeRateNote": "温馨提示:汇率会因银行及卡组织不同而有所差异。以上美元金额是您将被实际收取的费用,您的银行事后显示的印尼盾金额可能会略有不同。",
     "usdChargeNote": "将通过 PayPal 以美元收费:",
     "poweredByPaypal": "由 PayPal 提供支持"
   },

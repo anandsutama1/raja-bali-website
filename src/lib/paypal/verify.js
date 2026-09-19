@@ -39,6 +39,9 @@ export async function verifyPayPalOrder(orderId) {
       formType: customId?.formType,
       guestCount: customId?.guestCount,
       plan: customId?.plan,
+      // Whole parsed custom_id, for order kinds that aren't a class booking
+      // (group-reservation deposits carry { type: "deposit", ref, usd }).
+      custom: customId,
     };
   } catch (err) {
     console.error("[paypal] verifyPayPalOrder failed:", err);

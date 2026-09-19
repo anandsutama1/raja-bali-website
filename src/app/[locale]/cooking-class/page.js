@@ -11,8 +11,9 @@ import StickyReserveButton from "@/components/StickyReserveButton";
 import CookingClassStructuredData from "@/components/cooking-class/StructuredData";
 import PageSchema from "@/components/PageSchema";
 import TripadvisorBadgeMain from "@/components/TripadvisorBadgeMain";
+import LocationMap from "@/components/LocationMap";
 import dynamic from "next/dynamic";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL, LOCATIONS } from "@/lib/site";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { localeAlternates } from "@/lib/i18n/alternates";
 
@@ -76,6 +77,10 @@ export default async function CookingClassPage({ params }) {
     getDictionary(locale, "content-cooking-class"),
     getDictionary(locale, "common"),
   ]);
+  // Both the cooking class and bar class are held at the Main Restaurant,
+  // never the Nusa Dua dine-in outlet — see BRANCH_LOCATION_ID in
+  // submit-form/route.js for the same distinction.
+  const mainRestaurant = LOCATIONS.find((l) => l.id === "main-restaurant");
 
   return (
     <main>
@@ -103,6 +108,12 @@ export default async function CookingClassPage({ params }) {
       <div className="flex justify-center px-6 py-8">
         <TripadvisorBadgeMain />
       </div>
+      <LocationMap
+        mapSrc={mainRestaurant.mapEmbedSrc}
+        title={mainRestaurant.name}
+        heading={common.findUsHeading}
+        address={`${mainRestaurant.streetAddress}, Bali`}
+      />
       <ReservationForm
         dict={forms.cookingClass}
         common={forms.common}

@@ -47,6 +47,7 @@
     "stepPayLabel": "Pay",
     "experienceLocationLabel": "Nusa Dua, Indonesia",
     "taxesIncludedNote": "Includes all taxes and fees",
+    "exchangeRateNote": "Heads up: exchange rates vary by bank and card network. The USD total above is exactly what you'll be charged, though any IDR figure your own bank shows afterward may look slightly different.",
     "usdChargeNote": "Charged in USD via PayPal:",
     "poweredByPaypal": "Powered by PayPal"
   },

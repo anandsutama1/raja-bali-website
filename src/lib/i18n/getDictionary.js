@@ -13,6 +13,7 @@ const loaders = {
   forms: (l) => import(`@/dictionaries/${l}/forms.json`).then((m) => m.default),
   email: (l) => import(`@/dictionaries/${l}/email.json`).then((m) => m.default),
   faqs: (l) => import(`@/dictionaries/${l}/faqs.json`).then((m) => m.default),
+  deposit: (l) => import(`@/dictionaries/${l}/deposit.json`).then((m) => m.default),
   menu: (l) => import(`@/dictionaries/${l}/menu.json`).then((m) => m.default),
   "content-home": (l) => import(`@/dictionaries/${l}/content/home.json`).then((m) => m.default),
   "content-about": (l) => import(`@/dictionaries/${l}/content/about.json`).then((m) => m.default),

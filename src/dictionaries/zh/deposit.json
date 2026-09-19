@@ -1,0 +1,16 @@
+{
+  "heading": "支付订金",
+  "subheading": "支付订金以确认您的团体预订。您的预订编号如下,请妥善保管。",
+  "referenceLabel": "预订编号",
+  "amountLabel": "订金金额(以美元收取)",
+  "estimateLabel": "约合",
+  "confirmingLabel": "正在确认您的付款…",
+  "successHeading": "已收到订金",
+  "successBody": "谢谢!我们已将您的订金记录在编号 {ref} 下,团队将很快与您联系。",
+  "unconfirmedHeading": "已付款,确认中",
+  "unconfirmedBody": "您的付款已通过 PayPal 完成,但我们暂时还无法确认。请勿重复付款,我们的团队会尽快确认(编号 {ref})。",
+  "invalidHeading": "此付款链接无效",
+  "invalidBody": "请确认您打开的是我们发送的完整链接,或联系我们重新发送。",
+  "expiredHeading": "此付款链接已过期",
+  "expiredBody": "请联系我们,我们会为您发送新的链接。"
+}

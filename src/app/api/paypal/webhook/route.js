@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getPayPalAccessToken, paypalApiUrl } from "@/lib/paypal/client";
+import { recordDepositPayment } from "@/lib/deposit/record";
 
 // Reconciliation safety net, independent of the direct capture-order HTTP
 // response: if a guest's browser loses connectivity right after PayPal
@@ -99,6 +100,22 @@ export async function POST(request) {
       amount: capture.amount,
       createTime: event.create_time,
     });
+
+    // Backup path for group-reservation deposits: if the guest's browser
+    // never got to call /api/deposit/complete (dropped connection right
+    // after paying), PayPal telling us here still gets it recorded.
+    // recordDepositPayment re-verifies against PayPal and the Sheet script
+    // ignores an order it has already logged, so running alongside the
+    // browser path is safe.
+    const orderId = capture.supplementary_data?.related_ids?.order_id;
+    if (orderId && typeof capture.custom_id === "string" && capture.custom_id.includes('"type":"deposit"')) {
+      try {
+        const result = await recordDepositPayment(orderId);
+        console.log("[deposit] webhook recorded payment:", { orderId, ok: result.ok, ref: result.ref });
+      } catch (err) {
+        console.error("[deposit] webhook record failed:", err);
+      }
+    }
   }
 
   return NextResponse.json({ ok: true, verified: true });

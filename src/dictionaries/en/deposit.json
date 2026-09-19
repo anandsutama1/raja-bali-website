@@ -1,0 +1,16 @@
+{
+  "heading": "Pay your deposit",
+  "subheading": "Secure your group reservation with a deposit. Your reference is shown below, please keep it for your records.",
+  "referenceLabel": "Reservation reference",
+  "amountLabel": "Deposit amount (charged in USD)",
+  "estimateLabel": "Estimated equivalent",
+  "confirmingLabel": "Confirming your payment…",
+  "successHeading": "Deposit received",
+  "successBody": "Thank you! We've recorded your deposit under reference {ref}. Our team will be in touch shortly.",
+  "unconfirmedHeading": "Payment sent, confirmation pending",
+  "unconfirmedBody": "Your payment went through with PayPal, but we couldn't confirm it on our side just yet. Please don't pay again. Our team will confirm it shortly (reference {ref}).",
+  "invalidHeading": "This payment link isn't valid",
+  "invalidBody": "Please check that you opened the full link we sent you, or contact us and we'll send a new one.",
+  "expiredHeading": "This payment link has expired",
+  "expiredBody": "Please contact us and we'll send you a new one."
+}

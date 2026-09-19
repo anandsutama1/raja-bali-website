@@ -47,6 +47,7 @@
     "stepPayLabel": "お支払い",
     "experienceLocationLabel": "ヌサドゥア、インドネシア",
     "taxesIncludedNote": "すべての税金・サービス料込み",
+    "exchangeRateNote": "為替レートは銀行やカード会社によって異なる場合があります。上記の米ドル金額が実際にご請求される金額です。後日ご利用明細に表示されるルピア換算額は、多少異なる場合があります。",
     "usdChargeNote": "PayPalを通じて米ドルで請求されます:",
     "poweredByPaypal": "Powered by PayPal"
   },

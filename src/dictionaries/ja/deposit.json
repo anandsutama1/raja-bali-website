@@ -1,0 +1,16 @@
+{
+  "heading": "デポジットのお支払い",
+  "subheading": "デポジットのお支払いで、団体ご予約を確保します。予約番号は下記の通りです。お控えください。",
+  "referenceLabel": "予約番号",
+  "amountLabel": "デポジット金額(米ドルで請求)",
+  "estimateLabel": "概算",
+  "confirmingLabel": "お支払いを確認中…",
+  "successHeading": "デポジットを受け付けました",
+  "successBody": "ありがとうございます。予約番号 {ref} でデポジットを記録しました。担当より近日中にご連絡いたします。",
+  "unconfirmedHeading": "お支払い済み、確認中",
+  "unconfirmedBody": "PayPalでのお支払いは完了しましたが、こちらではまだ確認できておりません。二重にお支払いなさらないでください。担当が確認いたします(予約番号 {ref})。",
+  "invalidHeading": "このお支払いリンクは無効です",
+  "invalidBody": "お送りしたリンク全体を開いているかご確認いただくか、新しいリンクをご依頼ください。",
+  "expiredHeading": "このお支払いリンクは期限切れです",
+  "expiredBody": "新しいリンクをご依頼ください。"
+}

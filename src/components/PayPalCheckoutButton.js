@@ -39,8 +39,20 @@ function loadPayPalSdk(clientId) {
  * never sends a plan or an amount (a client-supplied plan/amount could be
  * tampered with to under-pay).
  */
-export default function PayPalCheckoutButton({ clientId, formType, guests, onSuccess, dict }) {
+export default function PayPalCheckoutButton({
+  clientId,
+  formType,
+  guests,
+  onSuccess,
+  dict,
+  // Defaults are the class-booking flow. The group-deposit pay page passes
+  // its own endpoint and its signed-link parameters instead.
+  createOrderUrl = "/api/paypal/create-order",
+  createOrderBody,
+}) {
   const containerRef = useRef(null);
+  const orderBody = createOrderBody ?? { formType, guests };
+  const orderBodyKey = JSON.stringify(orderBody);
   const [status, setStatus] = useState("loading"); // loading | ready | error
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -56,10 +68,10 @@ export default function PayPalCheckoutButton({ clientId, formType, guests, onSuc
           .Buttons({
             style: { layout: "vertical", color: "black", label: "pay" },
             createOrder: async () => {
-              const res = await fetch("/api/paypal/create-order", {
+              const res = await fetch(createOrderUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ formType, guests }),
+                body: orderBodyKey,
               });
               const data = await res.json();
               if (!res.ok) throw new Error(data.error || dict.paymentError);
@@ -104,7 +116,7 @@ export default function PayPalCheckoutButton({ clientId, formType, guests, onSuc
     // driving a full re-render+re-mount of Buttons is deliberate, so a
     // guest's latest form values are always what a click actually charges.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [clientId, formType, guests]);
+  }, [clientId, createOrderUrl, orderBodyKey]);
 
   return (
     // isolation:isolate opens a new local stacking context for whatever
