@@ -10,6 +10,8 @@
     "planningVisit": "ご来店の計画に",
     "pickupNote": "ヌサドゥアエリアにご滞在のお客様には、無料送迎サービスをご利用いただけます(1回のご依頼につき大人2名様以上、空き状況によりご案内)。",
     "noShowNote": "ご注意:お席はご予約時間より30分間お取り置きいたします。それまでにご来店がない場合、キャンセル扱いとしてお席をお譲りすることがございます。",
+    "payAtVenueSummary": "店舗でお支払い",
+    "payAtVenueNote": "お支払いはクラス開始前にレストランのレジでお願いいたします。オンラインでのお支払いは発生しておりません。スタッフからご連絡した時点でお席が確定となります。",
     "subjectReservationConfirmed": "ご予約が確定しました({locationName})",
     "subjectBookingReceived": "ご予約を承りました({locationName})",
     "subjectMessageReceived": "メッセージを受け付けました({locationName})"

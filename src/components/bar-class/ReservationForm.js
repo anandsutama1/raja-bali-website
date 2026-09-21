@@ -12,6 +12,7 @@ import PhoneField from "@/components/PhoneField";
 import GuestCountField from "@/components/GuestCountField";
 import SubmitButton from "@/components/SubmitButton";
 import PayPalCheckoutButton from "@/components/PayPalCheckoutButton";
+import PayAtVenueOption from "@/components/PayAtVenueOption";
 import TripadvisorBadgeMain from "@/components/TripadvisorBadgeMain";
 import SmartImage from "@/components/SmartImage";
 import { LockIcon, CalendarIcon, UsersIcon, MapPinIcon, UserIcon, CheckIcon, ChevronRightIcon } from "@/components/ReservationIcons";
@@ -37,7 +38,7 @@ const initialFields = {
   roomNumber: "",
 };
 
-export default function ReservationForm({ dict, common, paypalClientId, experienceTitle }) {
+export default function ReservationForm({ dict, common, paypalClientId, paypalEnabled = true, experienceTitle }) {
   const router = useRouter();
   const { locale } = useParams();
   const today = todayLocalDate();
@@ -58,6 +59,9 @@ export default function ReservationForm({ dict, common, paypalClientId, experien
   const [livePricing, setLivePricing] = useState(null);
   const [priceLoading, setPriceLoading] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
+  // Flips true only when PayPal itself can't start a checkout — unlocks the
+  // "secure my spot, pay at the restaurant" fallback below the button.
+  const [paypalUnavailable, setPaypalUnavailable] = useState(false);
   const { status, errorMessage, submitForm, submittingMessage } = useFormSubmit({
     formType: "bar-class",
     branch: "general",
@@ -82,6 +86,12 @@ export default function ReservationForm({ dict, common, paypalClientId, experien
   const handleContinueToPayment = (e) => {
     e.preventDefault();
     if (!validate()) return;
+    // PayPal closed: no payment step at all — the booking is submitted
+    // right here as a pay-at-the-restaurant reservation.
+    if (!paypalEnabled) {
+      handlePayAtVenue();
+      return;
+    }
     setAgreedToTerms(false);
     setShowPayment(true);
   };
@@ -144,6 +154,29 @@ export default function ReservationForm({ dict, common, paypalClientId, experien
       // already paid at this point, so a failure here doesn't mean they
       // need to pay again, just that staff won't see it in Sheets/email
       // automatically and should be followed up with directly.
+      router.push(`/${locale}/bar-class/thank-you`);
+    }
+  };
+
+  // Fallback for when PayPal can't start a checkout (see
+  // PayPalCheckoutButton's onUnavailable): holds the spot with no payment
+  // taken, to be settled at the cashier. submit-form recomputes the amount
+  // due itself and flags the booking as unpaid for staff — nothing here
+  // marks it paid.
+  const handlePayAtVenue = async () => {
+    const { whatsappCountry, whatsappNumber, pickupNeeded, hotelName, roomNumber, ...rest } = fields;
+    const ok = await submitForm({
+      ...rest,
+      whatsapp: `${whatsappCountry} ${whatsappNumber}`,
+      ...(pickupNeeded ? { hotelName, roomNumber } : {}),
+      locale,
+      paymentMethod: "pay-at-venue",
+    });
+    if (ok) {
+      setFields(initialFields);
+      setFieldErrors({});
+      setShowPayment(false);
+      setPaypalUnavailable(false);
       router.push(`/${locale}/bar-class/thank-you`);
     }
   };
@@ -264,8 +297,22 @@ export default function ReservationForm({ dict, common, paypalClientId, experien
             )}
           </div>
           <textarea placeholder={common.dietaryPlaceholder} aria-label={common.dietaryPlaceholder} required value={fields.message} onChange={update("message")} className="border p-3 rounded w-full h-24"></textarea>
-          <SubmitButton status="idle" label={dict.submitLabel} submittingMessage="" />
-          <p className="text-center text-xs text-gray-400">{common.poweredByPaypal}</p>
+          {paypalEnabled ? (
+            <>
+              <SubmitButton status="idle" label={dict.submitLabel} submittingMessage="" />
+              <p className="text-center text-xs text-gray-400">{common.poweredByPaypal}</p>
+            </>
+          ) : (
+            <>
+              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-xs text-gray-600 space-y-2">
+                <p className="font-semibold text-gray-700">{common.payAtVenueClosedNote}</p>
+                <p>{common.cancellationPolicy}</p>
+                <p>{common.fullyBookedPolicy}</p>
+                <p>{common.noShowPolicy}</p>
+              </div>
+              <SubmitButton status={status} label={common.payAtVenueSubmitLabel} submittingMessage={submittingMessage} />
+            </>
+          )}
         </form>
       ) : (
         <div>
@@ -339,6 +386,7 @@ export default function ReservationForm({ dict, common, paypalClientId, experien
                   formType="bar-class"
                   guests={fields.guests}
                   onSuccess={handlePaymentSuccess}
+                  onUnavailable={() => setPaypalUnavailable(true)}
                   dict={common}
                 />
               ) : (
@@ -353,6 +401,10 @@ export default function ReservationForm({ dict, common, paypalClientId, experien
                 >
                   {priceLoading ? common.priceLoadingLabel : common.agreeToTermsPrompt}
                 </div>
+              )}
+
+              {paypalUnavailable && agreedToTerms && (
+                <PayAtVenueOption dict={common} onConfirm={handlePayAtVenue} disabled={status === "submitting"} />
               )}
             </div>
 
@@ -412,6 +464,7 @@ export default function ReservationForm({ dict, common, paypalClientId, experien
                     onClick={() => {
                       setShowPayment(false);
                       setAgreedToTerms(false);
+                      setPaypalUnavailable(false);
                     }}
                     className="shrink-0 text-xs font-semibold text-raja-red hover:underline"
                   >

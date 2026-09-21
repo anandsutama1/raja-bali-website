@@ -6,6 +6,7 @@ import { LOCALES, DEFAULT_LOCALE } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { verifyPayPalOrder } from "@/lib/paypal/verify";
 import { computeOrderPricing } from "@/lib/paypal/orderPricing";
+import { resolveBasePrice, calculateTotalWithTax } from "@/lib/paypal/pricing";
 import { generateInvoicePdf } from "@/lib/pdf/invoice";
 import { checkRateLimit } from "@/lib/paypal/rateLimit";
 
@@ -20,6 +21,13 @@ const PAID_FORM_TYPES = new Set(["cooking-class", "bar-class"]);
 // so the value set here and every place that later checks for it (staff
 // email, guest email) can never drift out of sync with each other.
 const PAID_STATUS_LABEL = "Paid via PayPal";
+
+// A guest whose PayPal checkout couldn't start can still hold their spot
+// and settle at the cashier (see PayAtVenueOption). Nothing has been paid
+// in that case, so this label is deliberately unmistakable in Sheets and
+// the staff email — the opposite of PAID_STATUS_LABEL, never confusable
+// with it.
+const PAY_AT_VENUE_STATUS_LABEL = "Pay at restaurant (UNPAID)";
 
 const BRANCH_EMAILS = {
   main: process.env.EMAIL_MAIN_RESTAURANT,
@@ -154,7 +162,27 @@ function needsPickup(fields) {
 // rather than trusted — better to under-claim than to let a forged request
 // mark itself paid when it wasn't.
 async function resolveVerifiedPayment(formType, fields) {
-  const { paymentStatus, paymentAmount, paypalOrderId, paypalCaptureId, ...rest } = fields;
+  const { paymentStatus, paymentAmount, paypalOrderId, paypalCaptureId, paymentMethod, ...rest } = fields;
+
+  // Unpaid hold: no PayPal order involved. The amount due is recomputed
+  // here from our own price table (never taken from the client), so staff
+  // know exactly what to collect. Only the two class forms can ever use
+  // this, and only when the client didn't also claim a PayPal order.
+  if (PAID_FORM_TYPES.has(formType) && !paypalOrderId && paymentMethod === "pay-at-venue") {
+    const guestCount = parseInt(rest.guests, 10);
+    const basePrice = Number.isInteger(guestCount) && guestCount > 0 ? resolveBasePrice(formType, guestCount) : null;
+    if (basePrice) {
+      const { total } = calculateTotalWithTax(basePrice, guestCount);
+      return {
+        fields: {
+          ...rest,
+          paymentStatus: PAY_AT_VENUE_STATUS_LABEL,
+          amountDue: `IDR ${Math.round(total).toLocaleString("en-US")}`,
+        },
+        invoiceData: null,
+      };
+    }
+  }
 
   if (!PAID_FORM_TYPES.has(formType) || !paypalOrderId) {
     return { fields: rest, invoiceData: null };
@@ -227,6 +255,7 @@ function buildEmailHtml(formType, fields) {
     ["Language", fields.locale === "zh" ? "Chinese (zh)" : fields.locale === "ja" ? "Japanese (ja)" : "English (en)"],
     ["Payment", fields.paymentStatus === PAID_STATUS_LABEL ? `${PAID_STATUS_LABEL} (${fields.paymentAmount || "amount unknown"})` : undefined],
     ["PayPal Order ID", fields.paypalOrderId],
+    ["Payment", fields.paymentStatus === PAY_AT_VENUE_STATUS_LABEL ? `${PAY_AT_VENUE_STATUS_LABEL} — collect ${fields.amountDue || "the full amount"}` : undefined],
   ].filter(([, value]) => value);
 
   const rowsHtml = rows
@@ -262,6 +291,13 @@ function buildEmailHtml(formType, fields) {
       ? `<p style="margin:0 0 16px;padding:12px 14px;background:#f0f7f0;border-left:3px solid #4a8f4a;color:#2f5c2f;font-size:14px;font-weight:700;">✓ PAID via PayPal${fields.paymentAmount ? ` — ${escapeHtml(fields.paymentAmount)}` : ""}. No payment collection needed on arrival.</p>`
       : "";
 
+  // Opposite of the paid note above — staff must collect this at the
+  // cashier, so it gets the same top-of-email priority.
+  const unpaidNoteHtml =
+    fields.paymentStatus === PAY_AT_VENUE_STATUS_LABEL
+      ? `<p style="margin:0 0 16px;padding:12px 14px;background:#fff4e5;border-left:4px solid #d97706;color:#7a4a00;font-size:14px;font-weight:700;">💵 NOT PAID — PayPal was unavailable, so this guest chose to pay at the restaurant. Collect ${escapeHtml(fields.amountDue || "the full amount")} (incl. 11% tax) at the cashier before the class starts.</p>`
+      : "";
+
   // One-tap contact buttons — the actionable follow-up to the "don't reply"
   // banner above: it says where NOT to respond, this is where TO respond.
   // wa.me needs digits only, so the guest's stored "+62 812-..." gets the
@@ -292,6 +328,7 @@ function buildEmailHtml(formType, fields) {
     <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;">
       <h2 style="color:#A31C1C;margin-bottom:16px;">New ${label} Submission</h2>
       ${paidNoteHtml}
+      ${unpaidNoteHtml}
       ${pickupNoteHtml}
       ${NO_REPLY_BANNER_HTML}
       ${contactButtonsHtml}
@@ -364,7 +401,14 @@ function buildGuestConfirmationHtml(formType, branch, fields, emailDict, thankYo
         ["Number of Children", fields.children],
         ["Hotel Name", fields.hotelName],
         ["Room Number", fields.roomNumber],
-        ["Payment", fields.paymentStatus === PAID_STATUS_LABEL ? `Paid (${fields.paymentAmount || ""})` : undefined],
+        [
+          "Payment",
+          fields.paymentStatus === PAID_STATUS_LABEL
+            ? `Paid (${fields.paymentAmount || ""})`
+            : fields.paymentStatus === PAY_AT_VENUE_STATUS_LABEL
+              ? `${common.payAtVenueSummary}${fields.amountDue ? ` (${fields.amountDue})` : ""}`
+              : undefined,
+        ],
       ].filter(([, value]) => value)
     : [];
 
@@ -395,7 +439,12 @@ function buildGuestConfirmationHtml(formType, branch, fields, emailDict, thankYo
   const suggestedLinksHtml = buildSuggestedLinksHtml(formType, emailDict, thankYouLabels);
 
   const notes = isReservation
-    ? [booking.note, TABLE_RESERVATION_TYPES.has(formType) ? common.noShowNote : null, common.pickupNote].filter(Boolean)
+    ? [
+        booking.note,
+        TABLE_RESERVATION_TYPES.has(formType) ? common.noShowNote : null,
+        fields.paymentStatus === PAY_AT_VENUE_STATUS_LABEL ? common.payAtVenueNote : null,
+        common.pickupNote,
+      ].filter(Boolean)
     : [];
   const notesHtml = notes.length
     ? `
@@ -512,8 +561,14 @@ async function sendNotificationEmail({ formType, targetEmail, fields }) {
   // Also flagged in the subject line, not just the email body — visible in
   // the inbox list without even opening the email, so it can't be missed
   // regardless of how the body renders or where it gets scrolled/clipped.
-  const subject = hasPickup
-    ? `🚗 PICKUP NEEDED: New ${label} Submission | Raja Bali`
+  const subjectPrefix = [
+    fields.paymentStatus === PAY_AT_VENUE_STATUS_LABEL ? "💵 PAY AT VENUE" : null,
+    hasPickup ? "🚗 PICKUP NEEDED" : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+  const subject = subjectPrefix
+    ? `${subjectPrefix}: New ${label} Submission | Raja Bali`
     : `New ${label} Submission | Raja Bali`;
 
   const { error } = await resend.emails.send({

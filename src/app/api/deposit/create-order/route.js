@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getPayPalAccessToken, paypalApiUrl } from "@/lib/paypal/client";
 import { checkRateLimit } from "@/lib/paypal/rateLimit";
+import { PAYPAL_CHECKOUT_ENABLED } from "@/lib/paypal/config";
 import { verifyDepositLink } from "@/lib/deposit/link";
 
 // The amount is never taken on trust from the browser: the client sends the
@@ -8,6 +9,12 @@ import { verifyDepositLink } from "@/lib/deposit/link";
 // (verifyDepositLink) is allowed to become a PayPal order — for exactly the
 // USD figure inside the signature.
 export async function POST(request) {
+  // PayPal checkout is switched off (see lib/paypal/config.js) — refuse to
+  // start one instead of hitting PayPal with a restricted merchant account.
+  if (!PAYPAL_CHECKOUT_ENABLED) {
+    return NextResponse.json({ error: "Online payment is currently unavailable." }, { status: 503 });
+  }
+
   const limited = checkRateLimit(request, "deposit-create-order");
   if (limited) return limited;
 

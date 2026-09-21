@@ -1,6 +1,7 @@
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { verifyDepositLink } from "@/lib/deposit/link";
 import DepositPay from "@/components/deposit/DepositPay";
+import { PAYPAL_CHECKOUT_ENABLED } from "@/lib/paypal/config";
 
 const first = (value) => (Array.isArray(value) ? value[0] : value);
 
@@ -69,6 +70,17 @@ export default async function DepositPayPage({ params, searchParams }) {
       <main className="mx-auto max-w-xl px-6 py-24 text-center">
         <h1 className="mb-3 text-3xl font-serif">{expired ? dict.expiredHeading : dict.invalidHeading}</h1>
         <p className="text-gray-600">{expired ? dict.expiredBody : dict.invalidBody}</p>
+      </main>
+    );
+  }
+
+  // PayPal checkout is switched off (see lib/paypal/config.js) — a valid
+  // link still shouldn't lead to a checkout that can't start.
+  if (!PAYPAL_CHECKOUT_ENABLED) {
+    return (
+      <main className="mx-auto max-w-xl px-6 py-24 text-center">
+        <h1 className="mb-3 text-3xl font-serif">{dict.unavailableHeading}</h1>
+        <p className="text-gray-600">{dict.unavailableBody.replace("{ref}", ref)}</p>
       </main>
     );
   }

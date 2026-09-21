@@ -10,6 +10,8 @@
     "planningVisit": "While You're Planning Your Visit",
     "pickupNote": "Complimentary pickup service for guests staying around the Nusa Dua area is available (minimum 2 adults per request), subject to availability.",
     "noShowNote": "Please note: your table will be held for 30 minutes past the reservation time. If you haven't arrived by then, the booking may be released and treated as cancelled.",
+    "payAtVenueSummary": "Pay at the restaurant",
+    "payAtVenueNote": "Payment is due at the restaurant cashier before your class starts. No online payment has been taken. Your spot is confirmed once our team replies to you.",
     "subjectReservationConfirmed": "Your Reservation Is Confirmed ({locationName})",
     "subjectBookingReceived": "We've Received Your Booking ({locationName})",
     "subjectMessageReceived": "We've Received Your Message ({locationName})"

@@ -3,6 +3,7 @@ import { getPayPalAccessToken, paypalApiUrl } from "@/lib/paypal/client";
 import { EXPERIENCE_PRICING, EXPERIENCE_LABELS, resolvePlanFromGuestCount } from "@/lib/paypal/pricing";
 import { computeOrderPricing } from "@/lib/paypal/orderPricing";
 import { checkRateLimit } from "@/lib/paypal/rateLimit";
+import { PAYPAL_CHECKOUT_ENABLED } from "@/lib/paypal/config";
 
 // The client sends formType/guests — never a plan or a price. Cooking
 // class's Shared/Individual plan is derived from guestCount here, the same
@@ -12,6 +13,12 @@ import { checkRateLimit } from "@/lib/paypal/rateLimit";
 // no "plan" input to tamper with anymore. This is the only place the
 // actual charge amount is decided, from our own price table.
 export async function POST(request) {
+  // PayPal checkout is switched off (see lib/paypal/config.js) — refuse to
+  // start one instead of hitting PayPal with a restricted merchant account.
+  if (!PAYPAL_CHECKOUT_ENABLED) {
+    return NextResponse.json({ error: "Online payment is currently unavailable." }, { status: 503 });
+  }
+
   const limited = checkRateLimit(request, "create-order");
   if (limited) return limited;
 

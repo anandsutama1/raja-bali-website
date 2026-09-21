@@ -11,6 +11,8 @@
   "unconfirmedBody": "您的付款已通过 PayPal 完成,但我们暂时还无法确认。请勿重复付款,我们的团队会尽快确认(编号 {ref})。",
   "invalidHeading": "此付款链接无效",
   "invalidBody": "请确认您打开的是我们发送的完整链接,或联系我们重新发送。",
+  "unavailableHeading": "在线支付暂时无法使用",
+  "unavailableBody": "目前无法接受在线订金。请通过 WhatsApp 联系我们并提供您的编号 {ref},我们将以其他方式为您安排订金。",
   "expiredHeading": "此付款链接已过期",
   "expiredBody": "请联系我们,我们会为您发送新的链接。",
   "metaTitle": "支付订金",

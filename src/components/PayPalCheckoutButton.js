@@ -49,6 +49,13 @@ export default function PayPalCheckoutButton({
   // its own endpoint and its signed-link parameters instead.
   createOrderUrl = "/api/paypal/create-order",
   createOrderBody,
+  // Called when PayPal can't even START a checkout (the order couldn't be
+  // created, or the SDK never loaded) — nothing has been charged at that
+  // point, so it's safe for the caller to offer a non-PayPal fallback.
+  // Deliberately NOT called from onApprove/capture failures: by then the
+  // guest may already have been charged, and offering "pay at the
+  // restaurant" instead could lead to paying twice.
+  onUnavailable,
 }) {
   const containerRef = useRef(null);
   const orderBody = createOrderBody ?? { formType, guests };
@@ -73,8 +80,11 @@ export default function PayPalCheckoutButton({
                 headers: { "Content-Type": "application/json" },
                 body: orderBodyKey,
               });
-              const data = await res.json();
-              if (!res.ok) throw new Error(data.error || dict.paymentError);
+              const data = await res.json().catch(() => ({}));
+              if (!res.ok) {
+                onUnavailable?.();
+                throw new Error(data.error || dict.paymentError);
+              }
               return data.id;
             },
             onApprove: async (data) => {
@@ -106,6 +116,7 @@ export default function PayPalCheckoutButton({
         if (!cancelled) {
           setStatus("error");
           setErrorMessage(dict.paymentError);
+          onUnavailable?.();
         }
       });
 

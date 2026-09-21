@@ -16,6 +16,7 @@ import dynamic from "next/dynamic";
 import { SITE_NAME, SITE_URL, LOCATIONS } from "@/lib/site";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { localeAlternates } from "@/lib/i18n/alternates";
+import { PAYPAL_CHECKOUT_ENABLED } from "@/lib/paypal/config";
 
 // Below the fold — its form-state/validation JS ships in its own chunk
 // instead of the initial bundle. Still server-rendered (no ssr:false), so
@@ -117,6 +118,7 @@ export default async function BarClassPage({ params }) {
         dict={forms.barClass}
         common={forms.common}
         paypalClientId={process.env.PAYPAL_CLIENT_ID}
+        paypalEnabled={PAYPAL_CHECKOUT_ENABLED}
         experienceTitle={bc.hero.title}
       />
       <StickyReserveButton href="#reservation" label={common.stickyReserve.cocktailClass} />
