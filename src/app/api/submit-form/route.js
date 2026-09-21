@@ -24,7 +24,7 @@ const PAID_STATUS_LABEL = "Paid via PayPal";
 // A guest whose PayPal checkout couldn't start can still hold their spot
 // and settle at the cashier (see PayAtVenueOption). Nothing has been paid
 // in that case, so this label is deliberately unmistakable in Sheets and
-// the staff email — the opposite of PAID_STATUS_LABEL, never confusable
+// the staff email - the opposite of PAID_STATUS_LABEL, never confusable
 // with it.
 const PAY_AT_VENUE_STATUS_LABEL = "Pay at venue (UNPAID)";
 
@@ -165,7 +165,7 @@ async function resolveVerifiedPayment(formType, fields) {
 
   // Unpaid hold: no PayPal order involved. Only the two class forms can
   // ever use this, and only when the client didn't also claim a PayPal
-  // order — the status is set here, never taken from the client.
+  // order - the status is set here, never taken from the client.
   if (PAID_FORM_TYPES.has(formType) && !paypalOrderId && paymentMethod === "pay-at-venue") {
     return { fields: { ...rest, paymentStatus: PAY_AT_VENUE_STATUS_LABEL }, invoiceData: null };
   }
@@ -277,11 +277,11 @@ function buildEmailHtml(formType, fields) {
       ? `<p style="margin:0 0 16px;padding:12px 14px;background:#f0f7f0;border-left:3px solid #4a8f4a;color:#2f5c2f;font-size:14px;font-weight:700;">✓ PAID via PayPal${fields.paymentAmount ? ` — ${escapeHtml(fields.paymentAmount)}` : ""}. No payment collection needed on arrival.</p>`
       : "";
 
-  // Opposite of the paid note above — staff must collect this at the
+  // Opposite of the paid note above - staff must collect this at the
   // cashier, so it gets the same top-of-email priority.
   const unpaidNoteHtml =
     fields.paymentStatus === PAY_AT_VENUE_STATUS_LABEL
-      ? `<p style="margin:0 0 16px;padding:12px 14px;background:#fff4e5;border-left:4px solid #d97706;color:#7a4a00;font-size:14px;font-weight:700;">💵 PAY AT VENUE — UNPAID.</p>`
+      ? `<p style="margin:0 0 16px;padding:12px 14px;background:#fff4e5;border-left:4px solid #d97706;color:#7a4a00;font-size:14px;font-weight:700;">💵 PAY AT VENUE (UNPAID).</p>`
       : "";
 
   // One-tap contact buttons — the actionable follow-up to the "don't reply"

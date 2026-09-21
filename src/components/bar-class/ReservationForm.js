@@ -59,7 +59,7 @@ export default function ReservationForm({ dict, common, paypalClientId, paypalEn
   const [livePricing, setLivePricing] = useState(null);
   const [priceLoading, setPriceLoading] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
-  // Flips true only when PayPal itself can't start a checkout — unlocks the
+  // Flips true only when PayPal itself can't start a checkout - unlocks the
   // "secure my spot, pay at the restaurant" fallback below the button.
   const [paypalUnavailable, setPaypalUnavailable] = useState(false);
   const { status, errorMessage, submitForm, submittingMessage } = useFormSubmit({
@@ -86,7 +86,7 @@ export default function ReservationForm({ dict, common, paypalClientId, paypalEn
   const handleContinueToPayment = (e) => {
     e.preventDefault();
     if (!validate()) return;
-    // PayPal closed: no payment step at all — the booking is submitted
+    // PayPal closed: no payment step at all - the booking is submitted
     // right here as a pay-at-the-restaurant reservation.
     if (!paypalEnabled) {
       handlePayAtVenue();
@@ -161,7 +161,7 @@ export default function ReservationForm({ dict, common, paypalClientId, paypalEn
   // Fallback for when PayPal can't start a checkout (see
   // PayPalCheckoutButton's onUnavailable): holds the spot with no payment
   // taken, to be settled at the cashier. submit-form recomputes the amount
-  // due itself and flags the booking as unpaid for staff — nothing here
+  // due itself and flags the booking as unpaid for staff - nothing here
   // marks it paid.
   const handlePayAtVenue = async () => {
     const { whatsappCountry, whatsappNumber, pickupNeeded, hotelName, roomNumber, ...rest } = fields;

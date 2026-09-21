@@ -1,4 +1,4 @@
-// Master switch for taking payments through PayPal. Closed by default —
+// Master switch for taking payments through PayPal. Closed by default -
 // set PAYPAL_CHECKOUT_ENABLED=true (and redeploy) to reopen it; no code
 // change needed. While closed, cooking/bar class bookings go straight
 // through as "pay at the restaurant" reservations (see PayAtVenueOption /

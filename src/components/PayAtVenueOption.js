@@ -2,7 +2,7 @@
 
 /**
  * Fallback shown under the PayPal button only once PayPal has failed to
- * start a checkout (see PayPalCheckoutButton's onUnavailable) — lets the
+ * start a checkout (see PayPalCheckoutButton's onUnavailable) - lets the
  * guest still hold their spot and settle at the cashier instead of losing
  * the booking. Copy lives in forms.json "common" (payAtVenue*), so it
  * follows the guest's locale like everything else on the form.

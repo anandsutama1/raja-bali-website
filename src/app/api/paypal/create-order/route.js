@@ -13,7 +13,7 @@ import { PAYPAL_CHECKOUT_ENABLED } from "@/lib/paypal/config";
 // no "plan" input to tamper with anymore. This is the only place the
 // actual charge amount is decided, from our own price table.
 export async function POST(request) {
-  // PayPal checkout is switched off (see lib/paypal/config.js) — refuse to
+  // PayPal checkout is switched off (see lib/paypal/config.js) - refuse to
   // start one instead of hitting PayPal with a restricted merchant account.
   if (!PAYPAL_CHECKOUT_ENABLED) {
     return NextResponse.json({ error: "Online payment is currently unavailable." }, { status: 503 });

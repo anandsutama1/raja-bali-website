@@ -50,7 +50,7 @@ export default function PayPalCheckoutButton({
   createOrderUrl = "/api/paypal/create-order",
   createOrderBody,
   // Called when PayPal can't even START a checkout (the order couldn't be
-  // created, or the SDK never loaded) — nothing has been charged at that
+  // created, or the SDK never loaded) - nothing has been charged at that
   // point, so it's safe for the caller to offer a non-PayPal fallback.
   // Deliberately NOT called from onApprove/capture failures: by then the
   // guest may already have been charged, and offering "pay at the

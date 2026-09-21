@@ -9,7 +9,7 @@ import { verifyDepositLink } from "@/lib/deposit/link";
 // (verifyDepositLink) is allowed to become a PayPal order — for exactly the
 // USD figure inside the signature.
 export async function POST(request) {
-  // PayPal checkout is switched off (see lib/paypal/config.js) — refuse to
+  // PayPal checkout is switched off (see lib/paypal/config.js) - refuse to
   // start one instead of hitting PayPal with a restricted merchant account.
   if (!PAYPAL_CHECKOUT_ENABLED) {
     return NextResponse.json({ error: "Online payment is currently unavailable." }, { status: 503 });

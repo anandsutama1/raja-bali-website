@@ -74,7 +74,7 @@ export default async function DepositPayPage({ params, searchParams }) {
     );
   }
 
-  // PayPal checkout is switched off (see lib/paypal/config.js) — a valid
+  // PayPal checkout is switched off (see lib/paypal/config.js) - a valid
   // link still shouldn't lead to a checkout that can't start.
   if (!PAYPAL_CHECKOUT_ENABLED) {
     return (
