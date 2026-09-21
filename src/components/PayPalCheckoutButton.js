@@ -49,12 +49,12 @@ export default function PayPalCheckoutButton({
   // its own endpoint and its signed-link parameters instead.
   createOrderUrl = "/api/paypal/create-order",
   createOrderBody,
-  // Called when PayPal can't even START a checkout (the order couldn't be
-  // created, or the SDK never loaded) - nothing has been charged at that
-  // point, so it's safe for the caller to offer a non-PayPal fallback.
-  // Deliberately NOT called from onApprove/capture failures: by then the
-  // guest may already have been charged, and offering "pay at the
-  // restaurant" instead could lead to paying twice.
+  // Called when PayPal failed and we know nothing was charged: the order
+  // couldn't be created, the SDK never loaded, or PayPal explicitly refused
+  // the capture (e.g. declined card). Safe for the caller to offer a
+  // non-PayPal fallback. Deliberately NOT called when the capture outcome
+  // is unknown (network error mid-capture): the guest may have been
+  // charged, and offering "pay at the venue" could lead to paying twice.
   onUnavailable,
 }) {
   const containerRef = useRef(null);
@@ -70,6 +70,9 @@ export default function PayPalCheckoutButton({
       .then((paypal) => {
         if (cancelled || !containerRef.current) return;
         containerRef.current.innerHTML = "";
+        // Set once we start capturing: from then on a thrown error could
+        // mean the guest WAS charged, so no pay-at-venue fallback.
+        let captureStarted = false;
 
         paypal
           .Buttons({
@@ -88,6 +91,7 @@ export default function PayPalCheckoutButton({
               return data.id;
             },
             onApprove: async (data) => {
+              captureStarted = true;
               const res = await fetch("/api/paypal/capture-order", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -97,6 +101,12 @@ export default function PayPalCheckoutButton({
               if (!res.ok || capture.status !== "COMPLETED") {
                 setStatus("error");
                 setErrorMessage(dict.paymentError);
+                // PayPal explicitly refused (e.g. card declined): safe to
+                // offer the pay-at-venue fallback.
+                if (capture.notCharged) {
+                  captureStarted = false;
+                  onUnavailable?.();
+                }
                 return;
               }
               onSuccess(capture);
@@ -105,6 +115,7 @@ export default function PayPalCheckoutButton({
               console.error("[paypal] Buttons error:", err);
               setStatus("error");
               setErrorMessage(dict.paymentError);
+              if (!captureStarted) onUnavailable?.();
             },
           })
           .render(containerRef.current);

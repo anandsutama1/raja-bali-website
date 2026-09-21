@@ -67,7 +67,14 @@ export async function POST(request) {
         if (already) return already;
       }
       console.error("[paypal] capture-order failed:", capture);
-      return NextResponse.json({ error: "Payment could not be completed." }, { status: 502 });
+      // PayPal itself answered with an error (declined card, order not
+      // approved, and so on), so nothing was charged. Only then may the
+      // client offer "pay at the venue" instead. The catch below is
+      // different: a network failure leaves the outcome unknown.
+      return NextResponse.json(
+        { error: "Payment could not be completed.", notCharged: issue !== "ORDER_ALREADY_CAPTURED" },
+        { status: 502 }
+      );
     }
 
     return NextResponse.json(extractCaptureFields(capture));
