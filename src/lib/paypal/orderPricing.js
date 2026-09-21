@@ -1,4 +1,4 @@
-import { resolveBasePrice, calculateTotalWithTax } from "@/lib/paypal/pricing";
+import { resolveBasePrice, calculateTotalWithTax, TAX_RATE } from "@/lib/paypal/pricing";
 import { getIdrToUsdRate } from "@/lib/paypal/exchangeRate";
 
 // Single source of truth for "what does this booking cost, in both
@@ -16,8 +16,16 @@ export async function computeOrderPricing(formType, guestCount) {
   // PayPal requires exactly 2 decimal places for USD — the only rounding
   // step in this whole calculation, done here once so both callers round
   // identically.
-  const totalUsd = Number((totalIdr * rate).toFixed(2));
-  const subtotalUsd = Number((subtotal * rate).toFixed(2));
+  // TEMPORARY live-payment smoke test: while PAYPAL_TEST_TOTAL_USD is set and
+  // PAYPAL_TEST_UNTIL (an ISO time) is still in the future, bar-class alone
+  // is charged that flat USD amount. Once the time passes the override
+  // switches itself off, so a forgotten env var can never leave the price low.
+  const testUsd = Number(process.env.PAYPAL_TEST_TOTAL_USD);
+  const testUntil = Date.parse(process.env.PAYPAL_TEST_UNTIL ?? "");
+  const testActive = formType === "bar-class" && testUsd > 0 && Number.isFinite(testUntil) && Date.now() < testUntil;
+
+  const totalUsd = testActive ? Number(testUsd.toFixed(2)) : Number((totalIdr * rate).toFixed(2));
+  const subtotalUsd = testActive ? Number((totalUsd / (1 + TAX_RATE)).toFixed(2)) : Number((subtotal * rate).toFixed(2));
   // Derived as the remainder rather than independently rounded, so
   // subtotalUsd + taxUsd always sums to exactly totalUsd to the cent —
   // two separately-rounded figures can be a cent off from their own total.
