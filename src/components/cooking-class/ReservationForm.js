@@ -322,12 +322,6 @@ export default function ReservationForm({ dict, common, paypalClientId, paypalEn
             </>
           ) : (
             <>
-              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-xs text-gray-600 space-y-2">
-                <p className="font-semibold text-gray-700">{common.payAtVenueClosedNote}</p>
-                <p>{common.cancellationPolicy}</p>
-                <p>{common.fullyBookedPolicy}</p>
-                <p>{common.noShowPolicy}</p>
-              </div>
               <SubmitButton status={status} label={common.payAtVenueSubmitLabel} submittingMessage={submittingMessage} />
             </>
           )}

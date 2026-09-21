@@ -6,7 +6,6 @@ import { LOCALES, DEFAULT_LOCALE } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { verifyPayPalOrder } from "@/lib/paypal/verify";
 import { computeOrderPricing } from "@/lib/paypal/orderPricing";
-import { resolveBasePrice, calculateTotalWithTax } from "@/lib/paypal/pricing";
 import { generateInvoicePdf } from "@/lib/pdf/invoice";
 import { checkRateLimit } from "@/lib/paypal/rateLimit";
 
@@ -27,7 +26,7 @@ const PAID_STATUS_LABEL = "Paid via PayPal";
 // in that case, so this label is deliberately unmistakable in Sheets and
 // the staff email — the opposite of PAID_STATUS_LABEL, never confusable
 // with it.
-const PAY_AT_VENUE_STATUS_LABEL = "Pay at restaurant (UNPAID)";
+const PAY_AT_VENUE_STATUS_LABEL = "Pay at venue (UNPAID)";
 
 const BRANCH_EMAILS = {
   main: process.env.EMAIL_MAIN_RESTAURANT,
@@ -164,24 +163,11 @@ function needsPickup(fields) {
 async function resolveVerifiedPayment(formType, fields) {
   const { paymentStatus, paymentAmount, paypalOrderId, paypalCaptureId, paymentMethod, ...rest } = fields;
 
-  // Unpaid hold: no PayPal order involved. The amount due is recomputed
-  // here from our own price table (never taken from the client), so staff
-  // know exactly what to collect. Only the two class forms can ever use
-  // this, and only when the client didn't also claim a PayPal order.
+  // Unpaid hold: no PayPal order involved. Only the two class forms can
+  // ever use this, and only when the client didn't also claim a PayPal
+  // order — the status is set here, never taken from the client.
   if (PAID_FORM_TYPES.has(formType) && !paypalOrderId && paymentMethod === "pay-at-venue") {
-    const guestCount = parseInt(rest.guests, 10);
-    const basePrice = Number.isInteger(guestCount) && guestCount > 0 ? resolveBasePrice(formType, guestCount) : null;
-    if (basePrice) {
-      const { total } = calculateTotalWithTax(basePrice, guestCount);
-      return {
-        fields: {
-          ...rest,
-          paymentStatus: PAY_AT_VENUE_STATUS_LABEL,
-          amountDue: `IDR ${Math.round(total).toLocaleString("en-US")}`,
-        },
-        invoiceData: null,
-      };
-    }
+    return { fields: { ...rest, paymentStatus: PAY_AT_VENUE_STATUS_LABEL }, invoiceData: null };
   }
 
   if (!PAID_FORM_TYPES.has(formType) || !paypalOrderId) {
@@ -255,7 +241,7 @@ function buildEmailHtml(formType, fields) {
     ["Language", fields.locale === "zh" ? "Chinese (zh)" : fields.locale === "ja" ? "Japanese (ja)" : "English (en)"],
     ["Payment", fields.paymentStatus === PAID_STATUS_LABEL ? `${PAID_STATUS_LABEL} (${fields.paymentAmount || "amount unknown"})` : undefined],
     ["PayPal Order ID", fields.paypalOrderId],
-    ["Payment", fields.paymentStatus === PAY_AT_VENUE_STATUS_LABEL ? `${PAY_AT_VENUE_STATUS_LABEL} — collect ${fields.amountDue || "the full amount"}` : undefined],
+    ["Payment", fields.paymentStatus === PAY_AT_VENUE_STATUS_LABEL ? PAY_AT_VENUE_STATUS_LABEL : undefined],
   ].filter(([, value]) => value);
 
   const rowsHtml = rows
@@ -295,7 +281,7 @@ function buildEmailHtml(formType, fields) {
   // cashier, so it gets the same top-of-email priority.
   const unpaidNoteHtml =
     fields.paymentStatus === PAY_AT_VENUE_STATUS_LABEL
-      ? `<p style="margin:0 0 16px;padding:12px 14px;background:#fff4e5;border-left:4px solid #d97706;color:#7a4a00;font-size:14px;font-weight:700;">💵 NOT PAID — PayPal was unavailable, so this guest chose to pay at the restaurant. Collect ${escapeHtml(fields.amountDue || "the full amount")} (incl. 11% tax) at the cashier before the class starts.</p>`
+      ? `<p style="margin:0 0 16px;padding:12px 14px;background:#fff4e5;border-left:4px solid #d97706;color:#7a4a00;font-size:14px;font-weight:700;">💵 PAY AT VENUE — UNPAID.</p>`
       : "";
 
   // One-tap contact buttons — the actionable follow-up to the "don't reply"
@@ -406,7 +392,7 @@ function buildGuestConfirmationHtml(formType, branch, fields, emailDict, thankYo
           fields.paymentStatus === PAID_STATUS_LABEL
             ? `Paid (${fields.paymentAmount || ""})`
             : fields.paymentStatus === PAY_AT_VENUE_STATUS_LABEL
-              ? `${common.payAtVenueSummary}${fields.amountDue ? ` (${fields.amountDue})` : ""}`
+              ? common.payAtVenueSummary
               : undefined,
         ],
       ].filter(([, value]) => value)
@@ -442,7 +428,6 @@ function buildGuestConfirmationHtml(formType, branch, fields, emailDict, thankYo
     ? [
         booking.note,
         TABLE_RESERVATION_TYPES.has(formType) ? common.noShowNote : null,
-        fields.paymentStatus === PAY_AT_VENUE_STATUS_LABEL ? common.payAtVenueNote : null,
         common.pickupNote,
       ].filter(Boolean)
     : [];

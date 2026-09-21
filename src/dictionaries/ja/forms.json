@@ -43,7 +43,6 @@
     "payAtVenueBody": "お席を確保し、クラス開始前にレストランのレジでお支払いいただくことも可能です。オンラインでのお支払いは発生しません。スタッフが確認のうえ、ご連絡いたします。上記のキャンセル・無断キャンセルに関する注意事項は同様に適用されます。",
     "payAtVenueButton": "席を確保する(店舗でお支払い)",
     "payAtVenueSubmitLabel": "予約する(店舗でお支払い)",
-    "payAtVenueClosedNote": "オンラインでのお支払いは不要です。クラス開始前にレストランのレジでお支払いください。",
     "editDetails": "内容を編集する",
     "editLabel": "編集",
     "selectPaymentMethodLabel": "お支払い方法を選択",
