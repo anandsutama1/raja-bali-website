@@ -318,7 +318,19 @@ export default function ReservationForm({ dict, common, paypalClientId, paypalEn
           {paypalEnabled ? (
             <>
               <SubmitButton status="idle" label={dict.submitLabel} submittingMessage="" />
-              <p className="text-center text-xs text-gray-400">{common.poweredByPaypal}</p>
+              {/* eslint-disable-next-line @next/next/no-img-element -- small
+                  trust badge below the fold, same pattern as the
+                  payment-methods strip lower on this page: sizes to its own
+                  aspect ratio and hides itself if the file has not been
+                  dropped in yet, rather than showing a broken-image icon. */}
+              <img
+                src="/images/shared/payment-methods.png"
+                alt={common.poweredByPaypal}
+                className="mx-auto h-5 w-auto"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
             </>
           ) : (
             <>
