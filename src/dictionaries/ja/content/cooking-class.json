@@ -88,6 +88,8 @@
   },
   "reviews": {
     "heading": "ゲストに愛される理由",
-    "subheading": "クッキングクラスに参加したゲストの声"
+    "subheading": "Googleで5段階中4.9、実際にクラスに参加したゲストの声",
+    "googleReviewLabel": "Googleレビュー",
+    "viewOnGoogle": "Googleでさらにレビューを見る"
   }
 }

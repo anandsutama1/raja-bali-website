@@ -88,6 +88,8 @@
   },
   "reviews": {
     "heading": "Loved by Our Guests",
-    "subheading": "What guests say about the cooking class"
+    "subheading": "4.9 out of 5 on Google, from guests who took the class",
+    "googleReviewLabel": "Google review",
+    "viewOnGoogle": "See more reviews on Google"
   }
 }

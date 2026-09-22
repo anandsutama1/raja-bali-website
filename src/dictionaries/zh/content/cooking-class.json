@@ -88,6 +88,8 @@
   },
   "reviews": {
     "heading": "深受客人喜爱",
-    "subheading": "客人对烹饪课程的真实评价"
+    "subheading": "Google 评分 4.9 分(满分 5 分),来自参加过课程的客人",
+    "googleReviewLabel": "Google 评论",
+    "viewOnGoogle": "在 Google 上查看更多评论"
   }
 }
