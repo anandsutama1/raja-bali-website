@@ -308,7 +308,7 @@ export default function ReservationForm({ dict, common, paypalClientId, paypalEn
               <img
                 src="/images/shared/powered-by-paypal.png"
                 alt={common.poweredByPaypal}
-                className="mx-auto h-5 w-auto"
+                className="mx-auto block h-5 w-auto"
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
                 }}
