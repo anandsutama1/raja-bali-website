@@ -25,7 +25,8 @@
     "menu": "メニュー",
     "outlets": "店舗",
     "copyright": "© 2026 Raja Bali. All rights reserved.",
-    "hours": "営業時間:毎日 12:00〜22:00"
+    "hours": "営業時間:毎日 12:00〜22:00",
+    "paymentMethodsAlt": "Visa、Mastercard、Amex、PayPalに対応しています"
   },
   "faqHeading": "よくあるご質問",
   "faqSubheading": "知っておきたいすべてのこと",

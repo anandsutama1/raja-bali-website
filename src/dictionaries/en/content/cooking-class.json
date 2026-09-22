@@ -85,5 +85,9 @@
       { "title": "Individual Experience", "price": "IDR 600,000 / person", "usd": "Approx. USD 34 estimated", "note": "Perfect for solo travelers", "tag": "All Inclusive" }
     ],
     "footnote": "Prices are subject to an 11% government tax. USD figures are an estimated equivalent; you are billed in IDR."
+  },
+  "reviews": {
+    "heading": "Loved by Our Guests",
+    "subheading": "What guests say about the cooking class"
   }
 }

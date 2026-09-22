@@ -319,12 +319,12 @@ export default function ReservationForm({ dict, common, paypalClientId, paypalEn
             <>
               <SubmitButton status="idle" label={dict.submitLabel} submittingMessage="" />
               {/* eslint-disable-next-line @next/next/no-img-element -- small
-                  trust badge below the fold, same pattern as the
-                  payment-methods strip lower on this page: sizes to its own
-                  aspect ratio and hides itself if the file has not been
-                  dropped in yet, rather than showing a broken-image icon. */}
+                  trust badge below the fold; sizes to its own aspect ratio
+                  and hides itself if the file has not been dropped in yet
+                  (see Footer.js for the card-brand/award badges, which now
+                  live there instead of on this form). */}
               <img
-                src="/images/shared/payment-methods.png"
+                src="/images/shared/powered-by-paypal.png"
                 alt={common.poweredByPaypal}
                 className="mx-auto h-5 w-auto"
                 onError={(e) => {
@@ -363,21 +363,6 @@ export default function ReservationForm({ dict, common, paypalClientId, paypalEn
                   <LockIcon className="h-3.5 w-3.5" />
                   {common.securePaymentNote}
                 </p>
-                {/* eslint-disable-next-line @next/next/no-img-element -- a
-                    small, non-LCP trust badge; next/image's fixed
-                    object-cover (via SmartImage) would crop a wide logo
-                    strip, so a plain <img> that sizes to its natural aspect
-                    ratio is the right tool here. Hidden entirely on error
-                    (e.g. the file hasn't been dropped in yet) rather than
-                    showing a broken-image icon. */}
-                <img
-                  src="/images/shared/payment-methods.png"
-                  alt="We accept Visa, Mastercard, Amex, and PayPal"
-                  className="h-6 w-auto"
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                  }}
-                />
               </div>
 
               <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-xs text-gray-600 space-y-2">

@@ -7,6 +7,7 @@ import WhatsIncluded from "@/components/cooking-class/WhatsIncluded";
 import MenuSection from "@/components/cooking-class/MenuSection";
 import GalleryExperience from "@/components/cooking-class/GalleryExperience";
 import Pricing from "@/components/cooking-class/Pricing";
+import Reviews from "@/components/cooking-class/Reviews";
 import StickyReserveButton from "@/components/StickyReserveButton";
 import CookingClassStructuredData from "@/components/cooking-class/StructuredData";
 import PageSchema from "@/components/PageSchema";
@@ -103,6 +104,7 @@ export default async function CookingClassPage({ params }) {
       <MenuSection content={cc.menuSection} />
       <GalleryExperience content={cc.gallery} />
       <Pricing content={cc.pricing} />
+      <Reviews content={cc.reviews} />
       {/* Real Tripadvisor rating for the Main Restaurant, where this class
           is held — right above the form, the same trust-signal placement
           used on reservation-main/reservation-nusadua. */}

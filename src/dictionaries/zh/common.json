@@ -25,7 +25,8 @@
     "menu": "菜单",
     "outlets": "分店",
     "copyright": "© 2026 Raja Bali. 版权所有。",
-    "hours": "每日营业：中午12:00 - 晚上10:00"
+    "hours": "每日营业：中午12:00 - 晚上10:00",
+    "paymentMethodsAlt": "我们接受 Visa、Mastercard、Amex 和 PayPal"
   },
   "faqHeading": "常见问题",
   "faqSubheading": "您需要了解的一切",

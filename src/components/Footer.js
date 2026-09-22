@@ -2,6 +2,7 @@ import Image from "next/image";
 import Reveal from "./motion/Reveal";
 import Stagger from "./motion/Stagger";
 import LocalizedLink from "./LocalizedLink";
+import ImageWithFallback from "./ImageWithFallback";
 
 export default function Footer({ dict }) {
   const f = dict.footer;
@@ -71,8 +72,33 @@ export default function Footer({ dict }) {
       </Stagger>
 
       <Reveal
+        delay={160}
+        className="mx-auto mt-10 flex max-w-5xl flex-col items-center gap-6 border-t border-white/15 pt-8 sm:flex-row sm:justify-between"
+      >
+        {/* Award badges (same Ctrip/Tripadvisor logos as the homepage's
+            Recognition section), wrapped in a white pill since both logos
+            are drawn for a light background, not the footer's dark one. */}
+        <div className="flex items-center gap-3">
+          <span className="flex h-10 w-10 items-center justify-center rounded-md bg-white p-1.5">
+            <Image src="/images/home/TripAdvisor.png" alt="Tripadvisor" width={40} height={40} className="h-full w-full object-contain" />
+          </span>
+          <span className="flex h-10 items-center rounded-md bg-white px-2">
+            <Image src="/images/home/CTRIP.png" alt="Ctrip Gourmet List" width={72} height={32} className="h-7 w-auto object-contain" />
+          </span>
+        </div>
+
+        {/* Card-brand strip, moved here from the reservation forms so it is
+            shown once, site-wide, instead of repeated on every payment
+            step. ImageWithFallback hides it entirely if the file is
+            missing rather than showing a broken-image icon. */}
+        <span className="flex h-10 items-center rounded-md bg-white px-3">
+          <ImageWithFallback src="/images/shared/payment-methods.png" alt={f.paymentMethodsAlt} className="h-5 w-auto" />
+        </span>
+      </Reveal>
+
+      <Reveal
         delay={200}
-        className="mx-auto mt-10 flex max-w-5xl flex-col gap-3 border-t border-white/15 pt-6 text-sm text-gray-400 sm:flex-row sm:items-center sm:justify-between"
+        className="mx-auto mt-6 flex max-w-5xl flex-col gap-3 border-t border-white/15 pt-6 text-sm text-gray-400 sm:flex-row sm:items-center sm:justify-between"
       >
         <p>{f.copyright}</p>
         <p>{f.hours}</p>
