@@ -44,6 +44,8 @@ export async function generateMetadata({ params }) {
       "Balinese cooking class",
       "cooking class Bali",
       "cooking class Nusa Dua",
+      "best cooking class in Nusa Dua",
+      "best cooking class Bali",
       "learn Balinese cooking",
       "Bali culinary experience",
     ],

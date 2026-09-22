@@ -22,6 +22,18 @@ export default function CookingClassStructuredData() {
   const description =
     "Hands-on Balinese cooking class at Raja Bali in Nusa Dua. Learn authentic recipes from local chefs, tour the spice garden, and enjoy the dishes you cook.";
 
+  // Client-confirmed on 2026-09-22 against the Main Restaurant's Google
+  // Business listing: 4.9/5, 100+ reviews (a genuine, independently
+  // checkable rating, not self-scored). See components/cooking-class/
+  // Reviews.js for the real quotes this same figure is drawn from.
+  // reviewCount uses the conservative floor of "100+" rather than an
+  // inflated guess.
+  const aggregateRating = {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "100",
+  };
+
   const offers = [
     {
       "@type": "Offer",
@@ -69,6 +81,7 @@ export default function CookingClassStructuredData() {
     image,
     url,
     brand: { "@type": "Brand", name: "Raja Bali" },
+    aggregateRating,
     offers,
   };
 
@@ -89,6 +102,7 @@ export default function CookingClassStructuredData() {
     image,
     url,
     provider: { "@id": `${SITE_URL}/#organization` },
+    aggregateRating,
     hasCourseInstance: sessionTimes.map((session) => ({
       "@type": "CourseInstance",
       name: session.name,
