@@ -29,8 +29,14 @@ export async function POST(request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const { formType, guests } = body ?? {};
+  const { formType, guests, children } = body ?? {};
   const guestCount = parseInt(guests, 10);
+  // Optional and defaults to 0 (a blank children field means "no
+  // children"), but once given, it has to be a real non-negative count.
+  // It's never trusted for the actual charge amount beyond that, since the
+  // price itself is looked up server-side from formType, never sent by
+  // the client.
+  const childCount = children === undefined || children === "" ? 0 : parseInt(children, 10);
 
   if (!EXPERIENCE_PRICING[formType]) {
     return NextResponse.json({ error: "Unknown experience type." }, { status: 400 });
@@ -38,9 +44,12 @@ export async function POST(request) {
   if (!Number.isInteger(guestCount) || guestCount < 1) {
     return NextResponse.json({ error: "Invalid guest count." }, { status: 400 });
   }
+  if (!Number.isInteger(childCount) || childCount < 0) {
+    return NextResponse.json({ error: "Invalid children count." }, { status: 400 });
+  }
 
   const plan = formType === "cooking-class" ? resolvePlanFromGuestCount(guestCount) : undefined;
-  const { totalIdr, totalUsd, rate } = await computeOrderPricing(formType, guestCount);
+  const { totalIdr, totalUsd, rate } = await computeOrderPricing(formType, guestCount, childCount);
 
   try {
     const accessToken = await getPayPalAccessToken();
@@ -54,12 +63,12 @@ export async function POST(request) {
         intent: "CAPTURE",
         purchase_units: [
           {
-            description: `${EXPERIENCE_LABELS[formType] || formType} — ${guestCount} guest(s)`,
+            description: `${EXPERIENCE_LABELS[formType] || formType}: ${guestCount} guest(s)${childCount ? `, ${childCount} child(ren)` : ""}`,
             // Echoed back on the capture response — lets capture-order and
             // the webhook handler reconstruct what was actually purchased
             // (for the PDF invoice and reconciliation) without re-trusting
             // anything the client says at capture time.
-            custom_id: JSON.stringify({ formType, guestCount, plan }),
+            custom_id: JSON.stringify({ formType, guestCount, childCount, plan }),
             // PayPal's API requires amount.value as a string with exactly 2
             // decimal places — computeOrderPricing returns a Number (for
             // easy display-side arithmetic), so it's formatted back to a

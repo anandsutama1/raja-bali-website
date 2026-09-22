@@ -38,6 +38,7 @@ export async function verifyPayPalOrder(orderId) {
       payerEmail: order.payer?.email_address,
       formType: customId?.formType,
       guestCount: customId?.guestCount,
+      childCount: customId?.childCount,
       plan: customId?.plan,
       // Whole parsed custom_id, for order kinds that aren't a class booking
       // (group-reservation deposits carry { type: "deposit", ref, usd }).

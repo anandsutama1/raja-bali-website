@@ -23,6 +23,18 @@ export default function Pricing({ content }) {
           </div>
         ))}
       </div>
+      {content.childPricing && (
+        // Not a third plan choice (children aren't an alternative to
+        // Shared/Individual, they come on top of whichever plan the adults
+        // are on), so this is a distinct note below the plan grid rather
+        // than a third card inside it.
+        <div className="mt-6 flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1 rounded-lg border border-gray-200 bg-raja-cream/40 px-6 py-4 text-center">
+          <span className="font-semibold">{content.childPricing.label}:</span>
+          <span className="font-serif text-lg">{content.childPricing.price}</span>
+          <span className="text-xs text-gray-400">{content.childPricing.usd}</span>
+          <span className="w-full text-sm text-gray-600">{content.childPricing.note}</span>
+        </div>
+      )}
       <p className="text-center text-xs text-gray-500 mt-4">{content.footnote}</p>
     </section>
   );

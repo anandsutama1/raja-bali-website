@@ -28,6 +28,7 @@
     "pickupStatusLabel": "Pickup",
     "pickupRequestedLabel": "Requested",
     "pickupNotRequestedLabel": "Not requested",
+    "childrenPriceLabel": "Children",
     "subtotalLabel": "Subtotal (before tax)",
     "taxLabel": "Tax & Service",
     "totalLabel": "Total",

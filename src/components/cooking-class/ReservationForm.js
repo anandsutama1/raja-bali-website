@@ -105,7 +105,7 @@ export default function ReservationForm({ dict, common, paypalClientId, paypalEn
     fetch("/api/paypal/price-preview", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ formType: "cooking-class", guests: fields.guests }),
+      body: JSON.stringify({ formType: "cooking-class", guests: fields.guests, children: fields.children }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -181,6 +181,11 @@ export default function ReservationForm({ dict, common, paypalClientId, paypalEn
 
   const guestCount = parseInt(fields.guests, 10);
   const hasValidGuestCount = Number.isInteger(guestCount) && guestCount > 0;
+  // Children are charged too (see lib/paypal/pricing.js's CHILD_PRICING).
+  // This is display-only, just like guestCount above; the actual charge is
+  // computed the same way, server-side, in create-order.
+  const childCount = parseInt(fields.children, 10);
+  const hasChildren = Number.isInteger(childCount) && childCount > 0;
   // Shared vs Individual is derived from the adult count, never a manual
   // choice — 1 adult can only ever be Individual, 2+ can only ever be
   // Shared. This is display-only; the actual charge is recomputed
@@ -394,6 +399,7 @@ export default function ReservationForm({ dict, common, paypalClientId, paypalEn
                   clientId={paypalClientId}
                   formType="cooking-class"
                   guests={fields.guests}
+                  createOrderBody={{ formType: "cooking-class", guests: fields.guests, children: fields.children }}
                   onSuccess={handlePaymentSuccess}
                   onUnavailable={() => setPaypalUnavailable(true)}
                   dict={common}
@@ -445,6 +451,15 @@ export default function ReservationForm({ dict, common, paypalClientId, paypalEn
                   <UsersIcon className="h-4 w-4 text-gray-400 shrink-0" />
                   <span>{guestCount || 0} × {planLabelForCheckout}</span>
                 </div>
+                {hasChildren && (
+                  <div className="flex items-center gap-2">
+                    <UsersIcon className="h-4 w-4 text-gray-400 shrink-0" />
+                    <span>
+                      {childCount} × {common.childrenPriceLabel}
+                      {livePricing?.childPrice ? ` (IDR ${Math.round(livePricing.childPrice).toLocaleString("en-US")}/person)` : ""}
+                    </span>
+                  </div>
+                )}
                 <div className="flex items-start gap-2">
                   <dt className="sr-only">{common.pickupStatusLabel}</dt>
                   <MapPinIcon className="h-4 w-4 text-gray-400 shrink-0 mt-0.5" />

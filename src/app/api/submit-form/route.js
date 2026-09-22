@@ -188,25 +188,31 @@ async function resolveVerifiedPayment(formType, fields) {
   };
 
   const guestCount = parseInt(verified.guestCount, 10) || 1;
+  const childCount = parseInt(verified.childCount, 10) || 0;
   // Same shared calculation the checkout page and create-order use (see
   // orderPricing.js) — the invoice's USD figures can never disagree with
   // what was actually charged, and its IDR figures are clearly labeled as
   // an estimate rather than presented as if PayPal itself reported them
   // (it never does; PayPal only ever settles in USD for this merchant).
-  const { basePrice, subtotal, tax, total, subtotalUsd, taxUsd } = await computeOrderPricing(formType, guestCount);
+  const { basePrice, childPrice, subtotal, tax, total, subtotalUsd, adultSubtotalUsd, childSubtotalUsd, taxUsd } =
+    await computeOrderPricing(formType, guestCount, childCount);
 
   const invoiceData = {
     guestName: [fields.title, fields.firstName, fields.lastName].filter(Boolean).join(" ") || "Guest",
     formType,
     guestCount,
+    childCount,
     plan: verified.plan,
     date: fields.date,
     time: fields.time,
     basePrice,
+    childPrice,
     subtotal,
     tax,
     total,
     subtotalUsd,
+    adultSubtotalUsd,
+    childSubtotalUsd,
     taxUsd,
     paypalOrderId: verified.orderId,
     captureId: verified.captureId,

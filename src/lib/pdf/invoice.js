@@ -40,14 +40,18 @@ export async function generateInvoicePdf({
   guestName,
   formType,
   guestCount,
+  childCount,
   plan,
   date,
   time,
   basePrice,
+  childPrice,
   subtotal,
   tax,
   total,
   subtotalUsd,
+  adultSubtotalUsd,
+  childSubtotalUsd,
   taxUsd,
   paypalOrderId,
   captureId,
@@ -139,8 +143,12 @@ export async function generateInvoicePdf({
   // labeled reference/estimate (the per-person price is what the site
   // lists in IDR; exchange rates move daily, so it's never presented as
   // what was actually charged).
-  moneyLine(`${label}${planLabel ? ` (${planLabel})` : ""} x ${guestCount}`, formatUsd(subtotalUsd));
+  moneyLine(`${label}${planLabel ? ` (${planLabel})` : ""} x ${guestCount}`, formatUsd(adultSubtotalUsd ?? subtotalUsd));
   moneyLine(`Per person (reference): ${formatIdr(basePrice)}`, null, { size: 9, color: GRAY, dy: 16 });
+  if (childCount > 0) {
+    moneyLine(`Children x ${childCount}`, formatUsd(childSubtotalUsd ?? 0));
+    moneyLine(`Per child (reference): ${formatIdr(childPrice ?? 0)}`, null, { size: 9, color: GRAY, dy: 16 });
+  }
   y -= 4;
   page.drawLine({ start: { x: marginX, y: y + 10 }, end: { x: width - marginX, y: y + 10 }, thickness: 0.5, color: GRAY });
   moneyLine(`Tax & service (${Math.round(TAX_RATE * 100)}%)`, formatUsd(taxUsd));

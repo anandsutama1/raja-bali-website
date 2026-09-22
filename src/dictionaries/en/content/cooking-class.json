@@ -84,7 +84,13 @@
       { "title": "Shared Experience", "price": "IDR 550,000 / person", "usd": "Approx. USD 31 estimated", "note": "Minimum 2 guests", "tag": "Best Value", "highlight": "BEST SELLER" },
       { "title": "Individual Experience", "price": "IDR 600,000 / person", "usd": "Approx. USD 34 estimated", "note": "Perfect for solo travelers", "tag": "All Inclusive" }
     ],
-    "footnote": "Prices are subject to an 11% government tax. USD figures are an estimated equivalent; you are billed in IDR."
+    "childPricing": {
+      "label": "Children",
+      "price": "IDR 275,000 / person",
+      "usd": "Approx. USD 16 estimated",
+      "note": "Charged in addition to the adult plan above, before the 11% tax."
+    },
+    "footnote": "Prices are subject to an 11% government tax. USD figures are an estimated equivalent; you are billed in IDR. Children are charged IDR 275,000/person before tax."
   },
   "reviews": {
     "heading": "Loved by Our Guests",

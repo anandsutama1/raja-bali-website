@@ -28,6 +28,7 @@
     "pickupStatusLabel": "送迎サービス",
     "pickupRequestedLabel": "希望あり",
     "pickupNotRequestedLabel": "希望なし",
+    "childrenPriceLabel": "お子様",
     "subtotalLabel": "小計(税抜き)",
     "taxLabel": "税金・サービス料",
     "totalLabel": "合計",

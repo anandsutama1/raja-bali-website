@@ -30,8 +30,9 @@ export async function POST(request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const { formType, guests } = body ?? {};
+  const { formType, guests, children } = body ?? {};
   const guestCount = parseInt(guests, 10);
+  const childCount = children === undefined || children === "" ? 0 : parseInt(children, 10);
 
   if (!EXPERIENCE_PRICING[formType]) {
     return NextResponse.json({ error: "Unknown experience type." }, { status: 400 });
@@ -39,7 +40,11 @@ export async function POST(request) {
   if (!Number.isInteger(guestCount) || guestCount < 1) {
     return NextResponse.json({ error: "Invalid guest count." }, { status: 400 });
   }
+  if (!Number.isInteger(childCount) || childCount < 0) {
+    return NextResponse.json({ error: "Invalid children count." }, { status: 400 });
+  }
 
-  const { totalIdr, totalUsd, subtotalUsd, taxUsd, rate } = await computeOrderPricing(formType, guestCount);
-  return NextResponse.json({ totalIdr, totalUsd, subtotalUsd, taxUsd, rate });
+  const { totalIdr, totalUsd, subtotalUsd, adultSubtotalUsd, childSubtotalUsd, childPrice, taxUsd, rate } =
+    await computeOrderPricing(formType, guestCount, childCount);
+  return NextResponse.json({ totalIdr, totalUsd, subtotalUsd, adultSubtotalUsd, childSubtotalUsd, childPrice, taxUsd, rate });
 }

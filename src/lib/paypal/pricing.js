@@ -18,6 +18,14 @@ export const EXPERIENCE_PRICING = {
   },
 };
 
+// Per-child price, IDR, before tax, cooking-class only. Every other
+// experience (bar-class included) still treats children as free, since
+// only cooking-class was asked to start charging for them; resolveChildPrice
+// falls back to 0 for anything not listed here.
+export const CHILD_PRICING = {
+  "cooking-class": 275000,
+};
+
 // Shared display names — used in the PayPal order description, the guest
 // invoice PDF, and anywhere else an experience needs a human-readable name
 // instead of its formType slug.
@@ -31,15 +39,19 @@ export const EXPERIENCE_LABELS = {
 // 11% government tax" footnote already shown on both pricing sections.
 export const TAX_RATE = 0.11;
 
-// Single source of truth for "base price x guests, plus tax" — used both
-// server-side (the actual charge, in /api/paypal/create-order) and
-// client-side (the order summary shown before a guest pays), so the two
-// can never disagree.
-export function calculateTotalWithTax(basePrice, guestCount) {
-  const subtotal = basePrice * guestCount;
+// Single source of truth for "base price x guests, plus children, plus
+// tax", used both server-side (the actual charge, in
+// /api/paypal/create-order) and client-side (the order summary shown
+// before a guest pays), so the two can never disagree. childCount/
+// childPrice default to 0, so a caller that never mentions children (every
+// experience except cooking-class, for now) behaves exactly as before.
+export function calculateTotalWithTax(basePrice, guestCount, childCount = 0, childPrice = 0) {
+  const adultSubtotal = basePrice * guestCount;
+  const childSubtotal = childPrice * childCount;
+  const subtotal = adultSubtotal + childSubtotal;
   const tax = subtotal * TAX_RATE;
   const total = subtotal + tax;
-  return { subtotal, tax, total };
+  return { adultSubtotal, childSubtotal, subtotal, tax, total };
 }
 
 // Cooking class's Shared/Individual plan is derived from the adult count,
@@ -66,4 +78,11 @@ export function resolveBasePrice(formType, guestCount) {
     return resolvePlanFromGuestCount(guestCount) === "individual" ? pricing.individual : pricing.shared;
   }
   return pricing.standard;
+}
+
+// Per-child price for a given experience, IDR before tax. 0 for anything
+// not listed in CHILD_PRICING, so an experience that hasn't been asked to
+// charge for children just doesn't.
+export function resolveChildPrice(formType) {
+  return CHILD_PRICING[formType] ?? 0;
 }

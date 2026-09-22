@@ -28,6 +28,7 @@
     "pickupStatusLabel": "接送服务",
     "pickupRequestedLabel": "已申请",
     "pickupNotRequestedLabel": "未申请",
+    "childrenPriceLabel": "儿童",
     "subtotalLabel": "小计(未含税)",
     "taxLabel": "税费及服务费",
     "totalLabel": "总计",
