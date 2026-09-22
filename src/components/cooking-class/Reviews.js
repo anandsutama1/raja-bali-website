@@ -12,16 +12,16 @@ import { LOCATIONS } from "@/lib/site";
 //
 // `avatar` is the exact filename to drop into
 // public/images/cooking-class/reviews/, named after the reviewer, all
-// lowercase with hyphens, .jpg or .png. Until a file exists at that path,
+// lowercase with hyphens, .png. Until a file exists at that path,
 // AvatarWithFallback shows the reviewer's initials instead of a broken
 // image, so it's safe to drag files in one at a time.
 const reviews = [
-  { name: "Lizza Padriquela", avatar: "lizza-padriquela.jpg", title: "Such a wonderful and memorable Balinese cooking experience!", text: "We absolutely loved our cooking class at Raja Bali! We were so lucky that it ended up being just the two of us for the whole class, so the experience felt incredibly personal and almost like having our own private cooking class." },
-  { name: "Ma Ho", avatar: "ma-ho.jpg", title: "Excellent and Fun Cooking Class!", text: "The staff was super friendly, and the chef was very professional and spoke good English. The class was well-organized, hands-on, and a lot of fun." },
-  { name: "Mary Bee", avatar: "mary-bee.jpg", text: "The chefs and all the staff were so nice, cooking instructions were clear. We had so much fun. After cooking we sat down in the garden at sunset and ate the delicious food we cooked." },
-  { name: "Sean and Rina Smith", avatar: "sean-and-rina-smith.jpg", text: "Staff, atmosphere & food was 5 star!! We did this class with our 2 children (11 & 9) who absolutely loved it!! They have free shuttle service to Nusa Dua hotels." },
-  { name: "Dana Forte", avatar: "dana-forte.jpg", text: "We just finished the best cooking class in Bali. We have allergies so chose the vegan menu. The chef was prepared, kind, helpful and the meal was plentiful." },
-  { name: "Laura Jago", avatar: "laura-jago.jpg", text: "The food was incredible. Lots of amazing flavours. I would highly recommend this cooking class to others!" },
+  { name: "Lizza Padriquela", avatar: "lizza-padriquela.png", title: "Such a wonderful and memorable Balinese cooking experience!", text: "We absolutely loved our cooking class at Raja Bali! We were so lucky that it ended up being just the two of us for the whole class, so the experience felt incredibly personal and almost like having our own private cooking class." },
+  { name: "Ma Ho", avatar: "ma-ho.png", title: "Excellent and Fun Cooking Class!", text: "The staff was super friendly, and the chef was very professional and spoke good English. The class was well-organized, hands-on, and a lot of fun." },
+  { name: "Mary Bee", avatar: "mary-bee.png", text: "The chefs and all the staff were so nice, cooking instructions were clear. We had so much fun. After cooking we sat down in the garden at sunset and ate the delicious food we cooked." },
+  { name: "Sean and Rina Smith", avatar: "sean-and-rina-smith.png", text: "Staff, atmosphere & food was 5 star!! We did this class with our 2 children (11 & 9) who absolutely loved it!! They have free shuttle service to Nusa Dua hotels." },
+  { name: "Dana Forte", avatar: "dana-forte.png", text: "We just finished the best cooking class in Bali. We have allergies so chose the vegan menu. The chef was prepared, kind, helpful and the meal was plentiful." },
+  { name: "Laura Jago", avatar: "laura-jago.png", text: "The food was incredible. Lots of amazing flavours. I would highly recommend this cooking class to others!" },
 ];
 
 function initials(name) {
@@ -74,8 +74,16 @@ export default function Reviews({ content }) {
       </Marquee>
 
       {googleReviewUrl && (
-        <Reveal as="p" delay={100} className="px-6 text-center">
-          <a href={googleReviewUrl} target="_blank" rel="noopener noreferrer" className="u-link text-sm text-raja-red">
+        // Same boxed-button pattern as Recognition.js's "View on
+        // Tripadvisor" link, so every "view our reviews elsewhere" CTA on
+        // the site reads as one visual language.
+        <Reveal delay={100} className="flex justify-center px-6">
+          <a
+            href={googleReviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="u-press border border-raja-black px-8 py-3 text-center text-sm tracking-widest hover:border-raja-red hover:text-raja-red"
+          >
             {content.viewOnGoogle}
           </a>
         </Reveal>
