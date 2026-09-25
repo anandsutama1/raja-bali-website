@@ -1,0 +1,18 @@
+{
+  "hero": {
+    "eyebrow": "Enjoyed the Class?",
+    "title": "Share Your Cooking Class With Friends",
+    "body": "Tell your friends about your Balinese cooking class experience. A short message is already written for you below."
+  },
+  "shareButtons": {
+    "viewMenu": "View Cooking Class",
+    "shareMessage": "I just joined the Balinese cooking class at Raja Bali in Nusa Dua! Hands-on, fun, and delicious. Highly recommend it if you are in Bali!",
+    "shareNow": "Share Now",
+    "igNote": "Message copied, open Instagram and paste it into a DM, Story, or your bio.",
+    "copyLink": "Copy Link",
+    "reviewOnGoogle": "Review on Google",
+    "reviewOnTripadvisor": "Review on Tripadvisor",
+    "linkCopied": "Link Copied!",
+    "backToRajaBali": "Back to Raja Bali"
+  }
+}

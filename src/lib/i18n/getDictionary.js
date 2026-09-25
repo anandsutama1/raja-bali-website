@@ -29,6 +29,8 @@ const loaders = {
   "content-reservation-main": (l) => import(`@/dictionaries/${l}/content/reservation-main.json`).then((m) => m.default),
   "content-reservation-nusadua": (l) => import(`@/dictionaries/${l}/content/reservation-nusadua.json`).then((m) => m.default),
   "content-share": (l) => import(`@/dictionaries/${l}/content/share.json`).then((m) => m.default),
+  "content-cooking-class-share": (l) =>
+    import(`@/dictionaries/${l}/content/cooking-class-share.json`).then((m) => m.default),
   "content-thank-you": (l) => import(`@/dictionaries/${l}/content/thank-you.json`).then((m) => m.default),
 };
 

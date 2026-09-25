@@ -1,0 +1,18 @@
+{
+  "hero": {
+    "eyebrow": "クッキングクラスはいかがでしたか?",
+    "title": "クッキングクラスの体験をシェアしよう",
+    "body": "バリ島クッキングクラスの体験をお友達に伝えましょう。下に短いメッセージをご用意しています。"
+  },
+  "shareButtons": {
+    "viewMenu": "クッキングクラスを見る",
+    "shareMessage": "ヌサドゥアのRaja Baliでバリ島クッキングクラスに参加しました!体験型でとても楽しく、料理もおいしかったです。バリ島に行くならぜひおすすめです!",
+    "shareNow": "今すぐシェア",
+    "igNote": "メッセージをコピーしました。Instagramを開き、DM、ストーリー、またはプロフィールに貼り付けてください。",
+    "copyLink": "リンクをコピー",
+    "reviewOnGoogle": "Googleでレビューする",
+    "reviewOnTripadvisor": "Tripadvisorでレビューする",
+    "linkCopied": "リンクをコピーしました!",
+    "backToRajaBali": "Raja Baliに戻る"
+  }
+}

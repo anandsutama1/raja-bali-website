@@ -21,8 +21,10 @@ function getShareSupportServer() {
 // utm_source/medium have nowhere to be read (no analytics on this site by
 // design, see gtag.js removal history), but they're free to include and
 // show up in Vercel's own request logs if anyone ever wants a rough count
-// of guest-share traffic without adding a tracking script.
-const SHARE_URL = `${SITE_URL}/?utm_source=guest-share&utm_medium=social`;
+// of guest-share traffic without adding a tracking script. Default for the
+// site-wide /share page; a page-specific share screen (e.g.
+// cooking-class/share) passes its own `shareUrl` prop instead.
+const DEFAULT_SHARE_URL = `${SITE_URL}/?utm_source=guest-share&utm_medium=social`;
 
 function WhatsAppIcon(props) {
   return (
@@ -96,25 +98,38 @@ function StarIcon(props) {
   );
 }
 
-export default function ShareButtons({ content }) {
+export default function ShareButtons({
+  content,
+  // Every prop below defaults to the site-wide restaurant behavior, so the
+  // homepage /share page (its only caller until now) keeps working
+  // unchanged. A page-specific share screen, e.g. cooking-class/share,
+  // whose guests actually experienced a class and not just a meal, passes
+  // its own values instead, most importantly its own review links: a
+  // separate Google Business Profile / Tripadvisor listing exists for at
+  // least the cooking class, distinct from the Main Restaurant's.
+  shareUrl = DEFAULT_SHARE_URL,
+  shareTitle = "Raja Bali",
+  googleReviewUrl = LOCATIONS[0].googleReviewUrl,
+  tripadvisorUrl = LOCATIONS[0].sameAs.find((url) => url.includes("tripadvisor.com")),
+  viewLinkHref = "/menu/food",
+  viewLinkLabel,
+}) {
   const canNativeShare = useSyncExternalStore(subscribeNoop, getShareSupport, getShareSupportServer);
   const [copied, setCopied] = useState(false);
   const [igNote, setIgNote] = useState(false);
   const shareMessage = content.shareMessage;
-  const googleReviewUrl = LOCATIONS[0].googleReviewUrl;
-  const tripadvisorUrl = LOCATIONS[0].sameAs.find((url) => url.includes("tripadvisor.com"));
 
   const links = [
     {
       label: "WhatsApp",
       Icon: WhatsAppIcon,
-      href: `https://wa.me/?text=${encodeURIComponent(`${shareMessage} ${SHARE_URL}`)}`,
+      href: `https://wa.me/?text=${encodeURIComponent(`${shareMessage} ${shareUrl}`)}`,
       bg: "bg-[#25D366]",
     },
     {
       label: "Facebook",
       Icon: FacebookIcon,
-      href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(SHARE_URL)}&quote=${encodeURIComponent(shareMessage)}`,
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareMessage)}`,
       bg: "bg-[#1877F2]",
     },
     {
@@ -125,7 +140,7 @@ export default function ShareButtons({ content }) {
       // installed (the common case here, scanned from a phone); does
       // nothing on desktop, which is an acceptable degrade for a QR-code
       // flow that's mobile by design.
-      href: `fb-messenger://share/?link=${encodeURIComponent(SHARE_URL)}`,
+      href: `fb-messenger://share/?link=${encodeURIComponent(shareUrl)}`,
       bg: "bg-[#0084FF]",
     },
   ];
@@ -142,7 +157,7 @@ export default function ShareButtons({ content }) {
 
   const nativeShare = async () => {
     try {
-      await navigator.share({ title: "Raja Bali", text: shareMessage, url: SHARE_URL });
+      await navigator.share({ title: shareTitle, text: shareMessage, url: shareUrl });
     } catch {
       // Guest canceled the share sheet — nothing to do.
     }
@@ -150,11 +165,11 @@ export default function ShareButtons({ content }) {
 
   const copyLink = async () => {
     try {
-      await navigator.clipboard.writeText(SHARE_URL);
+      await navigator.clipboard.writeText(shareUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      window.prompt("Copy this link:", SHARE_URL);
+      window.prompt("Copy this link:", shareUrl);
     }
   };
 
@@ -166,7 +181,7 @@ export default function ShareButtons({ content }) {
     // Instagram has no web share intent at all — copy the message so the
     // guest can paste it straight into a DM, Story, or their bio.
     try {
-      await navigator.clipboard.writeText(`${shareMessage} ${SHARE_URL}`);
+      await navigator.clipboard.writeText(`${shareMessage} ${shareUrl}`);
     } catch {
       // ignore — the visible note below still tells them what to do.
     }
@@ -177,11 +192,11 @@ export default function ShareButtons({ content }) {
   return (
     <section className="flex flex-col items-center justify-center border-t border-gray-200 bg-raja-cream px-6 py-24 text-center">
       <LocalizedLink
-        href="/menu/food"
+        href={viewLinkHref}
         className="u-press mb-8 inline-flex items-center gap-2 bg-raja-black px-8 py-3 text-sm tracking-widest text-white hover:bg-raja-red"
       >
         <MenuIcon className="h-4 w-4" />
-        {content.viewMenu}
+        {viewLinkLabel ?? content.viewMenu}
       </LocalizedLink>
 
       {canNativeShare && (

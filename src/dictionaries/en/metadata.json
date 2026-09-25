@@ -71,5 +71,9 @@
   "share": {
     "title": "Share Raja Bali",
     "description": "Share your Raja Bali experience with friends and family."
+  },
+  "cookingClassShare": {
+    "title": "Share the Cooking Class",
+    "description": "Enjoyed the Balinese cooking class at Raja Bali? Share it with friends and leave a review."
   }
 }
